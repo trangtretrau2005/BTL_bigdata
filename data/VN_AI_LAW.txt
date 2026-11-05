@@ -1,0 +1,1 @@
+"Chiến lược quốc gia về nghiên cứu, phát triển và ứng dụng Trí tuệ nhân tạo (AI) đến năm 2030 nêu rõ mục tiêu đẩy mạnh ứng dụng AI trong các ngành kinh tế, xây dựng cơ sở hạ tầng dữ liệu lớn và phát triển nguồn nhân lực chất lượng cao tại Việt Nam." | Out-File -FilePath "data/raw/VN_AI_LAW.txt" -Encoding utf8
