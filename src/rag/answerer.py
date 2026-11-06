@@ -9,7 +9,7 @@ from __future__ import annotations
 import re
 import time
 from .common import ollama_post, setting
-from .retriever import retrieve as _retrieve
+from .retriever import retrieve
 
 NO_EVIDENCE = "Khong tim thay du can cu trong kho tai lieu de tra loi cau hoi nay."
 
@@ -37,19 +37,9 @@ def build_prompt(question: str, hits: list[dict]) -> str:
 
 
 def validate_citation_ids(answer_text: str, allowed_ids) -> tuple[list[str], bool]:
-    """Kiem tra cac ma trich dan [Sx] trong cau tra loi co hop le khong.
-
-    Args:
-        answer_text: Chuoi van ban cau tra loi tu LLM.
-        allowed_ids: Tap hop hoac dict cac ID hop le (vi du: {'S1', 'S2'} hoac {'S1': ..., 'S2': ...}).
-
-    Returns:
-        Tuple (cited_ids, is_valid):
-            - cited_ids: Danh sach cac ID trich dan tim thay trong answer_text.
-            - is_valid: True neu tat ca ID deu nam trong allowed_ids, False neu co ID khong hop le.
-    """
+    """Kiem tra cac ma trich dan [Sx] trong cau tra loi co hop le khong."""
     cited = re.findall(r"\[([^\[\]]+)\]", answer_text)
-    valid_ids = set(allowed_ids)  # works for both set and dict (dict -> keys)
+    valid_ids = set(allowed_ids)
     is_valid = all(citation_id in valid_ids for citation_id in cited)
     return cited, is_valid
 
@@ -62,27 +52,6 @@ def answer(
     min_score: float | None = None,
     retrieved_chunks: list[dict] | None = None,
 ) -> dict:
-    """Sinh cau tra loi co trich dan tu kho tai lieu.
-
-    Args:
-        question: Cau hoi cua nguoi dung.
-        top_k: So luong chunk toi da can lay (bo qua neu retrieved_chunks duoc cung cap).
-        region: Bo loc khu vuc ('VN', 'EU', 'ASEAN', 'INTERNATIONAL').
-        document_id: Bo loc theo ID tai lieu cu the.
-        min_score: Nguong diem tuong dong toi thieu (mac dinh lay tu env MIN_SCORE=0.35).
-        retrieved_chunks: Danh sach chunk da lay truoc (neu co, bo qua buoc retrieve noi bo).
-
-    Returns:
-        Dict tuong thich voi AnswerResult schema:
-            {
-                "status": "answered" | "insufficient_evidence" | "error",
-                "answer": str | None,
-                "citations": [{"source_id", "chunk_id", "document_id", "title",
-                               "excerpt", "location", "source_url", "score"}, ...],
-                "timings": {"retrieval_ms": int, "generation_ms": int},
-                "error_message": str | None,
-            }
-    """
     timings: dict = {}
 
     try:
@@ -91,7 +60,7 @@ def answer(
         if retrieved_chunks is not None:
             hits = list(retrieved_chunks)
         else:
-            hits = _retrieve(question, top_k=top_k, region=region, document_id=document_id)
+            hits = retrieve(question, top_k=top_k, region=region, document_id=document_id)
         timings["retrieval_ms"] = int((time.monotonic() - t0) * 1000)
 
         # --- Buoc 2: Loc theo nguong diem ---
@@ -105,6 +74,7 @@ def answer(
                 "citations": [],
                 "timings": timings,
                 "error_message": None,
+                "insufficient_evidence": True,
             }
 
         # --- Buoc 3: Xay dung prompt va goi LLM ---
@@ -129,6 +99,7 @@ def answer(
                 "citations": [],
                 "timings": timings,
                 "error_message": None,
+                "insufficient_evidence": True,
             }
 
         # --- Buoc 4: Kiem tra citation IDs hop le ---
@@ -155,6 +126,7 @@ def answer(
             "citations": citations,
             "timings": timings,
             "error_message": None,
+            "insufficient_evidence": False,
         }
 
     except Exception as exc:
@@ -164,4 +136,5 @@ def answer(
             "citations": [],
             "timings": timings,
             "error_message": str(exc),
+            "insufficient_evidence": False,
         }
