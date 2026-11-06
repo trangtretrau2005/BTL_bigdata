@@ -116,7 +116,7 @@ def answer(
                 "model": setting("CHAT_MODEL", "qwen3:4b"),
                 "prompt": prompt,
                 "stream": False,
-                "options": {"temperature": 0.1},
+                "options": {"temperature": 0.1, "num_predict": 400},
             },
         )
         timings["generation_ms"] = int((time.monotonic() - t1) * 1000)

@@ -6,7 +6,7 @@ try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
-    pass  # install requirements-thanh.txt before running services
+    pass
 
 
 def setting(name, default):
@@ -15,7 +15,7 @@ def setting(name, default):
 
 def ollama_post(endpoint: str, payload: dict) -> dict:
     base = setting("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/")
-    timeout = int(setting("REQUEST_TIMEOUT", "180"))
+    timeout = int(setting("REQUEST_TIMEOUT", "300"))
     try:
         resp = requests.post(f"{base}{endpoint}", json=payload, timeout=timeout)
         resp.raise_for_status()
@@ -41,4 +41,4 @@ def qdrant_client():
 
 
 def collection_name():
-    return setting("QDRANT_COLLECTION", "ai_law_documents")
+    return setting("QDRANT_COLLECTION", "ai_documents")
