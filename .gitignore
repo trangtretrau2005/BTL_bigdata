@@ -59,3 +59,7 @@ qdrant_storage/
 derby.log
 metastore_db/
 spark-warehouse/
+
+# Local Windows Spark / Hadoop utilities
+hadoop/
+download_winutils.py

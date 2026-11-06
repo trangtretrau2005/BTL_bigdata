@@ -7,6 +7,16 @@ country/jurisdiction -> region. Source file provenance is kept where possible.
 from __future__ import annotations
 import argparse
 import os
+import sys
+from pathlib import Path
+
+# Setup HADOOP_HOME for Windows if local winutils exists
+if os.name == "nt" and "HADOOP_HOME" not in os.environ:
+    local_hadoop = Path(__file__).resolve().parents[2] / "hadoop"
+    if (local_hadoop / "bin" / "winutils.exe").exists():
+        os.environ["HADOOP_HOME"] = str(local_hadoop)
+        os.environ["PATH"] = f"{local_hadoop / 'bin'};{os.environ.get('PATH', '')}"
+
 from pyspark.sql import SparkSession, Window
 from pyspark.sql import functions as F
 from pyspark.sql import types as T
@@ -19,7 +29,7 @@ FIELDS = {
     "document_id": ("document_id", "doc_id", "id"),
     "published_date": ("published_date", "publication_date", "date", "issued_date"),
     "document_type": ("document_type", "type", "category"),
-    "source_path": ("source_path", "file_path", "path"),
+    "source_path": ("source_path", "file_path", "source_file", "path"),
 }
 
 
@@ -70,8 +80,10 @@ def run(input_path: str, output_path: str, master: str = "local[*]") -> int:
         if input_path.lower().endswith(".parquet") or (os.path.isdir(input_path) and any(x.endswith(".parquet") for x in os.listdir(input_path))):
             df = spark.read.parquet(input_path)
         else:
-            # Spark reads JSONL and multiline JSON arrays; multiline handles JSON arrays.
-            df = spark.read.option("multiLine", "true" if input_path.lower().endswith(".json") else "false").json(input_path)
+            # Check if directory contains individual JSON files (which are typically multi-line)
+            is_json_dir = os.path.isdir(input_path) and any(x.endswith(".json") for x in os.listdir(input_path))
+            multi_line = "true" if (input_path.lower().endswith(".json") or is_json_dir) else "false"
+            df = spark.read.option("multiLine", multi_line).json(input_path)
         if not set(FIELDS["text"]).intersection(df.columns):
             raise ValueError("No text field found; expected one of: " + ", ".join(FIELDS["text"]))
         cleaned = transform(df)
