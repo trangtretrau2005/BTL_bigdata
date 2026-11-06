@@ -1,0 +1,6 @@
+pyspark>=3.5,<4
+pyarrow>=14,<24
+qdrant-client>=1.12,<2
+requests>=2.31,<3
+python-dotenv>=1.0,<2
+pytest>=8,<10
