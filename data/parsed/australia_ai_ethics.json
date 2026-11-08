@@ -1,0 +1,14 @@
+{
+  "document_id": "australia_ai_ethics",
+  "title": "Australia's Artificial Intelligence Ethics Framework",
+  "source_url": "https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-framework",
+  "region": "International",
+  "jurisdiction": "International",
+  "document_type": "framework",
+  "language": "en",
+  "published_date": "2019-11-07",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\australia_ai_ethics.txt",
+  "text": "AUSTRALIA'S ARTIFICIAL INTELLIGENCE ETHICS FRAMEWORK (8 AI ETHICS PRINCIPLES)\nDepartment of Industry, Science and Resources (DISR) — Australian Government\n\n[Trang 1]\nSection 1. Purpose of Australia's AI Ethics Framework\nAustralia's AI Ethics Framework guides businesses, governments, and academia to responsibly design, develop, and implement AI. It aims to ensure AI is safe, secure, and reliable, reducing the risk of negative impact on citizens while building public trust.\n\n[Trang 2]\nSection 2. The Eight Australian AI Ethics Principles\nPrinciple 1 — Human, societal and environmental wellbeing:\nThroughout their lifecycle, AI systems should benefit individuals, society, and the environment.\n\nPrinciple 2 — Human-centred values:\nThroughout their lifecycle, AI systems should respect human rights, diversity, and the autonomy of individuals. AI systems should not deceive, manipulate, or unjustifiably subordinate human beings.\n\nPrinciple 3 — Fairness:\nThroughout their lifecycle, AI systems should be inclusive and accessible, and should not involve or result in unfair discrimination against individuals, communities, or groups.\n\nPrinciple 4 — Privacy protection and security:\nThroughout their lifecycle, AI systems should respect and uphold privacy rights and data protection, and ensure the security of data and resilience against cyber threats.\n\nPrinciple 5 — Reliability and safety:\nThroughout their lifecycle, AI systems should reliably operate in accordance with their intended purpose, with rigorous testing, reproducibility, and continuous safety monitoring.\n\nPrinciple 6 — Transparency and explainability:\nThere should be transparency and responsible disclosure so people can understand when they are being significantly impacted by AI, and can find out when an AI system is engaging with them.\n\nPrinciple 7 — Contestability:\nWhen an AI system significantly impacts a person, community, group or environment, there should be a timely process to allow people to challenge the use or outcomes of the AI system.\n\nPrinciple 8 — Accountability:\nPeople and organisations responsible for the different phases of the AI system lifecycle should be identifiable and accountable for the outcomes of the AI systems, and human oversight of AI systems should be enabled.",
+  "text_length": 2271
+}

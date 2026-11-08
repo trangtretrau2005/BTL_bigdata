@@ -1,0 +1,14 @@
+{
+  "document_id": "unesco_ai_ethics_guidance",
+  "title": "UNESCO Ethical AI Policy Guidance Document",
+  "source_url": "https://www.unesco.org/en/artificial-intelligence/ethics",
+  "region": "International",
+  "jurisdiction": "International",
+  "document_type": "guideline",
+  "language": "en",
+  "published_date": "2022-06-01",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\unesco_ai_ethics_guidance.txt",
+  "text": "UNESCO ETHICAL IMPACT ASSESSMENT (EIA) & READINESS ASSESSMENT METHODOLOGY (RAM)\nUNESCO Guidance for Implementing the Recommendation on the Ethics of Artificial Intelligence\n\n[Trang 1]\nArticle 1. Purpose of the UNESCO AI Ethics Implementation Guidance\nTo translate the 2021 UNESCO Recommendation on the Ethics of AI into actionable governance mechanisms, UNESCO developed two primary operational tools for Member States and organizations:\n1. The Readiness Assessment Methodology (RAM): A macro-level diagnostic tool to evaluate a country's preparedness to implement ethical AI across five dimensions: Legal/Regulatory, Social/Cultural, Scientific/Educational, Economic, and Technical/Infrastructural.\n2. The Ethical Impact Assessment (EIA): A micro-level tool for project teams, public procurers, and developers to assess the ethical impacts of a specific AI system before and during deployment.\n\n[Trang 2]\nArticle 2. Core Requirements of the Ethical Impact Assessment (EIA)\n1. Red Lines (Prohibited Practices): AI systems must NOT be used for mass surveillance, social scoring by governments, or autonomous lethal weapons without meaningful human control.\n2. Human Rights Due Diligence: Project teams must evaluate impacts on vulnerable groups, linguistic diversity, gender equality, labour rights, and environmental energy consumption, and establish clear redress mechanisms for affected citizens.",
+  "text_length": 1398
+}

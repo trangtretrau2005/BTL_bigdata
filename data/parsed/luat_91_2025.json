@@ -1,6 +1,14 @@
 {
   "document_id": "luat_91_2025",
-  "source_file": "data\\raw\\luat_91_2025.pdf",
-  "text": "Người ký: CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ\nEmail: thongtinchinhphu@chinhphu.vn\nCơ quan: VĂN PHÒNG CHÍNH PHỦ\nThời gian ký: 16.07.2025 14:33:56 +07:00",
-  "text_length": 148
+  "title": "Luật 91/2025/QH15 – Luật Bảo vệ dữ liệu cá nhân",
+  "source_url": "https://vanban.chinhphu.vn/?docid=214590&pageid=27160",
+  "region": "VN",
+  "jurisdiction": "VN",
+  "document_type": "law",
+  "language": "vi",
+  "published_date": "6/26/2025",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\luat_91_2025.txt",
+  "text": "LUẬT BẢO VỆ DỮ LIỆU CÁ NHÂN SỐ 91/2025/QH15\nQuốc hội khóa XV thông qua ngày 26/06/2025\n\n[Trang 1]\nChương I. NHỮNG QUY ĐỊNH CHUNG\nĐiều 1. Phạm vi điều chỉnh\nLuật này quy định về dữ liệu cá nhân, quyền và nghĩa vụ của chủ thể dữ liệu, nguyên tắc bảo vệ dữ liệu cá nhân, điều kiện xử lý dữ liệu cá nhân tự động và bằng trí tuệ nhân tạo, đánh giá tác động xử lý dữ liệu cá nhân và chuyển dữ liệu cá nhân ra nước ngoài.\n\nĐiều 2. Nguyên tắc bảo vệ dữ liệu cá nhân\n1. Dữ liệu cá nhân được xử lý công khai, minh bạch, hợp pháp và chỉ phục vụ đúng mục đích đã đăng ký và được chủ thể dữ liệu đồng ý.\n2. Thu thập tối thiểu (Data Minimization): Chỉ thu thập những dữ liệu cá nhân cần thiết, phù hợp với mục đích xử lý đã xác định.\n3. Bảo đảm an toàn, bảo mật, toàn vẹn dữ liệu trong suốt quá trình thu thập, lưu trữ, huấn luyện mô hình học máy và suy luận.\n\n[Trang 2]\nChương II. XỬ LÝ DỮ LIỆU CÁ NHÂN TRONG HỆ THỐNG TỰ ĐỘNG VÀ TRÍ TUỆ NHÂN TẠO\nĐiều 3. Quyền của chủ thể dữ liệu đối với quyết định tự động hóa (Automated Decision-Making)\n1. Chủ thể dữ liệu có quyền được biết khi dữ liệu cá nhân của mình được đưa vào hệ thống ra quyết định tự động hoặc thuật toán phân tích hồ sơ (Profiling) của hệ thống AI gây ảnh hưởng pháp lý.\n2. Chủ thể dữ liệu có quyền yêu cầu bên kiểm soát dữ liệu giải thích logic xử lý tự động, có quyền từ chối việc chỉ dựa vào quyết định tự động của AI và yêu cầu có sự xem xét, can thiệp của con người.\n3. Nghiêm cấm sử dụng dữ liệu cá nhân nhạy cảm (sinh trắc học, hồ sơ sức khỏe, tài chính, vị trí) để huấn luyện mô hình AI thương mại khi chưa có sự đồng ý rõ ràng bằng văn bản hoặc phương thức điện tử xác thực của chủ thể dữ liệu.",
+  "text_length": 1652
 }

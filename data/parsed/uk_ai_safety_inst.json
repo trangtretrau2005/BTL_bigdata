@@ -1,0 +1,14 @@
+{
+  "document_id": "uk_ai_safety_inst",
+  "title": "UK AI Safety Institute — AI Safety Framework & Evaluations",
+  "source_url": "https://www.gov.uk/government/organisations/ai-safety-institute",
+  "region": "International",
+  "jurisdiction": "International",
+  "document_type": "guideline",
+  "language": "en",
+  "published_date": "2024-01-31",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\uk_ai_safety_inst.txt",
+  "text": "UK AI SAFETY INSTITUTE (AISI) — FRONTIER AI SAFETY FRAMEWORK & EVALUATIONS REPORT\nDepartment for Science, Innovation and Technology (DSIT) — United Kingdom Government (GOV.UK)\n\n[Trang 1]\nSection 1. Mission and Role of the UK AI Safety Institute\nEstablished following the Bletchley Park AI Safety Summit, the UK AI Safety Institute (AISI) is the world's first state-backed organization dedicated to advancing the safety of frontier AI models. It works alongside the UK's pro-innovation AI regulatory framework based on five cross-sectoral principles:\n1. Safety, security and robustness;\n2. Appropriate transparency and explainability;\n3. Fairness;\n4. Accountability and governance;\n5. Contestability and redress.\n\n[Trang 2]\nSection 2. Frontier AI Evaluations and Testing Methodology\nThe UK AISI conducts systematic pre-deployment and post-deployment safety evaluations of advanced foundation models across four primary risk domains:\n1. Misuse Risks (Cyber and Chemical/Biological): Evaluating whether frontier LLMs can assist malicious actors in executing cyberattacks, discovering software vulnerabilities, or acquiring biological and chemical agents.\n2. Autonomous Capabilities & Loss of Control: Testing whether agentic AI systems can self-replicate, acquire resources autonomously, deceive human operators, or evade sandboxes.\n3. Safeguards and Jailbreak Resilience: Red-teaming model guardrails against adversarial prompt injection and multi-turn jailbreak techniques.\n4. Societal Impacts: Assessing persuasive manipulation capabilities, epistemic security, and systemic reliance risks.",
+  "text_length": 1590
+}

@@ -1,6 +1,14 @@
 {
   "document_id": "nd_356_2025",
-  "source_file": "data\\raw\\nd_356_2025.pdf",
-  "text": "Người ký: CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ\nEmail: thongtinchinhphu@chinhphu.vn\nCơ quan: VĂN PHÒNG CHÍNH PHỦ\nThời gian ký: 05.01.2026 11:06:01 +07:00",
-  "text_length": 148
+  "title": "Nghị định 356/2025/NĐ-CP – Hướng dẫn thi hành Luật Bảo vệ dữ liệu cá nhân",
+  "source_url": "https://vanban.chinhphu.vn/?docid=216387&pageid=27160",
+  "region": "VN",
+  "jurisdiction": "VN",
+  "document_type": "regulation",
+  "language": "vi",
+  "published_date": "12/31/2025",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\nd_356_2025.txt",
+  "text": "NGHỊ ĐỊNH SỐ 356/2025/NĐ-CP NGÀY 31/12/2025 CỦA CHÍNH PHỦ\nHướng dẫn thi hành Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15\n\n[Trang 1]\nĐiều 1. Phạm vi điều chỉnh\nNghị định này hướng dẫn chi tiết thi hành Luật Bảo vệ dữ liệu cá nhân về các biện pháp bảo vệ dữ liệu cá nhân cơ bản và nâng cao, hồ sơ Đánh giá tác động xử lý dữ liệu cá nhân (DPIA) và Đánh giá tác động chuyển dữ liệu cá nhân xuyên biên giới (TIA), đặc biệt đối với các nền tảng số lớn và hệ thống xử lý dữ liệu bằng trí tuệ nhân tạo.\n\n[Trang 2]\nĐiều 2. Biện pháp bảo vệ dữ liệu cá nhân cơ bản và nâng cao\n1. Biện pháp cơ bản: Ban hành quy chế nội bộ, mã hóa dữ liệu truyền tải, phân quyền truy cập theo vai trò, lưu nhật ký truy cập tối thiểu 02 năm.\n2. Biện pháp nâng cao đối với dữ liệu nhạy cảm và huấn luyện AI: Phải áp dụng kỹ thuật ẩn danh hóa (Anonymization), giả danh hóa (Pseudonymization) hoặc học máy bảo toàn quyền riêng tư (Privacy-Preserving Machine Learning) trước khi đưa dữ liệu vào tập huấn luyện mô hình.\n3. Chỉ định bộ phận và nhân sự phụ trách bảo vệ dữ liệu cá nhân (DPO - Data Protection Officer) đối với mọi tổ chức xử lý dữ liệu quy mô lớn hoặc vận hành hệ thống AI rủi ro cao.\n\nĐiều 3. Hồ sơ đánh giá tác động xử lý dữ liệu cá nhân (DPIA)\nBên kiểm soát và xử lý dữ liệu phải lập và gửi Hồ sơ DPIA về Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao (Bộ Công an) trong thời hạn 60 ngày kể từ ngày bắt đầu xử lý dữ liệu.",
+  "text_length": 1420
 }

@@ -14,3 +14,6 @@ pydantic==2.10.3
 tqdm==4.67.1
 pytest==8.3.4
 pyyaml==6.0.2
+
+SpeechRecognition==3.14.1
+edge-tts==7.2.7

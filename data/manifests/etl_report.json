@@ -1,0 +1,24 @@
+{
+  "total_input": 30,
+  "valid": 30,
+  "rejected_or_duplicate": 0,
+  "region_dist": {
+    "INTERNATIONAL": 12,
+    "US": 1,
+    "EU": 2,
+    "VN": 15
+  },
+  "document_type_dist": {
+    "guideline": 5,
+    "regulation": 7,
+    "framework": 3,
+    "law": 6,
+    "strategy": 6,
+    "standard": 1,
+    "recommendation": 2
+  },
+  "total_characters": 220989,
+  "spark_master": "local[*]",
+  "output_path": "data/processed",
+  "updated_at": "2026-11-08T06:30:53.986160+00:00"
+}

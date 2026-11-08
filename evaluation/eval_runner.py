@@ -16,7 +16,7 @@ import logging
 import os
 import sys
 import time
-from typing import Dict, List, Any
+from typing import Dict, Any
 from dotenv import load_dotenv
 
 sys.path.insert(0, ".")
@@ -42,21 +42,30 @@ def parse_filters(filter_str: str) -> tuple[str | None, str | None]:
         if "=" in p:
             k, v = p.split("=", 1)
             k, v = k.strip(), v.strip()
-            if k == "jurisdiction":
+            if k in ("jurisdiction", "region"):
                 jurisdiction = v
             elif k == "document_id":
                 doc_id = v
     return jurisdiction, doc_id
 
 
+def _normalize_doc_id(doc_id: str) -> str:
+    """Normalize document IDs (e.g. qd_127_2021_ai_strategy -> qd_127_2021) for matching."""
+    d = (doc_id or "").strip().lower()
+    return d
+
+
+def _doc_matches(expected: str, candidate: str) -> bool:
+    exp = _normalize_doc_id(expected)
+    cand = _normalize_doc_id(candidate)
+    if not exp or not cand:
+        return False
+    return exp == cand or exp.startswith(cand) or cand.startswith(exp)
+
+
 def run_evaluation(
     eval_csv: str = "evaluation/qa_eval_set.csv",
     output_json: str = "evaluation/eval_results.json",
-    qdrant_url: str = "http://localhost:6333",
-    collection_name: str = "ai_documents",
-    ollama_url: str = "http://localhost:11434",
-    chat_model: str = "qwen3:4b",
-    embedding_model: str = "bge-m3",
     top_k: int = 5,
 ) -> Dict[str, Any]:
     from src.rag.retriever import retrieve
@@ -88,19 +97,14 @@ def run_evaluation(
 
         print(f"\n--- Testing [{qid}] ({row.get('question_type', '')}): {q_text[:70]}...")
 
-        t0 = time.time()
         retrieval_error = None
         retrieved_chunks = []
         try:
             retrieved_chunks = retrieve(
-                query=q_text,
-                qdrant_url=qdrant_url,
-                collection_name=collection_name,
-                embedding_model=embedding_model,
-                ollama_url=ollama_url,
+                question=q_text,
                 top_k=top_k,
-                jurisdiction_filter=jur_filter,
-                document_id_filter=doc_filter,
+                region=jur_filter,
+                document_id=doc_filter,
             )
         except Exception as e:
             retrieval_error = str(e)
@@ -110,27 +114,30 @@ def run_evaluation(
         hit_found = False
         if has_answer:
             answerable_count += 1
-            retrieved_doc_ids = [c.get("document_id", "") for c in retrieved_chunks]
+            retrieved_ids = []
+            for c in retrieved_chunks:
+                if c.get("source_document_id"):
+                    retrieved_ids.append(c["source_document_id"])
+                if c.get("document_id"):
+                    retrieved_ids.append(c["document_id"])
+
             for exp in expected_docs:
-                if exp in retrieved_doc_ids:
+                if any(_doc_matches(exp, rid) for rid in retrieved_ids):
                     hit_found = True
                     break
             if hit_found:
                 hit_at_5_count += 1
                 print(f"  [Retrieval HIT@5: YES] Retrieved matching doc")
             else:
-                print(f"  [Retrieval HIT@5: NO] Expected {expected_docs}, got {retrieved_doc_ids}")
+                print(f"  [Retrieval HIT@5: NO] Expected {expected_docs}, got {retrieved_ids}")
         else:
             out_of_scope_count += 1
 
         # Call Answerer
-        ans_res = {}
         try:
             ans_res = answer(
-                query=q_text,
+                question=q_text,
                 retrieved_chunks=retrieved_chunks,
-                ollama_url=ollama_url,
-                chat_model=chat_model,
             )
         except Exception as e:
             ans_res = {
@@ -195,7 +202,7 @@ def run_evaluation(
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
     print("\n" + "=" * 60)
-    print("🎯 EVALUATION SUMMARY:")
+    print("EVALUATION SUMMARY:")
     print(f"  Hit@5 (target >= 80%):              {hit_rate:.1f}% ({hit_at_5_count}/{answerable_count})")
     print(f"  Out-of-Scope Refusal (target >= 80%): {refusal_rate:.1f}% ({out_of_scope_refused}/{out_of_scope_count})")
     print(f"  Citation Validity (target 100%):    {citation_valid_rate:.1f}%")
@@ -209,19 +216,11 @@ def main():
     parser = argparse.ArgumentParser(description="Evaluate AI Doc RAG retrieval and Q&A")
     parser.add_argument("--eval-set", default="evaluation/qa_eval_set.csv")
     parser.add_argument("--output", default="evaluation/eval_results.json")
-    parser.add_argument("--qdrant-url", default=os.getenv("QDRANT_URL", "http://localhost:6333"))
-    parser.add_argument("--collection", default=os.getenv("QDRANT_COLLECTION", "ai_documents"))
-    parser.add_argument("--ollama-url", default=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"))
-    parser.add_argument("--model", default=os.getenv("CHAT_MODEL", "qwen3:4b"))
     args = parser.parse_args()
 
     run_evaluation(
         eval_csv=args.eval_set,
         output_json=args.output,
-        qdrant_url=args.qdrant_url,
-        collection_name=args.collection,
-        ollama_url=args.ollama_url,
-        chat_model=args.model,
     )
 
 

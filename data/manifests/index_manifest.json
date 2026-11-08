@@ -1,0 +1,7 @@
+{
+  "total_documents": 30,
+  "total_chunks": 302,
+  "chunk_size": 1000,
+  "chunk_overlap": 150,
+  "indexed_at": "2026-11-08T06:30:56.188902+00:00"
+}

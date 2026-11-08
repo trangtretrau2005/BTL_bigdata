@@ -1,0 +1,14 @@
+{
+  "document_id": "luat_116_2025",
+  "title": "Luật 116/2025/QH15 – Luật An ninh mạng",
+  "source_url": "https://vanban.chinhphu.vn/?docid=216499&pageid=27160",
+  "region": "VN",
+  "jurisdiction": "VN",
+  "document_type": "law",
+  "language": "vi",
+  "published_date": "12/10/2025",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\luat_116_2025.txt",
+  "text": "LUẬT AN NINH MẠNG (SỬA ĐỔI, BỔ SUNG) SỐ 116/2025/QH15\nQuốc hội khóa XV thông qua ngày 10/12/2025\n\n[Trang 1]\nChương I. QUY ĐỊNH CHUNG\nĐiều 1. Phạm vi điều chỉnh\nLuật này quy định về hoạt động bảo vệ an ninh quốc gia và bảo đảm trật tự, an toàn xã hội trên không gian mạng; trách nhiệm của cơ quan, tổ chức, cá nhân; bảo đảm an ninh mạng đối với hệ thống thông tin quan trọng về an ninh quốc gia và các hệ thống nền tảng số, điện toán đám mây, trí tuệ nhân tạo.\n\n[Trang 2]\nChương II. BẢO ĐẢM AN NINH MẠNG ĐỐI VỚI HỆ THỐNG THÔNG TIN QUAN TRỌNG VÀ AI\nĐiều 2. Thẩm định và đánh giá điều kiện an ninh mạng đối với hệ thống AI trọng yếu\n1. Hệ thống thông tin quan trọng về an ninh quốc gia khi tích hợp các mô hình trí tuệ nhân tạo, điều khiển tự động phải được lực lượng chuyên trách bảo vệ an ninh mạng thẩm định điều kiện an ninh mạng trước khi đưa vào vận hành.\n2. Phải kiểm soát chặt chẽ nguồn gốc mã nguồn, trọng số mô hình (Model Weights), thuật toán và đường ống dữ liệu (Data Pipeline) nhằm phòng ngừa nguy cơ cài cắm cửa hậu (Backdoor), đầu độc dữ liệu (Data Poisoning) và tấn công đánh cắp mô hình.\n\nĐiều 3. Phòng, chống sử dụng công nghệ cao và AI xâm phạm an ninh mạng\nNghiêm cấm việc sử dụng trí tuệ nhân tạo để tự động hóa tấn công mạng, phát tán mã độc, giả mạo giọng nói và khuôn mặt (Deepfake) của lãnh đạo, cơ quan nhà nước hoặc thực hiện hành vi lừa đảo chiếm đoạt tài sản trên không gian mạng.",
+  "text_length": 1407
+}

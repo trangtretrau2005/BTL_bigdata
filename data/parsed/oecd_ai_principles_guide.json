@@ -1,0 +1,14 @@
+{
+  "document_id": "oecd_ai_principles_guide",
+  "title": "OECD AI Principles Explanatory Guidance",
+  "source_url": "https://oecd.ai/en/ai-principles",
+  "region": "International",
+  "jurisdiction": "International",
+  "document_type": "guideline",
+  "language": "en",
+  "published_date": "2024-05-03",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\oecd_ai_principles_guide.txt",
+  "text": "OECD AI PRINCIPLES EXPLANATORY GUIDANCE & IMPLEMENTATION TOOLKIT\nOECD.AI Policy Observatory — Practical Guide to the 2024 Revised OECD AI Principles\n\n[Trang 1]\nArticle 1. Purpose of the OECD Implementation Guidance\nThis explanatory document accompanies the 2024 revision of the OECD Recommendation on Artificial Intelligence (OECD/LEGAL/0449). The 2024 update specifically addresses technological developments in general-purpose AI (GPAI) and generative AI models, expanding guidance on misinformation, information integrity, environmental sustainability, safety overrides, and labour market rights.\n\n[Trang 2]\nArticle 2. Operationalizing the AI System Lifecycle and Risk Management\n1. AI System Lifecycle Stages:\n- Plan and Design -> Collect and Process Data -> Build and Use Model -> Verify and Validate -> Deploy -> Operate and Monitor -> Retire.\n2. Key Implementation Tools:\n- OECD Framework for the Classification of AI Systems: Evaluates AI systems across five dimensions: People & Planet, Economic Context, Data & Input, AI Model, and Task & Output.\n- OECD AI Incidents Monitor (AIM): Tracks real-world AI hazards and incidents globally to inform evidence-based policymaking and risk mitigation.",
+  "text_length": 1202
+}

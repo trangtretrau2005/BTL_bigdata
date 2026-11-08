@@ -1,6 +1,14 @@
 {
   "document_id": "nd_142_2026",
-  "source_file": "data\\raw\\nd_142_2026.pdf",
-  "text": "Người ký: CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ\nEmail: thongtinchinhphu@chinhphu.vn\nCơ quan: VĂN PHÒNG CHÍNH PHỦ\nThời gian ký: 07.05.2026 16:29:52 +07:00",
-  "text_length": 148
+  "title": "Nghị định 142/2026/NĐ-CP – Quy định chi tiết một số điều và biện pháp thi hành Luật Trí tuệ nhân tạo",
+  "source_url": "https://vanban.chinhphu.vn/?docid=218029&pageid=27160",
+  "region": "VN",
+  "jurisdiction": "VN",
+  "document_type": "regulation",
+  "language": "vi",
+  "published_date": "4/30/2026",
+  "status": "current",
+  "source_file": "C:\\Users\\Lenovo\\Desktop\\HK1_năm 4\\big data\\BTL_bigdata\\data\\raw\\nd_142_2026.txt",
+  "text": "NGHỊ ĐỊNH SỐ 142/2026/NĐ-CP NGÀY 30/04/2026 CỦA CHÍNH PHỦ\nQuy định chi tiết một số điều và biện pháp thi hành Luật Trí tuệ nhân tạo số 134/2025/QH15\n\n[Trang 1]\nChương I. QUY ĐỊNH CHUNG\nĐiều 1. Phạm vi điều chỉnh\nNghị định này quy định chi tiết và hướng dẫn thi hành một số điều của Luật Trí tuệ nhân tạo số 134/2025/QH15 về: tiêu chí phân loại rủi ro hệ thống AI; trình tự, thủ tục đánh giá sự phù hợp đối với hệ thống AI rủi ro cao; cơ chế thử nghiệm có kiểm soát (AI Regulatory Sandbox); và trách nhiệm gắn nhãn nội dung do AI tạo sinh.\n\n[Trang 2]\nChương II. ĐÁNH GIÁ SỰ PHÙ HỢP VÀ CƠ CHẾ THỬ NGHIỆM SANDBOX\nĐiều 2. Hồ sơ và quy trình đánh giá sự phù hợp hệ thống AI rủi ro cao\n1. Tổ chức, doanh nghiệp cung cấp hệ thống AI rủi ro cao tại Việt Nam phải lập Hồ sơ kỹ thuật gồm: mô tả kiến trúc mô hình, nguồn gốc tập dữ liệu huấn luyện, biên bản kiểm thử độ chính xác, độ thiên lệch (Bias) và khả năng chống tấn công đối kháng (Adversarial Robustness).\n2. Bộ Khoa học và Công nghệ chủ trì phối hợp với Bộ Thông tin và Truyền thông, Bộ Công an thẩm định và cấp Giấy chứng nhận phù hợp tiêu chuẩn kỹ thuật AI trước khi triển khai diện rộng.\n\nĐiều 3. Cơ chế thử nghiệm có kiểm soát (AI Sandbox)\nDoanh nghiệp khởi nghiệp sáng tạo và viện nghiên cứu được phép đăng ký tham gia không gian thử nghiệm có kiểm soát trong thời hạn tối đa 24 tháng đối với các giải pháp AI trong y tế số, tài chính ngân hàng (Fintech AI), giao thông tự hành và giáo dục thông minh.\n\nĐiều 4. Quy định gắn nhãn nội dung AI tạo sinh (Generative AI Labeling)\nMọi sản phẩm văn bản, âm thanh, hình ảnh, video được tạo ra hoặc chỉnh sửa đáng kể bằng hệ thống AI tạo sinh khi phát hành trên không gian mạng phải có siêu dữ liệu (metadata) và nhãn hiển thị rõ ràng thông báo \"Nội dung có sử dụng Trí tuệ nhân tạo\".",
+  "text_length": 1779
 }
