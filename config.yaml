@@ -5,6 +5,7 @@
 
 # --- HDFS Settings ---
 hdfs:
+  web_url: "http://localhost:9870"
   base_path: "/ai_docs"                  # Root path in HDFS
   raw_path: "/ai_docs/raw"               # Raw downloaded files
   processed_path: "/ai_docs/processed"   # Cleaned Parquet files
@@ -15,22 +16,21 @@ hdfs:
 # --- Qdrant Settings ---
 qdrant:
   url: "http://localhost:6333"
-  collection: "ai_documents"
+  collection: "ai_documents_verified_v2"
   vector_size: 1024   # BGE-M3 output dimension (fixed)
   distance: "Cosine"  # Similarity metric
 
 # --- Ollama / Model Settings ---
 models:
   embedding_model: "bge-m3"              # For embedding chunks and queries
-  chat_model: "qwen3:4b"                 # Start with 4B, upgrade if RAM allows
+  chat_model: "qwen3:4b-instruct-2507-q4_K_M"                 # Start with 4B, upgrade if RAM allows
   ollama_base_url: "http://localhost:11434"
-  request_timeout: 120                   # Seconds before giving up on LLM call
+  request_timeout: 300                   # Seconds before giving up on LLM call
 
 # --- Chunking Settings ---
 chunking:
-  target_tokens: 600           # Target chunk size (in approx. tokens)
-  max_tokens: 800              # Hard max - split if exceeded
-  overlap_tokens: 75           # Overlap when splitting long sections
+  size_chars: 2200
+  overlap_chars: 240
   embed_batch_size: 8          # Embed N chunks per Ollama call
   # Strategy priority: article/clause boundary → paragraph → sentence
 

@@ -2,15 +2,12 @@
 from __future__ import annotations
 import os
 import requests
+from src.settings import setting
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
-
-
-def setting(name, default):
-    return os.getenv(name, default)
 
 
 def ollama_post(endpoint: str, payload: dict) -> dict:
@@ -28,7 +25,7 @@ def embeddings(texts: list[str]) -> list[list[float]]:
     if not texts:
         return []
     model = setting("EMBEDDING_MODEL", "bge-m3")
-    result = ollama_post("/api/embed", {"model": model, "input": texts, "truncate": False})
+    result = ollama_post("/api/embed", {"model": model, "input": texts, "truncate": False, "keep_alive": "10m"})
     vectors = result.get("embeddings")
     if not isinstance(vectors, list) or len(vectors) != len(texts) or not all(isinstance(v, list) and v for v in vectors):
         raise RuntimeError(f"Invalid Ollama embeddings response for model {model}")
@@ -37,7 +34,7 @@ def embeddings(texts: list[str]) -> list[list[float]]:
 
 def qdrant_client():
     from qdrant_client import QdrantClient
-    return QdrantClient(url=setting("QDRANT_URL", "http://localhost:6333"), timeout=30)
+    return QdrantClient(url=setting("QDRANT_URL", "http://localhost:6333"), timeout=60)
 
 
 def collection_name():

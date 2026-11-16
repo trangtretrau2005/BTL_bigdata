@@ -1,0 +1,107 @@
+{
+  "kind": "bounded duplicate-replay ETL experiment, NOT distributed throughput benchmark",
+  "spark_master": "local[2]",
+  "base_documents": 63,
+  "repeats": 3,
+  "runs": [
+    {
+      "repeat": 1,
+      "multiplier": 1,
+      "input_rows": 63,
+      "input_bytes": 6586007,
+      "valid_rows": 63,
+      "duplicates_removed": 0,
+      "elapsed_seconds": 5.598178058997291,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 1,
+      "multiplier": 5,
+      "input_rows": 315,
+      "input_bytes": 32930035,
+      "valid_rows": 63,
+      "duplicates_removed": 252,
+      "elapsed_seconds": 9.115007053002046,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 1,
+      "multiplier": 10,
+      "input_rows": 630,
+      "input_bytes": 65860070,
+      "valid_rows": 63,
+      "duplicates_removed": 567,
+      "elapsed_seconds": 9.586320746002457,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 2,
+      "multiplier": 1,
+      "input_rows": 63,
+      "input_bytes": 6586007,
+      "valid_rows": 63,
+      "duplicates_removed": 0,
+      "elapsed_seconds": 5.087104889000329,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 2,
+      "multiplier": 5,
+      "input_rows": 315,
+      "input_bytes": 32930035,
+      "valid_rows": 63,
+      "duplicates_removed": 252,
+      "elapsed_seconds": 6.598851737002406,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 2,
+      "multiplier": 10,
+      "input_rows": 630,
+      "input_bytes": 65860070,
+      "valid_rows": 63,
+      "duplicates_removed": 567,
+      "elapsed_seconds": 10.576069345999713,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 3,
+      "multiplier": 1,
+      "input_rows": 63,
+      "input_bytes": 6586007,
+      "valid_rows": 63,
+      "duplicates_removed": 0,
+      "elapsed_seconds": 5.079497582002659,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 3,
+      "multiplier": 5,
+      "input_rows": 315,
+      "input_bytes": 32930035,
+      "valid_rows": 63,
+      "duplicates_removed": 252,
+      "elapsed_seconds": 6.065797994000604,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    },
+    {
+      "repeat": 3,
+      "multiplier": 10,
+      "input_rows": 630,
+      "input_bytes": 65860070,
+      "valid_rows": 63,
+      "duplicates_removed": 567,
+      "elapsed_seconds": 13.073538380998798,
+      "output_parquet_bytes": 2935134,
+      "same_unique_content": true
+    }
+  ]
+}

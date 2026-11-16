@@ -1,0 +1,17 @@
+{
+  "provider": "piper",
+  "segments": 2,
+  "elapsed_seconds": 8.52,
+  "checks": [
+    {
+      "sample_rate": 22050,
+      "channels": 1,
+      "seconds": 0.67
+    },
+    {
+      "sample_rate": 22050,
+      "channels": 1,
+      "seconds": 3.77
+    }
+  ]
+}

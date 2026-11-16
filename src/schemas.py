@@ -19,6 +19,7 @@ class DocumentType(str, Enum):
     FRAMEWORK = "framework"
     RECOMMENDATION = "recommendation"
     STRATEGY = "strategy"
+    STANDARD = "standard"
 
 
 class ParseStatus(str, Enum):

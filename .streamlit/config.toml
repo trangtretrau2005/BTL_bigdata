@@ -1,7 +1,14 @@
 [theme]
 base = "light"
-primaryColor = "#1d4ed8"
-backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#f0f7ff"
-textColor = "#0f172a"
-font = "sans serif"
+primaryColor = "#173443"
+backgroundColor = "#faf8f3"
+secondaryBackgroundColor = "#f0eee7"
+textColor = "#172d3a"
+font = "serif"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+maxUploadSize = 50
+folderWatchBlacklist = ["data", ".venv", ".git"]

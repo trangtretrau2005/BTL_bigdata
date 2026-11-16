@@ -1,0 +1,16 @@
+﻿case_id,question,expected_document_id,region_filter
+R01,Luật Trí tuệ nhân tạo 134/2025/QH15 quy định phạm vi điều chỉnh như thế nào?,luat_134_2025,VN
+R02,Quyết định 127/QĐ-TTg về chiến lược nghiên cứu phát triển và ứng dụng trí tuệ nhân tạo đến năm 2030.,qd_127_2021,VN
+R03,Chiến lược quốc gia trí tuệ nhân tạo trong Quyết định 1671/QĐ-TTg năm 2026.,qd_1671_2026,VN
+R04,Nghị định 142/2026/NĐ-CP quy định chi tiết thi hành Luật Trí tuệ nhân tạo.,nd_142_2026,VN
+R05,Quyết định 102/2026/QĐ-UBND Hà Nội quy định bảo đảm an toàn và quản lý rủi ro ứng dụng AI.,vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5,VN
+R06,Thông tư 53/2026/TT-NHNN quy định an toàn và quản lý rủi ro trí tuệ nhân tạo trong ngân hàng.,vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900,VN
+R07,EU AI Act quy định nghĩa vụ cho hệ thống trí tuệ nhân tạo rủi ro cao như thế nào?,eu_ai_act_2024_1689,EU
+R08,Nghĩa vụ AI literacy của tổ chức theo hướng dẫn của Ủy ban châu Âu.,eu_ai_literacy,EU
+R09,NIST AI RMF 1.0 gồm bốn chức năng quản trị rủi ro cốt lõi nào?,nist_ai_rmf_1_0,
+R10,NIST Generative AI Profile AI 600-1 hướng dẫn rủi ro AI tạo sinh.,nist_gen_ai_profile,
+R11,NIST SP 800-218A hướng dẫn phát triển phần mềm an toàn cho AI.,nist_sp800_218a,
+R12,Khuyến nghị UNESCO về đạo đức trí tuệ nhân tạo có những nguyên tắc nào?,unesco_ai_ethics_guidance,
+R13,OECD AI Principles về minh bạch và trách nhiệm giải trình của hệ thống AI.,oecd_ai_principles,
+R14,ASEAN Guide on AI Governance and Ethics hướng dẫn quản trị AI.,asean_ai_ethics,ASEAN
+R15,Singapore Model AI Governance Framework hướng dẫn doanh nghiệp quản trị AI.,singapore_model_ai_gov,

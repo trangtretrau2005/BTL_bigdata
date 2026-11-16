@@ -1,0 +1,27 @@
+digraph G {
+graph [rankdir=LR, bgcolor="white", pad="0.35", nodesep="0.30", ranksep="0.45", splines=polyline, fontname="Liberation Serif", fontsize=20, label="Triển khai Docker trên một máy", labelloc=t];
+node [shape=box, style="rounded,filled", fillcolor="#F2F6F8", color="#31576B", fontcolor="#142C3A", fontname="Liberation Serif", fontsize=13, margin="0.16,0.11"];
+edge [color="#56717F", arrowsize=0.7, fontname="Liberation Serif", fontsize=11, fontcolor="#4B5962"];
+browser [label="Trình duyệt người dùng\nlocalhost:8501"];
+host [label="Windows 11 + Docker Desktop / WSL2"];
+app [label="Container app\nPython 3.11 + Streamlit\nSpark driver local[2] + parser/chunker"];
+ol [label="Container Ollama\nBGE-M3 + Qwen3 Instruct"];
+gpu [label="GPU NVIDIA RTX 3050 6 GB"];
+qd [label="Container Qdrant\nVolume qdrant_data", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+nn [label="Container NameNode\nWebHDFS 9870 / RPC 9000"];
+dn [label="Container DataNode\nVolume dữ liệu HDFS", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+bind [label="Bind mount mã + dữ liệu staging\nThư mục dự án trên Windows", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+ext [label="Internet\nAPI pháp luật / giọng trực tuyến"];
+note [label="Một DataNode, replication=1\nKhông có Spark worker cluster / YARN"];
+browser -> app;
+host -> app;
+app -> ol;
+ol -> gpu;
+app -> qd;
+app -> nn;
+nn -> dn;
+app -> dn [label="upload sau redirect 307"];
+app -> bind;
+app -> ext;
+dn -> note;
+}

@@ -1,0 +1,5 @@
+﻿{"BlockIO":"51.6MB / 117MB","CPUPerc":"64.63%","Container":"be5e64ec8d6a","ID":"be5e64ec8d6a","MemPerc":"3.42%","MemUsage":"266.7MiB / 7.624GiB","Name":"ai-law-lake-app-1","NetIO":"29.1MB / 396kB","PIDs":"14"}
+{"BlockIO":"21.4GB / 1.65GB","CPUPerc":"65.99%","Container":"13590902cff7","ID":"13590902cff7","MemPerc":"28.36%","MemUsage":"2.162GiB / 7.624GiB","Name":"ai-law-lake-ollama-1","NetIO":"10.5MB / 47.6MB","PIDs":"27"}
+{"BlockIO":"318MB / 770MB","CPUPerc":"0.23%","Container":"a5eca058d458","ID":"a5eca058d458","MemPerc":"2.76%","MemUsage":"215.8MiB / 7.624GiB","Name":"ai-law-lake-datanode-1","NetIO":"581MB / 5.72MB","PIDs":"85"}
+{"BlockIO":"1.02GB / 448MB","CPUPerc":"0.35%","Container":"0fad363cc8b2","ID":"0fad363cc8b2","MemPerc":"2.75%","MemUsage":"214.4MiB / 7.624GiB","Name":"ai-law-lake-qdrant-1","NetIO":"254MB / 71.3MB","PIDs":"64"}
+{"BlockIO":"677MB / 255MB","CPUPerc":"2.11%","Container":"a332499ce444","ID":"a332499ce444","MemPerc":"3.34%","MemUsage":"260.8MiB / 7.624GiB","Name":"ai-law-lake-namenode-1","NetIO":"5.69MB / 2.96MB","PIDs":"68"}

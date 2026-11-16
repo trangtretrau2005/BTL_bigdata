@@ -1,6 +1,8 @@
 import csv
 import json
 import re
+import hashlib
+import unicodedata
 from pathlib import Path
 from typing import Dict, Any, Optional
 
@@ -44,9 +46,9 @@ class DocumentParser:
         """Đọc metadata từ sources.csv và các file catalog để gắn vào JSON sau khi parse."""
         meta_map: Dict[str, Dict[str, str]] = {}
         csv_paths = [
-            Path(sources_csv),
             Path("data/bronze/metadata/vietnam_documents.csv"),
             Path("data/bronze/metadata/international_documents.csv"),
+            Path(sources_csv),
         ]
         for path in csv_paths:
             if not path.exists():
@@ -113,7 +115,7 @@ class DocumentParser:
             or man_meta.get("published_date")
             or ""
         )
-        status = csv_meta.get("status") or "current"
+        status = csv_meta.get("status") or "unknown"
 
         return {
             "title": title,
@@ -124,6 +126,8 @@ class DocumentParser:
             "language": language,
             "published_date": published_date,
             "status": status,
+            "effective_date": csv_meta.get("effective_date") or None,
+            "source_org": csv_meta.get("source_org") or man_meta.get("source_org"),
         }
 
     @staticmethod
@@ -147,7 +151,7 @@ class DocumentParser:
     @staticmethod
     def normalize_text(text: str) -> str:
         """Chuẩn hóa văn bản trước khi lưu."""
-        text = text.replace("\x00", " ")
+        text = unicodedata.normalize("NFC", text.replace("\x00", " "))
         text = DocumentParser.repair_mojibake(text)
         text = re.sub(r"\r\n?", "\n", text)
         text = re.sub(r"[ \t\f\v]+", " ", text)
@@ -158,6 +162,8 @@ class DocumentParser:
     @staticmethod
     def is_only_digital_signature(text: str) -> bool:
         """Kiểm tra xem văn bản trích xuất có phải chỉ là con dấu chữ ký số của PDF scan không."""
+        if len(text) < 2000 and ('thời gian ký:' in text.lower() or 'người ký:' in text.lower()) and not re.search(r'\b(?:Điều|Chương|QUYẾT ĐỊNH|NGHỊ ĐỊNH)\b', text):
+            return True
         cleaned = SIGNATURE_PATTERN.sub("", text).strip()
         if len(cleaned) < 200 and (
             "cổng thông tin điện tử chính phủ" in text.lower()
@@ -218,10 +224,15 @@ class DocumentParser:
         for tag in soup(["script", "style", "nav", "footer", "header", "noscript", "svg", "iframe"]):
             tag.decompose()
 
-        for tag in soup.select('[role="navigation"], [role="banner"], [role="contentinfo"], form'):
+        for tag in soup.select('[role="navigation"], [role="banner"], [role="contentinfo"]'):
             tag.decompose()
+        # ASP.NET legal portals wrap the full document in a form.
+        for tag in soup.select('input, button, select'):
+            tag.decompose()
+        for tag in soup.find_all('form'):
+            tag.unwrap()
 
-        main_content = soup.find("main") or soup.find("article") or soup.find("div", class_=re.compile(r"content|toanvan|article|body", re.I))
+        main_content = soup.select_one('.govuk-govspeak, .eli-main-wrapper, #document1, .vbToanVan, .toanvancontent, .document-content') or soup.find("article") or soup.find("main")
         if main_content is not None:
             text = main_content.get_text(separator="\n")
         else:
@@ -276,6 +287,8 @@ class DocumentParser:
                 text = self.parse_docx(file_path)
             elif extension == ".txt":
                 text = self.parse_txt(file_path)
+            elif extension == ".xml":
+                text = BeautifulSoup(file_path.read_bytes(), "xml").get_text(separator="\n")
             else:
                 raise ValueError(f"Unsupported file extension: {extension}")
 
@@ -285,9 +298,20 @@ class DocumentParser:
                 raise ValueError(f"Nội dung quá ngắn ({len(text)} ký tự, yêu cầu >= 200 ký tự).")
 
             meta = self._get_metadata_for(document_id)
+            manifest = self.manifest.get(document_id) or {}
+            checksum = hashlib.sha256(file_path.read_bytes()).hexdigest()
+            verified_file = manifest.get('checksum') == checksum
+            if manifest.get('provenance') == 'user_upload' and not verified_file:
+                raise ValueError('Tệp tải lên đã thay đổi sau khi lưu; hãy tải lại tệp.')
+            # A handwritten TXT beside a PDF cannot be promoted as an official source.
+            if extension == '.txt' and not (manifest.get('provenance') in {'official_download', 'user_upload'} and verified_file):
+                raise ValueError('TXT chưa có provenance tải từ nguồn chính thức; không đưa vào chỉ mục pháp lý')
+            if not meta['source_url']:
+                raise ValueError('Thiếu URL nguồn để truy nguyên')
 
             record = {
                 "document_id": document_id,
+                "version_id": checksum[:16],
                 "title": meta["title"],
                 "source_url": meta["source_url"],
                 "region": meta["region"],
@@ -296,6 +320,17 @@ class DocumentParser:
                 "language": meta["language"],
                 "published_date": meta["published_date"],
                 "status": meta["status"],
+                "legal_status": meta["status"],
+                "effective_date": meta["effective_date"],
+                "source_org": meta["source_org"],
+                "parse_status": "success",
+                "provenance": manifest.get('provenance') or 'unverified_local_original',
+                "original_filename": manifest.get('original_filename'),
+                "collected_at": manifest.get('collected_at'),
+                "download_url": manifest.get('download_url'),
+                "final_url": manifest.get('final_url'),
+                "content_hash": checksum,
+                "raw_path": str(file_path),
                 "source_file": str(file_path),
                 "text": text,
                 "text_length": len(text),
@@ -313,6 +348,7 @@ class DocumentParser:
                 region=meta["region"],
                 document_type=meta["document_type"],
                 language=meta["language"],
+                parse_status="success",
                 parse_error=None,
             )
 
@@ -324,10 +360,14 @@ class DocumentParser:
             }
 
         except Exception as error:
+            scan = 'scan' in str(error).lower()
+            if output_path.exists():
+                output_path.unlink()
             self.manifest.update(
                 document_id,
                 status="parse_failed",
                 parse_error=str(error),
+                parse_status='scan_detected' if scan else 'failed',
             )
 
             return {
@@ -342,7 +382,7 @@ class DocumentParser:
         if not self.raw_dir.exists():
             raise FileNotFoundError(f"Không tìm thấy thư mục Raw: {self.raw_dir}")
 
-        supported_extensions = [".pdf", ".html", ".htm", ".docx", ".txt"]
+        supported_extensions = [".pdf", ".html", ".htm", ".docx", ".xml", ".txt"]
 
         # Ưu tiên .txt / .html / .docx nếu cùng document_id có bản PDF bị lỗi scan
         files_by_stem: Dict[str, list[Path]] = {}
@@ -351,10 +391,11 @@ class DocumentParser:
                 continue
             files_by_stem.setdefault(file_path.stem, []).append(file_path)
 
-        priority = {".txt": 1, ".html": 2, ".htm": 2, ".docx": 3, ".pdf": 4}
+        priority = {".pdf": 1, ".html": 2, ".htm": 2, ".docx": 3, ".xml": 4, ".txt": 5}
 
         for stem, fpaths in sorted(files_by_stem.items()):
-            fpaths_sorted = sorted(fpaths, key=lambda p: priority.get(p.suffix.lower(), 99))
+            preferred = (self.manifest.get(stem) or {}).get('file_path')
+            fpaths_sorted = sorted(fpaths, key=lambda p: (p.as_posix() != str(preferred or '').replace('\\', '/'), priority.get(p.suffix.lower(), 99)))
             last_result = None
             for fp in fpaths_sorted:
                 res = self.parse_one(fp)

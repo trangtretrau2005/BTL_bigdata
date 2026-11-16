@@ -1,0 +1,73 @@
+{
+  "published_years": {
+    "2026": 12,
+    "2023": 3,
+    "2025": 8,
+    "Thiếu ngày": 27,
+    "2020": 1,
+    "2019": 2,
+    "2024": 8,
+    "2021": 1,
+    "2022": 1
+  },
+  "document_length_min": 2992,
+  "document_length_median": 51649,
+  "document_length_max": 585247,
+  "top_document_chunks": [
+    [
+      "eu_ai_act_2024_1689",
+      333
+    ],
+    [
+      "asean_responsible_ai_roadmap",
+      233
+    ],
+    [
+      "nist_adversarial_ai",
+      185
+    ],
+    [
+      "nist_ai_rmf_playbook",
+      183
+    ],
+    [
+      "un_governing_ai_humanity",
+      161
+    ],
+    [
+      "uk_ai_regulation_response",
+      155
+    ],
+    [
+      "uk_ai_playbook",
+      120
+    ],
+    [
+      "nd_142_2026",
+      113
+    ],
+    [
+      "uk_ai_white_paper",
+      112
+    ],
+    [
+      "nist_synthetic_content",
+      111
+    ]
+  ],
+  "legal_status": {
+    "Còn hiệu lực": 13,
+    "unknown": 43,
+    "withdrawn": 1,
+    "historical_snapshot": 2,
+    "Chưa xác định": 1,
+    "Hết hiệu lực toàn bộ": 3
+  },
+  "sync_zone_bytes": {
+    "raw": 81602387,
+    "parsed": 6667397,
+    "processed": 2934181,
+    "chunks": 14691944,
+    "manifests": 135764
+  }
+}

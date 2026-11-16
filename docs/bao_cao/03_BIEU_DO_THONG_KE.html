@@ -1,0 +1,97 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Biểu đồ dữ liệu và thử nghiệm</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#233644;background:#eeeae1;font:18px/1.65 "Times New Roman",serif}
+main{max-width:1150px;margin:35px auto;padding:55px 65px;background:#fffefb;border-top:7px solid #173e59;box-shadow:0 8px 36px #173e5915}
+h1,h2,h3{color:#173e59;line-height:1.3;break-after:avoid}h1{font-size:29px;margin-top:2.4em;padding-bottom:12px;border-bottom:2px solid #c49232}h1:first-child{margin-top:0}h2{font-size:24px;margin-top:2em}h3{font-size:21px;margin-top:1.5em}
+p{text-align:justify}a{color:#225d7c;text-decoration-thickness:1px;text-underline-offset:3px}img{display:block;max-width:100%;height:auto;margin:25px auto 10px;border:1px solid #eee;cursor:zoom-in}p:has(img){text-align:center}
+p:has(img)+p{color:#59656e;font-size:16px}table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.45;margin:24px 0;overflow-wrap:anywhere}th{background:#173e59;color:white;text-align:left}td,th{padding:10px 12px;border:1px solid #d9e0e3;vertical-align:top}tr:nth-child(even){background:#f2f5f5}
+code{font:14px/1.5 Consolas,monospace;background:#edf1f2;overflow-wrap:anywhere}pre{padding:18px;background:#edf1f2;overflow:auto;white-space:pre-wrap}blockquote{border-left:4px solid #c49232;margin-left:0;padding-left:20px;color:#4a5d69}.toc{background:#f2f5f5;padding:18px 28px;border-radius:8px;font-size:16px}.toc li{margin:3px 0}.toc ul{padding-left:23px}footer{color:#647581;font-size:14px;margin-top:40px;border-top:1px solid #d9e0e3;padding-top:14px}
+@media(max-width:800px){main{margin:0;padding:25px 20px}body{font-size:17px}table{font-size:14px}}
+@page{size:A4;margin:20mm 18mm} @media print{body{background:white;font-size:12pt;line-height:1.5}main{padding:0;margin:0;max-width:none;border:0;box-shadow:none}h1{break-before:page;font-size:18pt}h1:first-child{break-before:auto}h2{font-size:15pt}h3{font-size:13pt}table{font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}img{max-height:235mm;object-fit:contain}a{color:inherit;text-decoration:none}.toc{break-after:page}footer{font-size:9pt}}
+</style></head><body><main><div class="toc"><span class="toctitle">Mục lục nội dung</span><ul>
+<li><a href="#bo-bieu-o-thong-ke-du-lieu-va-thuc-nghiem">BỘ BIỂU ĐỒ THỐNG KÊ DỮ LIỆU VÀ THỰC NGHIỆM</a><ul>
+<li><a href="#phan-bo-63-van-ban-theo-nhan-khu-vuc">Phân bố 63 văn bản theo nhãn khu vực</a></li>
+<li><a href="#hai-ngon-ngu-trong-corpus-hien-tai">Hai ngôn ngữ trong corpus hiện tại</a></li>
+<li><a href="#co-cau-loai-tai-lieu">Cơ cấu loại tài liệu</a></li>
+<li><a href="#nguon-thu-thap-va-ong-gop-vao-chi-muc">Nguồn thu thập và đóng góp vào chỉ mục</a></li>
+<li><a href="#nam-ban-hanh-theo-metadata-hien-co">Năm ban hành theo metadata hiện có</a></li>
+<li><a href="#o-dai-van-ban-khong-ong-eu">Độ dài văn bản không đồng đều</a></li>
+<li><a href="#phan-bo-o-dai-3285-oan">Phân bố độ dài 3.285 đoạn</a></li>
+<li><a href="#muoi-tai-lieu-ong-gop-nhieu-oan-nhat">Mười tài liệu đóng góp nhiều đoạn nhất</a></li>
+<li><a href="#kiem-tra-o-ay-u-va-inh-danh">Kiểm tra độ đầy đủ và định danh</a></li>
+<li><a href="#danh-muc-nguon-va-tai-lieu-ang-tra-cuu">Danh mục nguồn và tài liệu đang tra cứu</a></li>
+<li><a href="#etl-voi-du-lieu-lap-3-lan-o-muc">ETL với dữ liệu lặp: 3 lần đo / mức</a></li>
+<li><a href="#ket-qua-truy-xuat-tren-15-cau-hoi-chon-thu-cong">Kết quả truy xuất trên 15 câu hỏi chọn thủ công</a></li>
+<li><a href="#ba-ca-kiem-tra-chuc-nang-au-cuoi">Ba ca kiểm tra chức năng đầu cuối</a></li>
+<li><a href="#dung-luong-cac-lop-trong-luot-ong-bo-gan-nhat">Dung lượng các lớp trong lượt đồng bộ gần nhất</a></li>
+<li><a href="#trang-thai-phap-ly-theo-metadata-a-luu">Trạng thái pháp lý theo metadata đã lưu</a></li>
+<li><a href="#song-am-that-cua-hai-oan-nguoi-thuyet-trinh">Sóng âm thật của hai đoạn người thuyết trình</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="bo-bieu-o-thong-ke-du-lieu-va-thuc-nghiem">BỘ BIỂU ĐỒ THỐNG KÊ DỮ LIỆU VÀ THỰC NGHIỆM</h1>
+<p>16 biểu đồ từ dữ liệu thật, mỗi hình có PNG 300 dpi và SVG. Phông Times New Roman; màu xanh đậm, vàng và xanh lá thống nhất với báo cáo. <a href="02_BAN_NHAP_CHUONG_2_3.md">Về bản nháp</a>.</p>
+<h2 id="phan-bo-63-van-ban-theo-nhan-khu-vuc">Phân bố 63 văn bản theo nhãn khu vực</h2>
+<p><img alt="Phân bố 63 văn bản theo nhãn khu vực" src="hinh_anh/hinh_3_12_khu_vuc.png" /></p>
+<p>Nguồn: snapshot đang hoạt động, 16/11/2026. INTERNATIONAL là nhãn gộp trong dữ liệu, không phải một quốc gia.</p>
+<p><a href="hinh_anh/hinh_3_12_khu_vuc.png">PNG</a> · <a href="hinh_anh/hinh_3_12_khu_vuc.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="hai-ngon-ngu-trong-corpus-hien-tai">Hai ngôn ngữ trong corpus hiện tại</h2>
+<p><img alt="Hai ngôn ngữ trong corpus hiện tại" src="hinh_anh/hinh_3_13_ngon_ngu.png" /></p>
+<p>Đếm theo trường language của văn bản; chưa đánh giá riêng chất lượng hỏi đáp xuyên ngôn ngữ.</p>
+<p><a href="hinh_anh/hinh_3_13_ngon_ngu.png">PNG</a> · <a href="hinh_anh/hinh_3_13_ngon_ngu.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="co-cau-loai-tai-lieu">Cơ cấu loại tài liệu</h2>
+<p><img alt="Cơ cấu loại tài liệu" src="hinh_anh/hinh_3_14_loai_van_ban.png" /></p>
+<p>Loại tài liệu là nhãn chuẩn hóa phục vụ lọc; không dùng để tự xác nhận giá trị hay hiệu lực pháp lý.</p>
+<p><a href="hinh_anh/hinh_3_14_loai_van_ban.png">PNG</a> · <a href="hinh_anh/hinh_3_14_loai_van_ban.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="nguon-thu-thap-va-ong-gop-vao-chi-muc">Nguồn thu thập và đóng góp vào chỉ mục</h2>
+<p><img alt="Nguồn thu thập và đóng góp vào chỉ mục" src="hinh_anh/hinh_3_15_nguon_thu_thap.png" /></p>
+<p>API đóng góp 17/63 văn bản và 325/3.285 đoạn. Đây là dữ liệu đã công bố, không phải toàn bộ kết quả API quét được.</p>
+<p><a href="hinh_anh/hinh_3_15_nguon_thu_thap.png">PNG</a> · <a href="hinh_anh/hinh_3_15_nguon_thu_thap.svg">SVG</a> · Nguồn: <code>evidence/system_facts.json</code>.</p>
+<h2 id="nam-ban-hanh-theo-metadata-hien-co">Năm ban hành theo metadata hiện có</h2>
+<p><img alt="Năm ban hành theo metadata hiện có" src="hinh_anh/hinh_3_16_nam_ban_hanh.png" /></p>
+<p>Có 27/63 tài liệu thiếu published_date; không suy diễn năm từ tên tệp hoặc tiêu đề.</p>
+<p><a href="hinh_anh/hinh_3_16_nam_ban_hanh.png">PNG</a> · <a href="hinh_anh/hinh_3_16_nam_ban_hanh.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="o-dai-van-ban-khong-ong-eu">Độ dài văn bản không đồng đều</h2>
+<p><img alt="Độ dài văn bản không đồng đều" src="hinh_anh/hinh_3_17_do_dai_van_ban.png" /></p>
+<p>Tổng 5.936.893 ký tự; trung vị 51.649 ký tự. Ký tự không đồng nghĩa với token.</p>
+<p><a href="hinh_anh/hinh_3_17_do_dai_van_ban.png">PNG</a> · <a href="hinh_anh/hinh_3_17_do_dai_van_ban.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="phan-bo-o-dai-3285-oan">Phân bố độ dài 3.285 đoạn</h2>
+<p><img alt="Phân bố độ dài 3.285 đoạn" src="hinh_anh/hinh_3_18_do_dai_chunk.png" /></p>
+<p>Cấu hình tối đa 2.200 ký tự, chồng lấn 240; ưu tiên ranh giới điều/câu nên độ dài không cố định.</p>
+<p><a href="hinh_anh/hinh_3_18_do_dai_chunk.png">PNG</a> · <a href="hinh_anh/hinh_3_18_do_dai_chunk.svg">SVG</a> · Nguồn: <code>evidence/chunk_statistics.csv</code>.</p>
+<h2 id="muoi-tai-lieu-ong-gop-nhieu-oan-nhat">Mười tài liệu đóng góp nhiều đoạn nhất</h2>
+<p><img alt="Mười tài liệu đóng góp nhiều đoạn nhất" src="hinh_anh/hinh_3_19_top_tai_lieu.png" /></p>
+<p>Đếm theo source_document_id. Tài liệu dài có thể chi phối kết quả truy xuất nếu thiếu lọc và xếp hạng bổ sung.</p>
+<p><a href="hinh_anh/hinh_3_19_top_tai_lieu.png">PNG</a> · <a href="hinh_anh/hinh_3_19_top_tai_lieu.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="kiem-tra-o-ay-u-va-inh-danh">Kiểm tra độ đầy đủ và định danh</h2>
+<p><img alt="Kiểm tra độ đầy đủ và định danh" src="hinh_anh/hinh_3_20_chat_luong_metadata.png" /></p>
+<p>Đủ metadata chỉ xác nhận khả năng truy vết; không chứng minh nội dung pháp luật đúng hay còn hiệu lực.</p>
+<p><a href="hinh_anh/hinh_3_20_chat_luong_metadata.png">PNG</a> · <a href="hinh_anh/hinh_3_20_chat_luong_metadata.svg">SVG</a> · Nguồn: <code>evidence/system_facts.json; document_statistics.csv</code>.</p>
+<h2 id="danh-muc-nguon-va-tai-lieu-ang-tra-cuu">Danh mục nguồn và tài liệu đang tra cứu</h2>
+<p><img alt="Danh mục nguồn và tài liệu đang tra cứu" src="hinh_anh/hinh_3_21_trang_thai_danh_muc.png" /></p>
+<p>63 + 22 = 85 mục danh mục. Chưa lập chỉ mục gồm nguồn chưa tải/parse/kiểm tra thành công; không mặc định tất cả đều lỗi.</p>
+<p><a href="hinh_anh/hinh_3_21_trang_thai_danh_muc.png">PNG</a> · <a href="hinh_anh/hinh_3_21_trang_thai_danh_muc.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="etl-voi-du-lieu-lap-3-lan-o-muc">ETL với dữ liệu lặp: 3 lần đo / mức</h2>
+<p><img alt="ETL với dữ liệu lặp: 3 lần đo / mức" src="hinh_anh/hinh_3_22_etl_quy_mo.png" /></p>
+<p>Spark local[2]; chấm = trung bình, thanh = min–max. Cả ba mức đều cho 63 nội dung duy nhất. Warmup được loại.</p>
+<p><a href="hinh_anh/hinh_3_22_etl_quy_mo.png">PNG</a> · <a href="hinh_anh/hinh_3_22_etl_quy_mo.svg">SVG</a> · Nguồn: <code>evidence/etl_scaling_results.json</code>.</p>
+<h2 id="ket-qua-truy-xuat-tren-15-cau-hoi-chon-thu-cong">Kết quả truy xuất trên 15 câu hỏi chọn thủ công</h2>
+<p><img alt="Kết quả truy xuất trên 15 câu hỏi chọn thủ công" src="hinh_anh/hinh_3_23_xep_hang.png" /></p>
+<p>Hit@1 = 73,3%; Hit@5 = 93,3%; MRR@5 = 0,833. R13 chưa tìm đúng OECD trong top 5. Không phải độ chính xác pháp lý.</p>
+<p><a href="hinh_anh/hinh_3_23_xep_hang.png">PNG</a> · <a href="hinh_anh/hinh_3_23_xep_hang.svg">SVG</a> · Nguồn: <code>evidence/retrieval_results.json</code>.</p>
+<h2 id="ba-ca-kiem-tra-chuc-nang-au-cuoi">Ba ca kiểm tra chức năng đầu cuối</h2>
+<p><img alt="Ba ca kiểm tra chức năng đầu cuối" src="hinh_anh/hinh_3_24_thoi_gian_hoi_dap.png" /></p>
+<p>Hai ca dùng Qwen3 Instruct; ca EU dùng bản biên tập có điều kiện checksum. Mỗi ca một lần, không kết luận hiệu năng tổng quát.</p>
+<p><a href="hinh_anh/hinh_3_24_thoi_gian_hoi_dap.png">PNG</a> · <a href="hinh_anh/hinh_3_24_thoi_gian_hoi_dap.svg">SVG</a> · Nguồn: <code>evidence/llm_smoke.json</code>.</p>
+<h2 id="dung-luong-cac-lop-trong-luot-ong-bo-gan-nhat">Dung lượng các lớp trong lượt đồng bộ gần nhất</h2>
+<p><img alt="Dung lượng các lớp trong lượt đồng bộ gần nhất" src="hinh_anh/hinh_3_25_cac_lop_data_lake.png" /></p>
+<p>178 tệp, 106.031.673 byte; đây là manifest một lượt đồng bộ, không phải toàn bộ namespace HDFS có lịch sử.</p>
+<p><a href="hinh_anh/hinh_3_25_cac_lop_data_lake.png">PNG</a> · <a href="hinh_anh/hinh_3_25_cac_lop_data_lake.svg">SVG</a> · Nguồn: <code>evidence/system_facts.json → latest_sync</code>.</p>
+<h2 id="trang-thai-phap-ly-theo-metadata-a-luu">Trạng thái pháp lý theo metadata đã lưu</h2>
+<p><img alt="Trạng thái pháp lý theo metadata đã lưu" src="hinh_anh/hinh_3_26_trang_thai_phap_ly.png" /></p>
+<p>Nhãn từ dữ liệu nguồn, chưa thẩm định lại toàn bộ tại ngày đo. unknown / Chưa xác định không đồng nghĩa còn hiệu lực.</p>
+<p><a href="hinh_anh/hinh_3_26_trang_thai_phap_ly.png">PNG</a> · <a href="hinh_anh/hinh_3_26_trang_thai_phap_ly.svg">SVG</a> · Nguồn: <code>evidence/document_statistics.csv</code>.</p>
+<h2 id="song-am-that-cua-hai-oan-nguoi-thuyet-trinh">Sóng âm thật của hai đoạn người thuyết trình</h2>
+<p><img alt="Sóng âm thật của hai đoạn người thuyết trình" src="hinh_anh/hinh_3_29_song_am.png" /></p>
+<p>Provider thực tế: piper; trích PCM từ WAV đã phát trong trình duyệt. Hình dạng sóng không chứng minh độ tự nhiên của giọng.</p>
+<p><a href="hinh_anh/hinh_3_29_song_am.png">PNG</a> · <a href="hinh_anh/hinh_3_29_song_am.svg">SVG</a> · Nguồn: <code>evidence/presenter_browser_check.json; am_thanh/*.wav</code>.</p><footer>Bản nháp từ mã nguồn và phép đo ngày 16/11/2026. Hình sơ đồ/biểu đồ có bản SVG; ảnh ứng dụng là ảnh chụp thật.</footer></main><script>document.querySelectorAll("img").forEach(i=>i.addEventListener("click",()=>window.open(i.src,"_blank","noopener")))</script></body></html>

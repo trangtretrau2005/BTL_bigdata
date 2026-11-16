@@ -1,0 +1,25 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.30", ranksep="0.45", splines=polyline, fontname="Liberation Serif", fontsize=20, label="Kiến trúc logic của nền tảng", labelloc=t];
+node [shape=box, style="rounded,filled", fillcolor="#F2F6F8", color="#31576B", fontcolor="#142C3A", fontname="Liberation Serif", fontsize=13, margin="0.16,0.11"];
+edge [color="#56717F", arrowsize=0.7, fontname="Liberation Serif", fontsize=11, fontcolor="#4B5962"];
+s [label="BA KÊNH DỮ LIỆU\nNguồn chính thức PDF/HTML · API Bộ Tư pháp\nUpload PDF / DOCX / TXT / HTML / XML"];
+w [label="TIẾP NHẬN VÀ ĐIỀU PHỐI\nWorker nền + khóa + parser\nBronze / Parsed + hash + provenance"];
+e [label="ETL VÀ BẢNG DỮ LIỆU\nSpark local[2]: làm sạch / chuẩn hóa / khử trùng\nSilver: Parquet theo phiên bản"];
+c [label="CHUẨN BỊ CHỈ MỤC\nChunk 2.200 ký tự / overlap 240\nBGE-M3 dense 1.024 chiều, batch 8"];
+q [label="GOLD / SERVING\nQdrant snapshot hoàn chỉnh\nAlias ổn định + payload nguồn", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+i [label="KHAI THÁC TRÊN STREAMLIT\nThư viện / tìm kiếm / hỏi đáp RAG\nTruy xuất → Qwen3 Instruct → kiểm tra trích dẫn"];
+ans [label="TRẢI NGHIỆM NGƯỜI DÙNG\nCâu trả lời + nguồn / tải bản gốc\nTTS + phụ đề + người thuyết trình nữ"];
+h [label="HDFS QUA WEBHDFS\nBản gốc / Parsed / Parquet / Chunks\nLưu theo lớp và phiên bản", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+m [label="METADATA VÀ QUAN SÁT\nCatalog / checkpoint / manifest\nTiến độ job / lỗi / báo cáo chất lượng", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+s -> w;
+w -> e;
+e -> c;
+c -> q;
+q -> i;
+i -> ans;
+w -> h;
+e -> h;
+c -> h;
+w -> m;
+m -> i [label="phiên bản + trạng thái"];
+}

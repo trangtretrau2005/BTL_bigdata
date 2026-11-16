@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "counts": {
+    "active": 63,
+    "catalog": 85,
+    "pending": 22,
+    "chunks": 3285
+  },
+  "api_chunks": 325,
+  "snapshot": "ai_documents_verified_v2__api_20261116_093406_aaf12a03",
+  "new_document_hits": [
+    {
+      "title": "Thông tư số 53/2026/TT-NHNN Quy định về an toàn, quản lý rủi ro và điều kiện triển khai đối với việc ứng dụng hệ thống trí tuệ nhân tạo trong ngành Ngân hàng",
+      "source_url": "https://vbpl.vn/van-ban/chi-tiet/99fa0140-c2ba-11f1-b8ec-99379998c900",
+      "api_provider": "vbpl"
+    },
+    {
+      "title": "Thông tư số 53/2026/TT-NHNN Quy định về an toàn, quản lý rủi ro và điều kiện triển khai đối với việc ứng dụng hệ thống trí tuệ nhân tạo trong ngành Ngân hàng",
+      "source_url": "https://vbpl.vn/van-ban/chi-tiet/99fa0140-c2ba-11f1-b8ec-99379998c900",
+      "api_provider": "vbpl"
+    },
+    {
+      "title": "Thông tư số 53/2026/TT-NHNN Quy định về an toàn, quản lý rủi ro và điều kiện triển khai đối với việc ứng dụng hệ thống trí tuệ nhân tạo trong ngành Ngân hàng",
+      "source_url": "https://vbpl.vn/van-ban/chi-tiet/99fa0140-c2ba-11f1-b8ec-99379998c900",
+      "api_provider": "vbpl"
+    }
+  ],
+  "local_retrieval": "passed",
+  "article_context": "Điều 1.",
+  "ui_counts": "matched",
+  "repeat_update": "no_changes; manifest unchanged",
+  "lake": {
+    "file_count": 178,
+    "total_bytes": 106031673,
+    "status": "synced"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "filename": "Luật Trí tuệ nhân tạo 134-2025.pdf",
+  "provenance": "user_upload",
+  "counts": {
+    "active": 1,
+    "catalog": 1,
+    "pending": 0,
+    "chunks": 30
+  },
+  "stages": [
+    "parse",
+    "spark_etl",
+    "chunk",
+    "embedding",
+    "qdrant",
+    "hdfs",
+    "retrieval",
+    "original_file_download"
+  ],
+  "repeat_upload": "no_changes",
+  "main_corpus_unchanged": true,
+  "test_dataset": ".venv/upload_pipeline_smoke_20261116_095152",
+  "lake": {
+    "status": "synced",
+    "file_count": 13,
+    "total_bytes": 784274
+  },
+  "ui_download": "rendered with original file",
+  "single_voice_ui": true,
+  "upload_widget": "rendered"
+}

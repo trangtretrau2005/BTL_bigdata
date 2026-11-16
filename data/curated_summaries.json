@@ -1,0 +1,20 @@
+[
+  {
+    "source_document_id": "eu_ai_act_2024_1689",
+    "article": "Article 5",
+    "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689",
+    "article_text_sha256": "aa5e1591dd76b79cfb8a8a58322c4bd4efc5acc35360a5cd3884d13cbf99c556",
+    "intro": "Điều 5 EU AI Act quy định tám nhóm thực hành và các điều kiện cấm tương ứng:",
+    "topics": {
+      "a": "Thao túng, lừa dối làm sai lệch hành vi và gây hại đáng kể",
+      "b": "Khai thác điểm dễ bị tổn thương của cá nhân hoặc nhóm người",
+      "c": "Chấm điểm xã hội dẫn đến đối xử bất lợi",
+      "d": "Đánh giá nguy cơ phạm tội chỉ dựa trên hồ sơ hoặc đặc điểm cá nhân",
+      "e": "Thu thập ảnh khuôn mặt không có mục tiêu để tạo hoặc mở rộng cơ sở dữ liệu nhận dạng",
+      "f": "Suy luận cảm xúc tại nơi làm việc hoặc cơ sở giáo dục",
+      "g": "Phân loại sinh trắc học để suy ra các thuộc tính nhạy cảm",
+      "h": "Nhận dạng sinh trắc học từ xa theo thời gian thực tại nơi công cộng nhằm thực thi pháp luật"
+    },
+    "scope_note": "Phạm vi cấm cụ thể phụ thuộc các điều kiện và ngoại lệ trong nguyên văn Điều 5. Hãy mở nguồn bên dưới để đối chiếu từng trường hợp."
+  }
+]

@@ -61,5 +61,21 @@ metastore_db/
 spark-warehouse/
 
 # Local Windows Spark / Hadoop utilities
-hadoop/
+/hadoop/
 download_winutils.py
+data/verified_raw/
+data/verified_parsed/
+data/backups/
+data/manifests/*verified*.json
+data/manifests/lake_manifest.json
+# Downloaded local speech models (recreated by scripts/setup_voice.py)
+/data/models/
+# Runtime API snapshots, versioned datasets and worker state
+/data/dynamic/
+/data/uploads/
+/data/manifests/upload_*.json
+/data/updates/
+/data/manifests/dynamic_*.json
+/data/manifests/update_status.json
+/data/manifests/rejected_versions.json
+/data/manifests/*.lock

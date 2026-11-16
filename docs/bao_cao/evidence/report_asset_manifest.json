@@ -1,0 +1,282 @@
+[
+  {
+    "file": "hinh_anh/hinh_2_01_kien_truc.png",
+    "width": 1388,
+    "height": 1769,
+    "bytes": 257893,
+    "sha256": "80cfddefc0336b783e263e455ed7c8ea508864e4d241f77f3a902d55cf0bc25c"
+  },
+  {
+    "file": "hinh_anh/hinh_2_02_flowchart_toan_bo.png",
+    "width": 2370,
+    "height": 4519,
+    "bytes": 770658,
+    "sha256": "ec70b5fc845d013e3bcd06a794db904ad2d8594ebefe7ed096507824616b5f09"
+  },
+  {
+    "file": "hinh_anh/hinh_2_03_api_dong.png",
+    "width": 1803,
+    "height": 3706,
+    "bytes": 434680,
+    "sha256": "967045b7790743f9d6ebc0341a6bcda4180fe3c52fbb3cfc8a3a90bac1ac8fdb"
+  },
+  {
+    "file": "hinh_anh/hinh_2_04_upload.png",
+    "width": 1400,
+    "height": 3134,
+    "bytes": 349122,
+    "sha256": "5325e529d6c4714a2980fb304e05ad328430aac625b3ded20b25782e83e645af"
+  },
+  {
+    "file": "hinh_anh/hinh_2_05_etl.png",
+    "width": 1118,
+    "height": 2286,
+    "bytes": 227444,
+    "sha256": "0cf6da4670252b98d01a26a0df32fc873ac7d715009119d3abef4cee01a1f481"
+  },
+  {
+    "file": "hinh_anh/hinh_2_06_rag.png",
+    "width": 2024,
+    "height": 2967,
+    "bytes": 323083,
+    "sha256": "f452deb5e45eb76490fa0258dcfb9ecd709e652c359ffc7d426f6d99c675206f"
+  },
+  {
+    "file": "hinh_anh/hinh_2_07_snapshot.png",
+    "width": 1414,
+    "height": 1889,
+    "bytes": 190104,
+    "sha256": "86f906867c5c1f60172cd4a1cbc42f2549b1098ba878be6fa1fd07365f873104"
+  },
+  {
+    "file": "hinh_anh/hinh_2_08_trien_khai.png",
+    "width": 2843,
+    "height": 1059,
+    "bytes": 205386,
+    "sha256": "0a9d5e0af242e04c4521452395d798d74072638e763bc7d858f749c237194a54"
+  },
+  {
+    "file": "hinh_anh/hinh_2_09_metadata.png",
+    "width": 990,
+    "height": 1731,
+    "bytes": 200042,
+    "sha256": "cb5740e7c9158bfd7963fc9d02e205538abc745f58766f6b745194be1d7e85dd"
+  },
+  {
+    "file": "hinh_anh/hinh_2_10_nguoi_thuyet_trinh.png",
+    "width": 1501,
+    "height": 3027,
+    "bytes": 372450,
+    "sha256": "2c229b0ba6d2988633880315cfc1f51918baa54d20755c93c279af6d8b5b6119"
+  },
+  {
+    "file": "hinh_anh/hinh_3_01_giao_dien.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 425514,
+    "sha256": "394513dcc249cdd58ed4cc9799b60844742a9ec364413e4e1fe18b88cdd8db31"
+  },
+  {
+    "file": "hinh_anh/hinh_3_02_thu_vien.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 438411,
+    "sha256": "6aa146fa03e172ea00f43079abf36013e9fb35495cf46ee0ed4d0bef8e1f7d29"
+  },
+  {
+    "file": "hinh_anh/hinh_3_03_tim_kiem.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 499027,
+    "sha256": "f8dbd4aa57bf97f098cac1b15e914d2fc6fc112b2d07e9253642489dffbd9238"
+  },
+  {
+    "file": "hinh_anh/hinh_3_04_hoi_dap.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 296792,
+    "sha256": "dfd8a44bdcbff7e9ed53346638bcf3ae5a60d58bcf7981043524b49a43e905e6"
+  },
+  {
+    "file": "hinh_anh/hinh_3_05_dan_chung.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 428948,
+    "sha256": "a5616b0e7232dd39ea09cb7064c04943b6cee05ad91307448eee07a2ce1eef45"
+  },
+  {
+    "file": "hinh_anh/hinh_3_06_chon_tep.png",
+    "width": 431,
+    "height": 878,
+    "bytes": 59294,
+    "sha256": "1f9ffd3b3d525d20b5f70d2bc3217b8b078dbd780287eb701ae037d14ab73a39"
+  },
+  {
+    "file": "hinh_anh/hinh_3_07_cap_nhat_api.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 452843,
+    "sha256": "6a0da223d5c36d88a12cf851ecd9fd8ce3abbdf26cf26c0f3840c69273ed9ff3"
+  },
+  {
+    "file": "hinh_anh/hinh_3_08_ket_qua_cap_nhat.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 459346,
+    "sha256": "f42901645dc82202a814e6b9161a5f3f128b415e6663e3dd10fab13c2a2eff6a"
+  },
+  {
+    "file": "hinh_anh/hinh_3_09_hdfs.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 162575,
+    "sha256": "bb51d97cbf7ea55c6d30f40aebc090a70125d776466e1d3d99ef8f624e3e3e32"
+  },
+  {
+    "file": "hinh_anh/hinh_3_10_hdfs_cac_lop.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 119331,
+    "sha256": "de12390b268ad082aa1fe9dd24c30ec5e207be50358766ab917513dab98aa8e5"
+  },
+  {
+    "file": "hinh_anh/hinh_3_11_qdrant.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 72795,
+    "sha256": "ea8572ddf1e251aadd5e3ef7d380b67c0da85bd6d0b9dc78d6f8d6d2adc97d5d"
+  },
+  {
+    "file": "hinh_anh/hinh_3_12_khu_vuc.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 121771,
+    "sha256": "07e8b64cbdc15573cf39e84a482d20acbf32e583c90be6710d476f194aa65b30"
+  },
+  {
+    "file": "hinh_anh/hinh_3_13_ngon_ngu.png",
+    "width": 2700,
+    "height": 1800,
+    "bytes": 140115,
+    "sha256": "5e40885ee59d844e62b2cd8b1f8ef58b0d0c733aa6be959a974e19430053e9bb"
+  },
+  {
+    "file": "hinh_anh/hinh_3_14_loai_van_ban.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 116138,
+    "sha256": "000e776446d73f1582470284a832b09d3861efeebebce41bfc664f5224d814ce"
+  },
+  {
+    "file": "hinh_anh/hinh_3_15_nguon_thu_thap.png",
+    "width": 3300,
+    "height": 1800,
+    "bytes": 153508,
+    "sha256": "5b58cf679cb9d01fc2ce76b1a3e539a4dce3ced97a8caa069b05fdf4a21f25f1"
+  },
+  {
+    "file": "hinh_anh/hinh_3_16_nam_ban_hanh.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 105900,
+    "sha256": "b2dd7387eb8d0b7f47fcb5fca742a732e3a3472c17272b5073e72ddf6ec0e433"
+  },
+  {
+    "file": "hinh_anh/hinh_3_17_do_dai_van_ban.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 110267,
+    "sha256": "2536ef95b5b49ff0691b5b5aa90808d2de6d992394fc3dbb89cc7ebe3e3754ee"
+  },
+  {
+    "file": "hinh_anh/hinh_3_18_do_dai_chunk.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 115759,
+    "sha256": "2d627738c5d369d098abcbe6464b060db1aaee384979a972d70182f57c24d100"
+  },
+  {
+    "file": "hinh_anh/hinh_3_19_top_tai_lieu.png",
+    "width": 3000,
+    "height": 2550,
+    "bytes": 312204,
+    "sha256": "8b9e35962f482a2f92f2effc614111d974f4822eb434e4b448346b0138097416"
+  },
+  {
+    "file": "hinh_anh/hinh_3_20_chat_luong_metadata.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 151893,
+    "sha256": "b11d7d3959ba18035fa2e795445e9c1dce26c3eb2c2f191d6f4511fc51a34dd3"
+  },
+  {
+    "file": "hinh_anh/hinh_3_21_trang_thai_danh_muc.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 97753,
+    "sha256": "84b44e44b7dc7110149dd385cca2bbf2ef42036169324205f6a4b194f0e4c055"
+  },
+  {
+    "file": "hinh_anh/hinh_3_22_etl_quy_mo.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 143606,
+    "sha256": "2e040829a6b90dbe023baa79b0739bcd2a81e4875c172a58fdc534fda49a1d01"
+  },
+  {
+    "file": "hinh_anh/hinh_3_23_xep_hang.png",
+    "width": 3300,
+    "height": 1800,
+    "bytes": 142957,
+    "sha256": "447354ff0034c120d4ec91e5bce63fbce6e7e703e6fdee407d2b3856726b4290"
+  },
+  {
+    "file": "hinh_anh/hinh_3_24_thoi_gian_hoi_dap.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 140144,
+    "sha256": "21918fafa30710a1cd1c3d67aab7ac01744debdc684bb3962749343b960ee17b"
+  },
+  {
+    "file": "hinh_anh/hinh_3_25_cac_lop_data_lake.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 124028,
+    "sha256": "29ffee0422cc131054c605df4395f40f5ab397417534030f4e4de800348308ee"
+  },
+  {
+    "file": "hinh_anh/hinh_3_26_trang_thai_phap_ly.png",
+    "width": 3000,
+    "height": 1800,
+    "bytes": 118591,
+    "sha256": "f21e0761b6488388995a9f5d92163a48669baa0dba73087424c4bc7827a88b18"
+  },
+  {
+    "file": "hinh_anh/hinh_3_27_nguoi_thuyet_trinh.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 404987,
+    "sha256": "7f9e3864a7f12aa2749602318caf1bdd856a1d9f185c80497580eec76ab81c01"
+  },
+  {
+    "file": "hinh_anh/hinh_3_28_khung_giong_noi.png",
+    "width": 1605,
+    "height": 737,
+    "bytes": 170933,
+    "sha256": "a2aa6f3c8d5f013f1d3283211376342d3b86d2765effbfecbcfba73f39b4c3f2"
+  },
+  {
+    "file": "hinh_anh/hinh_3_29_song_am.png",
+    "width": 3300,
+    "height": 1800,
+    "bytes": 335969,
+    "sha256": "9f9bf0fe14f5617cfa8b89009b158bbd9f96f08c0e572a71c6759cc5b87ce27d"
+  },
+  {
+    "file": "hinh_anh/hinh_3_30_hdfs_tep_that.png",
+    "width": 2400,
+    "height": 1575,
+    "bytes": 152404,
+    "sha256": "c1f5ddfc0528b761d428c1981b7792ee6e6761f05119b10c2d67bf13edf9d919"
+  }
+]

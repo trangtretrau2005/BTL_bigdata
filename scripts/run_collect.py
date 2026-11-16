@@ -1,51 +1,25 @@
-
+﻿"""Collect original public documents from the source catalog."""
 import argparse
-
+import sys
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 from src.ingestion.collector import DocumentCollector
 
 
 def main():
-
-    parser = argparse.ArgumentParser(
-        description="Collect AI policy documents"
-    )
-
-    parser.add_argument(
-        "--sources",
-        required=True
-    )
-
-    parser.add_argument(
-        "--output",
-        required=True
-    )
-
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--sources', default='data/sources.csv')
+    parser.add_argument('--output', default='data/raw')
+    parser.add_argument('--manifest', default='data/manifests/ingestion_manifest.json')
+    parser.add_argument('--refresh', action='store_true')
+    parser.add_argument('--limit', type=int)
     args = parser.parse_args()
-
-    collector = DocumentCollector(
-        output_dir=args.output,
-        manifest_path=(
-            "data/manifests/ingestion_manifest.json"
-        )
-    )
-
-    results = collector.collect_from_csv(
-        args.sources
-    )
-
-    success = sum(
-        result["status"] == "downloaded"
-        for result in results
-    )
-
-    failed = len(results) - success
-
-    print("\n========== COLLECT SUMMARY ==========")
-
-    print("Total:", len(results))
-    print("Success:", success)
-    print("Failed:", failed)
+    results = DocumentCollector(args.output, args.manifest).collect_from_csv(args.sources, refresh=args.refresh, limit=args.limit)
+    if results and not any(r['status'] in {'downloaded','downloaded_cached'} for r in results):
+        raise SystemExit(1)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

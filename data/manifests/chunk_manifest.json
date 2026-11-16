@@ -1,0 +1,8 @@
+{
+  "total_documents": 63,
+  "total_chunks": 3285,
+  "chunk_size": 2200,
+  "chunk_overlap": 240,
+  "chunked_at": "2026-11-16T09:35:02.507532+00:00",
+  "status": "chunks_ready"
+}

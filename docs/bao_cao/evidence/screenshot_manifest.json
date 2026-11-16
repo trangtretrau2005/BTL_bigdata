@@ -1,0 +1,100 @@
+[
+  {
+    "file": "hinh_anh/hinh_3_01_giao_dien.png",
+    "caption": "Giao diện chính của ứng dụng đang chạy",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:30:29.818692+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_04_hoi_dap.png",
+    "caption": "Câu trả lời LLM có nhãn nguồn trong giao diện thật",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:30:52.810098+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_05_dan_chung.png",
+    "caption": "Đoạn nguồn đối chiếu sau câu trả lời",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:30:53.949566+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_07_cap_nhat_api.png",
+    "caption": "Lượt cập nhật API thật đang chạy nền",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:30:58.054626+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_08_ket_qua_cap_nhat.png",
+    "caption": "Kết quả cập nhật và thời điểm kiểm tra nguồn",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:31:05.991752+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_27_nguoi_thuyet_trinh.png",
+    "caption": "Người thuyết trình nữ, phụ đề và bộ phát khi âm thanh thật đang chạy",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:41:27.824650+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_28_khung_giong_noi.png",
+    "caption": "Chi tiết khung người nói và điều khiển phát",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:41:27.961551+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_09_hdfs.png",
+    "caption": "Giao diện quản trị HDFS NameNode thật, sau khi tải thống kê",
+    "url": "http://localhost:9870/dfshealth.html#tab-overview",
+    "captured_at": "2026-11-16T10:42:10.803706+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_10_hdfs_cac_lop.png",
+    "caption": "Các thư mục dữ liệu trên HDFS",
+    "url": "http://localhost:9870/explorer.html#/ai_docs",
+    "captured_at": "2026-11-16T10:42:11.060343+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_30_hdfs_tep_that.png",
+    "caption": "Tệp Parquet bên trong thư mục: dung lượng thật, replication 1 và block size 128 MiB",
+    "url": "http://localhost:9870/explorer.html#/ai_docs/processed/20261116_093406_aaf12a03",
+    "captured_at": "2026-11-16T10:42:11.221254+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_11_qdrant.png",
+    "caption": "Danh sách collection thật trong dashboard Qdrant",
+    "url": "http://localhost:6333/dashboard#/collections",
+    "captured_at": "2026-11-16T10:42:12.286528+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_02_thu_vien.png",
+    "caption": "Thẻ tài liệu và số lượng trong thư viện thật",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:49:51.421939+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_03_tim_kiem.png",
+    "caption": "Đoạn văn bản tìm được và liên kết đến nguồn chính thức",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:50:14.420218+00:00",
+    "kind": "actual browser screenshot"
+  },
+  {
+    "file": "hinh_anh/hinh_3_06_chon_tep.png",
+    "caption": "Tệp PDF được chọn trước khi gửi pipeline",
+    "url": "http://localhost:8501/",
+    "captured_at": "2026-11-16T10:50:15.617169+00:00",
+    "kind": "actual browser screenshot"
+  }
+]

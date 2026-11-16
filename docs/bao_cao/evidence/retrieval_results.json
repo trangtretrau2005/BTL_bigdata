@@ -1,0 +1,1526 @@
+{
+  "kind": "15 manually selected document-identity queries, regional filters allowed, NO document_id filter",
+  "captured_at": "2026-11-16T10:10:08.408626+00:00",
+  "snapshot": "ai_documents_verified_v2__api_20261116_093406_aaf12a03",
+  "queries": 15,
+  "repeats": 3,
+  "runs": 45,
+  "warmup_seconds_excluded": 16.921381748001295,
+  "hit_at_1": 0.7333333333333333,
+  "hit_at_5": 0.9333333333333333,
+  "mrr_at_5": 0.8333333333333334,
+  "latency_mean": 0.13473764302188002,
+  "latency_median": 0.08699665599851869,
+  "latency_p95": 0.18625823199909064,
+  "negative_count": 10,
+  "negative_refused": 10,
+  "not_measured": [
+    "factual/legal answer accuracy",
+    "large-scale ANN recall",
+    "concurrent users",
+    "cold-start latency"
+  ],
+  "details": [
+    {
+      "repeat": 1,
+      "case_id": "R01",
+      "question": "Luật Trí tuệ nhân tạo 134/2025/QH15 quy định phạm vi điều chỉnh như thế nào?",
+      "expected": "luat_134_2025",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 1.5125013969991414,
+      "returned_source_ids": [
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.7156191
+      ],
+      "context_kinds": [
+        "article"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R02",
+      "question": "Quyết định 127/QĐ-TTg về chiến lược nghiên cứu phát triển và ứng dụng trí tuệ nhân tạo đến năm 2030.",
+      "expected": "qd_127_2021",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.17711652900106856,
+      "returned_source_ids": [
+        "qd_127_2021",
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "luat_71_2025"
+      ],
+      "scores": [
+        0.8102768,
+        0.7904793,
+        0.7644701,
+        0.7500165,
+        0.7186183
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R03",
+      "question": "Chiến lược quốc gia trí tuệ nhân tạo trong Quyết định 1671/QĐ-TTg năm 2026.",
+      "expected": "qd_1671_2026",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.15908421499989345,
+      "returned_source_ids": [
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "qd_127_2021",
+        "qd_1671_2026",
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.77147853,
+        0.75709176,
+        0.7395052,
+        0.7303344,
+        0.71410596
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R04",
+      "question": "Nghị định 142/2026/NĐ-CP quy định chi tiết thi hành Luật Trí tuệ nhân tạo.",
+      "expected": "nd_142_2026",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.16240315399772953,
+      "returned_source_ids": [
+        "nd_142_2026",
+        "nd_142_2026",
+        "nd_142_2026",
+        "nd_142_2026",
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.7718463,
+        0.703763,
+        0.6751269,
+        0.671422,
+        0.6677766
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R05",
+      "question": "Quyết định 102/2026/QĐ-UBND Hà Nội quy định bảo đảm an toàn và quản lý rủi ro ứng dụng AI.",
+      "expected": "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.10266656399835483,
+      "returned_source_ids": [
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5"
+      ],
+      "scores": [
+        0.76630783,
+        0.7262968,
+        0.6638916,
+        0.6632247,
+        0.6541864
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R06",
+      "question": "Thông tư 53/2026/TT-NHNN quy định an toàn và quản lý rủi ro trí tuệ nhân tạo trong ngân hàng.",
+      "expected": "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.16978945300070336,
+      "returned_source_ids": [
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "nd_142_2026"
+      ],
+      "scores": [
+        0.83862793,
+        0.7168151,
+        0.7143144,
+        0.7140783,
+        0.71211886
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R07",
+      "question": "EU AI Act quy định nghĩa vụ cho hệ thống trí tuệ nhân tạo rủi ro cao như thế nào?",
+      "expected": "eu_ai_act_2024_1689",
+      "region": "EU",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.23255056900234194,
+      "returned_source_ids": [
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689"
+      ],
+      "scores": [
+        0.6838578,
+        0.683722,
+        0.66724336,
+        0.6646197,
+        0.66049945
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R08",
+      "question": "Nghĩa vụ AI literacy của tổ chức theo hướng dẫn của Ủy ban châu Âu.",
+      "expected": "eu_ai_literacy",
+      "region": "EU",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.1583598860015627,
+      "returned_source_ids": [
+        "eu_ai_act_2024_1689",
+        "eu_ai_literacy",
+        "eu_ai_literacy",
+        "eu_ai_literacy",
+        "eu_ai_literacy"
+      ],
+      "scores": [
+        0.6947899,
+        0.67133975,
+        0.6623639,
+        0.65846455,
+        0.6423267
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R09",
+      "question": "NIST AI RMF 1.0 gồm bốn chức năng quản trị rủi ro cốt lõi nào?",
+      "expected": "nist_ai_rmf_1_0",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.1476287770019553,
+      "returned_source_ids": [
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0"
+      ],
+      "scores": [
+        0.73428714,
+        0.71643066,
+        0.685893,
+        0.6784199,
+        0.6737617
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R10",
+      "question": "NIST Generative AI Profile AI 600-1 hướng dẫn rủi ro AI tạo sinh.",
+      "expected": "nist_gen_ai_profile",
+      "region": "",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.1940603729999566,
+      "returned_source_ids": [
+        "asean_responsible_ai_roadmap",
+        "nist_gen_ai_profile",
+        "nist_ai_rmf_1_0",
+        "nist_gen_ai_profile",
+        "nist_ai_rmf_1_0"
+      ],
+      "scores": [
+        0.6921096,
+        0.6732012,
+        0.64755666,
+        0.6428052,
+        0.64210343
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R11",
+      "question": "NIST SP 800-218A hướng dẫn phát triển phần mềm an toàn cho AI.",
+      "expected": "nist_sp800_218a",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.08699665599851869,
+      "returned_source_ids": [
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_ai_standards_plan"
+      ],
+      "scores": [
+        0.7466552,
+        0.7070777,
+        0.6867869,
+        0.6859086,
+        0.67736447
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R12",
+      "question": "Khuyến nghị UNESCO về đạo đức trí tuệ nhân tạo có những nguyên tắc nào?",
+      "expected": "unesco_ai_ethics_guidance",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.07248240899934899,
+      "returned_source_ids": [
+        "unesco_ai_ethics_guidance",
+        "unesco_ai_ethics_guidance",
+        "luat_134_2025",
+        "unesco_ai_ethics_guidance",
+        "un_governing_ai_humanity"
+      ],
+      "scores": [
+        0.6855562,
+        0.6839978,
+        0.63725394,
+        0.63009936,
+        0.61153746
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R13",
+      "question": "OECD AI Principles về minh bạch và trách nhiệm giải trình của hệ thống AI.",
+      "expected": "oecd_ai_principles",
+      "region": "",
+      "rank": null,
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "reciprocal_rank": 0,
+      "elapsed_seconds": 0.09081947000231594,
+      "returned_source_ids": [
+        "singapore_model_ai_gov",
+        "australia_ai_ethics",
+        "singapore_model_ai_gov",
+        "unesco_ai_ethics_guidance",
+        "uk_ai_white_paper"
+      ],
+      "scores": [
+        0.75109106,
+        0.7440293,
+        0.74324477,
+        0.7342848,
+        0.72948396
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R14",
+      "question": "ASEAN Guide on AI Governance and Ethics hướng dẫn quản trị AI.",
+      "expected": "asean_ai_ethics",
+      "region": "ASEAN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.08318291999967187,
+      "returned_source_ids": [
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics"
+      ],
+      "scores": [
+        0.7847259,
+        0.7599107,
+        0.7524156,
+        0.74238974,
+        0.7377436
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 1,
+      "case_id": "R15",
+      "question": "Singapore Model AI Governance Framework hướng dẫn doanh nghiệp quản trị AI.",
+      "expected": "singapore_model_ai_gov",
+      "region": "",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.14781902800314128,
+      "returned_source_ids": [
+        "asean_ai_ethics",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov"
+      ],
+      "scores": [
+        0.71967894,
+        0.71818054,
+        0.693912,
+        0.6912889,
+        0.6867242
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R01",
+      "question": "Luật Trí tuệ nhân tạo 134/2025/QH15 quy định phạm vi điều chỉnh như thế nào?",
+      "expected": "luat_134_2025",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.18625823199909064,
+      "returned_source_ids": [
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.7156191
+      ],
+      "context_kinds": [
+        "article"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R02",
+      "question": "Quyết định 127/QĐ-TTg về chiến lược nghiên cứu phát triển và ứng dụng trí tuệ nhân tạo đến năm 2030.",
+      "expected": "qd_127_2021",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.0904614169994602,
+      "returned_source_ids": [
+        "qd_127_2021",
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "luat_71_2025"
+      ],
+      "scores": [
+        0.8102768,
+        0.7904793,
+        0.7644701,
+        0.7500165,
+        0.7186183
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R03",
+      "question": "Chiến lược quốc gia trí tuệ nhân tạo trong Quyết định 1671/QĐ-TTg năm 2026.",
+      "expected": "qd_1671_2026",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.08315651600059937,
+      "returned_source_ids": [
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "qd_127_2021",
+        "qd_1671_2026",
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.77147853,
+        0.75709176,
+        0.7395052,
+        0.7303344,
+        0.71410596
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R04",
+      "question": "Nghị định 142/2026/NĐ-CP quy định chi tiết thi hành Luật Trí tuệ nhân tạo.",
+      "expected": "nd_142_2026",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.08091901100124232,
+      "returned_source_ids": [
+        "nd_142_2026",
+        "nd_142_2026",
+        "nd_142_2026",
+        "nd_142_2026",
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.7718463,
+        0.703763,
+        0.6751269,
+        0.671422,
+        0.6677766
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R05",
+      "question": "Quyết định 102/2026/QĐ-UBND Hà Nội quy định bảo đảm an toàn và quản lý rủi ro ứng dụng AI.",
+      "expected": "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.07295167099800892,
+      "returned_source_ids": [
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5"
+      ],
+      "scores": [
+        0.76630783,
+        0.7262968,
+        0.6638916,
+        0.6632247,
+        0.6541864
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R06",
+      "question": "Thông tư 53/2026/TT-NHNN quy định an toàn và quản lý rủi ro trí tuệ nhân tạo trong ngân hàng.",
+      "expected": "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.07163932799812756,
+      "returned_source_ids": [
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "nd_142_2026"
+      ],
+      "scores": [
+        0.83862793,
+        0.7168151,
+        0.7143144,
+        0.7140783,
+        0.71211886
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R07",
+      "question": "EU AI Act quy định nghĩa vụ cho hệ thống trí tuệ nhân tạo rủi ro cao như thế nào?",
+      "expected": "eu_ai_act_2024_1689",
+      "region": "EU",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.1003265029976319,
+      "returned_source_ids": [
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689"
+      ],
+      "scores": [
+        0.6838578,
+        0.683722,
+        0.66724336,
+        0.6646197,
+        0.66049945
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R08",
+      "question": "Nghĩa vụ AI literacy của tổ chức theo hướng dẫn của Ủy ban châu Âu.",
+      "expected": "eu_ai_literacy",
+      "region": "EU",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.10277896499974304,
+      "returned_source_ids": [
+        "eu_ai_act_2024_1689",
+        "eu_ai_literacy",
+        "eu_ai_literacy",
+        "eu_ai_literacy",
+        "eu_ai_literacy"
+      ],
+      "scores": [
+        0.6947899,
+        0.67133975,
+        0.6623639,
+        0.65846455,
+        0.6423267
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R09",
+      "question": "NIST AI RMF 1.0 gồm bốn chức năng quản trị rủi ro cốt lõi nào?",
+      "expected": "nist_ai_rmf_1_0",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.07338682399858953,
+      "returned_source_ids": [
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0"
+      ],
+      "scores": [
+        0.73428714,
+        0.71643066,
+        0.685893,
+        0.6784199,
+        0.6737617
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R10",
+      "question": "NIST Generative AI Profile AI 600-1 hướng dẫn rủi ro AI tạo sinh.",
+      "expected": "nist_gen_ai_profile",
+      "region": "",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.07788220999646,
+      "returned_source_ids": [
+        "asean_responsible_ai_roadmap",
+        "nist_gen_ai_profile",
+        "nist_ai_rmf_1_0",
+        "nist_gen_ai_profile",
+        "nist_ai_rmf_1_0"
+      ],
+      "scores": [
+        0.6921096,
+        0.6732012,
+        0.64755666,
+        0.6428052,
+        0.64210343
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R11",
+      "question": "NIST SP 800-218A hướng dẫn phát triển phần mềm an toàn cho AI.",
+      "expected": "nist_sp800_218a",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.10232894299770123,
+      "returned_source_ids": [
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_ai_standards_plan"
+      ],
+      "scores": [
+        0.7466552,
+        0.7070777,
+        0.6867869,
+        0.6859086,
+        0.67736447
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R12",
+      "question": "Khuyến nghị UNESCO về đạo đức trí tuệ nhân tạo có những nguyên tắc nào?",
+      "expected": "unesco_ai_ethics_guidance",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.08218752100219717,
+      "returned_source_ids": [
+        "unesco_ai_ethics_guidance",
+        "unesco_ai_ethics_guidance",
+        "luat_134_2025",
+        "unesco_ai_ethics_guidance",
+        "un_governing_ai_humanity"
+      ],
+      "scores": [
+        0.6855562,
+        0.6839978,
+        0.63725394,
+        0.63009936,
+        0.61153746
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R13",
+      "question": "OECD AI Principles về minh bạch và trách nhiệm giải trình của hệ thống AI.",
+      "expected": "oecd_ai_principles",
+      "region": "",
+      "rank": null,
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "reciprocal_rank": 0,
+      "elapsed_seconds": 0.061435682997398544,
+      "returned_source_ids": [
+        "singapore_model_ai_gov",
+        "australia_ai_ethics",
+        "singapore_model_ai_gov",
+        "unesco_ai_ethics_guidance",
+        "uk_ai_white_paper"
+      ],
+      "scores": [
+        0.75109106,
+        0.7440293,
+        0.74324477,
+        0.7342848,
+        0.72948396
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R14",
+      "question": "ASEAN Guide on AI Governance and Ethics hướng dẫn quản trị AI.",
+      "expected": "asean_ai_ethics",
+      "region": "ASEAN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.08494848099871888,
+      "returned_source_ids": [
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics"
+      ],
+      "scores": [
+        0.7847259,
+        0.7599107,
+        0.7524156,
+        0.74238974,
+        0.7377436
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 2,
+      "case_id": "R15",
+      "question": "Singapore Model AI Governance Framework hướng dẫn doanh nghiệp quản trị AI.",
+      "expected": "singapore_model_ai_gov",
+      "region": "",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.08242950099884183,
+      "returned_source_ids": [
+        "asean_ai_ethics",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov"
+      ],
+      "scores": [
+        0.71967894,
+        0.71818054,
+        0.693912,
+        0.6912889,
+        0.6867242
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R01",
+      "question": "Luật Trí tuệ nhân tạo 134/2025/QH15 quy định phạm vi điều chỉnh như thế nào?",
+      "expected": "luat_134_2025",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.11060955100037972,
+      "returned_source_ids": [
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.7156191
+      ],
+      "context_kinds": [
+        "article"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R02",
+      "question": "Quyết định 127/QĐ-TTg về chiến lược nghiên cứu phát triển và ứng dụng trí tuệ nhân tạo đến năm 2030.",
+      "expected": "qd_127_2021",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.12234113699742011,
+      "returned_source_ids": [
+        "qd_127_2021",
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "luat_71_2025"
+      ],
+      "scores": [
+        0.8102768,
+        0.7904793,
+        0.7644701,
+        0.7500165,
+        0.7186183
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R03",
+      "question": "Chiến lược quốc gia trí tuệ nhân tạo trong Quyết định 1671/QĐ-TTg năm 2026.",
+      "expected": "qd_1671_2026",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.09318649000124424,
+      "returned_source_ids": [
+        "qd_1671_2026",
+        "qd_1671_2026",
+        "qd_127_2021",
+        "qd_1671_2026",
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.77147853,
+        0.75709176,
+        0.7395052,
+        0.7303344,
+        0.71410596
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R04",
+      "question": "Nghị định 142/2026/NĐ-CP quy định chi tiết thi hành Luật Trí tuệ nhân tạo.",
+      "expected": "nd_142_2026",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.07189097799709998,
+      "returned_source_ids": [
+        "nd_142_2026",
+        "nd_142_2026",
+        "nd_142_2026",
+        "nd_142_2026",
+        "luat_134_2025"
+      ],
+      "scores": [
+        0.7718463,
+        0.703763,
+        0.6751269,
+        0.671422,
+        0.6677766
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R05",
+      "question": "Quyết định 102/2026/QĐ-UBND Hà Nội quy định bảo đảm an toàn và quản lý rủi ro ứng dụng AI.",
+      "expected": "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.0825222860003123,
+      "returned_source_ids": [
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5"
+      ],
+      "scores": [
+        0.76630783,
+        0.7262968,
+        0.6638916,
+        0.6632247,
+        0.6541864
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R06",
+      "question": "Thông tư 53/2026/TT-NHNN quy định an toàn và quản lý rủi ro trí tuệ nhân tạo trong ngân hàng.",
+      "expected": "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+      "region": "VN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.07135348299925681,
+      "returned_source_ids": [
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+        "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+        "nd_142_2026"
+      ],
+      "scores": [
+        0.83862793,
+        0.7168151,
+        0.7143144,
+        0.7140783,
+        0.71211886
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R07",
+      "question": "EU AI Act quy định nghĩa vụ cho hệ thống trí tuệ nhân tạo rủi ro cao như thế nào?",
+      "expected": "eu_ai_act_2024_1689",
+      "region": "EU",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.07434054599798401,
+      "returned_source_ids": [
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689",
+        "eu_ai_act_2024_1689"
+      ],
+      "scores": [
+        0.6838578,
+        0.683722,
+        0.66724336,
+        0.6646197,
+        0.66049945
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R08",
+      "question": "Nghĩa vụ AI literacy của tổ chức theo hướng dẫn của Ủy ban châu Âu.",
+      "expected": "eu_ai_literacy",
+      "region": "EU",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.1121268790011527,
+      "returned_source_ids": [
+        "eu_ai_act_2024_1689",
+        "eu_ai_literacy",
+        "eu_ai_literacy",
+        "eu_ai_literacy",
+        "eu_ai_literacy"
+      ],
+      "scores": [
+        0.6947899,
+        0.67133975,
+        0.6623639,
+        0.65846455,
+        0.6423267
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R09",
+      "question": "NIST AI RMF 1.0 gồm bốn chức năng quản trị rủi ro cốt lõi nào?",
+      "expected": "nist_ai_rmf_1_0",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.0978229829997872,
+      "returned_source_ids": [
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0",
+        "nist_ai_rmf_1_0"
+      ],
+      "scores": [
+        0.73428714,
+        0.71643066,
+        0.685893,
+        0.6784199,
+        0.6737617
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R10",
+      "question": "NIST Generative AI Profile AI 600-1 hướng dẫn rủi ro AI tạo sinh.",
+      "expected": "nist_gen_ai_profile",
+      "region": "",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.06211856800291571,
+      "returned_source_ids": [
+        "asean_responsible_ai_roadmap",
+        "nist_gen_ai_profile",
+        "nist_ai_rmf_1_0",
+        "nist_gen_ai_profile",
+        "nist_ai_rmf_1_0"
+      ],
+      "scores": [
+        0.6921096,
+        0.6732012,
+        0.64755666,
+        0.6428052,
+        0.64210343
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R11",
+      "question": "NIST SP 800-218A hướng dẫn phát triển phần mềm an toàn cho AI.",
+      "expected": "nist_sp800_218a",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.0671701840001333,
+      "returned_source_ids": [
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_sp800_218a",
+        "nist_ai_standards_plan"
+      ],
+      "scores": [
+        0.7466552,
+        0.7070777,
+        0.6867869,
+        0.6859086,
+        0.67736447
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R12",
+      "question": "Khuyến nghị UNESCO về đạo đức trí tuệ nhân tạo có những nguyên tắc nào?",
+      "expected": "unesco_ai_ethics_guidance",
+      "region": "",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.05992323299869895,
+      "returned_source_ids": [
+        "unesco_ai_ethics_guidance",
+        "unesco_ai_ethics_guidance",
+        "luat_134_2025",
+        "unesco_ai_ethics_guidance",
+        "un_governing_ai_humanity"
+      ],
+      "scores": [
+        0.6855562,
+        0.6839978,
+        0.63725394,
+        0.63009936,
+        0.61153746
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R13",
+      "question": "OECD AI Principles về minh bạch và trách nhiệm giải trình của hệ thống AI.",
+      "expected": "oecd_ai_principles",
+      "region": "",
+      "rank": null,
+      "hit_at_1": false,
+      "hit_at_5": false,
+      "reciprocal_rank": 0,
+      "elapsed_seconds": 0.061976849003258394,
+      "returned_source_ids": [
+        "singapore_model_ai_gov",
+        "australia_ai_ethics",
+        "singapore_model_ai_gov",
+        "unesco_ai_ethics_guidance",
+        "uk_ai_white_paper"
+      ],
+      "scores": [
+        0.75109106,
+        0.7440293,
+        0.74324477,
+        0.7342848,
+        0.72948396
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R14",
+      "question": "ASEAN Guide on AI Governance and Ethics hướng dẫn quản trị AI.",
+      "expected": "asean_ai_ethics",
+      "region": "ASEAN",
+      "rank": 1,
+      "hit_at_1": true,
+      "hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "elapsed_seconds": 0.06415778199880151,
+      "returned_source_ids": [
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics",
+        "asean_ai_ethics"
+      ],
+      "scores": [
+        0.7847259,
+        0.7599107,
+        0.7524156,
+        0.74238974,
+        0.7377436
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    },
+    {
+      "repeat": 3,
+      "case_id": "R15",
+      "question": "Singapore Model AI Governance Framework hướng dẫn doanh nghiệp quản trị AI.",
+      "expected": "singapore_model_ai_gov",
+      "region": "",
+      "rank": 2,
+      "hit_at_1": false,
+      "hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "elapsed_seconds": 0.061100780996639514,
+      "returned_source_ids": [
+        "asean_ai_ethics",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov",
+        "singapore_model_ai_gov"
+      ],
+      "scores": [
+        0.71967894,
+        0.71818054,
+        0.693912,
+        0.6912889,
+        0.6867242
+      ],
+      "context_kinds": [
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk",
+        "chunk"
+      ]
+    }
+  ],
+  "negative_cases": [
+    {
+      "question": "Tỷ lệ tăng trưởng GDP bình quân hàng năm của Việt Nam giai đoạn 2021-2025 là bao nhiêu?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 0.012102448999939952
+    },
+    {
+      "question": "Ai là Tổng thống đương nhiệm của Hợp chúng quốc Hoa Kỳ năm 2026?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 0.06253188099799445
+    },
+    {
+      "question": "Mô hình GPT-5 của OpenAI có bao nhiêu tỉ tham số và chi phí đào tạo là bao nhiêu?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 0.00012046100164297968
+    },
+    {
+      "question": "Hướng dẫn điều trị và phác đồ bệnh sốt xuất huyết của Bộ Y tế Việt Nam năm 2024?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 8.391899973503314e-05
+    },
+    {
+      "question": "Chỉ số chứng khoán VN-Index đóng cửa ở mức bao nhiêu điểm trong phiên giao dịch gần nhất?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 8.375300240004435e-05
+    },
+    {
+      "question": "Giá vàng SJC hôm nay tại Hà Nội và TP. Hồ Chí Minh là bao nhiêu một lượng?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 8.180000077118166e-05
+    },
+    {
+      "question": "Công thức hóa học và quy trình điều chế thuốc kháng sinh Penicillin trong công nghiệp dược phẩm?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 7.593999907840043e-05
+    },
+    {
+      "question": "Đội tuyển bóng đá quốc gia nào đã vô địch giải FIFA World Cup năm 2022 tại Qatar?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 0.00011916000221390277
+    },
+    {
+      "question": "Mức lãi suất cho vay mua nhà trả góp kỳ hạn 20 năm của ngân hàng Vietcombank hiện nay là bao nhiêu phần trăm?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 0.00012849799895775504
+    },
+    {
+      "question": "Lịch thi học kỳ 1 năm học 2026-2027 của sinh viên năm 4 trường Đại học Bách Khoa là ngày nào?",
+      "status": "insufficient_evidence",
+      "elapsed_seconds": 0.00011771100253099576
+    }
+  ]
+}

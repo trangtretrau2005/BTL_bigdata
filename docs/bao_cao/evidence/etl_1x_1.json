@@ -1,0 +1,25 @@
+{
+  "total_input": 63,
+  "valid": 63,
+  "rejected_or_duplicate": 0,
+  "region_dist": {
+    "VN": 26,
+    "US": 7,
+    "INTERNATIONAL": 22,
+    "EU": 5,
+    "ASEAN": 3
+  },
+  "document_type_dist": {
+    "regulation": 21,
+    "guideline": 19,
+    "policy": 6,
+    "framework": 7,
+    "recommendation": 2,
+    "strategy": 3,
+    "law": 5
+  },
+  "total_characters": 5936893,
+  "spark_master": "local[2]",
+  "output_path": "/app/.venv/report_benchmark/processed_1x_1",
+  "updated_at": "2026-11-16T10:11:37.071981+00:00"
+}

@@ -1,66 +1,40 @@
-
+﻿"""Atomic thread-safe ingestion manifest."""
 import hashlib
 import json
+import threading
 from pathlib import Path
 from datetime import datetime, timezone
 
 
 def calculate_checksum(file_path: str) -> str:
-    """Tính SHA-256 của file theo từng khối dữ liệu."""
-    sha256 = hashlib.sha256()
-
-    with open(file_path, "rb") as file:
-        for chunk in iter(lambda: file.read(1024 * 1024), b""):
-            sha256.update(chunk)
-
-    return sha256.hexdigest()
+    digest = hashlib.sha256()
+    with open(file_path, 'rb') as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 class ManifestManager:
     def __init__(self, manifest_path: str):
         self.manifest_path = Path(manifest_path)
-        self.manifest_path.parent.mkdir(
-            parents=True,
-            exist_ok=True
-        )
-
-        self.records = {}
-
-        if self.manifest_path.exists():
-            with open(
-                self.manifest_path,
-                "r",
-                encoding="utf-8"
-            ) as file:
-                self.records = json.load(file)
+        self.manifest_path.parent.mkdir(parents=True, exist_ok=True)
+        self._lock = threading.RLock()
+        self.records = json.loads(self.manifest_path.read_text(encoding='utf-8-sig')) if self.manifest_path.exists() else {}
 
     def update(self, document_id: str, **fields):
-        """Cập nhật trạng thái và metadata tài liệu."""
-
-        record = self.records.get(document_id, {})
-
-        record.update(fields)
-
-        record["updated_at"] = datetime.now(
-            timezone.utc
-        ).isoformat()
-
-        self.records[document_id] = record
-
-        self.save()
+        with self._lock:
+            record = dict(self.records.get(document_id, {}))
+            record.update(fields)
+            record['updated_at'] = datetime.now(timezone.utc).isoformat()
+            self.records[document_id] = record
+            self.save()
 
     def get(self, document_id: str):
-        return self.records.get(document_id)
+        with self._lock:
+            return dict(self.records.get(document_id, {})) or None
 
     def save(self):
-        with open(
-            self.manifest_path,
-            "w",
-            encoding="utf-8"
-        ) as file:
-            json.dump(
-                self.records,
-                file,
-                ensure_ascii=False,
-                indent=2
-            )
+        with self._lock:
+            temporary = self.manifest_path.with_suffix(self.manifest_path.suffix + '.tmp')
+            temporary.write_text(json.dumps(self.records, ensure_ascii=False, indent=2), encoding='utf-8')
+            temporary.replace(self.manifest_path)

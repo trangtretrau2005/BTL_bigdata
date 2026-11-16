@@ -1,0 +1,1672 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bản nháp báo cáo Chương 2–3</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#233644;background:#eeeae1;font:18px/1.65 "Times New Roman",serif}
+main{max-width:1150px;margin:35px auto;padding:55px 65px;background:#fffefb;border-top:7px solid #173e59;box-shadow:0 8px 36px #173e5915}
+h1,h2,h3{color:#173e59;line-height:1.3;break-after:avoid}h1{font-size:29px;margin-top:2.4em;padding-bottom:12px;border-bottom:2px solid #c49232}h1:first-child{margin-top:0}h2{font-size:24px;margin-top:2em}h3{font-size:21px;margin-top:1.5em}
+p{text-align:justify}a{color:#225d7c;text-decoration-thickness:1px;text-underline-offset:3px}img{display:block;max-width:100%;height:auto;margin:25px auto 10px;border:1px solid #eee;cursor:zoom-in}p:has(img){text-align:center}
+p:has(img)+p{color:#59656e;font-size:16px}table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.45;margin:24px 0;overflow-wrap:anywhere}th{background:#173e59;color:white;text-align:left}td,th{padding:10px 12px;border:1px solid #d9e0e3;vertical-align:top}tr:nth-child(even){background:#f2f5f5}
+code{font:14px/1.5 Consolas,monospace;background:#edf1f2;overflow-wrap:anywhere}pre{padding:18px;background:#edf1f2;overflow:auto;white-space:pre-wrap}blockquote{border-left:4px solid #c49232;margin-left:0;padding-left:20px;color:#4a5d69}.toc{background:#f2f5f5;padding:18px 28px;border-radius:8px;font-size:16px}.toc li{margin:3px 0}.toc ul{padding-left:23px}footer{color:#647581;font-size:14px;margin-top:40px;border-top:1px solid #d9e0e3;padding-top:14px}
+@media(max-width:800px){main{margin:0;padding:25px 20px}body{font-size:17px}table{font-size:14px}}
+@page{size:A4;margin:20mm 18mm} @media print{body{background:white;font-size:12pt;line-height:1.5}main{padding:0;margin:0;max-width:none;border:0;box-shadow:none}h1{break-before:page;font-size:18pt}h1:first-child{break-before:auto}h2{font-size:15pt}h3{font-size:13pt}table{font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}img{max-height:235mm;object-fit:contain}a{color:inherit;text-decoration:none}.toc{break-after:page}footer{font-size:9pt}}
+</style></head><body><main><div class="toc"><span class="toctitle">Mục lục nội dung</span><ul>
+<li><a href="#ban-nhap-bao-cao-chuong-2-va-chuong-3">BẢN NHÁP BÁO CÁO — CHƯƠNG 2 VÀ CHƯƠNG 3</a></li>
+<li><a href="#chuong-2-phan-tich-va-thiet-ke-he-thong">CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG</a><ul>
+<li><a href="#21-bai-toan-va-yeu-cau">2.1. Bài toán và yêu cầu</a></li>
+<li><a href="#22-co-so-lua-chon-kien-truc-va-cong-nghe">2.2. Cơ sở lựa chọn kiến trúc và công nghệ</a></li>
+<li><a href="#23-kien-truc-va-flowchart-toan-he-thong">2.3. Kiến trúc và flowchart toàn hệ thống</a></li>
+<li><a href="#24-thiet-ke-du-lieu">2.4. Thiết kế dữ liệu</a></li>
+<li><a href="#25-thiet-ke-nguon-api-ong">2.5. Thiết kế nguồn API động</a></li>
+<li><a href="#26-thiet-ke-tai-tep-len-va-etl-tu-ong">2.6. Thiết kế tải tệp lên và ETL tự động</a></li>
+<li><a href="#27-thiet-ke-spark-etl">2.7. Thiết kế Spark ETL</a></li>
+<li><a href="#28-chia-oan-embedding-va-cong-bo-chi-muc">2.8. Chia đoạn, embedding và công bố chỉ mục</a></li>
+<li><a href="#29-thiet-ke-luong-rag-va-kiem-soat-dan-chung">2.9. Thiết kế luồng RAG và kiểm soát dẫn chứng</a></li>
+<li><a href="#210-thiet-ke-giao-dien-va-tro-ly-giong-noi">2.10. Thiết kế giao diện và trợ lý giọng nói</a></li>
+<li><a href="#211-thiet-ke-trien-khai-va-van-hanh">2.11. Thiết kế triển khai và vận hành</a></li>
+</ul>
+</li>
+<li><a href="#chuong-3-trien-khai-thu-nghiem-va-anh-gia">CHƯƠNG 3. TRIỂN KHAI, THỬ NGHIỆM VÀ ĐÁNH GIÁ</a><ul>
+<li><a href="#31-muc-tieu-va-phuong-phap-thuc-nghiem">3.1. Mục tiêu và phương pháp thực nghiệm</a></li>
+<li><a href="#32-yeu-cau-tai-nguyen-va-cau-hinh-thuc-nghiem">3.2. Yêu cầu tài nguyên và cấu hình thực nghiệm</a></li>
+<li><a href="#33-bo-du-lieu-va-cac-bieu-o-thong-ke">3.3. Bộ dữ liệu và các biểu đồ thống kê</a></li>
+<li><a href="#34-o-dai-chat-luong-du-lieu-va-luu-tru">3.4. Độ dài, chất lượng dữ liệu và lưu trữ</a></li>
+<li><a href="#35-kiem-thu-chuc-nang-api-va-upload">3.5. Kiểm thử chức năng, API và upload</a></li>
+<li><a href="#36-thuc-nghiem-spark-etl-theo-muc-du-lieu-lap">3.6. Thực nghiệm Spark ETL theo mức dữ liệu lặp</a></li>
+<li><a href="#37-anh-gia-truy-xuat">3.7. Đánh giá truy xuất</a></li>
+<li><a href="#38-kiem-tra-hoi-ap-au-cuoi-va-dan-chung">3.8. Kiểm tra hỏi đáp đầu cuối và dẫn chứng</a></li>
+<li><a href="#39-minh-chung-ung-dung-va-ha-tang">3.9. Minh chứng ứng dụng và hạ tầng</a></li>
+<li><a href="#310-thu-nghiem-tro-ly-giong-noi-va-nguoi-thuyet-trinh">3.10. Thử nghiệm trợ lý giọng nói và người thuyết trình</a></li>
+<li><a href="#311-thao-luan-va-inh-huong-phat-trien">3.11. Thảo luận và định hướng phát triển</a></li>
+</ul>
+</li>
+<li><a href="#tai-lieu-tham-khao">TÀI LIỆU THAM KHẢO</a><ul>
+<li><a href="#nguon-du-lieu-cu-the-cua-corpus">Nguồn dữ liệu cụ thể của corpus</a></li>
+</ul>
+</li>
+<li><a href="#phu-luc-va-bang-chung">PHỤ LỤC VÀ BẰNG CHỨNG</a></li>
+</ul>
+</div>
+<h1 id="ban-nhap-bao-cao-chuong-2-va-chuong-3">BẢN NHÁP BÁO CÁO — CHƯƠNG 2 VÀ CHƯƠNG 3</h1>
+<p><strong>Đề tài:</strong> Xây dựng nền tảng Data Lake tích hợp RAG và LLM hỗ trợ tra cứu, hỏi đáp văn bản pháp luật, chính sách và quy định về trí tuệ nhân tạo.</p>
+<p><strong>Học phần:</strong> Dữ liệu lớn — định hướng Data Engineering. <strong>Phiên thực nghiệm:</strong> 16/11/2026. <strong>Corpus:</strong> 63 tài liệu, 3.285 đoạn, catalog 85 mục.</p>
+<p>Bản nháp này nối tiếp Chương 1 của nhóm, tập trung vào thiết kế và thực nghiệm. Nhóm bổ sung tên trường, giảng viên, thành viên và yêu cầu định dạng của cơ sở đào tạo khi ghép vào bản nộp. Số liệu là kết quả đã ghi nhận; tài nguyên đề xuất được phân biệt với cấu hình thực nghiệm, và các công nghệ chưa triển khai được ghi ở phần hướng phát triển.</p>
+<p><a href="01_MUC_LUC_DE_XUAT.md">Mục lục đề xuất và dung lượng biên tập</a> · <a href="03_BIEU_DO_THONG_KE.md">Bộ biểu đồ riêng</a> · <a href="PHU_LUC_DANH_MUC_DU_LIEU.md">Danh mục dữ liệu và truy vấn</a> · <a href="README.md">Hướng dẫn tái tạo</a>.</p>
+<hr />
+<h1 id="chuong-2-phan-tich-va-thiet-ke-he-thong">CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG</h1>
+<h2 id="21-bai-toan-va-yeu-cau">2.1. Bài toán và yêu cầu</h2>
+<p>Đề tài hướng tới một thư viện có khả năng tiếp nhận, lưu trữ và khai thác văn bản về quản trị trí tuệ nhân tạo. Đối tượng dữ liệu gồm văn bản pháp luật Việt Nam, quy định quốc tế, khung quản trị rủi ro, chiến lược và hướng dẫn thực hành AI. Người dùng cần tìm đúng tài liệu, đọc các đoạn liên quan và đặt câu hỏi bằng tiếng Việt, đồng thời có thể mở nguồn để kiểm tra câu trả lời.</p>
+<p>Khó khăn của bài toán nằm ở vòng đời dữ liệu. Nguồn nằm ở nhiều website, có PDF và HTML, cách biểu diễn ngày ban hành và khu vực khác nhau, một nội dung có thể xuất hiện qua nhiều kênh. Dữ liệu mới phải đi qua quá trình kiểm tra, làm sạch và lập chỉ mục trước khi sử dụng. Vì vậy, thành phần trung tâm của đề tài là đường ống dữ liệu từ nguồn đến lớp phục vụ; chatbot là một ứng dụng khai thác lớp dữ liệu này.</p>
+<p><strong>Bảng 2.1. Yêu cầu và tiêu chí kiểm tra</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mã</th>
+<th>Yêu cầu</th>
+<th>Cách hiện thực và kiểm tra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR01</td>
+<td>Thu thập nhiều dạng tài liệu chính thức</td>
+<td>Catalog URL, bộ tải và parser; lưu bản gốc trước khi xử lý</td>
+</tr>
+<tr>
+<td>FR02</td>
+<td>Lấy văn bản mới qua API</td>
+<td>Nút Cập nhật dữ liệu gọi worker; phân trang danh mục và lấy toàn văn JSON/HTML</td>
+</tr>
+<tr>
+<td>FR03</td>
+<td>Người dùng bổ sung tệp</td>
+<td>Upload PDF, DOCX, TXT, HTML, XML; xử lý cùng pipeline</td>
+</tr>
+<tr>
+<td>FR04</td>
+<td>Chuẩn hóa và loại nội dung trùng</td>
+<td>Spark DataFrame, SHA-256 và Window theo nội dung</td>
+</tr>
+<tr>
+<td>FR05</td>
+<td>Lưu dữ liệu theo lớp và có thể truy vết</td>
+<td>Raw, Parsed, Processed, Chunks, manifests; bản sao trên HDFS</td>
+</tr>
+<tr>
+<td>FR06</td>
+<td>Tìm đoạn phù hợp</td>
+<td>BGE-M3, Qdrant, lọc khu vực/tài liệu, top-k</td>
+</tr>
+<tr>
+<td>FR07</td>
+<td>Hỏi đáp có dẫn chứng</td>
+<td>Ngữ cảnh có ID nguồn, Qwen3 Instruct, kiểm tra nhãn trích dẫn</td>
+</tr>
+<tr>
+<td>FR08</td>
+<td>Số đếm giao diện nhất quán</td>
+<td>Tài liệu đang tra cứu được tính từ manifest của chỉ mục đang dùng</td>
+</tr>
+<tr>
+<td>FR09</td>
+<td>Cập nhật có trạng thái và không công bố chỉ mục dở</td>
+<td>Worker nền, khóa, snapshot mới, kiểm tra số point rồi đổi alias</td>
+</tr>
+<tr>
+<td>FR10</td>
+<td>Có bằng chứng thực nghiệm</td>
+<td>JSON/CSV, kiểm thử, thống kê dữ liệu, ảnh ứng dụng và hạ tầng đang chạy</td>
+</tr>
+<tr>
+<td>FR11</td>
+<td>Nghe câu trả lời cùng người thuyết trình</td>
+<td>TTS tiếng Việt, nhân vật nữ, phụ đề, phát/tạm dừng/đọc lại và tốc độ</td>
+</tr>
+</tbody>
+</table>
+<p>Yêu cầu phi chức năng gồm khả năng lặp lại pipeline, thông báo rõ lỗi theo nguồn, giữ provenance của tệp người dùng và tách trạng thái kỹ thuật khỏi trạng thái pháp lý. Ví dụ, <code>legal_status=unknown</code> có nghĩa là chưa xác minh được hiệu lực; việc có một vector trong Qdrant không làm văn bản trở thành văn bản còn hiệu lực.</p>
+<p>Phạm vi hiện thực là bản mẫu chạy trên một máy bằng Docker Desktop/WSL2. Spark chạy <code>local[2]</code>, HDFS có một DataNode và hệ số nhân bản 1. Hệ thống thể hiện những thành phần của một nền tảng Data Lake và có đường nâng cấp về sau; kết quả thực nghiệm không được diễn giải thành năng lực của cụm Spark nhiều máy.</p>
+<h2 id="22-co-so-lua-chon-kien-truc-va-cong-nghe">2.2. Cơ sở lựa chọn kiến trúc và công nghệ</h2>
+<p>Chương 1 đã trình bày lý thuyết; ở đây các tài liệu được dùng để giải thích quyết định thiết kế. Hệ thống tổ chức dữ liệu thành các lớp để tách bản gốc, nội dung đã chuẩn hóa và sản phẩm phục vụ truy vấn. Cách phân lớp tham khảo mẫu Bronze/Silver/Gold [5], nhưng hiện thực hiện tại sử dụng thư mục, JSON và Parquet, không có bảng Delta Lake hay giao dịch ACID của một lakehouse hoàn chỉnh.</p>
+<p><strong>Bảng 2.2. Quyết định thiết kế và cơ sở tham khảo</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quyết định</th>
+<th>Lý do trong dự án</th>
+<th>Cơ sở</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HDFS và WebHDFS</td>
+<td>Minh họa lưu trữ phân lớp, tách metadata và block; thao tác từ Python qua HTTP</td>
+<td>Kiến trúc HDFS và giao thức WebHDFS [1], [2]</td>
+</tr>
+<tr>
+<td>Spark DataFrame</td>
+<td>Chuẩn hóa nhiều trường, lọc, băm và khử trùng bằng phép biến đổi dữ liệu</td>
+<td>Spark/RDD và tài liệu Spark SQL [3], [4]</td>
+</tr>
+<tr>
+<td>Parquet nén Snappy</td>
+<td>Lưu bảng có schema, đọc theo cột; thuận tiện trao đổi giữa Spark và PyArrow</td>
+<td>Tài liệu Apache Parquet và Spark [4], [6]</td>
+</tr>
+<tr>
+<td>BGE-M3 dense</td>
+<td>Cùng không gian vector cho nội dung Việt/Anh; phù hợp tìm kiếm ngữ nghĩa</td>
+<td>Công bố BGE-M3 [8]</td>
+</tr>
+<tr>
+<td>Qdrant với alias</td>
+<td>Tách tên truy vấn ổn định khỏi collection phiên bản</td>
+<td>Tài liệu collection và alias của Qdrant [9]</td>
+</tr>
+<tr>
+<td>RAG và Qwen3 Instruct</td>
+<td>Đưa đoạn nguồn vào prompt thay vì chỉ dùng kiến thức có sẵn trong LLM</td>
+<td>Lewis và cộng sự [7]; Qwen3 và model card thực dùng [10], [11]</td>
+</tr>
+<tr>
+<td>Metadata provenance xuyên pipeline</td>
+<td>Đối chiếu nguồn, phiên bản và hoạt động xử lý khi câu trả lời có sai lệch</td>
+<td>Tham khảo khái niệm entity/activity của PROV [12]</td>
+</tr>
+<tr>
+<td>Docker Compose và Streamlit</td>
+<td>Triển khai được nhiều dịch vụ trên máy học tập; có giao diện upload và tra cứu</td>
+<td>Tài liệu Docker và Streamlit [13], [14]</td>
+</tr>
+</tbody>
+</table>
+<p>Nghiên cứu BGE-M3 mô tả nhiều kiểu truy xuất; dự án hiện chỉ dùng <strong>dense embedding 1.024 chiều</strong>. Hệ thống chưa triển khai sparse retrieval, multi-vector hay cross-encoder reranker. Tương tự, metadata được thiết kế để truy nguyên nhưng chưa được xuất theo đầy đủ mô hình RDF/PROV-O. Việc nêu rõ mức sử dụng giúp đánh giá đúng phần công nghệ nhóm đã thực hiện.</p>
+<h2 id="23-kien-truc-va-flowchart-toan-he-thong">2.3. Kiến trúc và flowchart toàn hệ thống</h2>
+<p><img alt="Hình 2.1. Kiến trúc tổng thể" src="hinh_anh/hinh_2_01_kien_truc.png" /></p>
+<p><em>Hình 2.1. Kiến trúc tổng thể, dựng từ các mô-đun và dịch vụ trong mã nguồn.</em></p>
+<p>Hệ thống có hai luồng chính. Luồng nạp dữ liệu tiếp nhận nguồn chính thức và tệp người dùng, tạo bản gốc, trích xuất nội dung, chạy Spark ETL, chia đoạn và tạo vector. Luồng khai thác tiếp nhận truy vấn, tìm các đoạn trong Qdrant và trả kết quả tìm kiếm hoặc sinh câu trả lời có nguồn. HDFS lưu các lớp và manifest phục vụ kiểm tra, khôi phục và nghiên cứu; Qdrant phục vụ truy xuất vector, không thay thế kho dữ liệu gốc.</p>
+<p><img alt="Hình 2.2. Flowchart toàn hệ thống" src="hinh_anh/hinh_2_02_flowchart_toan_bo.png" /></p>
+<p><em>Hình 2.2. Flowchart toàn hệ thống, gồm cập nhật, upload, ETL, công bố chỉ mục, tìm kiếm và hỏi đáp. <a href="hinh_anh/hinh_2_02_flowchart_toan_bo.svg">Mở SVG để phóng to</a>.</em></p>
+<p>Trong nhánh cập nhật, hệ thống kiểm tra khóa để tránh hai worker cùng ghi dữ liệu. Các đầu vào mới được lưu và ghép với corpus đã kiểm tra; nếu chữ ký corpus không đổi, lượt chạy kết thúc với <code>no_changes</code>. Khi dữ liệu thay đổi, worker tạo Processed/Chunks riêng cho job, xây collection mới và chỉ công bố sau kiểm tra số point. Nếu HDFS đồng bộ lỗi sau công bố, hệ thống báo trạng thái một phần vì lớp phục vụ đã cập nhật còn bản sao trên lake cần xử lý tiếp.</p>
+<p>Trong nhánh khai thác, tìm kiếm chỉ trả các đoạn và đường dẫn nguồn. Hỏi đáp bổ sung kiểm tra phạm vi, bằng chứng và đầu ra LLM. Hai chức năng dùng chung kho vector nhưng có điều kiện hoàn tất khác nhau; không phải mọi thao tác tìm kiếm đều gọi LLM. Thư viện tài liệu đọc catalog kết hợp manifest để lọc, phân trang và chỉ rõ trạng thái lập chỉ mục.</p>
+<p><strong>Bảng 2.3. Phân rã mã nguồn theo trách nhiệm</strong></p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Mã nguồn chính</th>
+<th>Trách nhiệm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Giao diện</td>
+<td><a href="../../app.py">app.py</a></td>
+<td>Bộ lọc, tìm kiếm, hỏi đáp, upload, trạng thái cập nhật</td>
+</tr>
+<tr>
+<td>Nguồn động</td>
+<td><a href="../../src/ingestion/dynamic_api.py">dynamic_api.py</a></td>
+<td>Danh mục API, toàn văn, checkpoint, nguồn và phiên bản</td>
+</tr>
+<tr>
+<td>Xử lý văn bản</td>
+<td><a href="../../src/ingestion/parser.py">parser.py</a></td>
+<td>Trích xuất và kiểm tra nội dung đầu vào</td>
+</tr>
+<tr>
+<td>ETL</td>
+<td><a href="../../src/processing/spark_etl.py">spark_etl.py</a></td>
+<td>Làm sạch, chuẩn hóa, khử trùng và Parquet</td>
+</tr>
+<tr>
+<td>Chia đoạn</td>
+<td><a href="../../src/processing/chunker.py">chunker.py</a></td>
+<td>Ranh giới đoạn, chồng lấn và metadata vị trí</td>
+</tr>
+<tr>
+<td>Chỉ mục</td>
+<td><a href="../../src/rag/indexer.py">indexer.py</a></td>
+<td>Embedding, point ID, snapshot và alias</td>
+</tr>
+<tr>
+<td>Truy xuất và trả lời</td>
+<td><a href="../../src/rag/retriever.py">retriever.py</a>, <a href="../../src/rag/answerer.py">answerer.py</a></td>
+<td>Tìm vector, ngữ cảnh điều khoản, sinh và kiểm tra nguồn</td>
+</tr>
+<tr>
+<td>Điều phối</td>
+<td><a href="../../scripts/update_data.py">update_data.py</a></td>
+<td>Job nền, ghép dữ liệu, công bố và đồng bộ</td>
+</tr>
+<tr>
+<td>Thống kê thư viện</td>
+<td><a href="../../src/catalog.py">catalog.py</a></td>
+<td>Cùng một định nghĩa số tài liệu đang hoạt động</td>
+</tr>
+</tbody>
+</table>
+<h2 id="24-thiet-ke-du-lieu">2.4. Thiết kế dữ liệu</h2>
+<h3 id="241-pham-vi-va-tieu-chi-chon-nguon">2.4.1. Phạm vi và tiêu chí chọn nguồn</h3>
+<p>Nguồn được ưu tiên theo cơ quan ban hành hoặc tổ chức xuất bản: Cơ sở dữ liệu quốc gia về pháp luật/Bộ Tư pháp, Công báo, EUR-Lex, NIST, OECD, UNESCO, ASEAN và cơ quan quản lý tại một số quốc gia. Dữ liệu phục vụ nghiên cứu chính sách AI gồm cả văn bản quy phạm pháp luật lẫn tài liệu hướng dẫn; hai nhóm có giá trị sử dụng khác nhau và cần giữ loại tài liệu trong metadata.</p>
+<p>Các tiêu chí tiếp nhận gồm xác định được nguồn, lấy được nội dung thật, nội dung đủ dài và phù hợp chủ đề. Một trang HTTP 200 vẫn có thể là trang chặn truy cập; chỉ có metadata hay abstract cũng chưa đủ làm toàn văn hỏi đáp. Với nguồn API Việt Nam, bộ lọc còn kiểm tra ngày ban hành, tiêu đề/tóm tắt liên quan AI và không nhận ngày tương lai. Các tài liệu ngữ cảnh như bảo vệ dữ liệu, an ninh hoặc công nghiệp công nghệ số được lưu khi có ý nghĩa đối với quản trị AI; corpus không được tuyên bố bao phủ toàn bộ hệ thống pháp luật.</p>
+<p>Tại thời điểm thực nghiệm, catalog có 85 mục, 63 tài liệu đang tra cứu và 22 mục chưa lập chỉ mục. Số này thay đổi khi cập nhật. Danh mục là tập ứng viên; tập đang tra cứu là tập ID được công bố trong manifest. Phân biệt này giải quyết tình trạng trước đây giao diện so sánh số tài liệu đã lập chỉ mục với tổng số dòng nguồn.</p>
+<h3 id="242-cac-lop-du-lieu-va-uong-dan">2.4.2. Các lớp dữ liệu và đường dẫn</h3>
+<p><strong>Bảng 2.4. Thiết kế các lớp Data Lake</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lớp logic</th>
+<th>Nội dung và định dạng</th>
+<th>Staging trong dự án</th>
+<th>Đích HDFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bronze — Raw</td>
+<td>PDF/HTML gốc, phản hồi JSON danh mục và toàn văn API, tệp upload</td>
+<td><code>data/verified_raw</code>, <code>data/dynamic/raw</code>, <code>data/uploads</code></td>
+<td><code>/ai_docs/raw</code>, nhánh <code>api</code>, <code>uploads</code></td>
+</tr>
+<tr>
+<td>Parsed</td>
+<td>Nội dung văn bản + nguồn + thông tin phiên bản</td>
+<td><code>data/verified_parsed</code>, <code>data/dynamic/parsed</code>, parsed của upload</td>
+<td><code>/ai_docs/parsed</code> và các nhánh tương ứng</td>
+</tr>
+<tr>
+<td>Silver — Processed</td>
+<td>Bảng tài liệu sạch, khử trùng, Parquet</td>
+<td><code>data/updates/{job_id}/processed</code></td>
+<td><code>/ai_docs/processed/{job_id}</code></td>
+</tr>
+<tr>
+<td>Gold — Chunks</td>
+<td>JSONL và Parquet các đoạn, metadata vị trí</td>
+<td><code>data/updates/{job_id}/chunks</code></td>
+<td><code>/ai_docs/chunks/{job_id}</code></td>
+</tr>
+<tr>
+<td>Lớp phục vụ vector</td>
+<td>Vector 1.024 chiều và payload từng đoạn</td>
+<td>Collection Qdrant theo snapshot</td>
+<td>Volume Qdrant; không phải tệp HDFS</td>
+</tr>
+<tr>
+<td>Điều khiển và kiểm toán</td>
+<td>Catalog, checkpoint, báo cáo ETL, manifest chỉ mục/lake, trạng thái job</td>
+<td><code>data/manifests</code>, <code>data/updates/{job_id}</code></td>
+<td><code>/ai_docs/manifests</code> cùng phần được đồng bộ</td>
+</tr>
+</tbody>
+</table>
+<p>Các phép xử lý hiện diễn ra trên thư mục staging được bind mount vào container. Sau đó Python gửi các tệp lên HDFS qua WebHDFS. Spark ở phiên bản này <strong>không trực tiếp chạy một tác vụ phân tán đọc/ghi trên HDFS</strong>. Sự phân tách này phù hợp máy demo và phải được thể hiện đúng trong sơ đồ triển khai.</p>
+<h3 id="243-schema-inh-danh-va-truy-nguyen">2.4.3. Schema, định danh và truy nguyên</h3>
+<p><img alt="Hình 2.9. Thiết kế metadata" src="hinh_anh/hinh_2_09_metadata.png" /></p>
+<p><em>Hình 2.9. Liên kết giữa catalog, bản gốc, tài liệu chuẩn hóa, đoạn, vector và job. Đây là quan hệ logic; các lớp được lưu trong JSON/Parquet, không có cơ sở dữ liệu quan hệ áp khóa ngoại.</em></p>
+<p><strong>Bảng 2.5. Từ điển dữ liệu quan trọng</strong></p>
+<table>
+<thead>
+<tr>
+<th>Trường</th>
+<th>Lớp</th>
+<th>Ý nghĩa và quy tắc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source_document_id</code></td>
+<td>Silver, chunk</td>
+<td>ID ổn định của mục nguồn; dùng đếm tài liệu đang hoạt động</td>
+</tr>
+<tr>
+<td><code>document_id</code></td>
+<td>Silver</td>
+<td>SHA-256 của ID nguồn, URL và hash nội dung sạch</td>
+</tr>
+<tr>
+<td><code>text</code>, <code>text_sha256</code></td>
+<td>Silver</td>
+<td>Toàn văn chuẩn hóa và dấu vân tay nội dung</td>
+</tr>
+<tr>
+<td><code>source_url</code>, <code>source_org</code></td>
+<td>Xuyên lớp</td>
+<td>URL/cơ quan nguồn để đối chiếu; upload dùng thông tin nguồn nội bộ</td>
+</tr>
+<tr>
+<td><code>region</code>, <code>jurisdiction</code>, <code>language</code></td>
+<td>Silver, chunk</td>
+<td>Bộ lọc; <code>INTERNATIONAL</code> là nhãn gộp cho nhiều tổ chức/quốc gia</td>
+</tr>
+<tr>
+<td><code>published_date</code>, <code>effective_date</code>, <code>legal_status</code></td>
+<td>Silver, chunk</td>
+<td>Metadata pháp lý từ nguồn; có thể thiếu hoặc chưa xác định</td>
+</tr>
+<tr>
+<td><code>provenance</code></td>
+<td>Xuyên lớp</td>
+<td><code>official_download</code>, <code>official_api</code>, <code>user_upload</code></td>
+</tr>
+<tr>
+<td><code>version_id</code>, <code>content_hash</code>, <code>raw_path</code></td>
+<td>Xuyên lớp</td>
+<td>Liên kết phiên bản nội dung tới bản gốc đã nhận</td>
+</tr>
+<tr>
+<td><code>original_filename</code></td>
+<td>Upload, chunk</td>
+<td>Tên gốc phục vụ tải lại và nhãn nguồn</td>
+</tr>
+<tr>
+<td><code>chunk_id</code>, <code>chunk_index</code></td>
+<td>Gold</td>
+<td>Hash ổn định và thứ tự đoạn trong tài liệu</td>
+</tr>
+<tr>
+<td><code>char_start</code>, <code>char_end</code></td>
+<td>Gold</td>
+<td>Vị trí ký tự, phục vụ kiểm tra đoạn và mở rộng ngữ cảnh</td>
+</tr>
+<tr>
+<td><code>article</code>, <code>section</code>, <code>page_start/end</code></td>
+<td>Gold</td>
+<td>Vị trí pháp lý/trang nếu parser nhận diện được</td>
+</tr>
+<tr>
+<td><code>snapshot</code>, <code>processed_path</code>, <code>chunks_path</code></td>
+<td>Manifest</td>
+<td>Phiên bản collection và các tệp được RAG đọc cùng phiên bản</td>
+</tr>
+<tr>
+<td><code>job_id</code>, <code>stage</code>, <code>progress</code>, <code>errors</code></td>
+<td>Điều phối</td>
+<td>Theo dõi hoạt động tạo ra sản phẩm dữ liệu</td>
+</tr>
+</tbody>
+</table>
+<p>Ba loại hash có nhiệm vụ khác nhau: checksum tệp để phát hiện cùng byte upload; hash toàn văn sau ETL để loại nội dung trùng dù tệp khác nhau; hash đoạn để tạo ID ổn định cho index. Chúng không phải chữ ký số xác thực của cơ quan ban hành. Metadata <code>legal_status</code> cũng không được suy ra từ hash.</p>
+<p>Chuỗi truy vết bắt đầu từ câu trả lời → nhãn nguồn → payload đoạn → ID tài liệu/phiên bản → Processed → đường dẫn bản gốc. Thiết kế này lấy cảm hứng từ truy nguyên dữ liệu [12], giúp tìm vị trí phát sinh sai lệch: do nguồn, trích xuất, chia đoạn, truy xuất hay LLM.</p>
+<h2 id="25-thiet-ke-nguon-api-ong">2.5. Thiết kế nguồn API động</h2>
+<h3 id="251-hop-ong-va-cau-hinh">2.5.1. Hợp đồng và cấu hình</h3>
+<p>Adapter đang bật sử dụng endpoint công khai của Bộ Tư pháp [20] được kiểm tra bằng yêu cầu HTTP thật trong quá trình phát triển. Đây là hợp đồng thực tế quan sát được, không phải cam kết SLA của nhà cung cấp. Cấu hình tập trung tại <a href="../../data/api_sources.json">api_sources.json</a>, cho phép thay đổi giới hạn mà không sửa toàn bộ pipeline.</p>
+<p><strong>Bảng 2.6. Hợp đồng nguồn API đang dùng</strong></p>
+<table>
+<thead>
+<tr>
+<th>Thuộc tính</th>
+<th>Giá trị/cách xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Danh mục</td>
+<td><code>POST https://vbpl-bientap-gateway.moj.gov.vn/api/qtdc/public/doc/all</code></td>
+</tr>
+<tr>
+<td>Payload danh mục</td>
+<td><code>pageNumber</code>, <code>pageSize</code>, <code>keyword</code>, <code>sortBy=issueDate</code>, <code>sortDirection=DESC</code></td>
+</tr>
+<tr>
+<td>Kết quả danh mục</td>
+<td>Kiểm tra <code>success=true</code>; đọc <code>data.items</code> và <code>data.total</code></td>
+</tr>
+<tr>
+<td>Toàn văn</td>
+<td><code>GET https://vbpl-bientap-gateway.moj.gov.vn/api/qtdc/public/doc/{id}</code></td>
+</tr>
+<tr>
+<td>Nội dung dùng cho RAG</td>
+<td>HTML trong <code>data.documentContent.content</code>, sau kiểm tra và loại thẻ</td>
+</tr>
+<tr>
+<td>Từ khóa</td>
+<td>Cụm có dấu ngoặc kép <code>"trí tuệ nhân tạo"</code></td>
+</tr>
+<tr>
+<td>Giới hạn mặc định</td>
+<td>50 mục/trang, tối đa 10 trang; tối đa 20 tài liệu thay đổi/lượt cập nhật</td>
+</tr>
+<tr>
+<td>Cửa sổ thời gian</td>
+<td>Ban đầu 730 ngày; khi có checkpoint lấy chồng lấn 7 ngày và không vượt quá cửa sổ ban đầu</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>Timeout kết nối/đọc 8/25 giây; retry tối đa 2 với một số mã lỗi tạm thời</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ payload danh mục:</p>
+<pre><code class="language-json">{
+  &quot;pageNumber&quot;: 1,
+  &quot;pageSize&quot;: 50,
+  &quot;keyword&quot;: &quot;\&quot;trí tuệ nhân tạo\&quot;&quot;,
+  &quot;sortBy&quot;: &quot;issueDate&quot;,
+  &quot;sortDirection&quot;: &quot;DESC&quot;
+}
+</code></pre>
+<p>Hệ thống lấy toàn văn trực tiếp qua JSON/HTML, do đó không yêu cầu người dùng tải từng PDF. Tuy nhiên, nội dung vẫn cần được lưu thành snapshot Raw để có bằng chứng và tái xử lý. “Nguồn động” có nghĩa là mỗi lượt kiểm tra có thể phát hiện dữ liệu mới; không có nghĩa là bỏ hoàn toàn việc lưu bản dữ liệu đã nhận.</p>
+<h3 id="252-phan-trang-checkpoint-va-phat-hien-thay-oi">2.5.2. Phân trang, checkpoint và phát hiện thay đổi</h3>
+<p><img alt="Hình 2.3. API động" src="hinh_anh/hinh_2_03_api_dong.png" /></p>
+<p><em>Hình 2.3. Lưu đồ thu thập tăng dần và quản lý checkpoint.</em></p>
+<p>Adapter đọc danh mục theo ngày ban hành giảm dần, lưu JSON Raw theo digest và loại các mục không phù hợp. Metadata và nội dung được so sánh với trạng thái đã lưu; các mục đã kiểm tra cùng ngày có thể được bỏ qua để giảm yêu cầu mạng. Vì vậy, thay đổi ngay trong cùng ngày ở một mục có metadata không đổi có thể chưa được phát hiện tức thì. Cửa sổ chồng lấn giúp kiểm tra lại nhưng không bảo đảm phát hiện mọi sửa đổi toàn văn của văn bản rất cũ.</p>
+<p>Checkpoint chỉ tiến khi nguồn kết thúc đầy đủ, không có lỗi hoặc backlog khiến việc quét bị thiếu. Khi đạt giới hạn thay đổi hoặc giới hạn trang, trạng thái được giữ để lượt sau còn cơ hội tiếp tục. Bộ ghép định danh dùng số hiệu, cơ quan và năm nhằm tránh biến cùng văn bản qua hai kênh thành hai ID nguồn. Sau đó Spark còn loại trùng theo nội dung sạch.</p>
+<p>Lượt cập nhật tạo báo cáo riêng cho từng provider với số trang, số mục quét, thay đổi, lỗi và backlog. <code>scanned</code> là số mục đọc từ API, <code>changed</code> là số mục có dữ liệu cần xử lý, còn <code>active_documents</code> là số tài liệu duy nhất thực sự có trong chỉ mục. Ba số này không được dùng thay cho nhau.</p>
+<h3 id="253-kha-nang-cap-nhat-va-gioi-han">2.5.3. Khả năng cập nhật và giới hạn</h3>
+<p>Nút trên giao diện kích hoạt một worker nền; chưa có lịch chạy định kỳ tự động bằng Airflow hay cron. Người vận hành có thể gọi cùng luồng qua CLI. Vì thế, mô tả chính xác là <strong>cập nhật tự động toàn pipeline sau khi người dùng kích hoạt</strong>, không phải nguồn streaming liên tục. Giới hạn cửa sổ ngày, số trang và từ khóa cũng có nghĩa là không thể khẳng định đã lấy tất cả văn bản AI mới trên Internet.</p>
+<p>Adapter Federal Register đã có trong mã nguồn nhưng đang tắt vì URL toàn văn gặp trang yêu cầu truy cập. Dữ liệu metadata từ một API truy cập được không được dùng để che việc thiếu toàn văn. Đây là quyết định chất lượng dữ liệu, đồng thời là ví dụ về cách quản lý một nguồn chưa đáp ứng hợp đồng.</p>
+<h2 id="26-thiet-ke-tai-tep-len-va-etl-tu-ong">2.6. Thiết kế tải tệp lên và ETL tự động</h2>
+<p><img alt="Hình 2.4. Upload" src="hinh_anh/hinh_2_04_upload.png" /></p>
+<p><em>Hình 2.4. Luồng từ tệp upload đến tài liệu có thể hỏi đáp và tải lại.</em></p>
+<p>Người dùng chọn tệp, khu vực và ngôn ngữ, sau đó bấm <strong>Cập nhật dữ liệu</strong>. Giao diện Streamlit dùng chức năng nhận nhiều tệp [14]; các giới hạn của dự án được kiểm tra thêm trong backend. Nếu chỉ xử lý tệp, người dùng bỏ chọn lấy thêm API. Khi có tệp hợp lệ mà API lỗi, pipeline có thể tiếp tục với tệp và ghi lỗi nguồn API riêng.</p>
+<p><strong>Bảng 2.7. Quy tắc nhận tệp</strong></p>
+<table>
+<thead>
+<tr>
+<th>Điều kiện</th>
+<th>Hành vi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Định dạng</td>
+<td>PDF, DOCX, TXT, HTML, XML; kiểm tra kiểu/đặc trưng tệp</td>
+</tr>
+<tr>
+<td>Giới hạn lô</td>
+<td>Tối đa 10 tệp; 50 MiB/tệp; tổng 100 MiB</td>
+</tr>
+<tr>
+<td>PDF có văn bản</td>
+<td>Trích xuất nội dung; giữ thông tin trang khi có</td>
+</tr>
+<tr>
+<td>PDF scan ảnh</td>
+<td>Báo cần OCR; phiên bản hiện tại chưa có OCR tự động</td>
+</tr>
+<tr>
+<td>DOCX/TXT/HTML/XML</td>
+<td>Đọc nội dung phù hợp, làm sạch thẻ/khoảng trắng</td>
+</tr>
+<tr>
+<td>Cùng byte đã tải</td>
+<td>Tái sử dụng ID <code>upload_</code> + SHA-256 đầy đủ; không tạo mục mới</td>
+</tr>
+<tr>
+<td>Khác tệp nhưng cùng nội dung</td>
+<td>Spark giữ một bản nội dung; upload có thể nhận <code>duplicate_of</code></td>
+</tr>
+<tr>
+<td>Nguồn và hiệu lực</td>
+<td><code>provenance=user_upload</code>, giữ tên gốc; không tự xác nhận là nguồn chính thức</td>
+</tr>
+</tbody>
+</table>
+<p>Sau khi parse thành công, tệp đi qua Spark, Parquet, chunking, embedding và snapshot giống dữ liệu API. Bản gốc được giữ để tải lại từ thư viện hoặc dẫn chứng. Một lô tệp được nhận không có nghĩa là mọi tệp đã được lập chỉ mục: cần xem kết quả parse, chống trùng và trạng thái công bố. Cách tách trạng thái này giúp người dùng hiểu trường hợp tệp đã lưu nhưng chưa đủ điều kiện hỏi đáp.</p>
+<h2 id="27-thiet-ke-spark-etl">2.7. Thiết kế Spark ETL</h2>
+<p><img alt="Hình 2.5. Spark ETL" src="hinh_anh/hinh_2_05_etl.png" /></p>
+<p><em>Hình 2.5. Các phép biến đổi DataFrame và sản phẩm dữ liệu sau ETL.</em></p>
+<p>Spark nhận JSONL, JSON hoặc Parquet theo đơn vị một bản ghi/tài liệu. Những trường tương đương như <code>text/content/body/full_text</code> và <code>source_url/url/link</code> được hợp nhất trước khi biến đổi. Việc này cho phép các adapter tạo dữ liệu từ nhiều nguồn nhưng cùng đi vào một schema chuẩn.</p>
+<p><strong>Bảng 2.8. Các quy tắc ETL đã hiện thực</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bước</th>
+<th>Phép xử lý</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chuẩn hóa schema</td>
+<td>Coalesce trường tương đương; cast string</td>
+<td>Giảm khác biệt đầu vào</td>
+</tr>
+<tr>
+<td>Làm sạch</td>
+<td>Thay tab/khoảng trắng đặc biệt, chuẩn hóa xuống dòng</td>
+<td>Tạo nội dung ổn định trước băm và chia đoạn</td>
+</tr>
+<tr>
+<td>Lọc kỹ thuật</td>
+<td>Bỏ <code>text=null</code> hoặc dưới 30 ký tự</td>
+<td>Không lập chỉ mục dữ liệu rỗng/quá ngắn; chưa phải bộ phân loại pháp lý</td>
+</tr>
+<tr>
+<td>Chuẩn hóa khu vực</td>
+<td>Quy về VN, EU, ASEAN, US, INTERNATIONAL; thiếu thành UNKNOWN</td>
+<td>Bộ lọc có giá trị nhất quán</td>
+</tr>
+<tr>
+<td>Tạo hash</td>
+<td><code>text_sha256=SHA256(text)</code></td>
+<td>Phát hiện trùng nội dung sau làm sạch</td>
+</tr>
+<tr>
+<td>Khử trùng</td>
+<td>Window partition theo hash, chọn một dòng theo thứ tự URL/tiêu đề/đường dẫn</td>
+<td>Kết quả lựa chọn ổn định giữa các lần chạy</td>
+</tr>
+<tr>
+<td>Tạo document ID</td>
+<td>Hash ID nguồn + URL + hash text</td>
+<td>Gắn danh tính sản phẩm xử lý với nội dung</td>
+</tr>
+<tr>
+<td>Kiểm tra và thống kê</td>
+<td>Đếm đầu vào/đầu ra, phân bố khu vực/loại, tổng ký tự</td>
+<td>Có báo cáo ETL để quan sát chất lượng</td>
+</tr>
+<tr>
+<td>Ghi Silver</td>
+<td>Parquet, thực tế Snappy</td>
+<td>Tái sử dụng cho chunking và phân tích thống kê</td>
+</tr>
+</tbody>
+</table>
+<p>Đầu ra hiện tại gồm bốn tệp Parquet; số tệp là đặc điểm lần chạy, không phải cam kết luôn chia thành bốn vùng nghiệp vụ. Cấu hình Spark có bốn shuffle partition và driver memory 512 MiB. Pipeline dùng <code>local[2]</code>, trong đó các tác vụ chạy trên hai luồng xử lý của một môi trường Spark. DataFrame và phép Window cho thấy kỹ thuật ETL có thể chuyển sang cụm; việc chuyển master riêng lẻ vẫn chưa đủ, vì cần thay cơ chế staging, quản lý tài nguyên và kiểm tra lỗi phân tán.</p>
+<p>Ở bản demo, một số thao tác sau Spark đọc bảng về Python và giữ danh sách chunk trong bộ nhớ. Đây là giới hạn cần xử lý khi corpus lớn; không nên chỉ dựa vào việc sử dụng Spark để tuyên bố toàn pipeline đã mở rộng tuyến tính.</p>
+<h2 id="28-chia-oan-embedding-va-cong-bo-chi-muc">2.8. Chia đoạn, embedding và công bố chỉ mục</h2>
+<h3 id="281-thiet-ke-oan-va-vector">2.8.1. Thiết kế đoạn và vector</h3>
+<p>Chunker đọc Parquet bằng PyArrow và xử lý bằng Python. Kích thước tối đa là 2.200 <strong>ký tự</strong>, chồng lấn 240 ký tự. Nó ưu tiên ranh giới điều, mục, chương, đoạn và câu để giảm cắt ngang ngữ nghĩa. Marker <code>Điều/Article/Section</code>, <code>Chương/Chapter</code> và trang giúp bổ sung vị trí; không phải mọi tài liệu đều có đầy đủ marker.</p>
+<p>ID đoạn được băm từ ID tài liệu, phiên bản, thứ tự và nội dung. Metadata nguồn, provenance và vị trí được sao chép vào payload. BGE-M3 tạo dense vector 1.024 chiều, gửi theo batch 8 vào Qdrant; collection dùng khoảng cách Cosine. Batch size được chọn theo tài nguyên máy, chưa có khảo sát tối ưu trên nhiều cấu hình.</p>
+<p><strong>Bảng 2.9. Tham số lớp phục vụ</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tham số</th>
+<th>Giá trị thực nghiệm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chunk size / overlap</td>
+<td>2.200 / 240 ký tự</td>
+</tr>
+<tr>
+<td>Embedding</td>
+<td><code>bge-m3</code>, dense, 1.024 chiều</td>
+</tr>
+<tr>
+<td>Batch embedding</td>
+<td>8 đoạn</td>
+</tr>
+<tr>
+<td>Qdrant distance</td>
+<td>Cosine</td>
+</tr>
+<tr>
+<td>Alias truy vấn</td>
+<td><code>ai_documents_verified_v2</code></td>
+</tr>
+<tr>
+<td>Top-k / ngưỡng điểm</td>
+<td>5 / 0,42</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td><code>qwen3:4b-instruct-2507-q4_K_M</code></td>
+</tr>
+<tr>
+<td>Context LLM / sinh tối đa</td>
+<td>6.144 / 640 token</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="282-snapshot-va-tinh-nhat-quan">2.8.2. Snapshot và tính nhất quán</h3>
+<p><img alt="Hình 2.7. Công bố snapshot" src="hinh_anh/hinh_2_07_snapshot.png" /></p>
+<p><em>Hình 2.7. Dựng phiên bản mới và chuyển alias sau kiểm tra.</em></p>
+<p>Mỗi job tạo collection riêng, nạp đủ vector và đối chiếu point count. Sau đó Qdrant đổi alias bằng thao tác alias hỗ trợ nguyên tử [9]. Tên truy vấn giữ nguyên, còn dữ liệu bên dưới chuyển sang snapshot mới. Manifest ghi cùng tên snapshot, chữ ký corpus và đường dẫn Processed/Chunks tương ứng để mở rộng điều khoản đúng phiên bản.</p>
+<p>Tính nguyên tử ở đây áp dụng cho thao tác đổi alias trong Qdrant. Toàn bộ Qdrant, tệp manifest và HDFS không nằm trong một giao dịch phân tán chung. Nếu tiến trình dừng đúng giữa đổi alias và ghi manifest, cần kiểm tra và đối soát; nếu HDFS lỗi sau công bố thì trạng thái là <code>partial</code>. Thiết kế hiện tại cải thiện việc tránh phục vụ collection nạp dở, nhưng chưa bảo đảm exactly-once xuyên mọi thành phần.</p>
+<h2 id="29-thiet-ke-luong-rag-va-kiem-soat-dan-chung">2.9. Thiết kế luồng RAG và kiểm soát dẫn chứng</h2>
+<p><img alt="Hình 2.6. RAG" src="hinh_anh/hinh_2_06_rag.png" /></p>
+<p><em>Hình 2.6. Truy vấn, truy xuất, bổ sung ngữ cảnh và sinh đầu ra có nguồn.</em></p>
+<p>Truy vấn được kiểm tra phạm vi và có thể mở rộng một số cụm Việt–Anh trong retriever. Vector truy vấn được tìm trong Qdrant cùng bộ lọc khu vực hoặc tài liệu nếu người dùng chọn. Các hit vượt ngưỡng được đưa vào ngữ cảnh với nhãn <code>[S1]</code>, <code>[S2]</code>…; ngưỡng Cosine 0,42 là tham số kỹ thuật, không phải xác suất câu trả lời đúng.</p>
+<p>Đối với một số câu hỏi khớp tiêu đề và chủ đề như phạm vi điều chỉnh hoặc hành vi bị cấm, retriever lấy toàn điều tương ứng từ Processed cùng phiên bản thay vì chỉ đưa một mảnh ngắn. Kết quả có <code>context_kind=article</code> và <code>anchor_chunk_id</code>. Điều này giúp giữ các mệnh đề ngoại lệ, giới hạn và phủ định thường quan trọng khi đọc văn bản pháp luật. Tuy nhiên, heuristic mở rộng không bao phủ mọi kiểu cấu trúc pháp lý.</p>
+<p>Answerer yêu cầu LLM trả lời theo ngữ cảnh và gắn nhãn nguồn. Sau sinh, chương trình kiểm tra nhãn trích dẫn có tồn tại và có được sử dụng hợp lệ. Nhãn sai có thể kích hoạt một lần sửa đầu ra; nếu vẫn lỗi, kết quả báo không thể trả lời phù hợp. Kiểm tra này chặn lỗi kỹ thuật về ID nguồn, chưa đủ chứng minh mỗi mệnh đề được dẫn chứng hỗ trợ đúng về nghĩa.</p>
+<p>Một số nội dung đã biên tập đối chiếu nguồn nằm trong <code>curated_summaries.json</code>. Chúng chỉ được sử dụng khi checksum của toàn điều khớp đúng và đầu ra được ghi <code>curated_summary</code>. Báo cáo tách các ca này khỏi ca LLM sinh trực tiếp, tránh dùng tốc độ của bản biên tập làm tốc độ suy luận LLM.</p>
+<p><strong>Bảng 2.10. Trạng thái trả lời và cách diễn giải</strong></p>
+<table>
+<thead>
+<tr>
+<th>Trường hợp</th>
+<th>Đầu ra mong đợi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ngoài phạm vi hoặc không đủ bằng chứng</td>
+<td><code>insufficient_evidence</code>, giải thích ngắn</td>
+</tr>
+<tr>
+<td>Nguồn/dịch vụ truy xuất lỗi</td>
+<td>Báo lỗi kết nối, không âm thầm thay bằng kiến thức tự do</td>
+</tr>
+<tr>
+<td>LLM trả hợp lệ</td>
+<td>Câu trả lời, nhãn nguồn đã dùng, đoạn đối chiếu và URL/tệp gốc</td>
+</tr>
+<tr>
+<td>Nhãn trích dẫn không hợp lệ</td>
+<td>Thử sửa có giới hạn hoặc báo lỗi đầu ra</td>
+</tr>
+<tr>
+<td>Bản biên tập có checksum khớp</td>
+<td>Hiển thị rõ chế độ biên tập, không gắn là LLM vừa sinh</td>
+</tr>
+</tbody>
+</table>
+<h2 id="210-thiet-ke-giao-dien-va-tro-ly-giong-noi">2.10. Thiết kế giao diện và trợ lý giọng nói</h2>
+<h3 id="2101-giao-dien-phuc-vu-tra-cuu">2.10.1. Giao diện phục vụ tra cứu</h3>
+<p>Giao diện có ba chức năng chính: hỏi đáp có dẫn chứng, tìm văn bản và thư viện tài liệu. Thanh bên chứa lọc khu vực, tài liệu cụ thể, cập nhật nguồn và upload. Phần nội dung sử dụng nền ngà, màu xanh đậm và điểm nhấn vàng, kiểu chữ Times New Roman. Các đoạn nguồn được thu gọn để ưu tiên câu trả lời, nhưng người dùng vẫn mở được nội dung đối chiếu và nguồn gốc.</p>
+<p>Giao diện chỉ trình bày một lựa chọn giọng nữ Hoài My theo yêu cầu. Bộ phát có hình người thuyết trình minh họa; chuyển động dựa trên âm thanh. Tính năng đọc hỗ trợ tiếp cận nội dung, không tham gia ETL hay đánh giá độ đúng RAG. LLM và vector chạy local; các chức năng giọng trực tuyến có sử dụng dịch vụ ngoài và phải ghi đúng nhà cung cấp thực tế nếu có dự phòng.</p>
+<h3 id="2102-iem-nhan-tro-ly-giong-noi-va-nguoi-thuyet-trinh">2.10.2. Điểm nhấn: trợ lý giọng nói và người thuyết trình</h3>
+<p>Người thuyết trình đưa kết quả RAG tới người dùng bằng cả văn bản và âm thanh. Thay vì chỉ đặt một thanh phát tệp, giao diện cung cấp một nhân vật nữ trong trang phục công sở, vùng phụ đề và bộ điều khiển nghe. Người dùng có thể nghe thử mà chưa cần gọi LLM, hoặc tạo giọng sau khi đã có câu trả lời. Nhờ tạo âm thanh theo yêu cầu, thời gian chờ TTS không cộng vào bước nhận câu trả lời văn bản.</p>
+<p><img alt="Hình 2.10. Thiết kế người thuyết trình" src="hinh_anh/hinh_2_10_nguoi_thuyet_trinh.png" /></p>
+<p><em>Hình 2.10. Luồng chuẩn hóa nội dung, tổng hợp tiếng nói, phát playlist, phụ đề và điều khiển nhân vật.</em></p>
+<p><strong>Bảng 2.11. Thành phần của chức năng người nói</strong></p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Thiết kế thực tế</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nội dung đưa đi đọc</td>
+<td>Bỏ Markdown, URL và nhãn Sx; mở rộng một số từ AI, LLM và số hiệu phổ biến; giữ câu trả lời có nguồn trên giao diện</td>
+</tr>
+<tr>
+<td>Giọng yêu cầu trên UI</td>
+<td>Một giọng nữ Hoài My; không còn menu chọn nam hoặc lựa chọn “Việt cục bộ”</td>
+</tr>
+<tr>
+<td>TTS</td>
+<td>Ưu tiên <code>vi-VN-HoaiMyNeural</code> qua <code>edge-tts</code>; khi chưa đáp ứng có provider dự phòng, được ghi đúng nhãn</td>
+</tr>
+<tr>
+<td>Playlist</td>
+<td>Mỗi phần tử có <code>text</code>, <code>audio_b64</code>, MIME; WAV/MP3 được phát riêng theo thứ tự</td>
+</tr>
+<tr>
+<td>Cache/phiên</td>
+<td>Khóa theo nội dung + voice + rate; cache UI TTL 600 giây, tối đa 12 mục; đổi tốc độ cấu hình thì không dùng lại bản âm thanh cũ</td>
+</tr>
+<tr>
+<td>Nhân vật</td>
+<td>SVG minh họa nữ, bố cục responsive; chớp mắt, nhịp thở và chuyển động miệng</td>
+</tr>
+<tr>
+<td>Đồng bộ hình</td>
+<td>Web Audio AnalyserNode → năng lượng RMS → độ mở miệng và chiều cao sóng âm</td>
+</tr>
+<tr>
+<td>Phụ đề</td>
+<td>Đổi theo đoạn âm thanh thực tế qua sự kiện kết thúc, có chỉ báo Đoạn i/n</td>
+</tr>
+<tr>
+<td>Điều khiển</td>
+<td>Phát, tạm dừng/tiếp tục, đọc lại, tua trong đoạn và tốc độ 0,85×–1,30×</td>
+</tr>
+<tr>
+<td>Nhập giọng nói tùy chọn</td>
+<td>Nhận âm thanh WAV, nhận dạng tiếng Việt qua Google Speech Recognition; người dùng xem lại câu hỏi trước khi tra cứu</td>
+</tr>
+</tbody>
+</table>
+<p>Mã <a href="../../src/rag/tts.py">tts.py</a> chuẩn hóa câu trả lời và tạo playlist. Với dịch vụ Edge, cụm đọc được giới hạn 700 ký tự; nhánh Piper dùng 240, nhánh Google dự phòng dùng 170. Các độ dài này phục vụ TTS, <strong>khác với chunk 2.200 ký tự dùng cho RAG</strong>. <code>edge-tts</code> là thư viện truy cập dịch vụ đọc trực tuyến của Edge [17], không phải một Azure Speech API thương mại do nhóm triển khai. Piper và model tiếng Việt được sử dụng ở nhánh dự phòng [18], [19]. Hình và nhãn nguồn âm thanh phải phản ánh provider thực tế, không gắn tên Hoài My cho mọi âm thanh dự phòng.</p>
+<p><a href="../../src/rag/avatar_component.py">avatar_component.py</a> đóng gói dữ liệu vào <a href="../../src/rag/presenter.html">presenter.html</a>. Văn bản được JSON-encode và escape các ký tự có thể đóng thẻ script để nội dung câu trả lời được xử lý như dữ liệu. Trình duyệt dùng HTML audio phát từng đoạn, không ghép nối byte nhiều MP3 — cách ghép đó dễ làm sai thời lượng và thao tác tua. Tốc độ tổng hợp và tốc độ phát cũng được tách để tránh nhân tốc độ hai lần.</p>
+<p>Nhân vật dùng SVG, không tải ảnh người thật từ nguồn ngoài. <code>AnalyserNode</code> cung cấp mẫu âm thanh theo miền thời gian [16]; chương trình chuẩn hóa mẫu, tính RMS và ánh xạ vào bán kính miệng. Với đường phát audio, thay đổi hình dựa trên tín hiệu đang phát; khi không có audio mà dùng giọng trình duyệt, chuyển động chỉ mang tính minh họa. Đây là <strong>hoạt ảnh theo nhịp âm thanh</strong>, chưa phải mô hình lip-sync theo âm vị hoặc video người thật. Phụ đề đồng bộ ở cấp đoạn, chưa có timestamp từng từ.</p>
+<p>Điểm đóng góp của chức năng là tăng khả năng tiếp cận kết quả, giúp người xem theo dõi nội dung trong buổi trình bày và tạo trải nghiệm hỏi–đọc–nghe có cùng nguồn dữ liệu. Nhân vật không tạo lập hoặc xác thực kết luận pháp lý; câu trả lời văn bản và nguồn gốc vẫn là căn cứ đối chiếu. Phần thử nghiệm ở mục 3.10 tách kiểm tra bộ phát, âm thanh và hoạt ảnh khỏi đánh giá chất lượng RAG.</p>
+<h2 id="211-thiet-ke-trien-khai-va-van-hanh">2.11. Thiết kế triển khai và vận hành</h2>
+<h3 id="2111-trien-khai-docker-va-hdfs">2.11.1. Triển khai Docker và HDFS</h3>
+<p><img alt="Hình 2.8. Triển khai" src="hinh_anh/hinh_2_08_trien_khai.png" /></p>
+<p><em>Hình 2.8. Mô hình triển khai thật trên Docker Desktop/WSL2.</em></p>
+<p><strong>Bảng 2.12. Dịch vụ và dữ liệu bền vững</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Vai trò</th>
+<th>Cổng localhost</th>
+<th>Dữ liệu giữ lại</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>app</td>
+<td>Streamlit, điều phối, parser, Spark local và chunker</td>
+<td>8501</td>
+<td>Bind mount mã nguồn và thư mục dữ liệu</td>
+</tr>
+<tr>
+<td>Qdrant 1.12.6</td>
+<td>Chỉ mục vector/payload</td>
+<td>6333</td>
+<td><code>qdrant_data</code></td>
+</tr>
+<tr>
+<td>Ollama</td>
+<td>BGE-M3 và Qwen3 Instruct, dùng GPU</td>
+<td>11434</td>
+<td><code>ollama_models</code></td>
+</tr>
+<tr>
+<td>NameNode Hadoop 3.4.1</td>
+<td>Namespace, metadata HDFS, WebHDFS</td>
+<td>9870</td>
+<td><code>namenode_data</code></td>
+</tr>
+<tr>
+<td>DataNode Hadoop 3.4.1</td>
+<td>Block dữ liệu HDFS</td>
+<td>Nội bộ Docker</td>
+<td><code>datanode_data</code></td>
+</tr>
+</tbody>
+</table>
+<p>Docker Compose quản lý dịch vụ, mạng và volume theo khai báo [13]. Ứng dụng gọi các container bằng tên dịch vụ; WebHDFS có thể chuyển hướng ghi tới DataNode. Bộ đồng bộ ghi manifest đường dẫn, kích thước và SHA-256 phía nguồn; kiểm tra kích thước tệp phía HDFS giúp phát hiện bản sao thiếu. Kiểm tra này chưa tương đương đối chiếu lại toàn bộ checksum nội dung từ HDFS.</p>
+<h3 id="2112-trang-thai-loi-va-huong-mo-rong">2.11.2. Trạng thái, lỗi và hướng mở rộng</h3>
+<p><strong>Bảng 2.13. Thiết kế xử lý tình huống lỗi</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tình huống</th>
+<th>Xử lý hiện tại</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Một worker đang cập nhật</td>
+<td>Từ chối tạo job chồng; hiển thị tiến độ job đang có</td>
+</tr>
+<tr>
+<td>API timeout/429/5xx</td>
+<td>Retry có giới hạn; ghi lỗi; không nâng checkpoint thiếu</td>
+</tr>
+<tr>
+<td>API đổi schema/trả trang chặn</td>
+<td>Báo lỗi nguồn; không dùng trang chặn làm toàn văn</td>
+</tr>
+<tr>
+<td>Upload sai định dạng/scan</td>
+<td>Báo lỗi tệp; không đưa nội dung rỗng vào index</td>
+</tr>
+<tr>
+<td>Spark/embedding lỗi trước công bố</td>
+<td>Giữ chỉ mục trước; lưu job lỗi để xử lý lại</td>
+</tr>
+<tr>
+<td>Không có thay đổi</td>
+<td><code>no_changes</code>; giữ nguyên snapshot</td>
+</tr>
+<tr>
+<td>HDFS lỗi sau công bố</td>
+<td><code>partial</code>; cần đồng bộ lại, không coi mọi lớp đã hoàn tất</td>
+</tr>
+<tr>
+<td>Văn bản chưa rõ hiệu lực</td>
+<td>Giữ metadata chưa xác định; yêu cầu đối chiếu nguồn khi sử dụng</td>
+</tr>
+</tbody>
+</table>
+<p>Ở góc độ Data Engineering, sản phẩm chính là pipeline có hợp đồng đầu vào, schema chuẩn, khử trùng, metadata xuyên lớp, kho lưu trữ và bản công bố có phiên bản. Khi mở rộng, cần chuyển Spark sang cụm và I/O HDFS/S3 trực tiếp, chia đoạn/embedding theo partition, có hàng đợi và scheduler, theo dõi tài nguyên liên tục và cơ chế khôi phục công bố. Kafka, Airflow, Delta/Iceberg, xác thực nhiều người dùng và OCR là hướng phát triển; chúng chưa được tính là công nghệ đã triển khai trong bản báo cáo này.</p>
+<h1 id="chuong-3-trien-khai-thu-nghiem-va-anh-gia">CHƯƠNG 3. TRIỂN KHAI, THỬ NGHIỆM VÀ ĐÁNH GIÁ</h1>
+<h2 id="31-muc-tieu-va-phuong-phap-thuc-nghiem">3.1. Mục tiêu và phương pháp thực nghiệm</h2>
+<p>Thực nghiệm được thực hiện trên hệ thống đang chạy ngày <strong>16/11/2026</strong>, nhằm kiểm tra cả đường ống dữ liệu lẫn ứng dụng khai thác. Các nhóm thử nghiệm gồm kiểm thử tự động, cập nhật qua API, upload xuyên suốt pipeline, thống kê chất lượng corpus, đo Spark ETL, đánh giá truy xuất và kiểm tra hỏi đáp đầu cuối. Bằng chứng được lưu dưới dạng JSON, CSV, JUnit và ảnh chụp trình duyệt thật tại <a href="evidence/">evidence</a>.</p>
+<p>Số liệu được cố định theo snapshot <code>ai_documents_verified_v2__api_20261116_093406_aaf12a03</code>, công bố lúc 09:35 UTC ngày 16/11/2026, tương ứng 16:35 giờ Việt Nam. Snapshot gồm 63 tài liệu và 3.285 đoạn. Phần thu thập cấu hình được đọc lại lúc 10:21 UTC, còn từng ảnh/ca chạy có timestamp trong manifest hoặc log tương ứng. Các nguồn và số đếm trên môi trường vận hành có thể thay đổi sau thời điểm báo cáo.</p>
+<p>Các thí nghiệm không cùng đo một khái niệm: kiểm thử xác nhận hành vi chương trình; Hit@k xác nhận tìm được ID tài liệu kỳ vọng; kiểm tra trích dẫn xác nhận định danh nguồn; đánh giá độ chính xác pháp lý cần thêm người thẩm định và bộ câu hỏi có đáp án được đối chiếu. Báo cáo giữ riêng các kết quả này để tránh kết luận quá mức.</p>
+<p><strong>Bảng 3.1. Ma trận thực nghiệm</strong></p>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Đầu vào</th>
+<th>Đầu ra/tiêu chí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hồi quy Python</td>
+<td>86 ca kiểm thử trong dự án</td>
+<td>Tất cả pass; lưu JUnit và log</td>
+</tr>
+<tr>
+<td>API thực tế</td>
+<td>Nguồn Bộ Tư pháp, từ khóa AI</td>
+<td>Có tài liệu API trong index; lượt lặp không đổi snapshot</td>
+</tr>
+<tr>
+<td>Upload đầu cuối</td>
+<td>Một PDF thật trong bộ thử tách biệt</td>
+<td>Parse → Spark → chunk → vector → HDFS → tìm và tải bản gốc</td>
+</tr>
+<tr>
+<td>Chất lượng dữ liệu</td>
+<td>63 tài liệu, 3.285 đoạn</td>
+<td>Hash duy nhất, nguồn, phiên bản, phân bố dữ liệu</td>
+</tr>
+<tr>
+<td>Spark ETL</td>
+<td>63/315/630 bản ghi lặp, mỗi mức 3 lần</td>
+<td>Thời gian và tập 63 nội dung duy nhất sau khử trùng</td>
+</tr>
+<tr>
+<td>Truy xuất</td>
+<td>15 câu hỏi chọn thủ công, lặp 3 lần</td>
+<td>Hit@1, Hit@5, MRR@5 và thời gian truy xuất</td>
+</tr>
+<tr>
+<td>Hỏi đáp</td>
+<td>2 ca LLM, 1 ca biên tập; 10 câu ngoài phạm vi</td>
+<td>Trạng thái, nguồn và thời gian chức năng</td>
+</tr>
+</tbody>
+</table>
+<h2 id="32-yeu-cau-tai-nguyen-va-cau-hinh-thuc-nghiem">3.2. Yêu cầu tài nguyên và cấu hình thực nghiệm</h2>
+<h3 id="321-yeu-cau-trien-khai">3.2.1. Yêu cầu triển khai</h3>
+<p>Hệ thống cần Docker Desktop với Linux containers/WSL2 hoặc môi trường Docker Linux tương đương, quyền ghi vào thư mục dữ liệu và kết nối Internet để lấy nguồn/mô hình. Cấu hình Compose mặc định yêu cầu NVIDIA GPU cho Ollama; dự án có cấu hình CPU riêng. Phương án CPU được hỗ trợ về cấu hình nhưng chưa được đo trong loạt thử nghiệm này.</p>
+<p><strong>Bảng 3.2. Cấu hình tham chiếu để tái lập demo</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tài nguyên</th>
+<th>Mức đề xuất cho bản demo</th>
+<th>Cơ sở và phạm vi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>CPU hiện đại, ít nhất 4 luồng có thể cấp cho Docker</td>
+<td>Spark thực nghiệm local[2]; cần phần tài nguyên cho các dịch vụ khác</td>
+</tr>
+<tr>
+<td>RAM máy</td>
+<td>Khoảng 16 GiB hoặc cao hơn</td>
+<td>Cấu hình đã chạy thành công; chưa đo ngưỡng tối thiểu</td>
+</tr>
+<tr>
+<td>RAM Docker/WSL</td>
+<td>Khoảng 8 GiB</td>
+<td>Môi trường đo cấp 7,62 GiB</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>NVIDIA VRAM 6 GiB cho chế độ GPU đã thử</td>
+<td>BGE-M3 và Qwen3 4B quantized cùng được dùng; cần dự phòng cho context</td>
+</tr>
+<tr>
+<td>Lưu trữ trống</td>
+<td>Nên dành ít nhất 30 GiB cho môi trường demo</td>
+<td>Dự phòng image, model, staging, snapshot; là ước lượng vận hành, không phải ngưỡng đã benchmark</td>
+</tr>
+<tr>
+<td>Mạng</td>
+<td>Tải model lần đầu và truy cập nguồn API/website</td>
+<td>Hỏi đáp sau nạp model có thể dùng các dịch vụ local</td>
+</tr>
+</tbody>
+</table>
+<p>Không nên ghi cấu hình này là “cấu hình tối thiểu chính thức”: chưa có thử nghiệm giảm dần RAM, VRAM và ổ đĩa. Khi tăng corpus hoặc số snapshot, dung lượng cần tính theo chính sách lưu lịch sử; khi tăng người dùng đồng thời, cần đo lại độ trễ và hàng đợi.</p>
+<h3 id="322-may-va-phan-mem-a-su-dung">3.2.2. Máy và phần mềm đã sử dụng</h3>
+<p><strong>Bảng 3.3. Phần cứng và hệ điều hành quan sát được</strong></p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Cấu hình thực tế</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>Intel Core i5-13420H thế hệ 13, 8 nhân, 12 luồng logic</td>
+</tr>
+<tr>
+<td>RAM vật lý</td>
+<td>16.890.519.552 byte, khoảng 15,73 GiB</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>NVIDIA GeForce RTX 3050 Laptop, 6.144 MiB VRAM</td>
+</tr>
+<tr>
+<td>Driver NVIDIA</td>
+<td>595.97</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>Windows 11 Home, version 10.0.26200, build 26200</td>
+</tr>
+<tr>
+<td>Docker Engine</td>
+<td>27.2.0; Linux x86_64 trên Docker Desktop</td>
+</tr>
+<tr>
+<td>Tài nguyên Docker thấy được</td>
+<td>12 CPU logic; 8.185.978.880 byte RAM, khoảng 7,62 GiB</td>
+</tr>
+<tr>
+<td>WSL kernel</td>
+<td>6.18.58.1-microsoft-standard-WSL2</td>
+</tr>
+<tr>
+<td>Dung lượng trống ổ C khi chụp</td>
+<td>49.530.503.168 byte, khoảng 46,13 GiB; chỉ là giá trị tại thời điểm đo</td>
+</tr>
+</tbody>
+</table>
+<p>Nguồn: <a href="evidence/host_resources.json">host_resources.json</a> và <a href="evidence/docker_resources.json">docker_resources.json</a>. Thống kê container một thời điểm nằm trong <a href="evidence/docker_stats_idle.jsonl">docker_stats_idle.jsonl</a>; không dùng bản chụp này như mức sử dụng RAM/CPU cực đại.</p>
+<p><strong>Bảng 3.4. Phiên bản phần mềm trong môi trường chạy ứng dụng</strong></p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Phiên bản/đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.11.18 trong container app</td>
+</tr>
+<tr>
+<td>Apache Spark/PySpark</td>
+<td>3.5.3, master <code>local[2]</code></td>
+</tr>
+<tr>
+<td>Java</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Hadoop/HDFS</td>
+<td>3.4.1, một NameNode và một DataNode, replication 1</td>
+</tr>
+<tr>
+<td>PyArrow</td>
+<td>18.0.0</td>
+</tr>
+<tr>
+<td>Streamlit</td>
+<td>1.41.1</td>
+</tr>
+<tr>
+<td>Qdrant server / Python client</td>
+<td>1.12.6 / 1.12.1</td>
+</tr>
+<tr>
+<td>PyMuPDF / python-docx</td>
+<td>1.24.14 / 1.1.2</td>
+</tr>
+<tr>
+<td>requests / pytest</td>
+<td>2.32.3 / 8.3.4</td>
+</tr>
+<tr>
+<td>BGE-M3 qua Ollama</td>
+<td>Dense 1.024 chiều; model tag khoảng 1,16 GB</td>
+</tr>
+<tr>
+<td>Qwen3 Instruct qua Ollama</td>
+<td><code>qwen3:4b-instruct-2507-q4_K_M</code>, model tag khoảng 2,50 GB</td>
+</tr>
+</tbody>
+</table>
+<p>Model card và tên tag là căn cứ nhận diện mô hình [8], [10], [11]. Kích thước tệp model khác dung lượng bộ nhớ trong lúc chạy; số đo tài nguyên phụ thuộc context và thời điểm. Tham số thực nghiệm dùng top-k 5, ngưỡng điểm 0,42, chunk tối đa 2.200 ký tự, overlap 240, embedding batch 8, LLM context 6.144 token, sinh tối đa 640 token và temperature 0. Chưa khảo sát hệ thống các cấu hình để kết luận đây là bộ tham số tối ưu.</p>
+<h2 id="33-bo-du-lieu-va-cac-bieu-o-thong-ke">3.3. Bộ dữ liệu và các biểu đồ thống kê</h2>
+<h3 id="331-oi-chieu-catalog-tai-lieu-va-oan">3.3.1. Đối chiếu catalog, tài liệu và đoạn</h3>
+<p><strong>Bảng 3.5. Quy mô và tính nhất quán của snapshot</strong></p>
+<table>
+<thead>
+<tr>
+<th>Chỉ tiêu</th>
+<th style="text-align: right;">Kết quả</th>
+<th>Nguồn kiểm tra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mục nguồn trong catalog</td>
+<td style="text-align: right;">85</td>
+<td>Catalog kết hợp nguồn cố định/API/upload</td>
+</tr>
+<tr>
+<td>Tài liệu đang tra cứu</td>
+<td style="text-align: right;">63</td>
+<td><code>source_document_ids</code> trong index manifest</td>
+</tr>
+<tr>
+<td>Mục chưa lập chỉ mục</td>
+<td style="text-align: right;">22</td>
+<td>Catalog trừ tập ID hoạt động</td>
+</tr>
+<tr>
+<td>Bản ghi Processed</td>
+<td style="text-align: right;">63</td>
+<td>Đọc Parquet</td>
+</tr>
+<tr>
+<td>Nội dung sạch duy nhất</td>
+<td style="text-align: right;">63</td>
+<td><code>text_sha256</code></td>
+</tr>
+<tr>
+<td>Đoạn trong JSONL</td>
+<td style="text-align: right;">3.285</td>
+<td>Tệp Chunks đúng snapshot</td>
+</tr>
+<tr>
+<td>Point Qdrant chính xác</td>
+<td style="text-align: right;">3.285</td>
+<td>Qdrant count <code>exact=true</code></td>
+</tr>
+<tr>
+<td>Vector/point</td>
+<td style="text-align: right;">1.024 chiều, Cosine</td>
+<td>Cấu hình collection</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Hình 3.21. Trạng thái danh mục" src="hinh_anh/hinh_3_21_trang_thai_danh_muc.png" /></p>
+<p><em>Hình 3.21. Phân biệt danh mục 85 mục với 63 văn bản thực sự đang tra cứu.</em></p>
+<p>Kết quả xác nhận số đếm phải được tính theo đúng đối tượng. Catalog là tập nguồn có thể khai thác, còn index là sản phẩm đã được công bố. 22 mục chưa lập chỉ mục có thể chưa tải được, thiếu toàn văn hoặc chưa hoàn tất kiểm tra; không thể chỉ từ số đếm kết luận cả 22 mục đều là lỗi parser. Hai vị trí số liệu trên giao diện dùng cùng manifest để không tạo ra cặp số gây hiểu nhầm như trước đây.</p>
+<h3 id="332-khu-vuc-ngon-ngu-va-loai-van-ban">3.3.2. Khu vực, ngôn ngữ và loại văn bản</h3>
+<p><img alt="Hình 3.12. Khu vực" src="hinh_anh/hinh_3_12_khu_vuc.png" /></p>
+<p><em>Hình 3.12. Phân bố theo nhãn khu vực của 63 tài liệu.</em></p>
+<p>Việt Nam có 26 tài liệu; nhóm INTERNATIONAL có 22; Hoa Kỳ có 7; EU có 5; ASEAN có 3. INTERNATIONAL gộp nhiều nguồn như tổ chức quốc tế, Anh, Singapore, Úc và Canada theo metadata hiện tại. Vì vậy, biểu đồ phản ánh cách tổ chức dữ liệu trong hệ thống, không phải một bảng thống kê số quốc gia. Khi cần phân tích chi tiết hơn, schema nên bổ sung quốc gia và cơ quan thành các chiều riêng.</p>
+<p><img alt="Hình 3.13. Ngôn ngữ" src="hinh_anh/hinh_3_13_ngon_ngu.png" /></p>
+<p><em>Hình 3.13. Corpus gồm 26 văn bản tiếng Việt và 37 văn bản tiếng Anh.</em></p>
+<p>Tài liệu tiếng Anh chiếm khoảng 58,7%. Đây là lý do cần embedding đa ngôn ngữ và cơ chế truy vấn có thể tiếp cận tài liệu quốc tế từ câu hỏi tiếng Việt. Tỷ lệ này chỉ mô tả dữ liệu; chưa chứng minh chất lượng truy xuất xuyên ngôn ngữ ngang với truy xuất cùng ngôn ngữ.</p>
+<p><img alt="Hình 3.14. Loại tài liệu" src="hinh_anh/hinh_3_14_loai_van_ban.png" /></p>
+<p><em>Hình 3.14. Cơ cấu loại tài liệu sau chuẩn hóa.</em></p>
+<p>Corpus có 21 mục regulation, 19 guideline, 7 framework, 6 policy, 5 law, 3 strategy và 2 recommendation. Nhóm hướng dẫn và khung quản trị chiếm phần đáng kể, phản ánh phạm vi chính sách AI rộng hơn văn bản quy phạm. Khi hỏi về nghĩa vụ bắt buộc, người dùng cần đối chiếu loại tài liệu, cơ quan và hiệu lực thay vì mặc định mọi nội dung đều có tính ràng buộc pháp luật.</p>
+<h3 id="333-nguon-thu-thap-va-thoi-gian-ban-hanh">3.3.3. Nguồn thu thập và thời gian ban hành</h3>
+<p><img alt="Hình 3.15. Provenance" src="hinh_anh/hinh_3_15_nguon_thu_thap.png" /></p>
+<p><em>Hình 3.15. Đóng góp của nguồn tải chính thức và nguồn API vào tập tài liệu/đoạn đang hoạt động.</em></p>
+<p>Nguồn tải chính thức đóng góp 46 tài liệu và 2.960 đoạn; nguồn API đóng góp 17 tài liệu và 325 đoạn. Tỷ lệ theo văn bản và tỷ lệ theo đoạn khác nhau vì độ dài tài liệu khác nhau. Một lượt API có thể cập nhật tài liệu đã có ID, sau đó Spark khử trùng; số mục API nhận được không cộng thẳng vào số tài liệu đang hoạt động. Corpus sản xuất hiện không có <code>user_upload</code>; phép thử upload dùng bộ dữ liệu tách biệt để không đưa tài liệu kiểm thử vào thư viện chính.</p>
+<p><img alt="Hình 3.16. Năm ban hành" src="hinh_anh/hinh_3_16_nam_ban_hanh.png" /></p>
+<p><em>Hình 3.16. Phân bố năm theo trường published_date; mục thiếu được giữ riêng.</em></p>
+<p>Có 36/63 tài liệu có năm nhận diện được trong metadata và 27 mục thiếu ngày. Trong nhóm có ngày, năm 2026 có 12 tài liệu, 2025 và 2024 mỗi năm có 8, 2023 có 3; các năm còn lại có ít hơn. Biểu đồ không suy diễn năm từ tên tệp hoặc tiêu đề. Đây là hạn chế metadata cần ưu tiên khi mở rộng bộ lọc thời gian và theo dõi văn bản mới.</p>
+<h2 id="34-o-dai-chat-luong-du-lieu-va-luu-tru">3.4. Độ dài, chất lượng dữ liệu và lưu trữ</h2>
+<h3 id="341-o-dai-tai-lieu-va-phan-bo-oan">3.4.1. Độ dài tài liệu và phân bố đoạn</h3>
+<p><img alt="Hình 3.17. Độ dài văn bản" src="hinh_anh/hinh_3_17_do_dai_van_ban.png" /></p>
+<p><em>Hình 3.17. Độ dài văn bản sau ETL theo khoảng ký tự.</em></p>
+<p>Tổng corpus có 5.936.893 ký tự, trung vị 51.649 ký tự/tài liệu; tài liệu ngắn nhất 2.992 và dài nhất 585.247 ký tự. Chênh lệch này ảnh hưởng tới số chunk, thời gian embedding và khả năng một nguồn dài xuất hiện nhiều lần trong kết quả tìm kiếm. Đơn vị ký tự được tách khỏi token của mô hình; không quy đổi cố định giữa hai đơn vị.</p>
+<p><img alt="Hình 3.18. Độ dài đoạn" src="hinh_anh/hinh_3_18_do_dai_chunk.png" /></p>
+<p><em>Hình 3.18. Histogram độ dài 3.285 đoạn trong snapshot.</em></p>
+<p>Độ dài đoạn nhỏ nhất 339, trung vị 2.109, P95 là 2.194 và lớn nhất 2.200 ký tự. Nhiều đoạn gần giới hạn trên phù hợp cấu hình chunking, nhưng số lượng không tập trung chính xác tại một độ dài vì thuật toán ưu tiên ranh giới văn bản. Chồng lấn làm tổng ký tự các chunk lớn hơn tổng ký tự toàn văn; đó không phải phát sinh thêm văn bản nguồn.</p>
+<p><img alt="Hình 3.19. Tài liệu nhiều đoạn" src="hinh_anh/hinh_3_19_top_tai_lieu.png" /></p>
+<p><em>Hình 3.19. Mười tài liệu có nhiều đoạn nhất; tên đầy đủ và URL nằm trong phụ lục dữ liệu.</em></p>
+<p>EU AI Act có 333 đoạn, ASEAN Responsible AI Roadmap có 233, tài liệu NIST Adversarial Machine Learning có 185 và NIST AI RMF Playbook có 183. Chỉ bốn tài liệu này đã tạo ra 934/3.285 đoạn, khoảng 28,4%. Vì vậy, một bộ đo chỉ xét số chunk tìm được có thể bị ảnh hưởng bởi tài liệu dài; đánh giá ở mục 3.7 chọn ID tài liệu kỳ vọng thay vì đếm mọi đoạn là các tài liệu độc lập.</p>
+<h3 id="342-kiem-tra-chat-luong-metadata">3.4.2. Kiểm tra chất lượng metadata</h3>
+<p><img alt="Hình 3.20. Chất lượng metadata" src="hinh_anh/hinh_3_20_chat_luong_metadata.png" /></p>
+<p><em>Hình 3.20. Độ đầy đủ nguồn, phiên bản và tính duy nhất định danh.</em></p>
+<p><strong>Bảng 3.6. Kết quả kiểm tra chất lượng kỹ thuật</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kiểm tra</th>
+<th style="text-align: right;">Kết quả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tài liệu thiếu thông tin nguồn</td>
+<td style="text-align: right;">0/63</td>
+</tr>
+<tr>
+<td>Chunk thiếu thông tin nguồn</td>
+<td style="text-align: right;">0/3.285</td>
+</tr>
+<tr>
+<td>Chunk thiếu version_id</td>
+<td style="text-align: right;">0/3.285</td>
+</tr>
+<tr>
+<td>ID chunk bị trùng</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Hash toàn văn duy nhất</td>
+<td style="text-align: right;">63/63</td>
+</tr>
+<tr>
+<td>Tài liệu thiếu published_date</td>
+<td style="text-align: right;">27/63</td>
+</tr>
+</tbody>
+</table>
+<p>Các chỉ tiêu tốt về nguồn và ID cho thấy pipeline giữ được khả năng truy vết. Chúng không kiểm tra mọi lỗi OCR, lỗi mất bảng biểu hay sự phù hợp pháp lý của câu trả lời. Ngày thiếu và <code>legal_status</code> chưa xác minh vẫn là những khoảng trống quan trọng. Trong metadata hiện có, 43 tài liệu mang <code>unknown</code>, một mang “Chưa xác định”, 13 mang “Còn hiệu lực”, ba mang “Hết hiệu lực toàn bộ”, một <code>withdrawn</code> và hai <code>historical_snapshot</code>. Các nhãn này được báo cáo theo dữ liệu đã lưu, chưa phải kết luận thẩm định hiệu lực lại tất cả nguồn vào ngày thực nghiệm.</p>
+<p><img alt="Hình 3.26. Trạng thái pháp lý" src="hinh_anh/hinh_3_26_trang_thai_phap_ly.png" /></p>
+<p><em>Hình 3.26. Phân bố nhãn trạng thái pháp lý trong metadata; không thay việc xác minh hiệu lực tại nguồn.</em></p>
+<h3 id="343-dung-luong-cac-lop">3.4.3. Dung lượng các lớp</h3>
+<p><img alt="Hình 3.25. Dung lượng Data Lake" src="hinh_anh/hinh_3_25_cac_lop_data_lake.png" /></p>
+<p><em>Hình 3.25. Dung lượng theo lớp của lượt đồng bộ gần nhất, lấy từ lake manifest.</em></p>
+<p><strong>Bảng 3.7. Dung lượng trong manifest đồng bộ</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lớp</th>
+<th style="text-align: right;">Byte</th>
+<th style="text-align: right;">MiB xấp xỉ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw</td>
+<td style="text-align: right;">81.602.387</td>
+<td style="text-align: right;">77,82</td>
+</tr>
+<tr>
+<td>Parsed</td>
+<td style="text-align: right;">6.667.397</td>
+<td style="text-align: right;">6,36</td>
+</tr>
+<tr>
+<td>Processed</td>
+<td style="text-align: right;">2.934.181</td>
+<td style="text-align: right;">2,80</td>
+</tr>
+<tr>
+<td>Chunks</td>
+<td style="text-align: right;">14.691.944</td>
+<td style="text-align: right;">14,01</td>
+</tr>
+<tr>
+<td>Manifests</td>
+<td style="text-align: right;">135.764</td>
+<td style="text-align: right;">0,13</td>
+</tr>
+<tr>
+<td><strong>Tổng của lượt đồng bộ</strong></td>
+<td style="text-align: right;"><strong>106.031.673</strong></td>
+<td style="text-align: right;"><strong>101,12</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Lượt đồng bộ gồm 178 tệp. Toàn bộ namespace <code>/ai_docs</code> khi kiểm tra chứa 221 tệp và 157.987.547 byte vì còn có lịch sử phiên bản và dữ liệu kiểm toán/thử nghiệm. Hai tổng này có phạm vi khác nhau. Hệ số nhân bản 1 không tạo ra ba bản sao như nhiều sơ đồ HDFS minh họa phổ biến.</p>
+<p>Processed hiện có bốn tệp Parquet với 15, 14, 13 và 21 dòng, nén Snappy. Không được dùng trực tiếp tỷ lệ JSONL/Parquet để kết luận tỷ lệ nén thuần túy, vì schema, cách biểu diễn, metadata và quá trình khử trùng có thể khác nhau.</p>
+<h2 id="35-kiem-thu-chuc-nang-api-va-upload">3.5. Kiểm thử chức năng, API và upload</h2>
+<h3 id="351-kiem-thu-tu-ong">3.5.1. Kiểm thử tự động</h3>
+<p>Bộ kiểm thử Python được chạy lại trong container: <strong>86 passed</strong>, năm cảnh báo, thời gian 28,38 giây. Bằng chứng: <a href="evidence/python_tests.log">python_tests.log</a> và <a href="evidence/python_tests.xml">python_tests.xml</a>. Các ca bao phủ Spark ETL, chunking, API tăng dần, catalog, worker, snapshot, upload và các ràng buộc grounding. Thành công của bộ test có nghĩa là các điều kiện đã mã hóa được thỏa mãn; không suy rộng thành mọi kiểu tệp hoặc mọi câu hỏi đều đã kiểm tra.</p>
+<p><strong>Bảng 3.8. Một số tình huống nghiệm thu</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tình huống</th>
+<th>Kết quả quan sát</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đối chiếu Processed/Chunks/Qdrant</td>
+<td>63 tài liệu; 3.285 chunk và 3.285 point khớp</td>
+</tr>
+<tr>
+<td>API bổ sung toàn văn AI</td>
+<td>Có 17 tài liệu provenance API trong snapshot</td>
+</tr>
+<tr>
+<td>Cập nhật lại không có thay đổi</td>
+<td><code>no_changes</code>, không xây lại collection</td>
+</tr>
+<tr>
+<td>Tệp upload có văn bản</td>
+<td>Hoàn tất toàn pipeline trong tập thử tách biệt</td>
+</tr>
+<tr>
+<td>Upload lại cùng tệp</td>
+<td>Không tạo tài liệu mới</td>
+</tr>
+<tr>
+<td>Nội dung trùng nguồn có sẵn</td>
+<td>Được kiểm tra trong test hồi quy và gắn quan hệ trùng</td>
+</tr>
+<tr>
+<td>Câu hỏi ngoài phạm vi mẫu</td>
+<td>10/10 bị từ chối theo gate</td>
+</tr>
+<tr>
+<td>Nhãn nguồn không hợp lệ</td>
+<td>Được kiểm tra bằng test, không coi là nguồn hợp lệ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="352-nguon-api-ong-va-cap-nhat-lap">3.5.2. Nguồn API động và cập nhật lặp</h3>
+<p>Bằng chứng lần nạp thực tế trong <a href="evidence/previous_api_verification.json">previous_api_verification.json</a> xác nhận snapshot kết hợp có 63 tài liệu và 325 chunk từ API. Một ví dụ tài liệu mới là Thông tư 53/2026/TT-NHNN về an toàn và quản lý rủi ro ứng dụng AI trong ngân hàng; kết quả tìm kiếm giữ URL nguồn và provider <code>vbpl</code>. Đây là kiểm tra hoạt động của pipeline, không thay thế đối chiếu nội dung pháp lý với bản gốc.</p>
+<p><img alt="Hình 3.7. API đang cập nhật" src="hinh_anh/hinh_3_07_cap_nhat_api.png" /></p>
+<p><em>Hình 3.7. Ảnh chụp thật lượt cập nhật API được kích hoạt từ giao diện.</em></p>
+<p><img alt="Hình 3.8. Kết quả API" src="hinh_anh/hinh_3_08_ket_qua_cap_nhat.png" /></p>
+<p><em>Hình 3.8. Kết quả lượt kiểm tra lại; số liệu chi tiết trong trạng thái job và manifest ảnh.</em></p>
+<p>Lượt kiểm tra lặp được lưu trước khi viết báo cáo quét hai trang, 100 mục danh mục, không có thay đổi cần lập chỉ mục và trả <code>no_changes</code>. Đây là kết quả đúng khi nguồn không có toàn văn mới phù hợp trong cửa sổ kiểm tra. Nút cập nhật không phải thao tác làm tăng số văn bản bằng mọi giá. Lượt giao diện được chụp bổ sung có trạng thái riêng trong <a href="evidence/capture_update_status.json">capture_update_status.json</a>.</p>
+<h3 id="353-upload-va-xu-ly-xuyen-suot">3.5.3. Upload và xử lý xuyên suốt</h3>
+<p><img alt="Hình 3.6. Chọn tệp" src="hinh_anh/hinh_3_06_chon_tep.png" /></p>
+<p><em>Hình 3.6. Giao diện chọn PDF trước khi bấm cập nhật. Hình này minh họa nhận tệp, không dùng riêng nó làm bằng chứng đã chạy ETL.</em></p>
+<p>Kiểm tra tích hợp dùng PDF thật “Luật Trí tuệ nhân tạo 134-2025.pdf” trong bộ dữ liệu tách biệt, kết quả lưu ở <a href="evidence/upload_verification.json">upload_verification.json</a>. Các giai đoạn parse, Spark ETL, chunking, embedding, Qdrant, HDFS, truy xuất và tải bản gốc đều hoàn tất. Tập thử có một tài liệu, 30 đoạn và provenance <code>user_upload</code>. HDFS của bộ thử đồng bộ 13 tệp, 784.274 byte.</p>
+<p>Tải lại cùng tệp trả <code>no_changes</code>. Manifest chỉ mục chính không thay đổi; do đó 63 văn bản sản xuất không bị cộng thêm bản thử nghiệm. Cách tách biệt này cho phép trình bày bằng chứng upload đầy đủ mà không làm sai các biểu đồ corpus. PDF scan chưa có OCR tự động; các test kiểm tra từ chối/báo lỗi không đồng nghĩa đã hỗ trợ OCR.</p>
+<h2 id="36-thuc-nghiem-spark-etl-theo-muc-du-lieu-lap">3.6. Thực nghiệm Spark ETL theo mức dữ liệu lặp</h2>
+<h3 id="361-thiet-ke-phep-o">3.6.1. Thiết kế phép đo</h3>
+<p>Để kiểm tra tác động của lượng bản ghi và tính đúng của chống trùng, corpus sạch 63 tài liệu được phát lại 1, 5 và 10 lần, tạo 63, 315 và 630 bản ghi. Đây là <strong>dữ liệu lặp có kiểm soát</strong>, không phải 630 văn bản pháp luật khác nhau. Đầu vào tăng theo số lần lặp, còn tập nội dung duy nhất kỳ vọng giữ nguyên 63 tài liệu.</p>
+<p>Mỗi mức chạy ba lần trên Spark <code>local[2]</code>, cùng schema và logic ETL. Có một lượt warmup riêng không tính vào kết quả; cache hệ điều hành và trạng thái môi trường không được đưa về lạnh giữa các lần chạy. Đồng hồ đo bao quanh hàm ETL, gồm khởi tạo/thực thi, đọc, biến đổi, thống kê, ghi Parquet và dừng Spark. Đọc đối chiếu hash đầu ra được thực hiện sau khoảng đo. Không đo mạng nguồn, chunking, embedding hoặc LLM trong phép đo này.</p>
+<h3 id="362-ket-qua">3.6.2. Kết quả</h3>
+<p><strong>Bảng 3.9. Kết quả Spark ETL, đơn vị giây</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mức</th>
+<th style="text-align: right;">Bản ghi vào</th>
+<th style="text-align: right;">Dung lượng JSONL (byte)</th>
+<th style="text-align: right;">Lần 1</th>
+<th style="text-align: right;">Lần 2</th>
+<th style="text-align: right;">Lần 3</th>
+<th style="text-align: right;">Trung bình</th>
+<th style="text-align: right;">Duy nhất sau ETL</th>
+<th style="text-align: right;">Trùng loại bỏ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1×</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">6.586.007</td>
+<td style="text-align: right;">5,598</td>
+<td style="text-align: right;">5,087</td>
+<td style="text-align: right;">5,079</td>
+<td style="text-align: right;">5,255</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>5×</td>
+<td style="text-align: right;">315</td>
+<td style="text-align: right;">32.930.035</td>
+<td style="text-align: right;">9,115</td>
+<td style="text-align: right;">6,599</td>
+<td style="text-align: right;">6,066</td>
+<td style="text-align: right;">7,260</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">252</td>
+</tr>
+<tr>
+<td>10×</td>
+<td style="text-align: right;">630</td>
+<td style="text-align: right;">65.860.070</td>
+<td style="text-align: right;">9,586</td>
+<td style="text-align: right;">10,576</td>
+<td style="text-align: right;">13,074</td>
+<td style="text-align: right;">11,079</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">567</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Hình 3.22. ETL theo mức dữ liệu" src="hinh_anh/hinh_3_22_etl_quy_mo.png" /></p>
+<p><em>Hình 3.22. Trung bình và khoảng min–max của ba lần đo; kết quả đầy đủ ở <a href="evidence/etl_scaling.csv">etl_scaling.csv</a>.</em></p>
+<p>Đầu vào tăng 10 lần nhưng thời gian trung bình tăng khoảng 2,11 lần trong thí nghiệm nhỏ này. Chi phí cố định của Spark, cache và việc đầu ra vẫn chỉ có 63 nội dung góp phần vào kết quả. Không thể suy ra hệ thống sẽ xử lý gấp 10 lần tài liệu độc lập với cùng hệ số tăng thời gian. Để đánh giá mở rộng cần nhiều nội dung duy nhất, dữ liệu lớn hơn, số executor khác nhau và đo trên cụm thực.</p>
+<p>Cả chín lần đều cho cùng tập <code>(source_document_id, text_sha256)</code> với corpus chuẩn. Đầu ra Parquet thử nghiệm khoảng 2.935.134 byte mỗi lần; chênh lệch nhỏ với snapshot chính 2.934.181 byte không được diễn giải là nội dung mới, vì kiểm tra hash đã xác nhận cùng nội dung. Chỉ mục chính giữ nguyên trong suốt phép thử.</p>
+<h2 id="37-anh-gia-truy-xuat">3.7. Đánh giá truy xuất</h2>
+<h3 id="371-bo-cau-hoi-va-cach-tinh">3.7.1. Bộ câu hỏi và cách tính</h3>
+<p>Bộ đo gồm 15 câu hỏi chọn thủ công, mỗi câu gắn một ID tài liệu kỳ vọng đã tồn tại trong snapshot. Các câu thường chứa tên/số hiệu tài liệu, phù hợp kiểm tra định danh tài liệu nhưng dễ hơn nhiều câu hỏi pháp lý mở. Cho phép lọc khu vực ở các ca được khai báo; <strong>không truyền bộ lọc document_id</strong> vì như vậy sẽ tiết lộ đáp án cho retriever. Bộ câu hỏi nằm trong <a href="evidence/retrieval_cases.csv">retrieval_cases.csv</a>.</p>
+<p>Với mỗi câu, xác định vị trí xuất hiện đầu tiên của ID tài liệu kỳ vọng trong danh sách hit trả về. Hit@1 bằng tỷ lệ câu có tài liệu đó ở vị trí đầu; Hit@5 bằng tỷ lệ xuất hiện trong năm vị trí đầu. MRR@5 là trung bình nghịch đảo vị trí, bằng 0 nếu không có trong top 5. Đây là các vị trí <strong>hit/đoạn trả về</strong>, chưa có bước gộp mọi hit về một danh sách tài liệu duy nhất trước khi chấm. Một số ca mở rộng điều khoản chỉ trả một ngữ cảnh.</p>
+<p>Mỗi câu chạy ba lần để đo độ trễ, tạo 45 lượt gọi. Có 15 câu độc lập, không phải 45 câu mới. Lượt warmup 16,92 giây được loại khỏi thống kê; chưa có phép đo cold start được kiểm soát. Không gọi LLM trong khoảng đo truy xuất.</p>
+<h3 id="372-ket-qua-va-phan-tich-loi">3.7.2. Kết quả và phân tích lỗi</h3>
+<p><strong>Bảng 3.10. Chỉ số truy xuất</strong></p>
+<table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th style="text-align: right;">Kết quả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số câu / số lượt gọi</td>
+<td style="text-align: right;">15 / 45</td>
+</tr>
+<tr>
+<td>Hit@1</td>
+<td style="text-align: right;">73,33% — 11/15 câu</td>
+</tr>
+<tr>
+<td>Hit@5</td>
+<td style="text-align: right;">93,33% — 14/15 câu</td>
+</tr>
+<tr>
+<td>MRR@5</td>
+<td style="text-align: right;">0,8333</td>
+</tr>
+<tr>
+<td>Thời gian trung bình</td>
+<td style="text-align: right;">0,1347 giây</td>
+</tr>
+<tr>
+<td>Trung vị</td>
+<td style="text-align: right;">0,0870 giây</td>
+</tr>
+<tr>
+<td>P95 mẫu</td>
+<td style="text-align: right;">0,1863 giây</td>
+</tr>
+</tbody>
+</table>
+<p>P95 được lấy theo phần tử thứ <code>int(0,95 × (n−1))</code> của dãy 45 thời gian đã sắp xếp; bộ đo nhỏ nên không dùng để cam kết SLA. Độ trễ bao gồm embedding truy vấn, yêu cầu Qdrant và xử lý ngữ cảnh của retriever, không phải thời gian toàn bộ giao diện trả lời.</p>
+<p><img alt="Hình 3.23. Xếp hạng truy xuất" src="hinh_anh/hinh_3_23_xep_hang.png" /></p>
+<p><em>Hình 3.23. Vị trí đầu tiên của tài liệu kỳ vọng; ba lượt cho cùng kết quả thứ hạng trên các ca này.</em></p>
+<p><strong>Bảng 3.11. Kết quả theo câu hỏi</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mã</th>
+<th>Tài liệu/chủ đề kỳ vọng</th>
+<th style="text-align: right;">Vị trí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R01</td>
+<td>Luật AI 134/2025 — phạm vi</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R02</td>
+<td>Quyết định 127 — chiến lược AI</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>Quyết định 1671/2026</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R04</td>
+<td>Nghị định 142/2026</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R05</td>
+<td>Quyết định 102/2026 Hà Nội</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R06</td>
+<td>Thông tư 53/2026 ngân hàng</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R07</td>
+<td>EU AI Act — rủi ro cao</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R08</td>
+<td>Hướng dẫn EU AI literacy</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>R09</td>
+<td>NIST AI RMF</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R10</td>
+<td>NIST Generative AI Profile</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>R11</td>
+<td>NIST SP 800-218A</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R12</td>
+<td>UNESCO — đạo đức AI</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R13</td>
+<td>OECD AI Principles</td>
+<td style="text-align: right;">Không có trong top 5</td>
+</tr>
+<tr>
+<td>R14</td>
+<td>ASEAN Governance and Ethics</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>R15</td>
+<td>Singapore Model AI Governance</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>R13 trả các nội dung gần chủ đề từ Singapore, Úc, UNESCO và Anh nhưng không tìm đúng OECD trong top 5. Corpus có tài liệu OECD nên đây là lỗi truy xuất/xếp hạng, không phải thiếu tài liệu trong index. R08 đặt EU AI Act trước hướng dẫn AI literacy; R10 đặt ASEAN Roadmap trước NIST GenAI Profile. Các trường hợp cho thấy dense similarity có thể ưu tiên nội dung gần nghĩa thay vì đúng cơ quan hoặc tên tài liệu. Hướng cải thiện là kết hợp từ khóa/số hiệu, metadata và reranker, sau đó đánh giá trên một bộ kiểm thử độc lập; chưa áp dụng các bước đó chỉ để nâng điểm của bộ 15 câu này.</p>
+<p>Kết quả 93,33% không được viết thành “LLM trả lời đúng pháp luật 93,33%”. Bộ đo chưa chấm tính đầy đủ, mâu thuẫn, thời điểm hiệu lực, phủ định hay mức hỗ trợ của từng nhận định. Thêm 10 câu ngoài phạm vi đều bị từ chối, nhưng chỉ phản ánh hoạt động gate trên những mẫu đã chọn, chưa đo false refusal trên câu AI hợp lệ khó.</p>
+<h2 id="38-kiem-tra-hoi-ap-au-cuoi-va-dan-chung">3.8. Kiểm tra hỏi đáp đầu cuối và dẫn chứng</h2>
+<p><img alt="Hình 3.3. Tìm văn bản" src="hinh_anh/hinh_3_03_tim_kiem.png" /></p>
+<p><em>Hình 3.3. Tìm kiếm văn bản và đoạn nguồn trên ứng dụng thật.</em></p>
+<p><img alt="Hình 3.4. Hỏi đáp" src="hinh_anh/hinh_3_04_hoi_dap.png" /></p>
+<p><em>Hình 3.4. Câu trả lời có nhãn nguồn từ giao diện đang chạy; đây là ca giao diện riêng, không thay số đo benchmark.</em></p>
+<p><img alt="Hình 3.5. Dẫn chứng" src="hinh_anh/hinh_3_05_dan_chung.png" /></p>
+<p><em>Hình 3.5. Mở đoạn đối chiếu và liên kết nguồn.</em></p>
+<p>Loạt smoke test gọi ba câu hỏi chức năng và lưu toàn bộ kết quả ở <a href="evidence/llm_smoke.json">llm_smoke.json</a>. Hai câu dùng LLM sinh trực tiếp; câu EU dùng bản tóm tắt biên tập với điều kiện checksum. Kết quả được trình bày riêng trong bảng sau.</p>
+<p><strong>Bảng 3.12. Ca hỏi đáp và thời gian quan sát</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ca</th>
+<th>Chế độ</th>
+<th>Kết quả cần quan sát</th>
+<th style="text-align: right;">Thời gian</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phạm vi Luật Trí tuệ nhân tạo</td>
+<td>LLM, Qwen3 Instruct</td>
+<td>Có nguồn S1; giữ mệnh đề loại trừ quốc phòng/an ninh/cơ yếu</td>
+<td style="text-align: right;">42,54 giây</td>
+</tr>
+<tr>
+<td>Bốn chức năng NIST AI RMF</td>
+<td>LLM, Qwen3 Instruct</td>
+<td>Trả lời có nhãn S2/S4 và nguồn đối chiếu</td>
+<td style="text-align: right;">7,70 giây</td>
+</tr>
+<tr>
+<td>Hành vi bị cấm theo EU AI Act</td>
+<td><code>curated_summary</code>, model null</td>
+<td>Tám nhóm từ bản biên tập đúng checksum</td>
+<td style="text-align: right;">0,39 giây</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Hình 3.24. Thời gian hỏi đáp" src="hinh_anh/hinh_3_24_thoi_gian_hoi_dap.png" /></p>
+<p><em>Hình 3.24. So sánh mô tả ba ca chức năng; màu khác để phân biệt bản biên tập với LLM.</em></p>
+<p>Ở ca Luật AI, đầu ra giữ nội dung loại trừ hoạt động chỉ phục vụ quốc phòng, an ninh, cơ yếu, cho thấy lợi ích của lấy đủ điều thay vì một mảnh thiếu ngoại lệ. Đây là quan sát trên một ca và nguồn cụ thể; chưa đủ để kết luận mô hình luôn xử lý đúng các phủ định. Chênh lệch 42,54 và 7,70 giây có thể chịu ảnh hưởng trạng thái model, ngữ cảnh và độ dài sinh; mỗi ca chỉ chạy một lần nên không tách được tác động từng yếu tố. Thời gian 0,39 giây của bản biên tập không được tính vào trung bình suy luận LLM.</p>
+<p>Việc có S1 hoặc S2 không tự bảo đảm nguồn hỗ trợ đúng câu. Bước đánh giá tiếp theo cần người đọc đối chiếu từng nhận định với nguyên văn và đánh dấu hỗ trợ đầy đủ/một phần/không hỗ trợ, đặc biệt với thời hạn, ngoại lệ và hiệu lực. Báo cáo hiện tại cung cấp đường truy vết và ví dụ, chưa có một bộ điểm chất lượng pháp lý được thẩm định độc lập.</p>
+<h2 id="39-minh-chung-ung-dung-va-ha-tang">3.9. Minh chứng ứng dụng và hạ tầng</h2>
+<p><img alt="Hình 3.1. Trang chính" src="hinh_anh/hinh_3_01_giao_dien.png" /></p>
+<p><em>Hình 3.1. Giao diện chính và số tài liệu đang hoạt động.</em></p>
+<p><img alt="Hình 3.2. Thư viện" src="hinh_anh/hinh_3_02_thu_vien.png" /></p>
+<p><em>Hình 3.2. Thư viện tài liệu có trạng thái và điều khiển lọc/phân trang.</em></p>
+<p><img alt="Hình 3.9. HDFS" src="hinh_anh/hinh_3_09_hdfs.png" /></p>
+<p><em>Hình 3.9. NameNode UI thật; cần đọc dung lượng theo phạm vi namespace của giao diện.</em></p>
+<p><img alt="Hình 3.10. Thư mục HDFS" src="hinh_anh/hinh_3_10_hdfs_cac_lop.png" /></p>
+<p><em>Hình 3.10. Các vùng Raw, Parsed, Processed, Chunks và Manifests trên HDFS.</em></p>
+<p>Trên màn hình thư mục, các cột Size, Replication và Block Size có thể cùng bằng 0 vì hàng đang biểu diễn một <code>DIRECTORY</code>. WebHDFS định nghĩa length của thư mục bằng 0 và trả metadata block/replication như vậy [2]; đây không phải tổng dung lượng các tệp con. Muốn xem dung lượng cộng dồn cần <code>GETCONTENTSUMMARY</code> hoặc <code>hdfs dfs -du</code>, còn muốn xem replication phải mở từng tệp.</p>
+<p><img alt="Hình 3.30. HDFS mức tệp" src="hinh_anh/hinh_3_30_hdfs_tep_that.png" /></p>
+<p><em>Hình 3.30. Mở thư mục Processed của snapshot để xem các tệp Parquet có dung lượng, replication và block size thật.</em></p>
+<p>Đã kiểm tra riêng một tệp Parquet có 626.810 byte và PDF gốc có 502.586 byte: cả hai có replication 1, block size cấu hình 134.217.728 byte (128 MiB). Đọc lại tệp từ HDFS cho checksum trùng bản gốc. Block size là kích thước chia block được cấu hình, không yêu cầu mỗi tệp nhỏ phải có đủ 128 MiB dữ liệu. Tệp marker như <code>_SUCCESS</code> có thể cố ý rỗng; không dùng nó để kết luận toàn bộ Parquet rỗng. <a href="evidence/hdfs_file_verification.json">hdfs_file_verification.json</a> lưu kết quả đối chiếu.</p>
+<p>Kiểm tra <code>hdfs fsck /ai_docs</code> báo <strong>HEALTHY</strong>, 216 block được kiểm tra, không có missing block, corrupt block hoặc under-replicated block. Chi tiết ở <a href="evidence/hdfs_fsck.log">hdfs_fsck.log</a>. Tính khỏe mạnh này được đánh giá theo replication 1 của máy demo, chưa cung cấp khả năng chịu mất một DataNode.</p>
+<p><img alt="Hình 3.11. Qdrant" src="hinh_anh/hinh_3_11_qdrant.png" /></p>
+<p><em>Hình 3.11. Dashboard Qdrant; số liệu index chính được đối chiếu bằng API exact count.</em></p>
+<p>Các ảnh được tạo bằng Chrome headless trong một phiên trình duyệt mới, chỉ truy cập localhost, không dựng bằng ảnh minh họa AI. Playwright dùng để điều khiển thao tác và chụp màn hình [15]. <a href="evidence/screenshot_manifest.json">screenshot_manifest.json</a> ghi URL, thời điểm và tên ảnh. Sơ đồ thiết kế được vẽ riêng bằng Graphviz; biểu đồ thống kê xuất bằng Matplotlib từ CSV/JSON, vì vậy hai nhóm đó không được gọi là ảnh chụp màn hình.</p>
+<h2 id="310-thu-nghiem-tro-ly-giong-noi-va-nguoi-thuyet-trinh">3.10. Thử nghiệm trợ lý giọng nói và người thuyết trình</h2>
+<h3 id="3101-kich-ban-va-anh-giao-dien-that">3.10.1. Kịch bản và ảnh giao diện thật</h3>
+<p>Người thuyết trình được kiểm tra như một chức năng riêng của sản phẩm. Kịch bản bắt đầu tại <strong>Khám phá trợ lý giọng nói</strong>, bấm <strong>Nghe thử giọng đọc</strong>, sau đó phát, tạm dừng, đổi tốc độ và đọc lại. Không cần gọi LLM cho đoạn chào mẫu nên có thể tách lỗi bộ phát khỏi lỗi sinh câu trả lời.</p>
+<p><img alt="Hình 3.27. Người thuyết trình trong ứng dụng" src="hinh_anh/hinh_3_27_nguoi_thuyet_trinh.png" /></p>
+<p><em>Hình 3.27. Người thuyết trình nữ trong ứng dụng đang chạy, kèm phụ đề và điều khiển nghe.</em></p>
+<p><img alt="Hình 3.28. Khung người nói" src="hinh_anh/hinh_3_28_khung_giong_noi.png" /></p>
+<p><em>Hình 3.28. Ảnh chụp thật khung người nói khi audio đang phát; nhãn ghi đúng provider Piper dự phòng của phiên đo.</em></p>
+<p>Giao diện giữ một lựa chọn giọng nữ theo cấu hình hiện tại. Trong phiên chụp, âm thanh thực tế do <strong>Piper dự phòng</strong> tạo ra; báo cáo không coi đây là mẫu Hoài My đã đáp ứng. Nhân vật nữ là hình minh họa của giao diện, còn provider là nguồn tạo âm thanh. Cách ghi này vừa giữ được điểm nhấn trình bày vừa có thể kiểm chứng trạng thái thực tế.</p>
+<h3 id="3102-ket-qua-bo-phat-phu-e-va-hoat-anh">3.10.2. Kết quả bộ phát, phụ đề và hoạt ảnh</h3>
+<p><strong>Bảng 3.13. Nghiệm thu người thuyết trình trên trình duyệt thật</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kiểm tra</th>
+<th>Kết quả/bằng chứng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Có audio thật</td>
+<td>2 đoạn WAV được trích từ chính playlist đã phát</td>
+</tr>
+<tr>
+<td>Audio chạy theo thời gian</td>
+<td><code>currentTime</code> tăng quá 0,2 giây; <code>paused=false</code></td>
+</tr>
+<tr>
+<td>Nhân vật chuyển động theo âm</td>
+<td>Năm mẫu bán kính miệng khác nhau trong lúc phát; ảnh có sóng âm</td>
+</tr>
+<tr>
+<td>Tạm dừng</td>
+<td>Trạng thái chuyển thành “Tạm dừng”</td>
+</tr>
+<tr>
+<td>Đổi tốc độ</td>
+<td>Chọn 1,15×, <code>audio.playbackRate=1.15</code></td>
+</tr>
+<tr>
+<td>Đọc lại</td>
+<td>Trở về đầu và phát lại</td>
+</tr>
+<tr>
+<td>Phụ đề</td>
+<td>Chuyển từ Đoạn 1/2 sang Đoạn 2/2 theo sự kiện kết thúc audio</td>
+</tr>
+<tr>
+<td>Kết thúc</td>
+<td>Trạng thái “Đã đọc xong”</td>
+</tr>
+</tbody>
+</table>
+<p>Nguồn: <a href="evidence/presenter_browser_check.json">presenter_browser_check.json</a>. Mẫu hoạt ảnh cho thấy thuộc tính SVG thay đổi, chưa phải đánh giá mức khớp môi với âm vị. Các ca logic JavaScript còn kiểm tra phát WAV, pause/resume, tốc độ, phụ đề, kết thúc, đọc lại và xử lý thiếu giọng Việt; lần chạy lại báo PASS trong <a href="evidence/presenter_player_tests.log">presenter_player_tests.log</a>. Test Python kiểm tra khóa cache khi đổi tốc độ và escape nội dung trong script đã nằm trong bộ 86 ca.</p>
+<h3 id="3103-du-lieu-am-thanh-va-vai-tro-trong-tieu-luan">3.10.3. Dữ liệu âm thanh và vai trò trong tiểu luận</h3>
+<p><strong>Bảng 3.14. Hai đoạn âm thanh thật được đính kèm</strong></p>
+<table>
+<thead>
+<tr>
+<th>Đoạn</th>
+<th style="text-align: right;">Thời lượng</th>
+<th style="text-align: right;">Tần số lấy mẫu</th>
+<th>Kênh / độ sâu mẫu</th>
+<th style="text-align: right;">Byte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đoạn chào</td>
+<td style="text-align: right;">3,396 giây</td>
+<td style="text-align: right;">22.050 Hz</td>
+<td>Mono / PCM 16-bit</td>
+<td style="text-align: right;">149.806</td>
+</tr>
+<tr>
+<td>Đoạn hướng dẫn đối chiếu</td>
+<td style="text-align: right;">3,686 giây</td>
+<td style="text-align: right;">22.050 Hz</td>
+<td>Mono / PCM 16-bit</td>
+<td style="text-align: right;">162.606</td>
+</tr>
+</tbody>
+</table>
+<p>Mẫu <a href="am_thanh/nguoi_thuyet_trinh_doan_01.wav">đoạn 1</a> và <a href="am_thanh/nguoi_thuyet_trinh_doan_02.wav">đoạn 2</a> được giữ cùng checksum trong JSON bằng chứng. Tổng thời lượng khoảng 7,08 giây ở tốc độ cơ sở; đây là thời lượng audio, không phải thời gian xử lý tổng hợp tiếng nói.</p>
+<p><img alt="Hình 3.29. Sóng âm người thuyết trình" src="hinh_anh/hinh_3_29_song_am.png" /></p>
+<p><em>Hình 3.29. Dạng sóng PCM từ hai tệp đã phát. Biểu đồ dùng kiểm tra sự tồn tại và cấu trúc tín hiệu, không suy ra độ tự nhiên của giọng.</em></p>
+<p>Phần người nói là điểm nhấn ứng dụng của tiểu luận: sản phẩm dữ liệu từ Data Lake/RAG được chuyển thành trải nghiệm đa phương thức có thể đọc, nghe và đối chiếu nguồn. Pipeline TTS xử lý văn bản theo cụm, giữ thứ tự, metadata provider và trạng thái phát; giao diện trình bày đồng bộ đoạn âm thanh với nhân vật. Chưa có thử nghiệm người dùng, điểm MOS hoặc phép đo nhận dạng giọng nói WER, nên báo cáo chỉ kết luận chức năng hoạt động theo những kiểm tra trên. Nhập câu hỏi bằng giọng nói được mô tả trong thiết kế nhưng chưa được tính là một phép thử micro người thật trong bộ nghiệm thu này.</p>
+<h2 id="311-thao-luan-va-inh-huong-phat-trien">3.11. Thảo luận và định hướng phát triển</h2>
+<p>Kết quả thể hiện hệ thống đã hình thành một vòng đời dữ liệu: nhận nguồn mới/tệp, chuẩn hóa bằng Spark, giữ dữ liệu theo lớp, phát hành chỉ mục có phiên bản và khai thác qua RAG. Phần phù hợp với học phần Dữ liệu lớn và định hướng Data Engineer nằm ở hợp đồng nguồn, schema, chất lượng, provenance, khử trùng, kho dữ liệu, điều phối và quan sát pipeline.</p>
+<p><strong>Bảng 3.15. Đối chiếu kết quả với kỹ năng Data Engineering</strong></p>
+<table>
+<thead>
+<tr>
+<th>Năng lực</th>
+<th>Minh chứng trong dự án</th>
+<th>Giới hạn cần phát triển</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data ingestion</td>
+<td>Adapter API danh mục/toàn văn; nhiều định dạng; upload</td>
+<td>Thêm nguồn ổn định, quản lý quota và hợp đồng schema</td>
+</tr>
+<tr>
+<td>Incremental processing</td>
+<td>Cửa sổ thời gian, checkpoint, checksum, no_changes</td>
+<td>Phát hiện sửa đổi văn bản cũ; lịch chạy tự động</td>
+</tr>
+<tr>
+<td>Batch ETL</td>
+<td>Spark DataFrame, Window khử trùng, báo cáo</td>
+<td>Chuyển I/O và tác vụ lên cụm thực</td>
+</tr>
+<tr>
+<td>Data storage</td>
+<td>Raw/Parsed/Parquet/Chunks, HDFS, snapshot</td>
+<td>Replication, retention, backup/restore đã kiểm thử</td>
+</tr>
+<tr>
+<td>Data governance</td>
+<td>Nguồn, phiên bản, loại tài liệu, trạng thái hiệu lực</td>
+<td>Chuẩn hóa ngày và thẩm định hiệu lực/phạm vi sử dụng</td>
+</tr>
+<tr>
+<td>Serving</td>
+<td>Qdrant alias, manifest phiên bản, RAG</td>
+<td>Hybrid retrieval, rerank, kiểm soát nhiều người dùng</td>
+</tr>
+<tr>
+<td>Observability và QA</td>
+<td>Trạng thái job, log, 86 test, CSV/JSON và đồ thị</td>
+<td>Theo dõi tài nguyên theo thời gian, cảnh báo và SLO</td>
+</tr>
+</tbody>
+</table>
+<p>Những giới hạn chính gồm corpus nhỏ, chỉ một máy và một DataNode; chưa có đo tải đồng thời; dữ liệu lặp không thay thế dữ liệu độc lập quy mô lớn; bộ truy vấn chọn thủ công thiên về tên tài liệu; còn thiếu metadata ngày/hiệu lực; chưa hỗ trợ OCR; công bố xuyên Qdrant/manifest/HDFS chưa là giao dịch chung. Chức năng giọng và giao diện hỗ trợ trình diễn nhưng không được coi là bằng chứng mở rộng dữ liệu.</p>
+<p>Thứ tự phát triển hợp lý là hoàn thiện metadata và bộ đánh giá có thẩm định, bổ sung hybrid/reranker, thiết lập scheduler/quan sát, sau đó chuyển xử lý và lưu trữ sang cụm có chính sách sao lưu, retention và phân quyền. Mọi công nghệ bổ sung cần có phép đo trước/sau và tiêu chí chấp nhận cụ thể, thay vì chỉ tăng số thành phần trong sơ đồ.</p>
+<h1 id="tai-lieu-tham-khao">TÀI LIỆU THAM KHẢO</h1>
+<p>Các tài liệu công nghệ dưới đây là công bố nghiên cứu, tài liệu của dự án hoặc tài liệu từ cơ quan/nhà phát triển. Ngày truy cập/đối chiếu: <strong>16/11/2026</strong>. Số trong ngoặc vuông được dùng thống nhất trong hai chương. Nội dung thiết kế và số đo riêng của nhóm lấy từ mã nguồn và thư mục <a href="evidence/">evidence</a>, không gán cho các tài liệu bên ngoài.</p>
+<p>[1] Apache Software Foundation, <em>HDFS Architecture</em>, Apache Hadoop 3.4.1, 2024. <a href="https://hadoop.apache.org/docs/r3.4.1/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">Tài liệu chính thức</a>. Dùng cho vai trò NameNode/DataNode, block và replication.</p>
+<p>[2] Apache Software Foundation, <em>WebHDFS REST API</em>, Apache Hadoop 3.4.1, 2024. <a href="https://hadoop.apache.org/docs/r3.4.1/hadoop-project-dist/hadoop-hdfs/WebHDFS.html">Tài liệu chính thức</a>. Dùng cho CREATE/redirect, GETFILESTATUS, LISTSTATUS, OPEN và GETCONTENTSUMMARY; phân biệt metadata thư mục và tệp.</p>
+<p>[3] M. Zaharia và cộng sự, “Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing,” <em>USENIX NSDI</em>, 2012. <a href="https://www.usenix.org/conference/nsdi12/technical-sessions/presentation/zaharia">Bài nghiên cứu và thông tin hội nghị</a>. Cơ sở công nghệ Spark; không dùng bài này để khẳng định demo đã chạy trên nhiều máy.</p>
+<p>[4] Apache Software Foundation, <em>Parquet Files — Spark SQL, DataFrames and Datasets Guide</em>, Apache Spark 3.5.3. <a href="https://dist.apache.org/repos/dist/release/spark/docs/3.5.3/sql-data-sources-parquet.html">Bản tài liệu theo phiên bản</a>. Cơ sở đọc/ghi Parquet và tùy chọn liên quan.</p>
+<p>[5] Databricks, <em>What is the medallion lakehouse architecture?</em> <a href="https://docs.databricks.com/aws/en/lakehouse/medallion">Tài liệu kiến trúc</a>. Tham khảo mẫu phân lớp Bronze/Silver/Gold; hệ thống hiện tại không sử dụng Databricks hoặc Delta Lake.</p>
+<p>[6] Apache Parquet, <em>Overview</em>. <a href="https://parquet.apache.org/docs/overview/">Tài liệu định dạng</a>. Cơ sở lựa chọn định dạng cột cho lớp Processed.</p>
+<p>[7] P. Lewis và cộng sự, “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” 2020, arXiv:2005.11401. <a href="https://arxiv.org/abs/2005.11401">Bài nghiên cứu</a>. Cơ sở kết hợp nguồn truy xuất với mô hình sinh.</p>
+<p>[8] J. Chen và cộng sự, “BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation,” 2024, arXiv:2402.03216. <a href="https://arxiv.org/abs/2402.03216">Bài nghiên cứu</a>. Dự án hiện chỉ khai thác dense embedding.</p>
+<p>[9] Qdrant, <em>Collections</em>, mục collection aliases. <a href="https://qdrant.tech/documentation/manage-data/collections/">Tài liệu chính thức</a>. Cơ sở dùng alias và thay đổi alias nguyên tử trong Qdrant; không suy rộng thành giao dịch chung với HDFS/tệp manifest.</p>
+<p>[10] A. Yang và cộng sự, “Qwen3 Technical Report,” 2025, arXiv:2505.09388. <a href="https://arxiv.org/abs/2505.09388">Báo cáo kỹ thuật</a>. Cơ sở lựa chọn họ mô hình Qwen3; tag triển khai cụ thể đối chiếu thêm ở [11].</p>
+<p>[11] Ollama, <em>qwen3:4b-instruct-2507-q4_K_M</em>. <a href="https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M">Model card của đúng tag</a>. Dùng nhận diện bản Instruct, quy mô và lượng tử hóa; context ứng dụng do nhóm cấu hình là 6.144 token.</p>
+<p>[12] P. Groth và L. Moreau (biên tập), <em>PROV-Overview: An Overview of the PROV Family of Documents</em>, W3C Working Group Note, 30/04/2013. <a href="https://www.w3.org/TR/prov-overview/">Tài liệu W3C</a>. Tham khảo ý tưởng truy nguyên entity/activity; không tuyên bố schema của dự án tuân thủ đầy đủ PROV-O.</p>
+<p>[13] Docker, <em>How Compose works</em>. <a href="https://docs.docker.com/compose/intro/compose-application-model/">Tài liệu chính thức</a>. Cơ sở mô hình services, networks, volumes trong triển khai nhiều container.</p>
+<p>[14] Streamlit, <em>st.file_uploader</em>, tài liệu phiên bản 1.41.0. <a href="https://docs.streamlit.io/1.41.0/develop/api-reference/widgets/st.file_uploader">API reference</a>. Tham khảo chức năng nhận nhiều tệp; giới hạn 10 tệp/50 MiB/100 MiB là quy tắc của dự án, không phải mặc định của Streamlit.</p>
+<p>[15] Microsoft/Playwright, <em>Screenshots — Python</em>. <a href="https://playwright.dev/python/docs/screenshots">Tài liệu chính thức</a>. Dùng cho phương pháp lấy ảnh bằng chứng trong báo cáo, không phải thành phần runtime của pipeline RAG.</p>
+<p>[16] MDN Web Docs, <em>AnalyserNode — Web Audio API</em>. <a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode">Tài liệu API</a>. Cơ sở lấy mẫu âm thanh miền thời gian cho hoạt ảnh người nói; không phải tài liệu chứng minh lip-sync âm vị.</p>
+<p>[17] rany2 và cộng tác viên, <em>edge-tts</em>. <a href="https://github.com/rany2/edge-tts">Kho mã nguồn và hướng dẫn của tác giả</a>. Thư viện truy cập dịch vụ đọc trực tuyến của Microsoft Edge; cần phân biệt với Azure Speech API có tài khoản thương mại.</p>
+<p>[18] OHF-Voice, <em>Piper: fast and local neural text-to-speech engine</em>. <a href="https://github.com/OHF-Voice/piper1-gpl">Kho mã nguồn</a>. Backend TTS dự phòng; thông tin giấy phép và attribution của bản cài xem thêm <a href="../VOICE_ATTRIBUTION.md">VOICE_ATTRIBUTION.md</a>.</p>
+<p>[19] rhasspy/piper-voices, <em>vi_VN-vais1000-medium — MODEL_CARD</em>, revision <code>3d796cc2f2c884b3517c527507e084f7bb245aea</code>. <a href="https://huggingface.co/rhasspy/piper-voices/blob/3d796cc2f2c884b3517c527507e084f7bb245aea/vi/vi_VN/vais1000/medium/MODEL_CARD">Model card cố định phiên bản</a>. Dùng cho nhận diện giọng tiếng Việt dự phòng; mẫu WAV trong báo cáo được đo lại từ playlist thực tế.</p>
+<p>[20] Bộ Tư pháp, <em>Cơ sở dữ liệu quốc gia về pháp luật — nguồn công khai</em>. <a href="https://vbpl.vn/">Cổng dữ liệu</a>, endpoint danh mục <code>https://vbpl-bientap-gateway.moj.gov.vn/api/qtdc/public/doc/all</code> và endpoint toàn văn <code>/api/qtdc/public/doc/{id}</code>. Hợp đồng payload/response trong báo cáo được xác minh bằng ứng dụng gọi HTTP thật, không phải trích một đặc tả API có cam kết ổn định. Xem <a href="../../data/api_sources.json">cấu hình nguồn</a>, <a href="evidence/previous_api_verification.json">bằng chứng API</a> và <a href="evidence/capture_update_status.json">lượt giao diện</a>.</p>
+<h2 id="nguon-du-lieu-cu-the-cua-corpus">Nguồn dữ liệu cụ thể của corpus</h2>
+<p>Để tránh nhập nhằng tài liệu công nghệ với văn bản đem đi tra cứu, danh mục dữ liệu được tách thành <a href="PHU_LUC_DANH_MUC_DU_LIEU.md">PHU_LUC_DANH_MUC_DU_LIEU.md</a> và <a href="evidence/dataset_catalog.csv">CSV danh mục</a>. Phụ lục liệt kê toàn bộ 63 tài liệu đang hoạt động với URL, loại, ngôn ngữ, khu vực và provenance, đối chiếu theo snapshot của báo cáo. Đây là danh mục nguồn của bản dữ liệu đã thu thập, không khẳng định tất cả URL hiện còn truy cập được hoặc mọi văn bản còn hiệu lực.</p>
+<h1 id="phu-luc-va-bang-chung">PHỤ LỤC VÀ BẰNG CHỨNG</h1>
+<p>Danh mục toàn bộ 63 tài liệu và 15 câu hỏi nằm trong <a href="PHU_LUC_DANH_MUC_DU_LIEU.md">phụ lục dữ liệu</a>. Số liệu từng tài liệu/đoạn nằm trong <a href="evidence/document_statistics.csv">document_statistics.csv</a> và <a href="evidence/chunk_statistics.csv">chunk_statistics.csv</a>. <a href="DANH_MUC_HINH.md">Danh mục hình</a> cung cấp ảnh, SVG và nguồn tương ứng.</p><footer>Bản nháp từ mã nguồn và phép đo ngày 16/11/2026. Hình sơ đồ/biểu đồ có bản SVG; ảnh ứng dụng là ảnh chụp thật.</footer></main><script>document.querySelectorAll("img").forEach(i=>i.addEventListener("click",()=>window.open(i.src,"_blank","noopener")))</script></body></html>

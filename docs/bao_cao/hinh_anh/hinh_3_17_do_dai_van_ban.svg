@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="432pt" viewBox="0 0 720 432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-16T17:53:32.273796</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432 
+L 720 432 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 57.509844 315.88 
+L 699.84 315.88 
+L 699.84 82.387969 
+L 57.509844 82.387969 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 86.706669 315.88 
+L 167.249635 315.88 
+L 167.249635 260.286659 
+L 86.706669 260.286659 
+z
+" clip-path="url(#p38c91c89c9)" style="fill: #173e59"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 187.385377 315.88 
+L 267.928343 315.88 
+L 267.928343 186.162205 
+L 187.385377 186.162205 
+z
+" clip-path="url(#p38c91c89c9)" style="fill: #173e59"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 288.064085 315.88 
+L 368.607051 315.88 
+L 368.607051 93.506637 
+L 288.064085 93.506637 
+z
+" clip-path="url(#p38c91c89c9)" style="fill: #173e59"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 388.742793 315.88 
+L 469.285759 315.88 
+L 469.285759 176.896648 
+L 388.742793 176.896648 
+z
+" clip-path="url(#p38c91c89c9)" style="fill: #173e59"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 489.421501 315.88 
+L 569.964467 315.88 
+L 569.964467 278.817773 
+L 489.421501 278.817773 
+z
+" clip-path="url(#p38c91c89c9)" style="fill: #173e59"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 590.100208 315.88 
+L 670.643175 315.88 
+L 670.643175 315.88 
+L 590.100208 315.88 
+z
+" clip-path="url(#p38c91c89c9)" style="fill: #173e59"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m68ded91043" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m68ded91043" x="126.978152" y="315.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="126.978152" y="331.2125" transform="rotate(-0 126.978152 331.2125)">&lt; 10 nghìn</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m68ded91043" x="227.65686" y="315.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="227.65686" y="331.2125" transform="rotate(-0 227.65686 331.2125)">10–30 nghìn</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m68ded91043" x="328.335568" y="315.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="328.335568" y="331.2125" transform="rotate(-0 328.335568 331.2125)">30–100 nghìn</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m68ded91043" x="429.014276" y="315.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="429.014276" y="331.2125" transform="rotate(-0 429.014276 331.2125)">100–300 nghìn</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m68ded91043" x="529.692984" y="315.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="529.692984" y="331.2125" transform="rotate(-0 529.692984 331.2125)">0,3–1 triệu</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m68ded91043" x="630.371692" y="315.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="630.371692" y="331.2125" transform="rotate(-0 630.371692 331.2125)">1–3 triệu</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="378.674922" y="346.134844" transform="rotate(-0 378.674922 346.134844)">Độ dài văn bản sau ETL (ký tự)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <defs>
+       <path id="m9d625ab2e0" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9d625ab2e0" x="57.509844" y="315.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: end" x="50.509844" y="320.040156" transform="rotate(-0 50.509844 320.040156)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m9d625ab2e0" x="57.509844" y="269.552216" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: end" x="50.509844" y="273.712372" transform="rotate(-0 50.509844 273.712372)">5</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m9d625ab2e0" x="57.509844" y="223.224432" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: end" x="50.509844" y="227.384588" transform="rotate(-0 50.509844 227.384588)">10</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m9d625ab2e0" x="57.509844" y="176.896648" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: end" x="50.509844" y="181.056804" transform="rotate(-0 50.509844 181.056804)">15</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m9d625ab2e0" x="57.509844" y="130.568864" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: end" x="50.509844" y="134.72902" transform="rotate(-0 50.509844 134.72902)">20</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m9d625ab2e0" x="57.509844" y="84.24108" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: end" x="50.509844" y="88.401236" transform="rotate(-0 50.509844 88.401236)">25</text>
+     </g>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="31.92" y="199.133984" transform="rotate(-90 31.92 199.133984)">Số văn bản</text>
+    </g>
+   </g>
+   <g id="patch_9">
+    <path d="M 57.509844 315.88 
+L 57.509844 82.387969 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 57.509844 315.88 
+L 699.84 315.88 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="126.978152" y="257.97027" transform="rotate(-0 126.978152 257.97027)">6</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="227.65686" y="183.845816" transform="rotate(-0 227.65686 183.845816)">14</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="328.335568" y="91.190248" transform="rotate(-0 328.335568 91.190248)">24</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="429.014276" y="174.580259" transform="rotate(-0 429.014276 174.580259)">15</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="529.692984" y="276.501384" transform="rotate(-0 529.692984 276.501384)">4</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 12px; font-family: 'Times New Roman'; text-anchor: middle" x="630.371692" y="313.563611" transform="rotate(-0 630.371692 313.563611)">0</text>
+   </g>
+  </g>
+  <g id="text_21">
+   <text style="font-weight: 700; font-size: 14.4px; font-family: 'Times New Roman'; text-anchor: middle; fill: #173e59" x="360" y="25.79175" transform="rotate(-0 360 25.79175)">Độ dài văn bản không đồng đều</text>
+  </g>
+  <g id="text_22">
+   <text style="font-size: 10px; font-family: 'Times New Roman'; text-anchor: start; fill: #4a5361" x="14.4" y="419.041797" transform="rotate(-0 14.4 419.041797)">Tổng 5.936.893 ký tự; trung vị 51.649 ký tự. Ký tự không đồng nghĩa với token.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p38c91c89c9">
+   <rect x="57.509844" y="82.387969" width="642.330156" height="233.492031"/>
+  </clipPath>
+ </defs>
+</svg>

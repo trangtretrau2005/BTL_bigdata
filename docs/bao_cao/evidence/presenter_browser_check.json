@@ -1,0 +1,48 @@
+{
+  "provider": "piper",
+  "segments": 2,
+  "state": "Đang đọc",
+  "subtitle": "Xin chào, tôi là trợ lý tra cứu chính sách trí tuệ nhân tạo.",
+  "paused": false,
+  "duration": 3.395964,
+  "currentTime": 0.673379,
+  "playbackRate": 1,
+  "mouth_radius_samples": [
+    6.8,
+    3.8661807615142774,
+    6.171823902785859,
+    2.84050158000381,
+    0.9597955876167341
+  ],
+  "audio_advancing_verified": true,
+  "mouth_animation_verified": true,
+  "audio_files": [
+    {
+      "file": "am_thanh/nguoi_thuyet_trinh_doan_01.wav",
+      "text": "Xin chào, tôi là trợ lý tra cứu chính sách trí tuệ nhân tạo.",
+      "mime": "audio/wav",
+      "bytes": 149806,
+      "sha256": "056d6b8217300c826d869742f1791f8f956832a3297b779293a4157eef657c69",
+      "sample_rate": 22050,
+      "channels": 1,
+      "sample_width": 2,
+      "duration_seconds": 3.3959637188208616
+    },
+    {
+      "file": "am_thanh/nguoi_thuyet_trinh_doan_02.wav",
+      "text": "Hãy cùng tìm hiểu quy định, đọc dẫn chứng, và đối chiếu văn bản gốc.",
+      "mime": "audio/wav",
+      "bytes": 162606,
+      "sha256": "e9c5cd96da05c1c655b8800b94724fdb0f482123dd6744966fe86f2f485d973a",
+      "sample_rate": 22050,
+      "channels": 1,
+      "sample_width": 2,
+      "duration_seconds": 3.6862131519274377
+    }
+  ],
+  "pause_verified": true,
+  "speed_verified": true,
+  "restart_verified": true,
+  "subtitle_transition_verified": true,
+  "completion_verified": true
+}

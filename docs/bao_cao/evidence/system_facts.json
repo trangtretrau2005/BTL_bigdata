@@ -1,0 +1,1285 @@
+{
+  "captured_at": "2026-11-16T10:21:51.481293+00:00",
+  "python": "3.11.18",
+  "os_container": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+  "packages": {
+    "pyspark": "3.5.3",
+    "pyarrow": "18.0.0",
+    "streamlit": "1.41.1",
+    "qdrant-client": "1.12.1",
+    "requests": "2.32.3",
+    "pytest": "8.3.4",
+    "pymupdf": "1.24.14",
+    "python-docx": "1.1.2",
+    "edge-tts": "7.3.1"
+  },
+  "parameters": {
+    "CHAT_MODEL": "qwen3:4b-instruct-2507-q4_K_M",
+    "EMBEDDING_MODEL": "bge-m3",
+    "CHUNK_SIZE": "2200",
+    "CHUNK_OVERLAP": "240",
+    "TOP_K": "5",
+    "MIN_SCORE": 0.42,
+    "EMBED_BATCH_SIZE": "8",
+    "REQUEST_TIMEOUT": "300"
+  },
+  "counts": {
+    "active": 63,
+    "catalog": 85,
+    "pending": 22,
+    "chunks": 3285
+  },
+  "index": {
+    "status": "ready",
+    "collection": "ai_documents_verified_v2",
+    "snapshot": "ai_documents_verified_v2__api_20261116_093406_aaf12a03",
+    "total_documents": 63,
+    "source_document_ids": [
+      "asean_ai_ethics",
+      "asean_genai_guide",
+      "asean_responsible_ai_roadmap",
+      "australia_ai_ethics",
+      "canada_automated_decisions",
+      "eu_ai_act_2024_1689",
+      "eu_ai_literacy",
+      "eu_gpai_code",
+      "eu_gpai_obligations_faq",
+      "eu_gpai_provider_overview",
+      "luat_134_2025",
+      "luat_60_2024",
+      "luat_71_2025",
+      "luat_91_2025",
+      "ncsc_secure_ai_development",
+      "nd_142_2026",
+      "nist_adversarial_ai",
+      "nist_ai_rmf_1_0",
+      "nist_ai_rmf_playbook",
+      "nist_ai_standards_plan",
+      "nist_gen_ai_profile",
+      "nist_sp800_218a",
+      "nist_synthetic_content",
+      "oecd_ai_principles",
+      "oecd_ai_principles_guide",
+      "qd_127_2021",
+      "qd_1671_2026",
+      "singapore_agentic_ai",
+      "singapore_model_ai_gov",
+      "singapore_pdpc_ai_personal_data",
+      "uk_ai_assurance",
+      "uk_ai_playbook",
+      "uk_ai_procurement",
+      "uk_ai_regulation_response",
+      "uk_ai_safety_inst",
+      "uk_ai_white_paper",
+      "uk_atrs_guidance",
+      "uk_automated_decision_ethics",
+      "uk_generative_ai_framework",
+      "un_governing_ai_humanity",
+      "unesco_ai_ethics_guidance",
+      "us_eo_14110_ai",
+      "us_omb_m25_21",
+      "us_omb_m25_22",
+      "vbpl_173643",
+      "vbpl_173644",
+      "vbpl_173645",
+      "vbpl_183398",
+      "vbpl_183402",
+      "vbpl_185174",
+      "vbpl_186524",
+      "vbpl_3344d930-914f-11f1-aa14-9da5ed7cd652",
+      "vbpl_59b60720-c934-11f1-9175-a36a97ecbf54",
+      "vbpl_65f549e0-6c7a-11f1-98ae-b927d9242c97",
+      "vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900",
+      "vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5",
+      "vbpl_cc5dfbb0-6c79-11f1-930f-f9a15c0c257a",
+      "vbpl_dd1eec70-6c79-11f1-af6b-c5827943e779",
+      "vbpl_e0ecd960-9402-11f1-a055-abba87057267",
+      "vbpl_fccf6fd0-4dad-11f1-9432-b37c37e86d8a",
+      "vn_luat_20_2023",
+      "vn_nd_13_2023",
+      "vn_nd_165_2025"
+    ],
+    "total_chunks": 3285,
+    "input_chunks": 3285,
+    "embedding_model": "bge-m3",
+    "indexed_at": "2026-11-16T09:35:29.820470+00:00",
+    "rebuild": true,
+    "processed_path": "data/updates/20261116_093406_aaf12a03/processed",
+    "chunks_path": "data/updates/20261116_093406_aaf12a03/chunks/chunks.jsonl",
+    "corpus_signature": "d3ae04fe76bbc9e547bc5b6eaf41806a55b1367e39fd8e994f96b3b728b8b468"
+  },
+  "qdrant": {
+    "point_count": 3285,
+    "status": "green",
+    "vector_size": 1024,
+    "distance": "Cosine",
+    "aliases": [
+      {
+        "alias_name": "ai_documents_verified_v2",
+        "collection_name": "ai_documents_verified_v2__api_20261116_093406_aaf12a03"
+      },
+      {
+        "alias_name": "ai_documents_upload_check_20261116_095152",
+        "collection_name": "ai_documents_upload_check_20261116_095152__api_20261116_095152_fdbb30be"
+      }
+    ]
+  },
+  "quality": {
+    "documents": 63,
+    "chunks": 3285,
+    "unique_document_text_hashes": 63,
+    "missing_document_source": 0,
+    "missing_chunk_source": 0,
+    "missing_chunk_version": 0,
+    "duplicate_chunk_ids": 0,
+    "chunk_characters_min": 339,
+    "chunk_characters_median": 2109,
+    "chunk_characters_p95": 2194,
+    "chunk_characters_max": 2200,
+    "document_characters": 5936893,
+    "regions": {
+      "VN": 26,
+      "INTERNATIONAL": 22,
+      "US": 7,
+      "ASEAN": 3,
+      "EU": 5
+    },
+    "languages": {
+      "vi": 26,
+      "en": 37
+    },
+    "types": {
+      "regulation": 21,
+      "framework": 7,
+      "guideline": 19,
+      "policy": 6,
+      "recommendation": 2,
+      "strategy": 3,
+      "law": 5
+    },
+    "provenance_documents": {
+      "official_api": 17,
+      "official_download": 46
+    },
+    "provenance_chunks": {
+      "official_api": 325,
+      "official_download": 2960
+    }
+  },
+  "parquet": [
+    {
+      "file": "part-00000-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+      "bytes": 626810,
+      "rows": 15,
+      "row_groups": 1,
+      "compression": "SNAPPY"
+    },
+    {
+      "file": "part-00001-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+      "bytes": 1106887,
+      "rows": 14,
+      "row_groups": 1,
+      "compression": "SNAPPY"
+    },
+    {
+      "file": "part-00002-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+      "bytes": 405146,
+      "rows": 13,
+      "row_groups": 1,
+      "compression": "SNAPPY"
+    },
+    {
+      "file": "part-00003-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+      "bytes": 795338,
+      "rows": 21,
+      "row_groups": 1,
+      "compression": "SNAPPY"
+    }
+  ],
+  "parquet_schema": "document_id: string\nsource_document_id: string\ntitle: string\ntext: string\ntext_sha256: string\nsource_url: string\nregion: string\npublished_date: string\ndocument_type: string\nsource_path: string not null\nraw_path: string not null\njurisdiction: string\nlanguage: string\nversion_id: string not null\neffective_date: string\nissued_date: string\nlegal_status: string\nparse_status: string\ncollected_at: string\ncontent_hash: string\nprovenance: string\npipeline_version: string\nsource_org: string\napi_provider: string\napi_url: string\n-- schema metadata --\norg.apache.spark.version: '3.5.3'\norg.apache.spark.sql.parquet.row.metadata: '{\"type\":\"struct\",\"fields\":[{\"' + 1721",
+  "ollama_models": {
+    "models": [
+      {
+        "name": "qwen3:4b-instruct-2507-q4_K_M",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "modified_at": "2026-11-16T07:03:07.368347973Z",
+        "size": 2497293803,
+        "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "tools",
+          "thinking",
+          "completion"
+        ]
+      },
+      {
+        "name": "qwen3:4b",
+        "model": "qwen3:4b",
+        "modified_at": "2026-11-16T06:49:43.298285666Z",
+        "size": 2497293931,
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "thinking"
+        ]
+      },
+      {
+        "name": "qwen3:1.7b",
+        "model": "qwen3:1.7b",
+        "modified_at": "2026-11-16T06:18:38.43239948Z",
+        "size": 1359293444,
+        "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "2.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 2048,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "thinking"
+        ]
+      },
+      {
+        "name": "bge-m3:latest",
+        "model": "bge-m3:latest",
+        "modified_at": "2026-11-16T06:17:51.642285905Z",
+        "size": 1157672605,
+        "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "bert",
+          "families": [
+            "bert"
+          ],
+          "parameter_size": "566.70M",
+          "quantization_level": "F16",
+          "context_length": 8192,
+          "embedding_length": 1024,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "embedding"
+        ]
+      }
+    ]
+  },
+  "ollama_runtime": {
+    "models": []
+  },
+  "hdfs_entire_namespace": {
+    "ContentSummary": {
+      "directoryCount": 61,
+      "ecPolicy": "",
+      "fileCount": 221,
+      "length": 157987547,
+      "quota": -1,
+      "snapshotDirectoryCount": 0,
+      "snapshotFileCount": 0,
+      "snapshotLength": 0,
+      "snapshotSpaceConsumed": 0,
+      "spaceConsumed": 157987547,
+      "spaceQuota": -1,
+      "typeQuota": {}
+    }
+  },
+  "latest_sync": {
+    "updated_at": "2026-11-16T09:36:12.254542+00:00",
+    "file_count": 178,
+    "total_bytes": 106031673,
+    "files": [
+      {
+        "path": "/ai_docs/raw/asean_ai_ethics.pdf",
+        "bytes": 4233765,
+        "sha256": "6464a6d912a918a1b49c36b7dbd7f66b4756352e49164c5020f28b0b190bfe4e"
+      },
+      {
+        "path": "/ai_docs/raw/asean_genai_guide.pdf",
+        "bytes": 2906548,
+        "sha256": "d2f9f1293e9af2f3ca4cc3954e39f94ed6fcd6b52f5e72b28d0d51fc9954ddbd"
+      },
+      {
+        "path": "/ai_docs/raw/asean_responsible_ai_roadmap.pdf",
+        "bytes": 11950848,
+        "sha256": "5f2e46a81ddd06f9adda0adf81d202fc04dde0d84bd3318936fc94d1c42a0e46"
+      },
+      {
+        "path": "/ai_docs/raw/australia_ai_ethics.html",
+        "bytes": 149317,
+        "sha256": "732606411790b304e94c3fbbcbd25aaf87f9ae14413a60ca5f31d6aae1398ad2"
+      },
+      {
+        "path": "/ai_docs/raw/canada_automated_decisions.html",
+        "bytes": 69865,
+        "sha256": "225f990673205a49cee216fb8fc124909e8eb917559e3e258a8dd7fb7c35a0e3"
+      },
+      {
+        "path": "/ai_docs/raw/eu_ai_act_2024_1689.html",
+        "bytes": 1264461,
+        "sha256": "9b15f68008b0bd800c0b4d32eb4d2b79c642333d5d47f60b5b4628c7797852b4"
+      },
+      {
+        "path": "/ai_docs/raw/eu_ai_literacy.html",
+        "bytes": 117954,
+        "sha256": "9dace21074f5cd6e56ba1d234a2a191b630bbfe79ab6a3663dc801ac90dbbbda"
+      },
+      {
+        "path": "/ai_docs/raw/eu_gpai_code.html",
+        "bytes": 60924,
+        "sha256": "e47c61600de69c2e07dd24756ebff6711058ba4bc4c9f5283d8a32af2adc347b"
+      },
+      {
+        "path": "/ai_docs/raw/eu_gpai_obligations_faq.html",
+        "bytes": 79202,
+        "sha256": "be3c0041900bff95c04863b684438f88d99f45836995ce4bbeb45e2a5f8a1530"
+      },
+      {
+        "path": "/ai_docs/raw/eu_gpai_provider_overview.html",
+        "bytes": 55253,
+        "sha256": "d06def6db58471ac2beef83264bf9f3fc527c18015385de862d2f4d86917c52a"
+      },
+      {
+        "path": "/ai_docs/raw/luat_134_2025.pdf",
+        "bytes": 502586,
+        "sha256": "181b8687613093eaf42d09af506999a22c7b13453ede8ef574ac48de2e1fdd1b"
+      },
+      {
+        "path": "/ai_docs/raw/luat_60_2024.html",
+        "bytes": 80402,
+        "sha256": "abd2b80261754fd51e77ad7d80c647374a026462f666222c17a7fea6acec1f31"
+      },
+      {
+        "path": "/ai_docs/raw/luat_60_2024.pdf",
+        "bytes": 373063,
+        "sha256": "d77fc7c76798697a4ee95c2e72d2c942d473f3a32947d752e51de398237af446"
+      },
+      {
+        "path": "/ai_docs/raw/luat_71_2025.pdf",
+        "bytes": 538673,
+        "sha256": "d65911c89cedad9cb0948824d742363776b9a39428969200951af089ea217468"
+      },
+      {
+        "path": "/ai_docs/raw/luat_86_2015.pdf",
+        "bytes": 2081205,
+        "sha256": "ba7cd7d075a3803dc13ce4f519eee2e44e873a5e2a3cd519f08ca80ac1594f92"
+      },
+      {
+        "path": "/ai_docs/raw/luat_91_2025.html",
+        "bytes": 80643,
+        "sha256": "e33af7e55a9e119b1aa668c5c804707ed8f5b6b1c4648d586950e54581ef4ce0"
+      },
+      {
+        "path": "/ai_docs/raw/luat_91_2025.pdf",
+        "bytes": 357221,
+        "sha256": "226dd6da66a6eea348e04db0f8c496d884021b730298991c6f6683720a0dfa2e"
+      },
+      {
+        "path": "/ai_docs/raw/ncsc_secure_ai_development.pdf",
+        "bytes": 2334019,
+        "sha256": "f61a22f012a999fdb1d9d555f484648ddc53a40cbd4313985a4e1da09dde87f9"
+      },
+      {
+        "path": "/ai_docs/raw/nd_142_2026.html",
+        "bytes": 81431,
+        "sha256": "65cd384b5501a276740632ec206874c55f66803637e09e9339a22615503ce230"
+      },
+      {
+        "path": "/ai_docs/raw/nd_142_2026.pdf",
+        "bytes": 1827087,
+        "sha256": "b2f71e9b86a878e4e91e0f59478b893f98a7db853112de66f3a7c58cbf392e18"
+      },
+      {
+        "path": "/ai_docs/raw/nd_356_2025.pdf",
+        "bytes": 2357540,
+        "sha256": "5b36a060c22db1df6c32b8c66da63b0c36571a1f7fa01765e719baac215b6c12"
+      },
+      {
+        "path": "/ai_docs/raw/nd_47_2020.pdf",
+        "bytes": 1643796,
+        "sha256": "563994c20546deb03ee2dc64eb0bcb89d5daf03756e30d0e9c835758c2ac5196"
+      },
+      {
+        "path": "/ai_docs/raw/nist_adversarial_ai.pdf",
+        "bytes": 1964469,
+        "sha256": "4811fb6ad73f9c9121843ab77e029b5adc6f2c86d33c2fc5b2099ef133847646"
+      },
+      {
+        "path": "/ai_docs/raw/nist_ai_rmf_1_0.pdf",
+        "bytes": 1946127,
+        "sha256": "7576edb531d9848825814ee88e28b1795d3a84b435b4b797d3670eafdc4a89f1"
+      },
+      {
+        "path": "/ai_docs/raw/nist_ai_rmf_playbook.pdf",
+        "bytes": 2882270,
+        "sha256": "65d6101d806502875aadb0fd19a75c3a9cc9a5e9461129e9398a39192d8202d2"
+      },
+      {
+        "path": "/ai_docs/raw/nist_ai_standards_plan.pdf",
+        "bytes": 1083152,
+        "sha256": "0c93bda23cc2e7d8cee8c443aa6343c4acfee5a31fb4d50e992ed4ff7e11cc15"
+      },
+      {
+        "path": "/ai_docs/raw/nist_gen_ai_profile.pdf",
+        "bytes": 1174643,
+        "sha256": "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a"
+      },
+      {
+        "path": "/ai_docs/raw/nist_sp800_218a.pdf",
+        "bytes": 650661,
+        "sha256": "e088c8bc75716824dae7c36a987f408364638561d381ed001b5c12254a7b10d8"
+      },
+      {
+        "path": "/ai_docs/raw/nist_synthetic_content.pdf",
+        "bytes": 4306208,
+        "sha256": "a387a4977db70d65cdbc178c8b0cb8aa5dedb85fa80d6f473c244e2767a4fd54"
+      },
+      {
+        "path": "/ai_docs/raw/oecd_ai_principles.pdf",
+        "bytes": 679046,
+        "sha256": "88227000e69be9aad5864155bd3e06ebead1e76c5b7cf662d63c1605408e5060"
+      },
+      {
+        "path": "/ai_docs/raw/oecd_ai_principles_guide.html",
+        "bytes": 137864,
+        "sha256": "3ac7f77d305422b1bf9ab6fb77f07797309e7cb406cc40ab88d115d102530f36"
+      },
+      {
+        "path": "/ai_docs/raw/qd_06_2022.pdf",
+        "bytes": 2176802,
+        "sha256": "76b57f2a6b83b4c48a5f1bb424c791518c10795e387a8df018a5d07f1dc74a27"
+      },
+      {
+        "path": "/ai_docs/raw/qd_127_2021.html",
+        "bytes": 80336,
+        "sha256": "32f7a636161f9ded19dd3e0522d8eb9ffb5a3050ba9550f9b2fe373f7fb94ab1"
+      },
+      {
+        "path": "/ai_docs/raw/qd_127_2021.pdf",
+        "bytes": 412310,
+        "sha256": "baefd0f7cdc3920a0ae596816ad4b37b8d649026ef173167cb48c886b9e541d4"
+      },
+      {
+        "path": "/ai_docs/raw/qd_1671_2026.html",
+        "bytes": 80353,
+        "sha256": "dcfd5cefa26aa66f87d76c4bf9664975ca4de206bef5029e5e2d21b869ad41e5"
+      },
+      {
+        "path": "/ai_docs/raw/qd_1671_2026.pdf",
+        "bytes": 2491716,
+        "sha256": "8d0000fbb2617f639ba81a3269278e07224f29ba0d4c1be95b1fa0c3033d10dd"
+      },
+      {
+        "path": "/ai_docs/raw/qd_411_2022.pdf",
+        "bytes": 3408074,
+        "sha256": "0d3e11cea22da0f2609a85e03c58bd9cd2d4716c13ee9595bc42e15fbc57716e"
+      },
+      {
+        "path": "/ai_docs/raw/qd_749_2020.pdf",
+        "bytes": 1470664,
+        "sha256": "efd3faa4aa21fd720e31a04a3538056efe542133f3554a6490144f7292ca48b7"
+      },
+      {
+        "path": "/ai_docs/raw/qd_942_2021.pdf",
+        "bytes": 1870385,
+        "sha256": "407531cd7775be6b61dadaf8650ac10ab41c9f3e5907ef73da65e306d8964573"
+      },
+      {
+        "path": "/ai_docs/raw/singapore_agentic_ai.pdf",
+        "bytes": 2169295,
+        "sha256": "2636e19ff1c86e862394d2fc900592e97b83c04cc35e3c8443108114b7f1dfba"
+      },
+      {
+        "path": "/ai_docs/raw/singapore_genai_framework.html",
+        "bytes": 117453,
+        "sha256": "59523d0445189f1c17db6097d9e5ca3f18e575a6d66a0d1187d4e0728498ceba"
+      },
+      {
+        "path": "/ai_docs/raw/singapore_model_ai_gov.pdf",
+        "bytes": 1543277,
+        "sha256": "f2d199c826207a259c1c67b8379c0e2b0028fecf142129df9bf16447abcfb2d4"
+      },
+      {
+        "path": "/ai_docs/raw/singapore_pdpc_ai_personal_data.pdf",
+        "bytes": 468849,
+        "sha256": "68dde35cd342c4276fe27891b50949434cf28990ea4c9f4c345877f3b63ff4bd"
+      },
+      {
+        "path": "/ai_docs/raw/uk_ai_assurance.html",
+        "bytes": 207961,
+        "sha256": "528d0e327927811e3050d3d97fe3bdc6345cf85964d8e2277ecb0cc7e8959501"
+      },
+      {
+        "path": "/ai_docs/raw/uk_ai_playbook.html",
+        "bytes": 674035,
+        "sha256": "da801d58e9e19e35e87cc28fa971c92a228d882adaac8d45b482d2ccc3b2a162"
+      },
+      {
+        "path": "/ai_docs/raw/uk_ai_procurement.html",
+        "bytes": 173160,
+        "sha256": "105efbf3dc8b97cef29abdd4fc6b54903faa08977c06b871944eb73134e58b02"
+      },
+      {
+        "path": "/ai_docs/raw/uk_ai_regulation_response.html",
+        "bytes": 1023195,
+        "sha256": "4e76df190f45b37199f5c1735bf2a6cd0afbb3f658be1f33650ae0c3d29e4b9b"
+      },
+      {
+        "path": "/ai_docs/raw/uk_ai_safety_inst.html",
+        "bytes": 143555,
+        "sha256": "2a0735011a177f27d55bbb2239d0a19c4603d715c37fd6f76893814ce71a6067"
+      },
+      {
+        "path": "/ai_docs/raw/uk_ai_white_paper.html",
+        "bytes": 838148,
+        "sha256": "146409d6d4f6b4b0193444fab8a2c8b1b058fd9b162eb212362429041d9a49d6"
+      },
+      {
+        "path": "/ai_docs/raw/uk_atrs_guidance.html",
+        "bytes": 173496,
+        "sha256": "51c2e9275708050cc73133bdc9da55fa09df64b010204621945037b8918a0920"
+      },
+      {
+        "path": "/ai_docs/raw/uk_automated_decision_ethics.html",
+        "bytes": 170812,
+        "sha256": "2359ddffa458d459143db6bbe2f67c0ff09f8e0d5545333dae9f2fe1eea0913b"
+      },
+      {
+        "path": "/ai_docs/raw/uk_generative_ai_framework.html",
+        "bytes": 465413,
+        "sha256": "5994bddc92d478e6bd80ede451727460094ef93d2e25df629438bc107d919c66"
+      },
+      {
+        "path": "/ai_docs/raw/un_governing_ai_humanity.pdf",
+        "bytes": 4340014,
+        "sha256": "08923cc8a90f724b0cb91d65b02bad5612c68883327f9e34518a5818a4fb4908"
+      },
+      {
+        "path": "/ai_docs/raw/unesco_ai_ethics_guidance.html",
+        "bytes": 291714,
+        "sha256": "4709bf3c66e8eec051c35f1cf84698fddb075ed4f4aa1ddcb01d737ce3688703"
+      },
+      {
+        "path": "/ai_docs/raw/us_eo_14110_ai.html",
+        "bytes": 158044,
+        "sha256": "8760b2f89b73a2050f773ed4aab26224e67f5b5d0ee7073bf93e6ef5b7d77a73"
+      },
+      {
+        "path": "/ai_docs/raw/us_omb_m25_21.pdf",
+        "bytes": 2629748,
+        "sha256": "0aab0aa4eaeac969ed93894d3940c5dc9d0b7377048171b164a439e8b9e49813"
+      },
+      {
+        "path": "/ai_docs/raw/us_omb_m25_22.pdf",
+        "bytes": 1399862,
+        "sha256": "e157538371eb9665fabdacff748788fc6afc0575bb3661d15b146f3138084cd8"
+      },
+      {
+        "path": "/ai_docs/raw/vn_luat_20_2023.pdf",
+        "bytes": 514663,
+        "sha256": "2458d01d6453cd11ab7aaddbae36e988110754bcb53a59eda729987a63882914"
+      },
+      {
+        "path": "/ai_docs/raw/vn_nd_13_2023.html",
+        "bytes": 183037,
+        "sha256": "92d9fc863bdca4e9e70e38b58335a1cb2631d95c0ee6cc5d7566b36660432a9b"
+      },
+      {
+        "path": "/ai_docs/raw/vn_nd_165_2025.pdf",
+        "bytes": 598343,
+        "sha256": "916e27b4a1387072d310a7417285ee5fc8e0805f6f4e4ef9af8413f22917d7f0"
+      },
+      {
+        "path": "/ai_docs/parsed/asean_ai_ethics.json",
+        "bytes": 197441,
+        "sha256": "eaf9c1d844da31fc54155636d2dd33499f0b3c5d5c2a6505ff94dbb9387b2c56"
+      },
+      {
+        "path": "/ai_docs/parsed/asean_genai_guide.json",
+        "bytes": 104185,
+        "sha256": "974e08daadf002422d71d0d47941d4b111f66a47f4dd7eb63596bad16b2e8fea"
+      },
+      {
+        "path": "/ai_docs/parsed/asean_responsible_ai_roadmap.json",
+        "bytes": 436514,
+        "sha256": "d24fbe9ddc5e9624a86551cf17354f71983383a2c389ee2784ca29784dd7965a"
+      },
+      {
+        "path": "/ai_docs/parsed/australia_ai_ethics.json",
+        "bytes": 13214,
+        "sha256": "3134ad1b88928383f2dd28ad8f4b247eddce0afa49b3e8160b180d54d5666aab"
+      },
+      {
+        "path": "/ai_docs/parsed/canada_automated_decisions.json",
+        "bytes": 25989,
+        "sha256": "a9ea3748782337cf913156669e90268eb48c2235cf15a6db00dbfd787ecd7f0d"
+      },
+      {
+        "path": "/ai_docs/parsed/eu_ai_act_2024_1689.json",
+        "bytes": 598935,
+        "sha256": "59763c3acde1a3397c55df95533a64c9dbbc886ce8d86043b6c04c7b3af78e02"
+      },
+      {
+        "path": "/ai_docs/parsed/eu_ai_literacy.json",
+        "bytes": 36974,
+        "sha256": "ac8fa3994d6895f7e626a75be62c564487a32601d56ccc2a6b745d06f7d04239"
+      },
+      {
+        "path": "/ai_docs/parsed/eu_gpai_code.json",
+        "bytes": 5797,
+        "sha256": "4c77cfa9be437ea03527a9933a8bf896127210e392bac6aabd3c4376708ffded"
+      },
+      {
+        "path": "/ai_docs/parsed/eu_gpai_obligations_faq.json",
+        "bytes": 20870,
+        "sha256": "6758811eb5167fa938b5344141e67418082efb0850b39a5e9c0ddbd4a20fab2a"
+      },
+      {
+        "path": "/ai_docs/parsed/eu_gpai_provider_overview.json",
+        "bytes": 5955,
+        "sha256": "9d8b8c21d04214cddf6e8aebf7f1f094e58c11eb584ac47b0ca58b682ef2b313"
+      },
+      {
+        "path": "/ai_docs/parsed/luat_134_2025.json",
+        "bytes": 68266,
+        "sha256": "7f60dc57be0f8bb4ded29c94e3ffe3e774cd9400f2b1cde15577e096c5b6cc06"
+      },
+      {
+        "path": "/ai_docs/parsed/luat_60_2024.json",
+        "bytes": 65821,
+        "sha256": "df29a5281f34f06b68ed9d9274f782fd1957abfe83cc18a003f65b0eab755b03"
+      },
+      {
+        "path": "/ai_docs/parsed/luat_71_2025.json",
+        "bytes": 86868,
+        "sha256": "29d1513b090f18a7f309dc7799cc44be28223fc4a34f258c690529975393fbf9"
+      },
+      {
+        "path": "/ai_docs/parsed/luat_91_2025.json",
+        "bytes": 74386,
+        "sha256": "81fd297bcea0a890ec68e95d6485ef122e9be78d96804902011321e00e7924a9"
+      },
+      {
+        "path": "/ai_docs/parsed/ncsc_secure_ai_development.json",
+        "bytes": 40122,
+        "sha256": "cfd265e429173c98960f0fd3956607fe4c73d0e5343d9130ab2b54430b1fce59"
+      },
+      {
+        "path": "/ai_docs/parsed/nd_142_2026.json",
+        "bytes": 269508,
+        "sha256": "9ba8fba321000183c08060edf7c414ec35b8bdc9db5cf538d31342b190724bdf"
+      },
+      {
+        "path": "/ai_docs/parsed/nist_adversarial_ai.json",
+        "bytes": 355893,
+        "sha256": "75e0dc26909854c4d4bdcd5596056167df9c76198ccf8a6a62902002db0d8b0b"
+      },
+      {
+        "path": "/ai_docs/parsed/nist_ai_rmf_1_0.json",
+        "bytes": 110354,
+        "sha256": "4f5bb4957c05984b8c34325dc1554c11d367504d59406c0940f231ad0ea4d14b"
+      },
+      {
+        "path": "/ai_docs/parsed/nist_ai_rmf_playbook.json",
+        "bytes": 346826,
+        "sha256": "f410dab96752602ac6cc6e6a0305260814521c109def369b939e2ea4c9a7def8"
+      },
+      {
+        "path": "/ai_docs/parsed/nist_ai_standards_plan.json",
+        "bytes": 103579,
+        "sha256": "e0392cb2bb3e58b903474134026d188af431e50546d75f4c7243e13018a572ec"
+      },
+      {
+        "path": "/ai_docs/parsed/nist_gen_ai_profile.json",
+        "bytes": 163617,
+        "sha256": "8963173ba753744e86a4fb38b6bd31e7b963ef28267a2d85482ee9462f04d2e9"
+      },
+      {
+        "path": "/ai_docs/parsed/nist_sp800_218a.json",
+        "bytes": 72449,
+        "sha256": "5a2f2cbee38e0763b395387fea9deabb47d904aace9eb54bd48f7b0d84c2864d"
+      },
+      {
+        "path": "/ai_docs/parsed/nist_synthetic_content.json",
+        "bytes": 211463,
+        "sha256": "96fff1cea19bcceb0bd5620c53d92d571e2a5dda5b16fed7a269a460aba11690"
+      },
+      {
+        "path": "/ai_docs/parsed/oecd_ai_principles.json",
+        "bytes": 34797,
+        "sha256": "7f1f95fbc8cadb3f3b0471c6776627f78dee2d29f3527b4971c162e1f96fb679"
+      },
+      {
+        "path": "/ai_docs/parsed/oecd_ai_principles_guide.json",
+        "bytes": 4002,
+        "sha256": "50ce9d6a4167b3450f251cece728f37c144db47df99171e82a15fc1e2861600a"
+      },
+      {
+        "path": "/ai_docs/parsed/qd_127_2021.json",
+        "bytes": 38649,
+        "sha256": "ca99f68b09706e66dcfb6f3e7989fbb20045d8fc8d870247330c21874cd297b9"
+      },
+      {
+        "path": "/ai_docs/parsed/qd_1671_2026.json",
+        "bytes": 146849,
+        "sha256": "f47be3872399e0a3d9cb70c6f7ffdd6a97832842cda54fe4f47814d29cdc8d3a"
+      },
+      {
+        "path": "/ai_docs/parsed/singapore_agentic_ai.json",
+        "bytes": 130502,
+        "sha256": "78130227c36e5f96753264612e1e27cdcbf0b38536c6c8e5e8d39221a3751de3"
+      },
+      {
+        "path": "/ai_docs/parsed/singapore_model_ai_gov.json",
+        "bytes": 115919,
+        "sha256": "8f80fce41c66d65ea53d714a25ef8b16703f273a616a278a3af1c72b51e99258"
+      },
+      {
+        "path": "/ai_docs/parsed/singapore_pdpc_ai_personal_data.json",
+        "bytes": 50775,
+        "sha256": "1ce5c5ceaefd529959c8330b15c5eabe66d76a61337082a291335516407e1799"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_ai_assurance.json",
+        "bytes": 54958,
+        "sha256": "ddd4b9b5cb6aa75bd2f5fe2c9543449e4e0319aa2c638b7dff3f1794cbb51388"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_ai_playbook.json",
+        "bytes": 230608,
+        "sha256": "ac9d868c5aa89aa229dbbedad2d0b72e1b9f2329351c4d6501632c4dee73db96"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_ai_procurement.json",
+        "bytes": 39482,
+        "sha256": "ef3e674dbb7882f064a9737cc316b85652baf0a6c29cd884c2895db0c1bdba9c"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_ai_regulation_response.json",
+        "bytes": 298139,
+        "sha256": "9a4b79999f337d5b1bed0d2b7f783380fe8e9311507f3d73656e700fb62c9bff"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_ai_safety_inst.json",
+        "bytes": 27465,
+        "sha256": "0ed806d320d6919647e16968516ddb114916aaec2a1513b06b9814e77758409d"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_ai_white_paper.json",
+        "bytes": 216960,
+        "sha256": "16703ac64918c131b7a762e3cd8a675103051a6a9782ad8bf7e88cde793eec1a"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_atrs_guidance.json",
+        "bytes": 34485,
+        "sha256": "42be4e328dd2635d0a09cc9cc398bf9c83972cd9d7c17ff7a035e688a6144426"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_automated_decision_ethics.json",
+        "bytes": 29933,
+        "sha256": "b885312df195fa95e6b4b3a6c00606497dd8140426667adb5b267e1e710559ad"
+      },
+      {
+        "path": "/ai_docs/parsed/uk_generative_ai_framework.json",
+        "bytes": 159194,
+        "sha256": "a4942466ab39146c48dd56fe09ee71d216afffbbf5cc244602cde78e2ef78d0d"
+      },
+      {
+        "path": "/ai_docs/parsed/un_governing_ai_humanity.json",
+        "bytes": 336652,
+        "sha256": "8b82c59645449450eeb49748cd3dbf0653f1a90718d416e411ff7187f365f92e"
+      },
+      {
+        "path": "/ai_docs/parsed/unesco_ai_ethics_guidance.json",
+        "bytes": 7468,
+        "sha256": "9dfbcecf4c8b0fca8199adb0c2adce54aa80acd7660fc8bf31fe19bc4c95a2af"
+      },
+      {
+        "path": "/ai_docs/parsed/us_eo_14110_ai.json",
+        "bytes": 139842,
+        "sha256": "2b0bb14a9a61ee0a9c4db7c37599510229da35eb940dd24ff96a60715b8363f5"
+      },
+      {
+        "path": "/ai_docs/parsed/us_omb_m25_21.json",
+        "bytes": 68708,
+        "sha256": "fb0f69f4c3cadd8736bd312ea3f3af28dbb68aabf594e68e8a181e79b3482fa2"
+      },
+      {
+        "path": "/ai_docs/parsed/us_omb_m25_22.json",
+        "bytes": 37128,
+        "sha256": "13b786763f0877dcd757ce7a972e5ecff50a4f37ddd55c3d87940e7888a106e2"
+      },
+      {
+        "path": "/ai_docs/parsed/vn_luat_20_2023.json",
+        "bytes": 80316,
+        "sha256": "96f178696dbeba750930607ae6c3edc8aa3e4c050c10779935521b278e6b46dd"
+      },
+      {
+        "path": "/ai_docs/parsed/vn_nd_13_2023.json",
+        "bytes": 73198,
+        "sha256": "04fee4d56716bb906801cf1454d7898cecd08daa33ebba47d2488dabb5e191d3"
+      },
+      {
+        "path": "/ai_docs/parsed/vn_nd_165_2025.json",
+        "bytes": 128329,
+        "sha256": "23f46639aee5f3fab9ecbbc248bb5a33a4fe2e144f29b54313df37566c2a03a5"
+      },
+      {
+        "path": "/ai_docs/processed/20261116_093406_aaf12a03/_SUCCESS",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/ai_docs/processed/20261116_093406_aaf12a03/part-00000-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+        "bytes": 626810,
+        "sha256": "e7d12961960c4ed930386b1929493d33b1c204495cca27344ad1fb831b30f21e"
+      },
+      {
+        "path": "/ai_docs/processed/20261116_093406_aaf12a03/part-00001-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+        "bytes": 1106887,
+        "sha256": "e10c6d541712a0c7542538013c95122990849797fbc88b11eb8a7e303dbd9dfd"
+      },
+      {
+        "path": "/ai_docs/processed/20261116_093406_aaf12a03/part-00002-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+        "bytes": 405146,
+        "sha256": "a5c8623aca96947050a7ce18d7d3c617b5b131745aef8fe448e4d96d637aee95"
+      },
+      {
+        "path": "/ai_docs/processed/20261116_093406_aaf12a03/part-00003-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+        "bytes": 795338,
+        "sha256": "a613f485a4a08d54b0bcf83cdde0130900417eb46324e9830038672a08112354"
+      },
+      {
+        "path": "/ai_docs/chunks/20261116_093406_aaf12a03/chunks.jsonl",
+        "bytes": 11370755,
+        "sha256": "4a133ac6b842eaf3eff5ff84050665fcd6601180e0df42fee61dd2bb2f6c63f3"
+      },
+      {
+        "path": "/ai_docs/chunks/20261116_093406_aaf12a03/chunks.parquet",
+        "bytes": 3321189,
+        "sha256": "3ccb02ebfa5b1f9b8889271d76893cfa057c7ac363f9241f42d4f315b2193462"
+      },
+      {
+        "path": "/ai_docs/manifests/chunk_manifest.json",
+        "bytes": 177,
+        "sha256": "5671eca0aaf6dd33a52466bf9d440042cfe4cbd5d07c71ad5ce81e99f98f9f99"
+      },
+      {
+        "path": "/ai_docs/manifests/dynamic_collection_report.json",
+        "bytes": 584,
+        "sha256": "e987a068441160aea0222729d381891d0eb40b82ec6a6ebb653ccc1a9550f6d9"
+      },
+      {
+        "path": "/ai_docs/manifests/dynamic_ingestion_manifest.json",
+        "bytes": 6398,
+        "sha256": "8579575383e433b174aa5e7b32eaf359ae0e1a06e0d13099be3f05320e7f59d3"
+      },
+      {
+        "path": "/ai_docs/manifests/etl_report.json",
+        "bytes": 521,
+        "sha256": "dc41a9fdcfe32371c2fa2afa391c5cd1a691725a8ee93d88a25056058a6fc81e"
+      },
+      {
+        "path": "/ai_docs/manifests/index_manifest.json",
+        "bytes": 2394,
+        "sha256": "31a733ca99f5fe74ce0eb40665cd07331a4c8d7918f6a0698fae736f95e35c42"
+      },
+      {
+        "path": "/ai_docs/manifests/index_progress.json",
+        "bytes": 377,
+        "sha256": "d60b96dc7c8ba6ee64ea110be3a271ec3e8fa5350636a51c4ae922620aa8d61a"
+      },
+      {
+        "path": "/ai_docs/manifests/ingestion_manifest.json",
+        "bytes": 26295,
+        "sha256": "2bed495607fe62c320a46d2c86958ce73413dab221e1fc5bf3bc63cfb2840ac9"
+      },
+      {
+        "path": "/ai_docs/manifests/pipeline_run.json",
+        "bytes": 14489,
+        "sha256": "da2dd75eb11801b4dbf8c1db84dc599356a50bde8b98f53a99b165a5ec5d09e8"
+      },
+      {
+        "path": "/ai_docs/manifests/rejected_versions.json",
+        "bytes": 468,
+        "sha256": "17bafde50f4af899f0b6a31e23d853de8601d52ef853374eaf9b2f57960c71ac"
+      },
+      {
+        "path": "/ai_docs/manifests/verified_collection_report.json",
+        "bytes": 7601,
+        "sha256": "b6a7d84424f24b6d195d96c76a78cc4ea63b4f93434b1037cda2aa0010c8cd6f"
+      },
+      {
+        "path": "/ai_docs/manifests/verified_ingestion_manifest.json",
+        "bytes": 76460,
+        "sha256": "99ce64cbc315957f6771f858e7f4966619e22f30cf1c56885c2a78d9b6317980"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/catalog/17b7cabe842f8865a58ff23ea6888ff280799bfe00046962d5424d0b06589725.json",
+        "bytes": 120484,
+        "sha256": "61af5edf69d4e8207d51134da4baca4cd9dab78d0cdad2a383097180525156e6"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/catalog/7ef790ac0fec03d83da3cac00a554a226f0fb281afc22a65e1c6ca2442f2c90b.json",
+        "bytes": 120371,
+        "sha256": "21f40e29bf63e1965d1323c49d608c5e168047fc5ad5311627839d8653d50191"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/catalog/d3958254587a4f4f23fd6999c3b645086dc1f3d7f1059a900c480d432eaed5a9.json",
+        "bytes": 118318,
+        "sha256": "19a38d077e9813227e41d11231205c04a2f83b10cd718f794abc6a0110302096"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/catalog/dba46a3511c0e7dd8f086c51ef1e3fe0248b9d741134cb41d45bc9660328e201.json",
+        "bytes": 119626,
+        "sha256": "bec88a7efe20324ca26fae66d5a2a84834de4d783ce0a62a4b8b85e2487a0fd9"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/catalog/e724b65a4b1240d4d039d6ab0076f84afba45115f4e5f1880280fe283e65386d.json",
+        "bytes": 120282,
+        "sha256": "aca0d31aa27ceddc24703dd9272fea670a398f41c2439085d0f53e32ee981905"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/documents/2026-11415/8bf74d291ee6d878dafa1ba79a059a6aa38e728196a607d4a93cb315f3a2877e.json",
+        "bytes": 14920,
+        "sha256": "daa888839a1441f86419f1242d336a24e415522d135440a0fe339b52d4d55289"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/documents/2026-13628/309b0186c18c51286cde8e997b44d70d75eaf015c60d2bb68b55b381219f6eda.json",
+        "bytes": 15644,
+        "sha256": "a7cea4a32c1e679bdf2dd527c425e4ef01cfaa17743b33fdd455c27e1084ef11"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/documents/2026-13928/c78c2d0c625ea9f20d0377dc278ef486057a672cf9148c41a39bc97d7b04ca4b.json",
+        "bytes": 15496,
+        "sha256": "971b1f77153cda473c22ee55811ee1c4d0301060fc5f0c8a375405a7bb1e41ea"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/documents/2026-16371/19639bbbcacfeaaf95681bab14ab4484580285fab385fb296daf60ae41ecbea4.json",
+        "bytes": 16609,
+        "sha256": "ba915c8b9555e870d7dc1c3f9ce7db7a095d6eeff700ff840089b079b5126ff5"
+      },
+      {
+        "path": "/ai_docs/raw/api/federal_register/documents/2026-22593/f2e00270300dc25bb47ddca525e0e35a1dafc7f0dec5947c9e89a2bbe5113c6a.json",
+        "bytes": 17057,
+        "sha256": "b3d85c2a2893855ae7909549ea6adadb800573f8c40cf345d50bf136dbf432dc"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/catalog/141b77a3ede5c3217d4ff8310a7633a9c0219cc628f5dd0766e901383e6f97f4.json",
+        "bytes": 111308,
+        "sha256": "14f1b6912a97925e2d8046d565ef9f4b3ba47afa03351db75a0a98c7659d6586"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/catalog/751a2715cef60c4420ce6329abe028a58b948bef14e4a4de650d987d2a7eb641.json",
+        "bytes": 91320,
+        "sha256": "49fad053e75a09c0969153a30d45305319d939a95fbe2ab22e0ee536768d3ce2"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/catalog/7a95db1a68e16b033d1cbeeb6bf963c8ae0cabd5495f13b2c11ca8d47ebb3ce5.json",
+        "bytes": 115271,
+        "sha256": "16c12bcf7b4677c5d211a15b20c74fceb32eae4191bef42a1bbb295b4bd2c841"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/catalog/88457ff32a19467112a8e466dd2e97f6a0361ed633cf5ce39e4a51f23c583087.json",
+        "bytes": 115920,
+        "sha256": "ef306a3a51672b08fc3722dae07929098e47c2bf5fca6f64759b66f04ea5504c"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/catalog/b9a4fd571655d15bf8e10db028ef9e1c0fd895210582c80d634910635f33c374.json",
+        "bytes": 111767,
+        "sha256": "5ddaec231680e229750818da9d540c788f0a5107b9fb27c66c0c2c9ef4607894"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/catalog/e8c0a7de271ce5954e64f42f9d964a5cd7652e64345fccc04ddbf3f4ffe7f2f8.json",
+        "bytes": 115446,
+        "sha256": "824d87dfdeabb4087bc344341b49249cb68c5821c0948e010993e781f9740ca7"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/catalog/f337021c0665de1f48ba72ffcf8600f8e7d5ba825dcc85f0d7c7f897504a1966.json",
+        "bytes": 116922,
+        "sha256": "11da757237bb63e09be3f8034906f3ca79cd8ca9525aa341afb6664780df9efe"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/173643/b6a80210234c42baf4e596ad0aab35c2506c5a66d64663acbaf5cbbc91cb9a00.json",
+        "bytes": 72144,
+        "sha256": "246f86f263527b788fa3cf3da96d83aa2aa150f3386ee1952a73307157e8ce74"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/173644/1e7547c3eea6559b345b722e8bd16d9835eb8310b8f513e9d7d3744db97649d0.json",
+        "bytes": 92463,
+        "sha256": "cd145a051a551c27f112cd65fed35c43e8d789613e3c6d2399873bd0ea486555"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/173645/25fb6ef5b93a8438a49cba42f146dff48f0a039f7f0ea019c849ff202d442f25.json",
+        "bytes": 85568,
+        "sha256": "75573f4f5097e402def12634043643fa50c882895fdad7a0e3a7aba3ff9ccc47"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/183154/b8b1d28383489c8f83050bbbb1a063904601dca94b234082f2c8e5d125bd1ca2.json",
+        "bytes": 27931,
+        "sha256": "bfb4edee034221dc6167ce8d8b7a42f9d061966117fefe16dab021c2ea9c3f79"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/183156/ffd9f6d237a2fca21bd332006fd487a58f82e414d596f1da8f9aec21e5c9d8bd.json",
+        "bytes": 38111,
+        "sha256": "136918248644808d1492f4df4244a512611fec628d25fa4e2b4b5efb07471e94"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/183398/35f73e5e6ba7567a54762408ab1345b654842ca890841bed11980d22f898faa8.json",
+        "bytes": 24326,
+        "sha256": "cec0f1c5aa50964a6973baba9996f5b4a4acc0e2d24aa8c6e370851b52c8a38c"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/183402/c4fb5ca6eed4c0c64e153bd94b5ef39975bb4b7479d33d0dc76351e3225f7acd.json",
+        "bytes": 38710,
+        "sha256": "813c425b67401674067403496ed65c7e9ea65fd494afcc58aee1c782a87089af"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/185174/d8bd150e3edd308a667646120eae615b7c30dec5ff8adde26249c479f0205d95.json",
+        "bytes": 432495,
+        "sha256": "045ba2eb7f9e8b5aef127173ece240007e14a13fe2300e4e0d52a0c8068045bc"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/186524/247b309ab5f2435b92bd47c9804173c684439e69cd4dfe3be9cda4af45b85cae.json",
+        "bytes": 53342,
+        "sha256": "8e58c067e465ef20e46e461919db5218f30810a1a721b14445c23b2ec404fb0c"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/3344d930-914f-11f1-aa14-9da5ed7cd652/9d3ff6022494d0912845d473c89aed464e1ec2c84e0e610e65c0ee3dfaf7cd21.json",
+        "bytes": 71568,
+        "sha256": "5bc428589974dafd7ad751e32c146be29bd8e44a9b74f536598ff51d0e1ec30b"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/59b60720-c934-11f1-9175-a36a97ecbf54/c67f74cebe48346083bda77e1dcc15f4876621d55a7da1241b616baacbe1d8b5.json",
+        "bytes": 176265,
+        "sha256": "19cf48e896af6d8b00a5a52f2d63721aa661b6863a660b8888b1b1c340652121"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/65f549e0-6c7a-11f1-98ae-b927d9242c97/26ab188da7915d1746118a626f37381551210f7089ba19ea6c021c58fc2e30a7.json",
+        "bytes": 146856,
+        "sha256": "ca0ccd8d6bce5c124722a15df49a9b59ad216e758bc473e6d00441e3677cbd35"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/69ba65c0-8a56-11f1-878c-399a87bcb3eb/2e581a0fdbe78ef52dca4fcc99eb71bff6a7bc51486d8d31d534b329706186d0.json",
+        "bytes": 115151,
+        "sha256": "3a421d57819fba831739c258225b2cad9ebf36aed973222433c66f0d6d8ce2b1"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/99fa0140-c2ba-11f1-b8ec-99379998c900/c06d12970cf737ff43a27ae28ff95988ca2c1074ef85da5f0c9f2c49b1e33048.json",
+        "bytes": 158938,
+        "sha256": "e423f010455906736248d77a8d3785407d756165650f08bd7ab4bfd74cbb2821"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/cb2746e0-c933-11f1-93f8-53a9005d11e5/57eac3e0180b5daa245f8c84c2660efcbc31302037aba332ef6b48087595dd34.json",
+        "bytes": 70737,
+        "sha256": "632767fe4ded486b7a96f3474c7663773756e4610a125940efb719b8500095c4"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/cc5dfbb0-6c79-11f1-930f-f9a15c0c257a/7b84fe2a8eba234f04f9f2535b7967964f23d65f574460aa02fda7a8233e3cde.json",
+        "bytes": 67801,
+        "sha256": "43574456055b046ea3422ef93e0a14c2e706ac8b2a4161803ac1665ee5155c52"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/dd1eec70-6c79-11f1-af6b-c5827943e779/e9747a1e7dcea2d50a7421860d370f6ebf4b3a292d10bb8749b1dc2ba81e859c.json",
+        "bytes": 135892,
+        "sha256": "4f76f0d8ad4949299ee3a0d121fdb7f32cd3dca1b24e0ce65457dff5469913b1"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/e0ecd960-9402-11f1-a055-abba87057267/d89b88ec452fc8992569c5ac435884ba77fad1010ab93e111d8a132dde963cb8.json",
+        "bytes": 70585,
+        "sha256": "50db110ac8e4ad366c1618c22681e5b74f62eab1b129b8e8e7bbcc4f9e1caa29"
+      },
+      {
+        "path": "/ai_docs/raw/api/vbpl/documents/fccf6fd0-4dad-11f1-9432-b37c37e86d8a/7e4570770cf639e030ffc26eaf418591b85704aaabe3a933b642faff59a6ebf9.json",
+        "bytes": 21786,
+        "sha256": "607f0d4c70b0c51b610cb81fb2e775304becfcdea7231a809e8b32e412f44ab3"
+      },
+      {
+        "path": "/ai_docs/parsed/api/luat_134_2025.json",
+        "bytes": 66757,
+        "sha256": "fe98e58987c1cb3cae02c6c9bc4ff125400f2f434fc7bf9c988b158b85124f62"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_173643.json",
+        "bytes": 35895,
+        "sha256": "775de9c51ea1ff2443253189bb4c7290de5bb9b0555ece63850fcdcb6f0dd5f1"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_173644.json",
+        "bytes": 40481,
+        "sha256": "86ca2cf49479fc1cd66e235b65f0609d8b058bd9b460e373dd4fda7d69abba9b"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_173645.json",
+        "bytes": 34731,
+        "sha256": "4b9841519d2434509fbbaa11dbd20a96a69d8c64fdc8851709abe231248126e0"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_183398.json",
+        "bytes": 10956,
+        "sha256": "dcff66400deaf9f21aeac8f955e434a0105bf510f24fbcc2a02578b122e3cb6b"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_183402.json",
+        "bytes": 17382,
+        "sha256": "3ebd40f0591bfeeed691e1548ac8ae166918e1adf3841d9aaef25207a4d824b0"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_185174.json",
+        "bytes": 80480,
+        "sha256": "7b09296a536035bec86679dc7a1b959ad09bc4987fcf3303965b112390721238"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_186524.json",
+        "bytes": 16175,
+        "sha256": "6abe2e3a8465e392e02258e45b42f185c627b95e6f7045f5fca3711b67e10f89"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_3344d930-914f-11f1-aa14-9da5ed7cd652.json",
+        "bytes": 37444,
+        "sha256": "b0467e80bb741a7572c6c654387a7e9ed85d9ef71b5331902dc44c3770a33bdc"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_59b60720-c934-11f1-9175-a36a97ecbf54.json",
+        "bytes": 88847,
+        "sha256": "6e60b4eb0c980c405fad98e0695a2014e8a59af32a878d479650611e9ca0e81d"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_65f549e0-6c7a-11f1-98ae-b927d9242c97.json",
+        "bytes": 83478,
+        "sha256": "530706bc591cbd72f5b8c5b15ee6d80c1d3f30a7e9541e3997b7d100aa0fb8ee"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_99fa0140-c2ba-11f1-b8ec-99379998c900.json",
+        "bytes": 64563,
+        "sha256": "70cbf5729f55872510e85038cef300bf98510ae4ba74875fdc459de6d954f341"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_cb2746e0-c933-11f1-93f8-53a9005d11e5.json",
+        "bytes": 44443,
+        "sha256": "7b4911e10d4ceee5ed17365335958d2306e8d9c331cb149d8f62b7c9b3411901"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_cc5dfbb0-6c79-11f1-930f-f9a15c0c257a.json",
+        "bytes": 37061,
+        "sha256": "e790f7c08913344d7badcaee917ac13c47bcd64259ee20043410514a35186845"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_dd1eec70-6c79-11f1-af6b-c5827943e779.json",
+        "bytes": 71648,
+        "sha256": "c234aa7c48061c7bb4cd4e93841c1394772f35f57e9d565eaa65e18ced37e0ed"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_e0ecd960-9402-11f1-a055-abba87057267.json",
+        "bytes": 29500,
+        "sha256": "aba665495638308916357e5da14173c5d2f43c022f15bf17a6dc54183ac7760f"
+      },
+      {
+        "path": "/ai_docs/parsed/api/vbpl_fccf6fd0-4dad-11f1-9432-b37c37e86d8a.json",
+        "bytes": 8172,
+        "sha256": "e6617e03933c6a636672d45ec0a5fecd45a3c319f4765148b02a0cc10517115a"
+      }
+    ],
+    "status": "synced"
+  },
+  "api_config": {
+    "vbpl": {
+      "name": "Bộ Tư pháp · Cơ sở dữ liệu quốc gia về pháp luật",
+      "enabled": true,
+      "keyword": "\"trí tuệ nhân tạo\"",
+      "page_size": 50,
+      "max_pages": 10,
+      "lookback_days": 730,
+      "catalog_url": "https://vbpl-bientap-gateway.moj.gov.vn/api/qtdc/public/doc/all",
+      "detail_url": "https://vbpl-bientap-gateway.moj.gov.vn/api/qtdc/public/doc/{id}"
+    },
+    "federal_register": {
+      "name": "Federal Register · Hoa Kỳ",
+      "enabled": false,
+      "disabled_reason": "API metadata truy cập được nhưng toàn văn đang chuyển tới trang Request Access. Chỉ bật lại sau khi kiểm tra quyền truy cập toàn văn.",
+      "keyword": "\"artificial intelligence\"",
+      "page_size": 50,
+      "max_pages": 5,
+      "lookback_days": 730,
+      "catalog_url": "https://www.federalregister.gov/api/v1/documents.json",
+      "detail_url": "https://www.federalregister.gov/api/v1/documents/{id}.json"
+    }
+  },
+  "api_checkpoint": {
+    "vbpl": {
+      "last_complete_at": "2026-11-16T09:37:03.555941+00:00"
+    }
+  },
+  "latest_update": {
+    "job_id": "20261116_093656_1034a1be",
+    "status": "no_changes",
+    "stage": "done",
+    "progress": 100,
+    "message": "Đã kiểm tra nguồn; chưa có thay đổi cần lập chỉ mục.",
+    "providers": [
+      "vbpl"
+    ],
+    "max_documents": 20,
+    "started_at": "2026-11-16T09:36:56.908291+00:00",
+    "log_path": "/app/data/updates/20261116_093656_1034a1be/worker.log",
+    "updated_at": "2026-11-16T09:37:06.505183+00:00",
+    "collection_report": {
+      "providers": {
+        "vbpl": {
+          "name": "Bộ Tư pháp · Cơ sở dữ liệu quốc gia về pháp luật",
+          "pages": 2,
+          "scanned": 100,
+          "changed": 0,
+          "changed_document_ids": [],
+          "unchanged": 0,
+          "failed": 0,
+          "irrelevant": 1,
+          "backlog": 0,
+          "scan_limited": false,
+          "status": "ok"
+        }
+      },
+      "changed": 0,
+      "changed_document_ids": [],
+      "errors": [],
+      "checked_at": "2026-11-16T09:36:59.397147+00:00"
+    },
+    "added_documents": 0,
+    "active_documents": 63,
+    "finished_at": "2026-11-16T09:37:06.502728+00:00"
+  }
+}

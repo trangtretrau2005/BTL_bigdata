@@ -1,0 +1,23 @@
+{
+  "vbpl": {
+    "name": "Bộ Tư pháp · Cơ sở dữ liệu quốc gia về pháp luật",
+    "enabled": true,
+    "keyword": "\"trí tuệ nhân tạo\"",
+    "page_size": 50,
+    "max_pages": 10,
+    "lookback_days": 730,
+    "catalog_url": "https://vbpl-bientap-gateway.moj.gov.vn/api/qtdc/public/doc/all",
+    "detail_url": "https://vbpl-bientap-gateway.moj.gov.vn/api/qtdc/public/doc/{id}"
+  },
+  "federal_register": {
+    "name": "Federal Register · Hoa Kỳ",
+    "enabled": false,
+    "disabled_reason": "API metadata truy cập được nhưng toàn văn đang chuyển tới trang Request Access. Chỉ bật lại sau khi kiểm tra quyền truy cập toàn văn.",
+    "keyword": "\"artificial intelligence\"",
+    "page_size": 50,
+    "max_pages": 5,
+    "lookback_days": 730,
+    "catalog_url": "https://www.federalregister.gov/api/v1/documents.json",
+    "detail_url": "https://www.federalregister.gov/api/v1/documents/{id}.json"
+  }
+}

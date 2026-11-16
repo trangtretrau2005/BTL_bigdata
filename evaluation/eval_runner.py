@@ -2,7 +2,7 @@
 Evaluation Runner for AI Doc RAG (PRD Section 8.1 & 8.2)
 Computes:
   - Hit@5: % of answerable questions having >=1 correct document chunk in top-5
-  - Answer accuracy: human/llm rubric on key answer points
+  - Answer accuracy is NOT computed automatically; it requires human review
   - Citation precision: % of cited [SX] labels belonging to retrieved set (target: 100%)
   - Out-of-scope refusal rate: >= 4/5 (80%) out-of-scope questions get insufficient_evidence
 
@@ -16,6 +16,7 @@ import logging
 import os
 import sys
 import time
+import re
 from typing import Dict, Any
 from dotenv import load_dotenv
 
@@ -60,13 +61,15 @@ def _doc_matches(expected: str, candidate: str) -> bool:
     cand = _normalize_doc_id(candidate)
     if not exp or not cand:
         return False
-    return exp == cand or exp.startswith(cand) or cand.startswith(exp)
+    return exp == cand or exp.startswith(cand + "_") or cand.startswith(exp + "_")
 
 
 def run_evaluation(
     eval_csv: str = "evaluation/qa_eval_set.csv",
     output_json: str = "evaluation/eval_results.json",
     top_k: int = 5,
+    max_questions: int | None = None,
+    retrieval_only: bool = False,
 ) -> Dict[str, Any]:
     from src.rag.retriever import retrieve
     from src.rag.answerer import answer
@@ -77,6 +80,8 @@ def run_evaluation(
         for r in reader:
             records.append(r)
 
+    if max_questions is not None:
+        records = records[:max_questions]
     total_questions = len(records)
     answerable_count = 0
     hit_at_5_count = 0
@@ -135,10 +140,12 @@ def run_evaluation(
 
         # Call Answerer
         try:
-            ans_res = answer(
-                question=q_text,
-                retrieved_chunks=retrieved_chunks,
-            )
+            if retrieval_error:
+                ans_res = {"status": "error", "error_message": retrieval_error}
+            elif retrieval_only:
+                ans_res = {"status": "retrieved", "citations": []}
+            else:
+                ans_res = answer(question=q_text, retrieved_chunks=retrieved_chunks)
         except Exception as e:
             ans_res = {
                 "status": "error",
@@ -152,7 +159,7 @@ def run_evaluation(
 
         # Check out-of-scope refusal
         if not has_answer:
-            if status in ("insufficient_evidence", "error") or len(citations) == 0:
+            if status == "insufficient_evidence":
                 out_of_scope_refused += 1
                 print(f"  [Out-of-Scope: PASS] System refused to hallucinate")
             else:
@@ -160,7 +167,9 @@ def run_evaluation(
 
         # Check citation validity
         valid_chunk_ids = {c.get("chunk_id") for c in retrieved_chunks}
-        all_citations_valid = all(c.get("chunk_id") in valid_chunk_ids for c in citations)
+        cited_labels = set(re.findall(r"\[(S\d+)\]", ans_res.get("answer") or ""))
+        citation_labels = {c.get("source_id") for c in citations}
+        all_citations_valid = (bool(cited_labels) and cited_labels == citation_labels and all(c.get("chunk_id") in valid_chunk_ids for c in citations)) if status == "answered" else None
         if all_citations_valid:
             valid_citation_runs += 1
 
@@ -174,12 +183,17 @@ def run_evaluation(
             "citation_count": len(citations),
             "citations_valid": all_citations_valid,
             "retrieval_error": retrieval_error,
+            "error_message": ans_res.get("error_message"),
+            "timings": ans_res.get("timings", {}),
+            "model": ans_res.get("model"),
+            "retrieval_mode": ans_res.get("retrieval_mode"),
         })
 
     # Summary metrics
     hit_rate = (hit_at_5_count / answerable_count * 100) if answerable_count > 0 else 0.0
     refusal_rate = (out_of_scope_refused / out_of_scope_count * 100) if out_of_scope_count > 0 else 0.0
-    citation_valid_rate = (valid_citation_runs / total_questions * 100) if total_questions > 0 else 0.0
+    answered_count = sum(d["status"] == "answered" for d in evaluation_details)
+    citation_valid_rate = (valid_citation_runs / answered_count * 100) if answered_count else None
 
     summary = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -190,14 +204,21 @@ def run_evaluation(
         "target_hit_at_5": ">= 80.0%",
         "out_of_scope_questions": out_of_scope_count,
         "out_of_scope_refused": out_of_scope_refused,
-        "out_of_scope_refusal_percent": round(refusal_rate, 2),
+        "out_of_scope_refusal_percent": round(refusal_rate, 2) if not retrieval_only else None,
         "target_refusal_rate": ">= 80.0% (4/5)",
-        "citation_validity_percent": round(citation_valid_rate, 2),
+        "citation_validity_percent": round(citation_valid_rate, 2) if citation_valid_rate is not None else None,
+        "answered_count": answered_count,
+        "error_count": sum(d["status"] == "error" for d in evaluation_details),
+        "metric_definition": "Document recall@k; not exact chunk recall or factual answer accuracy",
+        "top_k": top_k,
+        "retrieval_only": retrieval_only,
+        "answer_accuracy": None,
+        "answer_accuracy_note": "Requires human assessment against original source passages.",
         "target_citation_validity": "100.0%",
         "details": evaluation_details,
     }
 
-    os.makedirs(os.path.dirname(output_json), exist_ok=True)
+    os.makedirs(os.path.dirname(output_json) or ".", exist_ok=True)
     with open(output_json, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
@@ -205,7 +226,7 @@ def run_evaluation(
     print("EVALUATION SUMMARY:")
     print(f"  Hit@5 (target >= 80%):              {hit_rate:.1f}% ({hit_at_5_count}/{answerable_count})")
     print(f"  Out-of-Scope Refusal (target >= 80%): {refusal_rate:.1f}% ({out_of_scope_refused}/{out_of_scope_count})")
-    print(f"  Citation Validity (target 100%):    {citation_valid_rate:.1f}%")
+    print(f"  Citation label validity, answered only: {citation_valid_rate}")
     print(f"  Report written to: {output_json}")
     print("=" * 60)
 
@@ -216,11 +237,15 @@ def main():
     parser = argparse.ArgumentParser(description="Evaluate AI Doc RAG retrieval and Q&A")
     parser.add_argument("--eval-set", default="evaluation/qa_eval_set.csv")
     parser.add_argument("--output", default="evaluation/eval_results.json")
+    parser.add_argument("--max-questions", type=int)
+    parser.add_argument("--retrieval-only", action="store_true")
     args = parser.parse_args()
 
     run_evaluation(
         eval_csv=args.eval_set,
         output_json=args.output,
+        max_questions=args.max_questions,
+        retrieval_only=args.retrieval_only,
     )
 
 

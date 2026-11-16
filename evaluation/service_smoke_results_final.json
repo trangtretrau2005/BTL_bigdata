@@ -1,0 +1,148 @@
+{
+  "kind": "live smoke test; not a factual accuracy benchmark",
+  "checks": {
+    "qdrant_points": 2499,
+    "models": [
+      "qwen3:4b-instruct-2507-q4_K_M",
+      "qwen3:4b",
+      "qwen3:1.7b",
+      "bge-m3:latest"
+    ],
+    "outside_scope_refused": 10,
+    "outside_scope_questions": 10,
+    "answered_smoke_cases": 3,
+    "llm_answered_cases": 2,
+    "curated_summary_cases": 1
+  },
+  "answers": [
+    {
+      "question": "Luật Trí tuệ nhân tạo quy định phạm vi điều chỉnh như thế nào?",
+      "elapsed_seconds": 5.94,
+      "result": {
+        "status": "answered",
+        "answer": "Luật Trí tuệ nhân tạo quy định phạm vi điều chỉnh về các hoạt động nghiên cứu, phát triển, cung cấp, triển khai và sử dụng hệ thống trí tuệ nhân tạo; quyền, nghĩa vụ của tổ chức, cá nhân liên quan và quản lý nhà nước đối với các hoạt động này [S1]. Hoạt động trí tuệ nhân tạo chỉ phục vụ cho mục đích quốc phòng, an ninh, cơ yếu thì không thuộc phạm vi điều chỉnh của Luật này [S1].",
+        "citations": [
+          {
+            "source_id": "S1",
+            "chunk_id": "e854c6f6e0a43d0fe2bacfccb67d2ec07c107557f65f946ba0cf32343d590559",
+            "document_id": "6e3e77fe98365283ed0c6d3fde50c9dc26323a7e41867ff093901d4fe16089b1",
+            "title": "Luật 134/2025/QH15 – Luật Trí tuệ nhân tạo",
+            "excerpt": "Điều 1. Phạm vi điều chỉnh\n1. Luật này quy định về nghiên cứu, phát triển, cung cấp, triển khai và sử\ndụng hệ thống trí tuệ nhân tạo (sau đây gọi là hoạt động trí tuệ nhân tạo); quyền,\nnghĩa vụ của tổ chức, cá nhân có liên quan và quản lý nhà nước đối với hoạt động\ntrí tuệ nhân tạo tại Việt Nam.\n2. Hoạt động trí tuệ nhân tạo chỉ phục vụ cho mục đích quốc phòng, an ninh,\ncơ yếu không thuộc phạm vi điều chỉnh của Luật này.",
+            "location": "Điều 1., Chương I, Trang 1",
+            "source_url": "https://vanban.chinhphu.vn/?docid=216334&pageid=27160",
+            "score": 0.67912126,
+            "context_kind": "article",
+            "anchor_chunk_id": "e854c6f6e0a43d0fe2bacfccb67d2ec07c107557f65f946ba0cf32343d590559",
+            "version_id": "181b8687613093ea",
+            "context_char_start": 355,
+            "context_char_end": 780
+          }
+        ],
+        "timings": {
+          "retrieval_ms": 1586,
+          "generation_ms": 4344
+        },
+        "error_message": null,
+        "insufficient_evidence": false,
+        "retrieval_mode": "vector+article",
+        "model": "qwen3:4b-instruct-2507-q4_K_M"
+      }
+    },
+    {
+      "question": "NIST AI RMF có bốn chức năng cốt lõi nào?",
+      "elapsed_seconds": 33.06,
+      "result": {
+        "status": "answered",
+        "answer": "NIST AI RMF có bốn chức năng cốt lõi là GOVERN, MAP, MEASURE và MANAGE [S2].  \nCác chức năng này được tổ chức ở cấp độ cao nhất để quản lý rủi ro AI, trong đó GOVERN được thiết kế là chức năng xuyên suốt, ảnh hưởng đến tất cả các giai đoạn của quá trình quản lý rủi ro AI [S4].  \nMAP, MEASURE và MANAGE được áp dụng trong bối cảnh cụ thể của hệ thống AI và tại các giai đoạn nhất định trong chu kỳ sống của hệ thống AI [S1].  \nMỗi chức năng được chia thành các nhóm và nhóm con, từ đó dẫn đến các hành động và kết quả cụ thể [S2].",
+        "citations": [
+          {
+            "source_id": "S2",
+            "chunk_id": "7812e0f83c452002bfb7d38caed369e460e7d70b41856a98b8da403bdc95efa6",
+            "document_id": "d525e979aba7e90f10191109677f0e05cce209afc4579456b7805f31ef4b5ab1",
+            "title": "NIST AI Risk Management Framework 1.0 (NIST.AI.100-1)",
+            "excerpt": "provement;\n• greater contextual knowledge for increased awareness of downstream risks;\n• strengthened engagement with interested parties and relevant AI actors; and\n• augmented capacity for TEVV of AI systems and associated risks.\nPage 19\n\n[Trang 25]\nNIST AI 100-1\nAI RMF 1.0\nPart 2: Core and Profiles\n5.\nAI RMF Core\nThe AI RMF Core provides outcomes and actions that enable dialogue, understanding, and\nactivities to manage AI risks and responsibly develop trustworthy AI systems. As illus-\ntrated in Figure 5, the Core is composed of four functions: GOVERN, MAP, MEASURE,\nand MANAGE. Each of these high-level functions is broken down into categories and sub-\ncategories. Categories and subcategories are subdivided into specific actions and outcomes.\nActions do not constitute a checklist, nor are they necessarily an ordered set of steps.\nFig. 5. Functions organize AI risk management activities at their highest level to govern, map,\nmeasure, and manage AI risks. Governance is designed to be a cross-cutting function to inform\nand be infused throughout the other three functions.\nRisk management should be continuous, timely, and performed throughout the AI system\nlifecycle dimensions. AI RMF Core functions should be carried out in a way that reflects\ndiverse and multidisciplinary perspectives, potentially including the views of AI actors out-\nside the organization. Having a diverse team contributes to more open sharing of ideas and\nassumptions about purposes and functions of the technology being designed, developed,\nPage 20\n\n[Trang 26]\nNIST AI 100-1\nAI RMF 1.0\ndeployed, or evaluated – which can create opportunities to surface problems and identify\nexisting and emergent risks.\nAn online companion resource to the AI RMF, the NIST AI RMF Playbook, is available\nto help organizations navigate the AI RMF and achieve its outcomes through suggested\ntactical actions they can apply within their own contexts. Like the AI RMF, the Playbook\nis voluntary and organizations can utilize the suggestions according to their needs and\ninterests. ",
+            "location": "Part 1, Trang 24–26",
+            "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+            "score": 0.6390147,
+            "context_kind": "chunk",
+            "anchor_chunk_id": null,
+            "version_id": "7576edb531d98488",
+            "context_char_start": null,
+            "context_char_end": null
+          },
+          {
+            "source_id": "S4",
+            "chunk_id": "cf50ffd74ce557b51cfb2646be1f6bcfa6825ac61216927db6c3fe83dfafa7de",
+            "document_id": "d525e979aba7e90f10191109677f0e05cce209afc4579456b7805f31ef4b5ab1",
+            "title": "NIST AI Risk Management Framework 1.0 (NIST.AI.100-1)",
+            "excerpt": " change, and description of change. NIST plans to update the AI RMF Playbook\nfrequently. Comments on the AI RMF Playbook may be sent via email to AIframework@nist.gov at any time\nand will be reviewed and integrated on a semi-annual basis.\n\n[Trang 4]\nTable of Contents\nExecutive Summary\n1\nPart 1: Foundational Information\n4\n1\nFraming Risk\n4\n1.1\nUnderstanding and Addressing Risks, Impacts, and Harms\n4\n1.2\nChallenges for AI Risk Management\n5\n1.2.1\nRisk Measurement\n5\n1.2.2\nRisk Tolerance\n7\n1.2.3\nRisk Prioritization\n7\n1.2.4\nOrganizational Integration and Management of Risk\n8\n2\nAudience\n9\n3\nAI Risks and Trustworthiness\n12\n3.1\nValid and Reliable\n13\n3.2\nSafe\n14\n3.3\nSecure and Resilient\n15\n3.4\nAccountable and Transparent\n15\n3.5\nExplainable and Interpretable\n16\n3.6\nPrivacy-Enhanced\n17\n3.7\nFair – with Harmful Bias Managed\n17\n4\nEffectiveness of the AI RMF\n19\nPart 2: Core and Profiles\n20\n5\nAI RMF Core\n20\n5.1\nGovern\n21\n5.2\nMap\n24\n5.3\nMeasure\n28\n5.4\nManage\n31\n6\nAI RMF Profiles\n33\nAppendix A: Descriptions of AI Actor Tasks from Figures 2 and 3\n35\nAppendix B: How AI Risks Differ from Traditional Software Risks\n38\nAppendix C: AI Risk Management and Human-AI Interaction\n40\nAppendix D: Attributes of the AI RMF\n42\nList of Tables\nTable 1 Categories and subcategories for the GOVERN function.\n22\nTable 2 Categories and subcategories for the MAP function.\n26\nTable 3 Categories and subcategories for the MEASURE function.\n29\nTable 4 Categories and subcategories for the MANAGE function.\n32\ni\n\n[Trang 5]\nNIST AI 100-1\nAI RMF 1.0\nList of Figures\nFig. 1\nExamples of potential harms related to AI systems. Trustworthy AI systems\nand their responsible use can mitigate negative risks and contribute to bene-\nfits for people, organizations, and ecosystems.\n5\nFig. 2\nLifecycle and Key Dimensions of an AI System. Modified from OECD\n(2022) OECD Framework for the Classification of AI systems — OECD\nDigital Economy Papers. The two inner circles show AI systems’ key di-\nmensions and the outer circle shows AI lifecycle stages. Ideally, risk man-\nagement efforts start with the Plan and Design function in the application\ncontext and are performed throughout the AI system lifecycle. ",
+            "location": "Part 1, Trang 3–5",
+            "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+            "score": 0.5879216,
+            "context_kind": "chunk",
+            "anchor_chunk_id": null,
+            "version_id": "7576edb531d98488",
+            "context_char_start": null,
+            "context_char_end": null
+          },
+          {
+            "source_id": "S1",
+            "chunk_id": "d4345231abab47b41fe742a6c048be0ed0d35afe8ced8df067ababfaedf1210b",
+            "document_id": "d525e979aba7e90f10191109677f0e05cce209afc4579456b7805f31ef4b5ab1",
+            "title": "NIST AI Risk Management Framework 1.0 (NIST.AI.100-1)",
+            "excerpt": "lainable and\ninterpretable, privacy enhanced, and fair with their harmful biases managed.\nPart 2 comprises the “Core” of the Framework. It describes four specific functions to help\norganizations address the risks of AI systems in practice. These functions – GOVERN,\nMAP, MEASURE, and MANAGE – are broken down further into categories and subcate-\ngories. While GOVERN applies to all stages of organizations’ AI risk management pro-\ncesses and procedures, the MAP, MEASURE, and MANAGE functions can be applied in AI\nsystem-specific contexts and at specific stages of the AI lifecycle.\nAdditional resources related to the Framework are included in the AI RMF Playbook,\nwhich is available via the NIST AI RMF website:\nhttps://www.nist.gov/itl/ai-risk-management-framework.\nDevelopment of the AI RMF by NIST in collaboration with the private and public sec-\ntors is directed and consistent with its broader AI efforts called for by the National AI\nInitiative Act of 2020, the National Security Commission on Artificial Intelligence recom-\nmendations, and the Plan for Federal Engagement in Developing Technical Standards and\nRelated Tools. Engagement with the AI community during this Framework’s development\n– via responses to a formal Request for Information, three widely attended workshops,\npublic comments on a concept paper and two drafts of the Framework, discussions at mul-\ntiple public forums, and many small group meetings – has informed development of the AI\nRMF 1.0 as well as AI research and development and evaluation conducted by NIST and\nothers. Priority research and additional guidance that will enhance this Framework will be\ncaptured in an associated AI Risk Management Framework Roadmap to which NIST and\nthe broader community can contribute.\nPage 3\n\n[Trang 9]\nNIST AI 100-1\nAI RMF 1.0\nPart 1: Foundational Information\n1.\nFraming Risk\nAI risk management offers a path to minimize potential negative impacts of AI systems,\nsuch as threats to civil liberties and rights, while also providing opportunities to maximize\npositive impacts. Addressing, documenting, and managing AI risks and potential negative\nimpacts effectively can lead to more trustworthy AI systems.",
+            "location": "Part 2, Trang 8–9",
+            "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+            "score": 0.6536681,
+            "context_kind": "chunk",
+            "anchor_chunk_id": null,
+            "version_id": "7576edb531d98488",
+            "context_char_start": null,
+            "context_char_end": null
+          }
+        ],
+        "timings": {
+          "retrieval_ms": 202,
+          "generation_ms": 32849
+        },
+        "error_message": null,
+        "insufficient_evidence": false,
+        "retrieval_mode": "vector",
+        "model": "qwen3:4b-instruct-2507-q4_K_M"
+      }
+    },
+    {
+      "question": "EU AI Act cấm những hành vi AI nào?",
+      "elapsed_seconds": 0.88,
+      "result": {
+        "status": "answered",
+        "answer": "Điều 5 EU AI Act quy định tám nhóm thực hành và các điều kiện cấm tương ứng: [S1]\n\n- (a) Thao túng, lừa dối làm sai lệch hành vi và gây hại đáng kể. [S1]\n- (b) Khai thác điểm dễ bị tổn thương của cá nhân hoặc nhóm người. [S1]\n- (c) Chấm điểm xã hội dẫn đến đối xử bất lợi. [S1]\n- (d) Đánh giá nguy cơ phạm tội chỉ dựa trên hồ sơ hoặc đặc điểm cá nhân. [S1]\n- (e) Thu thập ảnh khuôn mặt không có mục tiêu để tạo hoặc mở rộng cơ sở dữ liệu nhận dạng. [S1]\n- (f) Suy luận cảm xúc tại nơi làm việc hoặc cơ sở giáo dục. [S1]\n- (g) Phân loại sinh trắc học để suy ra các thuộc tính nhạy cảm. [S1]\n- (h) Nhận dạng sinh trắc học từ xa theo thời gian thực tại nơi công cộng nhằm thực thi pháp luật. [S1]\n\nPhạm vi cấm cụ thể phụ thuộc các điều kiện và ngoại lệ trong nguyên văn Điều 5. Hãy mở nguồn bên dưới để đối chiếu từng trường hợp. [S1]",
+        "citations": [
+          {
+            "source_id": "S1",
+            "chunk_id": "f2d47edc0e25d9a84927a2aaf6408cffa2cf28ab0e08f7376050f667350854ba",
+            "document_id": "a4ddd57c91f92f1a31a93076bb151ec4700293381e3643e3ff32be236afdd545",
+            "title": "Regulation (EU) 2024/1689 Artificial Intelligence Act",
+            "excerpt": "Article 5\n\nProhibited AI practices\n\n1. The following AI practices shall be prohibited:\n\n(a)\n\nthe placing on the market, the putting into service or the use of an AI system that deploys subliminal techniques beyond a person’s consciousness or purposefully manipulative or deceptive techniques, with the objective, or the effect of materially distorting the behaviour of a person or a group of persons by appreciably impairing their ability to make an informed decision, thereby causing them to take a decision that they would not have otherwise taken in a manner that causes or is reasonably likely to cause that person, another person or group of persons significant harm;\n\n(b)\n\nthe placing on the market, the putting into service or the use of an AI system that exploits any of the vulnerabilities of a natural person or a specific group of persons due to their age, disability or a specific social or economic situation, with the objective, or the effect, of materially distorting the behaviour of that person or a person belonging to that group in a manner that causes or is reasonably likely to cause that person or another person significant harm;\n\n(c)\n\nthe placing on the market, the putting into service or the use of AI systems for the evaluation or classification of natural persons or groups of persons over a certain period of time based on their social behaviour or known, inferred or predicted personal or personality characteristics, with the social score leading to either or both of the following:\n\n(i)\n\ndetrimental or unfavourable treatment of certain natural persons or groups of persons in social contexts that are unrelated to the contexts in which the data was originally generated or collected;\n\n(ii)\n\ndetrimental or unfavourable treatment of certain natural persons or groups of persons that is unjustified or disproportionate to their social behaviour or its gravity;\n\n(d)\n\nthe placing on the market, the putting into service for this specific purpose, or the use of an AI system for making risk assessments of natural persons in order to assess or predict the risk of a natural person committing a criminal offence, based solely on the profiling of a natural person or on assessing their personality traits and characteristics; this prohibition shall not apply to AI systems used to support the human assessment of the involvement of a person in a criminal activity, which is already based on objective and verifiable facts directly linked to a criminal activity;\n\n(e)\n\nthe placing on the market, the putting into service for this specific purpose, or the use of AI systems that create or expand facial recognition databases through the untargeted scraping of facial images from the internet or CCTV footage;\n\n(f)\n\nthe placing on the market, the putting into service for this specific purpose, or the use of AI systems to infer emotions of a natural person in the areas of workplace and education institutions, except where the use of the AI system is intended to be put in place or into the market for medical or safety reasons;\n\n(g)\n\nthe placing on the market, the putting into service for this specific purpose, or the use of biometric categorisation systems that categorise individually natural persons based on their biometric data to deduce or infer their race, political opinions, trade union membership, religious or philosophical beliefs, sex life or sexual orientation; this prohibition does not cover any labelling or filtering of lawfully acquired biometric datasets, such as images, based on biometric data or categorizing of biometric data in the area of law enforcement;\n\n(h)\n\nthe use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary for one of the following objectives:\n\n(i)\n\nthe targeted search for specific victims of abduction, trafficking in human beings or sexual exploitation of human beings, as well as the search for missing persons;\n\n(ii)\n\nthe prevention of a specific, substantial and imminent threat to the life or physical safety of natural persons or a genuine and present or genuine and foreseeable threat of a terrorist attack;\n\n(iii)\n\nthe localisation or identification of a person suspected of having committed a criminal offence, for the purpose of conducting a criminal investigation or prosecution or executing a criminal penalty for offences referred to in Annex II and punishable in the Member State concerned by a custodial sentence or a detention order for a maximum period of at least four years.\n\nPoint (h) of the first subparagraph is without prejudice to Article 9 of Regulation (EU) 2016/679 for the processing of biometric data for purposes other than law enforcement.\n\n2. The use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement for any of the objectives referred to in paragraph 1, first subparagraph, point (h), shall be deployed for the purposes set out in that point only to confirm the identity of the specifically targeted individual, and it shall take into account the following elements:\n\n(a)\n\nthe nature of the situation giving rise to the possible use, in particular the seriousness, probability and scale of the harm that would be caused if the system were not used;\n\n(b)\n\nthe consequences of the use of the system for the rights and freedoms of all persons concerned, in particular the seriousness, probability and scale of those consequences.\n\nIn addition, the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement for any of the objectives referred to in paragraph 1, first subparagraph, point (h), of this Article shall comply with necessary and proportionate safeguards and conditions in relation to the use in accordance with the national law authorising the use thereof, in particular as regards the temporal, geographic and personal limitations. The use of the ‘real-time’ remote biometric identification system in publicly accessible spaces shall be authorised only if the law enforcement authority has completed a fundamental rights impact assessment as provided for in Article 27 and has registered the system in the EU database according to Article 49. However, in duly justified cases of urgency, the use of such systems may be commenced without the registration in the EU database, provided that such registration is completed without undue delay.\n\n3. For the purposes of paragraph 1, first subparagraph, point (h) and paragraph 2, each use for the purposes of law enforcement of a ‘real-time’ remote biometric identification system in publicly accessible spaces shall be subject to a prior authorisation granted by a judicial authority or an independent administrative authority whose decision is binding of the Member State in which the use is to take place, issued upon a reasoned request and in accordance with the detailed rules of national law referred to in paragraph 5. However, in a duly justified situation of urgency, the use of such system may be commenced without an authorisation provided that such authorisation is requested without undue delay, at the latest within 24 hours. If such authorisation is rejected, the use shall be stopped with immediate effect and all the data, as well as the results and outputs of that use shall be immediately discarded and deleted.\n\nThe competent judicial authority or an independent administrative authority whose decision is binding shall grant the authorisation only where it is satisfied, on the basis of objective evidence or clear indications presented to it, that the use of the ‘real-time’ remote biometric identification system concerned is necessary for, and proportionate to, achieving one of the objectives specified in paragraph 1, first subparagraph, point (h), as identified in the request and, in particular, remains limited to what is strictly necessary concerning the period of time as well as the geographic and personal scope. In deciding on the request, that authority shall take into account the elements referred to in paragraph 2. No decision that produces an adverse legal effect on a person may be taken based solely on the output of the ‘real-time’ remote biometric identification system.\n\n4. Without prejudice to paragraph 3, each use of a ‘real-time’ remote biometric identification system in publicly accessible spaces for law enforcement purposes shall be notified to the relevant market surveillance authority and the national data protection authority in accordance with the national rules referred to in paragraph 5. The notification shall, as a minimum, contain the information specified under paragraph 6 and shall not include sensitive operational data.\n\n5. A Member State may decide to provide for the possibility to fully or partially authorise the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement within the limits and under the conditions listed in paragraph 1, first subparagraph, point (h), and paragraphs 2 and 3. Member States concerned shall lay down in their national law the necessary detailed rules for the request, issuance and exercise of, as well as supervision and reporting relating to, the authorisations referred to in paragraph 3. Those rules shall also specify in respect of which of the objectives listed in paragraph 1, first subparagraph, point (h), including which of the criminal offences referred to in point (h)(iii) thereof, the competent authorities may be authorised to use those systems for the purposes of law enforcement. Member States shall notify those rules to the Commission at the latest 30 days following the adoption thereof. Member States may introduce, in accordance with Union law, more restrictive laws on the use of remote biometric identification systems.\n\n6. National market surveillance authorities and the national data protection authorities of Member States that have been notified of the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for law enforcement purposes pursuant to paragraph 4 shall submit to the Commission annual reports on such use. For that purpose, the Commission shall provide Member States and national market surveillance and data protection authorities with a template, including information on the number of the decisions taken by competent judicial authorities or an independent administrative authority whose decision is binding upon requests for authorisations in accordance with paragraph 3 and their result.\n\n7. The Commission shall publish annual reports on the use of real-time remote biometric identification systems in publicly accessible spaces for law enforcement purposes, based on aggregated data in Member States on the basis of the annual reports referred to in paragraph 6. Those annual reports shall not include sensitive operational data of the related law enforcement activities.\n\n8. This Article shall not affect the prohibitions that apply where an AI practice infringes other Union law.\n\nCHAPTER III\n\nHIGH-RISK AI SYSTEMS\n\nSECTION 1\n\nClassification of AI systems as high-risk",
+            "location": "Article 5, CHAPTER II",
+            "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689",
+            "score": 0.63152236,
+            "context_kind": "article",
+            "anchor_chunk_id": "f2d47edc0e25d9a84927a2aaf6408cffa2cf28ab0e08f7376050f667350854ba",
+            "version_id": "9b15f68008b0bd80",
+            "context_char_start": 252213,
+            "context_char_end": 263460
+          }
+        ],
+        "timings": {
+          "retrieval_ms": 861
+        },
+        "error_message": null,
+        "insufficient_evidence": false,
+        "retrieval_mode": "vector+article",
+        "model": null,
+        "answer_mode": "curated_summary"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "job_id": "20261116_103057_bfb03c43",
+  "status": "no_changes",
+  "stage": "done",
+  "progress": 100,
+  "message": "Đã kiểm tra nguồn; chưa có thay đổi cần lập chỉ mục.",
+  "providers": [
+    "vbpl"
+  ],
+  "upload_ids": [],
+  "max_documents": 20,
+  "started_at": "2026-11-16T10:30:57.451933+00:00",
+  "log_path": "/app/data/updates/20261116_103057_bfb03c43/worker.log",
+  "updated_at": "2026-11-16T10:31:04.020501+00:00",
+  "upload_report": {
+    "parsed": 0,
+    "failed": 0,
+    "errors": [],
+    "changed_document_ids": []
+  },
+  "collection_report": {
+    "providers": {
+      "vbpl": {
+        "name": "Bộ Tư pháp · Cơ sở dữ liệu quốc gia về pháp luật",
+        "pages": 2,
+        "scanned": 100,
+        "changed": 0,
+        "changed_document_ids": [],
+        "unchanged": 0,
+        "failed": 0,
+        "irrelevant": 1,
+        "backlog": 0,
+        "scan_limited": false,
+        "status": "ok"
+      }
+    },
+    "changed": 0,
+    "changed_document_ids": [],
+    "errors": [],
+    "checked_at": "2026-11-16T10:31:01.176262+00:00"
+  },
+  "added_documents": 0,
+  "active_documents": 63,
+  "warnings": [],
+  "finished_at": "2026-11-16T10:31:04.017839+00:00"
+}

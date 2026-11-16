@@ -1,13 +1,18 @@
+﻿"""Collect original documents with explicit provenance; never manufacture legal text."""
+from __future__ import annotations
+
+import csv
 import hashlib
+import os
+import io
+import zipfile
 import re
-import shutil
 import time
+from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin, unquote
 
-import pandas as pd
 import requests
-
 from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -16,327 +21,156 @@ from src.ingestion.manifest import ManifestManager
 
 
 def safe_filename(name: str) -> str:
-    """Chuyển tên file về dạng an toàn."""
-    name = re.sub(r'[<>:"/\\|?*]', "_", name)
-    return name.strip(" .")
+    name = re.sub(r'[<>:"/\\|?*]', '_', name).strip(' .')
+    if not name or name in {'.', '..'}:
+        raise ValueError('document_id không hợp lệ')
+    return name
 
 
 class DocumentCollector:
-
-    def __init__(
-        self,
-        output_dir: str,
-        manifest_path: str = "data/manifests/ingestion_manifest.json",
-    ):
+    def __init__(self, output_dir: str, manifest_path: str = 'data/manifests/ingestion_manifest.json', *, timeout: int = 30):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.manifest = ManifestManager(manifest_path)
-
-        # Khởi tạo HTTP Session với User-Agent giả lập trình duyệt thật
+        self.timeout = timeout
         self.session = requests.Session()
-        self.session.headers.update({
-            "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/120.0.0.0 Safari/537.36"
-            ),
-            "Accept": (
-                "text/html,application/xhtml+xml,application/xml;"
-                "q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8"
-            ),
-            "Accept-Language": "en-US,en;q=0.9,vi;q=0.8",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Connection": "keep-alive",
-        })
-
-        retry_strategy = Retry(
-            total=3,
-            connect=3,
-            read=3,
-            backoff_factor=1,
-            status_forcelist=[429, 500, 502, 503, 504],
-            allowed_methods=frozenset(["GET"]),
-            respect_retry_after_header=True,
-        )
-        adapter = HTTPAdapter(max_retries=retry_strategy)
-        self.session.mount("https://", adapter)
-        self.session.mount("http://", adapter)
+        self.session.headers.update({'User-Agent': 'AI-Law-Research-Corpus/2.0 (academic document retrieval)', 'Accept': 'application/pdf,text/html,application/xhtml+xml;q=0.9,*/*;q=0.5'})
+        retry = Retry(total=1, backoff_factor=0.5, status_forcelist=[429, 500, 502, 503, 504], allowed_methods=['GET'])
+        self.session.mount('https://', HTTPAdapter(max_retries=retry))
 
     @staticmethod
     def calculate_checksum(file_path: Path) -> str:
-        """Tính mã SHA256 của file."""
-        sha256 = hashlib.sha256()
-        with open(file_path, "rb") as file:
-            for chunk in iter(lambda: file.read(1024 * 1024), b""):
-                sha256.update(chunk)
-        return sha256.hexdigest()
+        digest = hashlib.sha256()
+        with file_path.open('rb') as stream:
+            for block in iter(lambda: stream.read(1024 * 1024), b''):
+                digest.update(block)
+        return digest.hexdigest()
 
     @staticmethod
     def detect_extension(url: str, content_type: str, content: bytes) -> str:
-        """Xác định định dạng dựa trên nội dung thực tế."""
-        url_path = urlparse(url).path.lower()
-        content_start = content[:1000].lstrip().lower()
-
-        if content.startswith(b"%PDF-"):
-            return ".pdf"
-
-        is_html = (
-            "text/html" in content_type
-            or "application/xhtml+xml" in content_type
-            or content_start.startswith(b"<!doctype html")
-            or content_start.startswith(b"<html")
-            or b"<html" in content_start
-        )
-        if is_html:
-            return ".html"
-
-        if url_path.endswith(".txt") or "text/plain" in content_type or "application/json" in content_type:
-            return ".txt"
-
-        raise ValueError(f"Không nhận diện được định dạng tài liệu. Content-Type: {content_type}")
+        start = content[:2000].lstrip().lower()
+        if content.startswith(b'%PDF-'):
+            return '.pdf'
+        if content.startswith(b'PK\x03\x04'):
+            with zipfile.ZipFile(io.BytesIO(content)) as archive:
+                if 'word/document.xml' in archive.namelist():
+                    return '.docx'
+        if 'html' in content_type or b'<html' in start or b'<!doctype html' in start:
+            return '.html'
+        if 'xml' in content_type or start.startswith(b'<?xml'):
+            return '.xml'
+        if 'text/plain' in content_type or urlparse(url).path.lower().endswith('.txt'):
+            return '.txt'
+        raise ValueError(f'Không nhận diện được định dạng gốc: {content_type}')
 
     @staticmethod
     def validate_content(content: bytes, extension: str) -> None:
-        """Kiểm tra nội dung thực tế trước khi lưu."""
-        if not content or not content.strip():
-            raise ValueError("Response rỗng.")
-
-        if extension == ".pdf":
-            if not content.startswith(b"%PDF-"):
-                raise ValueError("File không có chữ ký PDF hợp lệ.")
-            return
-
-        if extension == ".html":
-            html_lower = content[:50000].lower()
-            blocked_markers = [
-                b"awswaf", b"awswafintegration", b"challenge.js",
-                b"challenge-container", b"gokuprops", b"captcha",
-                b"token.awswaf.com", b"request blocked", b"robot check",
-            ]
-            for marker in blocked_markers:
-                if marker in html_lower:
-                    raise ValueError(
-                        "Nguồn trả về trang chống bot/xác minh truy cập. "
-                        f"Phát hiện: {marker.decode('utf-8', errors='replace')}"
-                    )
-
-            soup = BeautifulSoup(content, "html.parser")
-            for tag in soup(["script", "style", "noscript", "svg", "iframe"]):
+        if not content or len(content.strip()) < 100:
+            raise ValueError('Tài liệu rỗng hoặc quá ngắn')
+        if extension == '.pdf' and not content.startswith(b'%PDF-'):
+            raise ValueError('Thiếu chữ ký PDF')
+        if extension == '.html':
+            soup = BeautifulSoup(content, 'html.parser')
+            for tag in soup(['script', 'style', 'noscript', 'nav', 'footer']):
                 tag.decompose()
-            text = soup.get_text(separator=" ", strip=True)
+            visible = soup.get_text(' ', strip=True)
+            title = soup.title.get_text(' ', strip=True).lower() if soup.title else ''
+            blocked = ('just a moment', 'access denied', 'request access', 'request blocked', 'robot check', 'page not found', '404 not found')
+            if any(word in title for word in blocked) or len(visible) < 200:
+                raise ValueError('Trang lỗi/chặn truy cập, không phải toàn văn')
+            if len(visible) < 3000 and any(word in visible.lower() for word in ('verify you are human', 'enable javascript and cookies', 'you are being redirected')):
+                raise ValueError('Trang xác minh/chuyển hướng, không phải toàn văn')
 
-            redirect_messages = [
-                "you are being redirected", "redirecting you",
-                "please wait while you are redirected", "please wait while we redirect",
-                "redirecting...",
-            ]
-            if any(message in text.lower() for message in redirect_messages):
-                raise ValueError("Nguồn chỉ trả về trang chuyển hướng, không phải nội dung tài liệu.")
-            if len(text) < 100:
-                raise ValueError(f"Nội dung HTML quá ngắn ({len(text)} ký tự).")
-
-        elif extension == ".txt":
-            if len(content.strip()) < 100:
-                raise ValueError("Nội dung TXT quá ngắn.")
+    def _get(self, url: str):
+        response = self.session.get(url, timeout=(10, self.timeout), allow_redirects=True)
+        response.raise_for_status()
+        return response
 
     def fetch_via_official_api(self, url: str):
-        """
-        Gọi REST API chính thức đối với nguồn US Federal Register hoặc EUR-Lex CELLAR
-        để tránh bị chặn bởi Captcha / AWS WAF.
-        """
-        # 1. US Federal Register REST API (ví dụ: 2023-24283 cho EO 14110)
-        fed_match = re.search(r"federalregister\.gov/documents/\d{4}/\d{2}/\d{2}/([\d-]+)", url)
-        if fed_match:
-            doc_num = fed_match.group(1)
-            api_url = f"https://www.federalregister.gov/api/v1/documents/{doc_num}.json"
-            resp = self.session.get(api_url, timeout=(10, 30))
-            if resp.ok:
-                meta = resp.json()
-                body_html_url = meta.get("body_html_url") or meta.get("full_text_xml_url")
-                if body_html_url:
-                    body_resp = self.session.get(body_html_url, timeout=(10, 60))
-                    if body_resp.ok and len(body_resp.content) > 200:
-                        return body_resp.content, "text/html", body_html_url
-
-        # 2. EUR-Lex CELLAR REST API (tránh AWS WAF trên eur-lex.europa.eu)
-        if "eur-lex.europa.eu" in url and ("2024/1689" in url or "202401689" in url):
-            cellar_url = "https://publications.europa.eu/resource/celex/32024R1689.ENG.xhtml"
-            headers = {"Accept": "application/xhtml+xml, text/html;q=0.9"}
-            resp = self.session.get(cellar_url, headers=headers, timeout=(10, 60), allow_redirects=True)
-            if resp.ok and len(resp.content) > 1000 and b"awswaf" not in resp.content[:10000].lower():
-                return resp.content, "text/html", resp.url
-
+        match = re.search(r'federalregister\.gov/documents/\d{4}/\d{2}/\d{2}/([\d-]+)', url)
+        if match:
+            metadata = self._get(f'https://www.federalregister.gov/api/v1/documents/{match.group(1)}.json').json()
+            full_text = metadata.get('body_html_url') or metadata.get('full_text_xml_url')
+            if not full_text:
+                raise ValueError('Federal Register API không cung cấp URL toàn văn')
+            body = self._get(full_text)
+            return body.content, body.headers.get('Content-Type', 'text/html'), body.url
         return None
 
     def download_content(self, url: str):
-        """Tải nội dung từ URL (ưu tiên API chính thức nếu có)."""
-        api_result = None
-        try:
-            api_result = self.fetch_via_official_api(url)
-        except Exception:
-            api_result = None
-
-        if api_result is not None:
+        if urlparse(url).scheme not in {'http', 'https'}:
+            raise ValueError('Nguồn phải là URL HTTP(S) công khai')
+        api_result = self.fetch_via_official_api(url)
+        if api_result:
             return api_result
+        response = self._get(url)
+        # Công báo publishes original PDF/DOCX via a public download API.
+        # Resolve its links from the official page; never index the landing page as a law.
+        if urlparse(url).hostname == 'congbao.chinhphu.vn' and not response.content.startswith(b'%PDF-'):
+            soup = BeautifulSoup(response.content, 'html.parser')
+            links = []
+            for tag in soup.select('a[href], [data-href]'):
+                link = urljoin(response.url, tag.get('data-href') or tag.get('href') or '')
+                host = urlparse(link).hostname or ''
+                if host.endswith('cdnchinhphu.vn') or host == 'congbaocdn.chinhphu.vn':
+                    if any(ext in unquote(link).lower() for ext in ('.docx', '.pdf')):
+                        links.append(link)
+            links = sorted(set(links), key=lambda link: ('.docx' not in unquote(link).lower(), link))
+            for link in links:
+                try:
+                    asset = self._get(link)
+                    if asset.content.startswith((b'%PDF-', b'PK\x03\x04')):
+                        return asset.content, asset.headers.get('Content-Type', '').lower(), asset.url
+                except requests.RequestException:
+                    continue
+            raise ValueError('Không tìm được tệp toàn văn từ API Công báo')
+        return response.content, response.headers.get('Content-Type', '').lower(), response.url
 
-        response = self.session.get(url, timeout=(10, 60), allow_redirects=True)
-        response.raise_for_status()
-        content = response.content
-        if not content:
-            raise ValueError("Server trả về response rỗng.")
-        content_type = response.headers.get("Content-Type", "").lower()
-        return content, content_type, response.url
-
-    def collect_one(self, document: dict) -> dict:
-        """Thu thập một tài liệu và cập nhật Manifest."""
-        document_id = document["document_id"]
-        url = (document.get("download_url") or "").strip() or (document.get("source_url") or "").strip()
-
-        file_path = None
-        temp_path = None
-
-        try:
-            content, content_type, final_url = self.download_content(url)
-            extension = self.detect_extension(final_url, content_type, content)
-            self.validate_content(content, extension)
-
-            filename = safe_filename(document_id + extension)
-            file_path = self.output_dir / filename
-            temp_path = file_path.with_name(file_path.name + ".tmp")
-
+    def collect_one(self, document: dict, *, refresh: bool = False) -> dict:
+        document_id = safe_filename(document['document_id'])
+        previous = self.manifest.get(document_id) or {}
+        existing = Path(str(previous.get('file_path') or self.output_dir / '__missing__').replace('\\', '/'))
+        if not refresh and previous.get('provenance') == 'official_download' and existing.is_file():
+            if self.calculate_checksum(existing) == previous.get('checksum'):
+                return {'document_id': document_id, 'status': 'downloaded_cached', 'file_path': str(existing)}
+        urls = list(dict.fromkeys(u.strip() for u in [document.get('download_url', ''), *document.get('alternate_urls', '').split('|'), document.get('source_url', '')] if u.strip()))
+        errors = []
+        for url in urls:
             try:
-                with open(temp_path, "wb") as file:
-                    file.write(content)
-                if not temp_path.exists() or temp_path.stat().st_size == 0:
-                    raise ValueError("File tải xuống bị rỗng.")
-                temp_path.replace(file_path)
-            finally:
-                if temp_path and temp_path.exists():
-                    temp_path.unlink()
+                content, content_type, final_url = self.download_content(url)
+                extension = self.detect_extension(final_url, content_type, content)
+                self.validate_content(content, extension)
+                if document.get('file_format') == 'pdf' and extension != '.pdf':
+                    raise ValueError('Nguồn PDF trả về trang web/metadata, không phải PDF toàn văn')
+                target = self.output_dir / f'{document_id}{extension}'
+                temporary = target.with_name(target.name + '.tmp')
+                temporary.write_bytes(content)
+                temporary.replace(target)
+                checksum = self.calculate_checksum(target)
+                metadata = {key: document.get(key, '') for key in ('title', 'source_org', 'source_url', 'language', 'published_date', 'effective_date', 'version_id')}
+                self.manifest.update(document_id, **metadata, status='downloaded', legal_status=document.get('status') or 'unknown', region=document.get('jurisdiction', ''), document_type=document.get('doc_type', ''), checksum=checksum, file_path=str(target), final_url=final_url, download_url=url, content_type=content_type, file_size=len(content), provenance='official_download', collected_at=datetime.now(timezone.utc).isoformat(), error=None, parse_error=None)
+                return {'document_id': document_id, 'status': 'downloaded', 'file_path': str(target), 'file_size': len(content), 'checksum': checksum}
+            except Exception as exc:
+                errors.append(f'{url}: {type(exc).__name__}: {exc}')
+        self.manifest.update(document_id, title=document.get('title', ''), source_url=document.get('source_url', ''), status='download_failed', error='; '.join(errors), provenance='download_failed')
+        return {'document_id': document_id, 'status': 'download_failed', 'error': '; '.join(errors)}
 
-            checksum = self.calculate_checksum(file_path)
-            self.manifest.update(
-                document_id,
-                status="downloaded",
-                checksum=checksum,
-                file_path=str(file_path),
-                source_url=document.get("source_url") or url,
-                final_url=final_url,
-                content_type=content_type,
-                file_size=len(content),
-                title=document.get("title", ""),
-                region=document.get("jurisdiction", ""),
-                document_type=document.get("doc_type", ""),
-                language=document.get("language", ""),
-                published_date=document.get("published_date", ""),
-                error=None,
-                parse_error=None,
-            )
-
-            return {
-                "document_id": document_id,
-                "status": "downloaded",
-                "file_path": str(file_path),
-                "file_size": len(content),
-                "checksum": checksum,
-            }
-
-        except Exception as error:
-            if temp_path is not None and temp_path.exists():
-                temp_path.unlink()
-
-            # Kiểm tra nếu đã có sẵn file hợp lệ trong output_dir hoặc bronze file_path thì giữ nguyên
-            safe_id = safe_filename(document_id)
-            existing_files = [
-                f for f in self.output_dir.glob(f"{safe_id}.*")
-                if f.is_file() and f.suffix.lower() in (".txt", ".html", ".pdf", ".docx") and f.stat().st_size > 200
-            ]
-            bronze_path = Path(document.get("file_path", "")) if document.get("file_path") else None
-            if not existing_files and bronze_path and bronze_path.exists() and bronze_path.stat().st_size > 200:
-                dest = self.output_dir / f"{safe_id}{bronze_path.suffix.lower()}"
-                shutil.copy2(bronze_path, dest)
-                existing_files = [dest]
-
-            if existing_files:
-                kept = existing_files[0]
-                checksum = self.calculate_checksum(kept)
-                self.manifest.update(
-                    document_id,
-                    status="downloaded_cached",
-                    checksum=checksum,
-                    file_path=str(kept),
-                    source_url=document.get("source_url") or url,
-                    file_size=kept.stat().st_size,
-                    title=document.get("title", ""),
-                    region=document.get("jurisdiction", ""),
-                    document_type=document.get("doc_type", ""),
-                    language=document.get("language", ""),
-                    published_date=document.get("published_date", ""),
-                    error=f"Remote fallback ({error}); using local copy {kept.name}",
-                )
-                return {
-                    "document_id": document_id,
-                    "status": "downloaded",
-                    "file_path": str(kept),
-                    "file_size": kept.stat().st_size,
-                    "checksum": checksum,
-                }
-
-            self.manifest.update(
-                document_id,
-                status="download_failed",
-                source_url=document.get("source_url") or url,
-                file_path=None,
-                parsed_path=None,
-                text_length=None,
-                error=str(error),
-                parse_error=None,
-            )
-
-            return {
-                "document_id": document_id,
-                "status": "download_failed",
-                "error": str(error),
-            }
-
-    def collect_from_csv(self, sources_csv: str) -> list:
-        """Thu thập danh sách tài liệu từ sources.csv."""
-        sources = pd.read_csv(sources_csv, dtype=str, encoding="utf-8-sig").fillna("")
-
-        required_columns = {
-            "document_id",
-            "title",
-            "jurisdiction",
-            "doc_type",
-            "language",
-        }
-        missing = required_columns - set(sources.columns)
-        if missing:
-            raise ValueError(f"Missing columns: {missing}")
-
-        sources["document_id"] = sources["document_id"].str.strip()
-        if sources["document_id"].duplicated().any():
-            raise ValueError("document_id must be unique.")
-        if sources["document_id"].eq("").any():
-            raise ValueError("document_id cannot be empty.")
-
+    def collect_from_csv(self, sources_csv: str, *, refresh: bool = False, limit: int | None = None) -> list:
+        with open(sources_csv, encoding='utf-8-sig', newline='') as stream:
+            reader = csv.DictReader(stream)
+            required = {'document_id', 'title', 'source_url', 'jurisdiction', 'doc_type', 'language'}
+            if not required.issubset(reader.fieldnames or []):
+                raise ValueError(f'Thiếu cột: {required - set(reader.fieldnames or [])}')
+            documents = [{k: (v or '').strip() for k, v in row.items() if k} for row in reader]
+        documents = [d for d in documents if d.get('document_id') and d.get('enabled', 'true').lower() != 'false']
+        ids = [d['document_id'] for d in documents]
+        if len(ids) != len(set(ids)):
+            raise ValueError('document_id phải duy nhất')
         results = []
-        for _, row in sources.iterrows():
-            document = row.to_dict()
-            url = (document.get("download_url") or "").strip() or (document.get("source_url") or "").strip()
-            if not url:
-                continue
-            result = self.collect_one(document)
+        for document in documents[:limit]:
+            result = self.collect_one(document, refresh=refresh)
             results.append(result)
-            print(f"{document['document_id']}: {result['status']}")
-
-        total = len(results)
-        success = sum(result["status"] == "downloaded" for result in results)
-        failed = sum(result["status"] == "download_failed" for result in results)
-
-        print("\n========== COLLECT SUMMARY ==========")
-        print(f"Total: {total}")
-        print(f"Success: {success}")
-        print(f"Failed: {failed}")
-
+            print(f"{document['document_id']}: {result['status']}", flush=True)
+            time.sleep(float(os.getenv('COLLECTION_DELAY', '0.15')))
+        print(f"Collected: {sum(r['status'] in ('downloaded', 'downloaded_cached') for r in results)}/{len(results)}", flush=True)
         return results

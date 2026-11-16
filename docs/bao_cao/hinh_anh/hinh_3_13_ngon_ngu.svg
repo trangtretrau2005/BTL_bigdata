@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="648pt" height="432pt" viewBox="0 0 648 432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-16T17:53:30.887761</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432 
+L 648 432 
+L 648 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 432.772875 213.953906 
+C 432.772875 190.245559 425.021599 167.175059 410.706395 148.276365 
+C 396.39119 129.377671 376.282326 115.667679 353.460096 109.246499 
+C 330.637867 102.82532 306.330284 104.038461 284.260806 112.700092 
+C 262.191329 121.361724 243.547464 137.005784 231.185098 157.2359 
+L 272.951804 182.759003 
+C 279.751105 171.632439 290.005231 163.028206 302.143444 158.264309 
+C 314.281656 153.500411 327.650827 152.833184 340.203053 156.364832 
+C 352.755279 159.896481 363.815155 167.436977 371.688517 177.831258 
+C 379.561879 188.22554 383.825081 200.914315 383.825081 213.953906 
+z
+" style="fill: #173e59; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 231.185098 157.2359 
+C 222.425939 171.569628 217.105096 187.739474 215.641039 204.473726 
+C 214.176981 221.207977 216.609124 238.056121 222.746186 253.6931 
+C 228.883248 269.330078 238.56001 283.33492 251.015421 294.606182 
+C 263.470832 305.877444 278.369575 314.111688 294.539904 318.661313 
+C 310.710232 323.210938 327.716818 323.953462 344.22214 320.830486 
+C 360.727462 317.707511 376.287172 310.803112 389.677542 300.660301 
+C 403.067912 290.51749 413.928453 277.409326 421.405014 262.366732 
+C 428.881575 247.324137 432.772875 230.752079 432.772875 213.953906 
+L 383.825081 213.953906 
+C 383.825081 223.192902 381.684866 232.307533 377.572758 240.58096 
+C 373.460649 248.854387 367.487351 256.063877 360.122648 261.642423 
+C 352.757944 267.220969 344.200104 271.018389 335.122177 272.736025 
+C 326.04425 274.453662 316.690628 274.045274 307.796947 271.54298 
+C 298.903266 269.040686 290.708958 264.511852 283.858482 258.312658 
+C 277.008005 252.113464 271.685786 244.410801 268.310402 235.810463 
+C 264.935018 227.210125 263.59734 217.943645 264.402571 208.739807 
+C 265.207803 199.535969 268.134266 190.642553 272.951804 182.759003 
+z
+" style="fill: #c49232; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_1">
+    <text style="font-size: 13px; font-family: 'Times New Roman'; text-anchor: start" x="356.406106" y="103.165036" transform="rotate(-0 356.406106 103.165036)">Tiếng Việt</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: 'Times New Roman'; text-anchor: end" x="291.593894" y="333.521331" transform="rotate(-0 291.593894 333.521331)">Tiếng Anh</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13px; font-family: 'Times New Roman'" transform="translate(317.27969 132.690396)">26 văn bản</text>
+    <text style="font-size: 13px; font-family: 'Times New Roman'" transform="translate(324.682581 146.471665)">(41.3%)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 13px; font-family: 'Times New Roman'" transform="translate(273.678747 287.657358)">37 văn bản</text>
+    <text style="font-size: 13px; font-family: 'Times New Roman'" transform="translate(281.081638 301.438628)">(58.7%)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Times New Roman'; fill: #173e59" transform="translate(314 208.09375)">63</text>
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Times New Roman'; fill: #173e59" transform="translate(289.817187 229.042578)">văn bản</text>
+   </g>
+  </g>
+  <g id="text_6">
+   <text style="font-weight: 700; font-size: 14.4px; font-family: 'Times New Roman'; text-anchor: middle; fill: #173e59" x="324" y="22.99275" transform="rotate(-0 324 22.99275)">Hai ngôn ngữ trong corpus hiện tại</text>
+  </g>
+  <g id="text_7">
+   <text style="font-size: 10px; font-family: 'Times New Roman'; text-anchor: start; fill: #4a5361" x="12.96" y="419.041797" transform="rotate(-0 12.96 419.041797)">Đếm theo trường language của văn bản; chưa đánh giá riêng chất lượng hỏi đáp xuyên ngôn ngữ.</text>
+  </g>
+ </g>
+</svg>

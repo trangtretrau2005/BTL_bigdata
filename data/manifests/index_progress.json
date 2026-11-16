@@ -1,0 +1,11 @@
+{
+  "status": "ready",
+  "collection": "ai_documents_verified_v2",
+  "snapshot": "ai_documents_verified_v2__api_20261116_093406_aaf12a03",
+  "rebuild": true,
+  "total_chunks": 3285,
+  "completed_chunks": 3285,
+  "embedding_model": "bge-m3",
+  "input_hash": "44e8d21fc664231ad828e50f2256b957d40f9c1fccc83cc973cf3ee030c44705",
+  "updated_at": "2026-11-16T09:35:29.763324+00:00"
+}

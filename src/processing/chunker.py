@@ -6,6 +6,8 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
+from bisect import bisect_right
+from src.settings import setting
 
 
 ARTICLE_RE = re.compile(
@@ -71,15 +73,18 @@ def chunk_text(text: str, size: int = 1000, overlap: int = 150):
 
 def chunk_document(doc: dict, size=1000, overlap=150):
     doc_id = doc["document_id"]
-    last_article = None
-    last_section = None
+    markers = {}
+    for key, pattern in (("article", ARTICLE_RE), ("section", SECTION_RE), ("page", PAGE_RE)):
+        markers[key] = [(m.start(), m.group(1).strip()) for m in pattern.finditer(doc["text"])]
+    def before(key, position):
+        values = markers[key]
+        idx = bisect_right([v[0] for v in values], position) - 1
+        return values[idx][1] if idx >= 0 else None
     for i, (start, end, text) in enumerate(chunk_text(doc["text"], size, overlap)):
-        chunk_id = hashlib.sha256(f"{doc_id}|{start}|{end}|{text}".encode("utf-8")).hexdigest()
+        chunk_id = stable_chunk_id(doc_id, doc.get("version_id") or "v1", i, text)
         loc = extract_location_meta(text)
-        if loc["article"]:
-            last_article = loc["article"]
-        if loc["section"]:
-            last_section = loc["section"]
+        start_page = before("page", start)
+        end_page = before("page", end - 1)
 
         yield {
             "chunk_id": chunk_id,
@@ -88,13 +93,15 @@ def chunk_document(doc: dict, size=1000, overlap=150):
             "char_start": start,
             "char_end": end,
             "text": text,
-            "article": loc["article"] or last_article,
-            "section": loc["section"] or last_section,
-            "page_start": loc["page_start"],
-            "page_end": loc["page_end"],
+            "article": before("article", start) or loc["article"],
+            "section": before("section", start) or loc["section"],
+            "page_start": int(start_page) if start_page else loc["page_start"],
+            "page_end": int(end_page) if end_page else loc["page_end"],
             **{
                 k: doc.get(k)
                 for k in (
+                    "version_id", "language", "legal_status", "effective_date", "issued_date",
+                    "content_hash", "provenance", "parse_status", "jurisdiction", "raw_path",
                     "source_document_id",
                     "title",
                     "source_url",
@@ -103,6 +110,7 @@ def chunk_document(doc: dict, size=1000, overlap=150):
                     "document_type",
                     "source_path",
                     "text_sha256",
+                    "source_org", "api_provider", "api_url", "original_filename",
                 )
             },
         }
@@ -114,7 +122,9 @@ def stable_chunk_id(document_id: str, version: str, chunk_index: int, text: str)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def run(input_path: str, output_path: str, size=1000, overlap=150):
+def run(input_path: str, output_path: str, size=None, overlap=None):
+    size = int(size if size is not None else setting("CHUNK_SIZE", 2200))
+    overlap = int(overlap if overlap is not None else setting("CHUNK_OVERLAP", 240))
     import pyarrow as pa
     import pyarrow.dataset as ds
     import pyarrow.parquet as pq
@@ -150,9 +160,10 @@ def run(input_path: str, output_path: str, size=1000, overlap=150):
         "total_chunks": chunk_count,
         "chunk_size": size,
         "chunk_overlap": overlap,
-        "indexed_at": datetime.now(timezone.utc).isoformat(),
+        "chunked_at": datetime.now(timezone.utc).isoformat(),
+        "status": "chunks_ready",
     }
-    with open(manifest_dir / "index_manifest.json", "w", encoding="utf-8") as mf:
+    with open(manifest_dir / "chunk_manifest.json", "w", encoding="utf-8") as mf:
         json.dump(manifest_data, mf, ensure_ascii=False, indent=2)
 
     print(f"Chunking complete: {doc_count} documents / {chunk_count} chunks -> {target} & {parquet_target}")
@@ -163,8 +174,8 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--input", default="data/processed")
     p.add_argument("--output", default="data/chunks")
-    p.add_argument("--size", type=int, default=1000)
-    p.add_argument("--overlap", type=int, default=150)
+    p.add_argument("--size", type=int, default=None)
+    p.add_argument("--overlap", type=int, default=None)
     a = p.parse_args()
     run(a.input, a.output, a.size, a.overlap)
 

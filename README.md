@@ -1,334 +1,134 @@
-# 📚 Hệ thống Tra cứu và Hỏi đáp Văn bản AI (Data Lake + RAG)
+# Thư viện Chính sách AI — Data Lake, RAG và LLM
 
-> **Môn học:** Big Data  
-> **Nhóm:** Trang (nhóm trưởng) · Chi · Thanh  
-> **Stack:** Python 3.10+ · HDFS · PySpark · BGE-M3 · Qwen3 · Qdrant · Streamlit
+Tra cứu văn bản pháp luật, chính sách và hướng dẫn quản trị AI bằng tiếng Việt. Câu trả lời dựa trên tài liệu đã thu thập, kèm dẫn chứng để đối chiếu.
 
----
+## Khởi chạy
 
-## Giới thiệu dự án
+Cần Docker Desktop. Cấu hình máy demo: RTX 3050 6 GB, Python/Spark chạy trong Docker Linux.
 
-Hệ thống hỗ trợ tra cứu và hỏi đáp các văn bản pháp lý, chính sách về **Trí tuệ nhân tạo** từ nhiều khu vực (Việt Nam, EU, Quốc tế, ASEAN). Kiến trúc gồm hai phần chính:
-
-1. **Data Lake Pipeline** (HDFS + PySpark): Thu thập → Phân tích → Làm sạch → Chia đoạn văn bản.
-2. **RAG Q&A** (BGE-M3 + Qdrant + Qwen3): Nhúng vector → Truy xuất ngữ nghĩa → Sinh câu trả lời có trích dẫn.
-
-```
-Nguồn (CSV) → Collector → Parser → Spark ETL → Chunker → Embedder → Qdrant
-                                                                         ↓
-                                                         Streamlit App ← Retriever + LLM
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/start_project.ps1
 ```
 
----
+Script tạo `.env` từ `.env.example` nếu chưa có, build ứng dụng và tải BGE-M3, `qwen3:4b-instruct-2507-q4_K_M` cùng model giọng Việt Piper. Model Ollama được giữ trong Docker volumes; model giọng nói được giữ tại `data/models/piper` trong dự án.
 
-## Yêu cầu hệ thống
+- Ứng dụng: http://localhost:8501
+- Qdrant: http://localhost:6333/dashboard
+- HDFS: http://localhost:9870
 
-| Thành phần | Phiên bản tối thiểu | Ghi chú |
-|---|---|---|
-| Python | 3.10+ | Khuyến nghị 3.11 |
-| Java | 11+ | Cần cho PySpark/Hadoop |
-| Apache Hadoop (HDFS) | 3.3+ | Chạy local hoặc cluster |
-| Ollama | 0.4+ | Để chạy BGE-M3 và Qwen3 |
-| Qdrant | 1.7+ | Vector database |
-| RAM | 16 GB+ | Qwen3:4B cần ~6 GB VRAM hoặc RAM |
-| Disk | 20 GB+ | Cho dữ liệu và models |
+Máy không có NVIDIA có thể chạy CPU, với tốc độ chậm hơn:
 
----
-
-## Cài đặt
-
-### 1. Clone repo
-
-```bash
-git clone <repo-url>
-cd BTL_bigdata
+```powershell
+docker compose -f compose.yaml -f compose.cpu.yaml up -d --build
 ```
 
-### 2. Tạo virtual environment
+## Cập nhật tự động qua API
 
-```bash
-python -m venv .venv
+Ở thanh bên, bấm **Cập nhật dữ liệu** để lấy văn bản AI mới từ API công khai Bộ Tư pháp. Hệ thống tự lấy toàn văn JSON/HTML, xử lý bằng Spark, tạo chỉ mục mới và đồng bộ HDFS; không cần tải từng PDF. Có tiến độ, chống trùng và báo lỗi theo nguồn. Mặc định kiểm tra 2 năm gần đây, tối đa 20 văn bản mới/cập nhật mỗi lượt; có thể cập nhật tiếp khi còn dữ liệu chờ.
 
-# Windows
-.venv\Scripts\activate
-
-# Linux / macOS
-source .venv/bin/activate
+```powershell
+docker compose exec -T app python -m scripts.update_data --providers vbpl --max-documents 20
 ```
 
-### 3. Cài đặt dependencies
+Xem [hợp đồng API, checkpoint và các lớp Data Lake](docs/DYNAMIC_API_UPDATE.md). Thay đổi giới hạn tại [cấu hình API](data/api_sources.json). Adapter Federal Register hiện tắt vì URL toàn văn trả trang chặn truy cập; các trang này không được dùng làm dữ liệu hỏi đáp.
 
-```bash
-pip install -r requirements.txt
+## Tải tài liệu của bạn lên
+
+1. Ở thanh bên, mở **Tải tài liệu lên** và chọn một hoặc nhiều tệp **PDF, DOCX, TXT, HTML, XML**.
+2. Chọn khu vực/ngôn ngữ của tệp. Trong **Nguồn cập nhật tự động**, có thể bỏ chọn **Lấy thêm văn bản từ API** nếu chỉ muốn xử lý tệp của bạn.
+3. Bấm **Cập nhật dữ liệu**. Worker tự lưu bản gốc, trích xuất nội dung, chạy Spark ETL → Parquet → chia đoạn → embedding → Qdrant → HDFS.
+4. Khi hoàn tất, chọn tài liệu trong **Văn bản cụ thể** để hỏi đáp. Nguồn trả lời có nút **Tải tệp gốc**; tệp cũng có thể tải lại trong **Tải tài liệu lên → Tệp đã lưu**.
+
+Giới hạn 10 tệp/lượt, 50 MB/tệp, tổng 100 MB. Word cần định dạng `.docx`. PDF scan ảnh cần OCR trước; tệp không đọc được hiển thị lỗi riêng và không được đưa vào tra cứu. Tải lại cùng tệp không tạo tài liệu trùng; nội dung trùng với một tài liệu có sẵn được ghi rõ **Nội dung đã có trong thư viện**.
+
+Tệp mang provenance `user_upload`, giữ tên gốc, checksum và nhãn **Tệp do người dùng tải lên**. Không cần URL bên ngoài và không tự coi tệp là văn bản chính thức hay tự xác nhận hiệu lực. Dữ liệu lưu tại `data/uploads`, đồng bộ lên các vùng HDFS `raw/uploads` và `parsed/uploads`; Parquet/Chunks dùng cùng cơ chế snapshot phiên bản với nguồn API.
+
+Nếu có tệp hợp lệ, lỗi kết nối API được ghi riêng để các tệp vẫn tiếp tục xử lý. Pipeline trước khi công bố bị lỗi thì chỉ mục đang dùng được giữ nguyên. Tệp hợp lệ đã lưu có thể được xử lý lại bằng nút cập nhật hoặc:
+
+```powershell
+docker compose exec -T app python -m scripts.update_data --uploads-only
 ```
 
-### 4. Cấu hình biến môi trường
+Xem [bản cập nhật tải tệp và giọng đọc](docs/UPLOAD_AND_VOICE_UPDATE.md), gồm kết quả thử PDF thật và kiểm thử hồi quy.
 
-```bash
-cp .env.example .env
-# Chỉnh sửa .env theo môi trường của bạn
+## Thu thập và xử lý corpus khởi tạo
+
+Danh mục `data/sources.csv` có nguồn Việt Nam, EU, NIST, OECD, UNESCO, ASEAN, Singapore, Anh, Úc và Canada. Không phải mọi nguồn trong danh mục đều tải hoặc trích xuất thành công.
+
+```powershell
+# Tải bản gốc và parse, tối đa 4 worker
+docker compose exec -T app python -m scripts.fetch_ai_corpus
+
+# Xử lý bản tải đã kiểm tra và công bố snapshot mới
+docker compose exec -T app python -m scripts.run_pipeline --step all --skip-collect --rebuild
+
+# Chạy cả thu thập, parse, ETL, chunk, index và HDFS
+docker compose exec -T app python -m scripts.run_pipeline --step all --rebuild
 ```
 
-Các biến quan trọng trong `.env`:
+Dùng `scripts.fetch_ai_corpus --refresh` khi cần tải lại nguồn đã có. Có thể chạy riêng `--step collect`, `parse`, `etl`, `chunk`, `index`, `lake`.
 
-| Biến | Giá trị mặc định | Mô tả |
-|---|---|---|
-| `HDFS_NAMENODE_URL` | `hdfs://localhost:9000` | URL HDFS namenode |
-| `QDRANT_URL` | `http://localhost:6333` | URL Qdrant server |
-| `OLLAMA_BASE_URL` | `http://localhost:11434` | URL Ollama API |
-| `EMBEDDING_MODEL` | `bge-m3` | Model nhúng vector |
-| `CHAT_MODEL` | `qwen3:4b` | Model sinh câu trả lời |
+Các lệnh trên tái tạo từ danh mục nguồn cố định. Luồng **Cập nhật dữ liệu** ghép các bản đã xác minh với toàn văn API và công bố phiên bản kết hợp.
 
-### 5. Tải models Ollama
-
-```bash
-# Tải model embedding (BGE-M3 ~1.2 GB)
-ollama pull bge-m3
-
-# Tải model chat (Qwen3 4B ~2.6 GB)
-ollama pull qwen3:4b
-
-# Kiểm tra
-ollama list
+```text
+Nguồn chính thức → verified_raw → verified_parsed → Spark ETL → Parquet
+                                                           → Chunks → BGE-M3 → Qdrant
+Câu hỏi → vector tìm kiếm → đoạn/điều khoản liên quan → Qwen3 Instruct → trả lời và nguồn
+Raw / Parsed / Processed / Chunks / Manifests → WebHDFS → /ai_docs
 ```
 
-### 6. Khởi động Qdrant (Docker)
+Spark chạy `local[2]` trong container. Pipeline xử lý staging local, sau đó lưu các lớp dữ liệu lên HDFS qua WebHDFS và đối chiếu kích thước từng tệp. Đây là demo Data Lake một máy, chưa phải benchmark Spark phân tán.
 
-```bash
-docker run -d --name qdrant -p 6333:6333 -p 6334:6334 \
-  -v $(pwd)/qdrant_storage:/qdrant/storage \
-  qdrant/qdrant
+## Bản chạy hiện tại
+
+- Corpus khởi tạo có 69 mục nguồn; số văn bản tra cứu tăng khi thu thập thêm qua API. Các vị trí trên giao diện cùng đếm `source_document_ids` trong [manifest đang hoạt động](data/manifests/index_manifest.json), không lấy tổng mục nguồn thay số văn bản đã lập chỉ mục.
+- Các đoạn giữ URL nguồn, phiên bản và metadata; Qdrant công bố alias sau khi hoàn tất đủ vector. Xem số đoạn và đường dẫn Processed/Chunks của phiên bản hiện tại trong manifest.
+- HDFS lưu Raw, Parsed, Parquet, Chunks và Manifests; dữ liệu xử lý qua API được lưu theo phiên bản. Xem kết quả đồng bộ trong `data/manifests/lake_manifest.json`.
+- Giao diện Times New Roman, nền ngà, xanh đậm và vàng; thư viện dùng thẻ tài liệu, lọc trạng thái và phân trang.
+- Một người thuyết trình nữ, chuyển động theo nhịp âm thanh, phụ đề theo đoạn, phát/tạm dừng/đọc lại và điều chỉnh tốc độ.
+- Giao diện dùng một lựa chọn giọng nữ **Hoài My**; đã bỏ menu chọn giọng nam và Việt cục bộ. Nếu dịch vụ chưa sẵn sàng, bộ phát ghi rõ giọng dự phòng thực tế, không giả là âm thanh Hoài My.
+
+### Nghe thử và đọc câu trả lời
+
+1. Mở **Khám phá trợ lý giọng nói** → **Nghe thử giọng đọc** → **Phát**.
+2. Sau khi hỏi đáp, nhấn **Tạo giọng đọc cho câu trả lời**, rồi **Phát** trong khung người thuyết trình.
+3. Đổi tốc độ trong thanh bên thì tạo lại âm thanh. Khung mới không dùng nhầm bản âm thanh của tốc độ cũ.
+4. Nếu cần tải model đọc dự phòng: `docker compose exec -T app python -m scripts.setup_voice`.
+
+Âm thanh được phát từng đoạn, không nối các MP3 gây sai thời lượng. Chuyển động miệng là minh họa theo biên độ âm thanh, không phải video người thật hay đồng bộ khẩu hình theo từng âm vị.
+Xem [bản cập nhật giọng nói và giao diện](docs/VOICE_UI_UPDATE.md) và [nguồn, giấy phép model](docs/VOICE_ATTRIBUTION.md).
+
+Nguồn Công báo được tải qua API/CDN chính thức. Không dùng các đoạn pháp luật viết sẵn để thay tài liệu thật. Trang metadata, chữ ký số hoặc PDF scan không đọc được không được xem là toàn văn.
+
+Ngữ cảnh lấy từ Qdrant; với câu hỏi khớp tiêu đề về phạm vi điều chỉnh hoặc hành vi bị cấm, hệ thống lấy toàn điều tương ứng từ bản Processed cùng phiên bản. Kết quả ghi `context_kind=article` và `anchor_chunk_id` để phân biệt điều khoản mở rộng với chunk vector ban đầu.
+
+Khi Qdrant/Ollama lỗi, hệ thống báo lỗi thay vì âm thầm trả lời trích đoạn. Nhãn trích dẫn sai bị chặn, chỉ hiện nguồn được model sử dụng. Chạy lại chỉ mục cùng ID không tạo trùng; rebuild dùng snapshot và đổi alias sau khi kiểm tra đủ point.
+
+Một số tên nhóm nhạy cảm được biên tập đối chiếu với nguồn trong `data/curated_summaries.json`, chỉ dùng khi checksum toàn điều khớp chính xác. UI ghi rõ bản tóm tắt biên tập, không giả là câu trả lời LLM vừa sinh. Việc này không thay thế tài liệu gốc trong corpus.
+
+## Báo cáo Chương 2–3 và bộ hình
+
+Đã có [mục lục đề xuất](docs/bao_cao/01_MUC_LUC_DE_XUAT.md), [bản nháp đầy đủ](docs/bao_cao/02_BAN_NHAP_CHUONG_2_3.md) và [bản HTML dễ đọc](docs/bao_cao/02_BAN_NHAP_CHUONG_2_3.html). Nội dung gồm thiết kế Data Lake/API/upload/Spark/RAG, người thuyết trình và thử nghiệm thật trên máy demo.
+
+[Bộ 16 biểu đồ](docs/bao_cao/03_BIEU_DO_THONG_KE.md) có PNG/SVG; [40 hình minh chứng](docs/bao_cao/DANH_MUC_HINH.md) gồm sơ đồ và ảnh ứng dụng, HDFS, Qdrant, người nói. [Hướng dẫn báo cáo](docs/bao_cao/README.md) giải thích nguồn số liệu, cách tái tạo và giới hạn phép đo. Snapshot báo cáo có 63 tài liệu/3.285 đoạn; tránh trộn với số liệu của các bản chạy trước.
+
+## Kiểm thử và đánh giá
+
+```powershell
+docker compose exec -T app python -m pytest tests -q -p no:cacheprovider
+docker compose exec -T app python evaluation/service_smoke.py
+# Đo truy xuất, không gọi model sinh:
+docker compose exec -T app python evaluation/eval_runner.py --retrieval-only
 ```
 
-Hoặc tải binary tại https://qdrant.tech/documentation/quick-start/
+Kiểm thử Python bao gồm tải tệp, provenance, PDF/DOCX/TXT, chống trùng, API tăng dần, thống kê số văn bản, worker nền, nút cập nhật, Spark, chỉ mục và RAG; kiểm thử JavaScript cho bộ phát chạy bằng `node tests/presenter_player.test.cjs`. Xem [cập nhật API](docs/DYNAMIC_API_UPDATE.md), [giọng nói](docs/VOICE_UI_UPDATE.md) và [báo cáo nền tảng trước đó](docs/RUN_VERIFICATION.md). Bộ đánh giá cũ còn có đáp án xây từ corpus trước đây; nhóm cần đối chiếu lại từng đáp án với bản gốc trước khi dùng làm benchmark. Chỉ số tìm đúng tài liệu và ID nguồn không tự chứng minh nội dung câu trả lời đúng.
 
----
+## Lưu ý vận hành
 
-## Chạy pipeline
-
-### Bước 1: Thu thập tài liệu
-
-```bash
-python scripts/run_collect.py --sources data/sources.csv --output data/raw
-```
-
-### Bước 2: Phân tích văn bản (extract text)
-
-```bash
-python scripts/run_parse.py --raw data/raw --output data/parsed
-```
-
-### Bước 3: Spark ETL (làm sạch + deduplicate)
-
-```bash
-# Chạy local
-python scripts/run_etl.py --input data/parsed --output data/processed
-
-# Hoặc submit Spark job
-spark-submit scripts/run_etl.py --input data/parsed --output data/processed
-```
-
-### Bước 4: Chia đoạn văn bản (chunking)
-
-```bash
-python scripts/run_chunk.py --input data/processed --output data/chunks
-```
-
-### Bước 5: Nhúng vector và index vào Qdrant
-
-```bash
-python scripts/run_index.py --chunks data/chunks
-```
-
-### Chạy toàn bộ pipeline (tất cả bước)
-
-```bash
-python scripts/run_pipeline.py --step all
-```
-
-### Chạy từng bước riêng lẻ
-
-```bash
-python scripts/run_pipeline.py --step collect
-python scripts/run_pipeline.py --step parse
-python scripts/run_pipeline.py --step etl
-python scripts/run_pipeline.py --step chunk
-python scripts/run_pipeline.py --step index
-```
-
----
-
-## Chạy ứng dụng Streamlit
-
-```bash
-streamlit run app.py
-```
-
-Truy cập: http://localhost:8501
-
-**Tính năng:**
-- 🔍 **Tra cứu**: Tìm kiếm ngữ nghĩa trong corpus văn bản AI
-- 💬 **Hỏi đáp**: Đặt câu hỏi, nhận câu trả lời có trích dẫn từ văn bản gốc
-- Lọc theo khu vực (VN, EU, International, ASEAN)
-- Lọc theo tên/ID văn bản cụ thể
-
----
-
-## Cấu trúc thư mục
-
-```
-BTL_bigdata/
-├── app.py                          # Streamlit UI (Trang)
-├── config.yaml                     # Cấu hình toàn hệ thống
-├── requirements.txt                # Python dependencies
-├── .env.example                    # Template biến môi trường
-├── .gitignore
-├── README.md
-│
-├── src/                            # Source code chính
-│   ├── schemas.py                  # ⭐ Shared data schemas (contract)
-│   ├── ingestion/                  # Module của Chi
-│   │   ├── collector.py            # FR01+FR02: Thu thập tài liệu
-│   │   ├── parser.py               # FR03: Trích xuất văn bản
-│   │   └── manifest.py             # Quản lý manifest
-│   ├── processing/                 # Module của Thanh
-│   │   ├── spark_etl.py            # FR04: Spark ETL
-│   │   └── chunker.py              # FR05: Chia đoạn văn bản
-│   └── rag/                        # Module của Thanh
-│       ├── indexer.py              # FR05: Embedding + Qdrant
-│       ├── retriever.py            # FR06: Truy xuất ngữ nghĩa
-│       └── answerer.py             # FR07-09: Sinh câu trả lời
-│
-├── scripts/                        # Pipeline scripts
-│   ├── run_collect.py
-│   ├── run_parse.py
-│   ├── run_etl.py
-│   ├── run_chunk.py
-│   ├── run_index.py
-│   ├── run_pipeline.py             # Full pipeline
-│   └── generate_checksums.py
-│
-├── data/
-│   ├── sources.csv                 # ⭐ Danh sách nguồn tài liệu
-│   ├── bronze/                     # Tài liệu gốc đã tải
-│   │   ├── metadata/
-│   │   │   ├── international_documents.csv
-│   │   │   └── vietnam_documents.csv
-│   │   ├── international/          # EU, NIST, OECD, UNESCO...
-│   │   ├── vietnam/                # Văn bản pháp luật VN
-│   │   └── supplementary/         # ASEAN, nghiên cứu khác
-│   ├── raw/                        # Raw downloads (gitignored)
-│   ├── parsed/                     # Parsed text records (gitignored)
-│   ├── processed/                  # Parquet sau ETL (gitignored)
-│   ├── chunks/                     # Chunk Parquet (gitignored)
-│   └── manifests/                  # Pipeline manifests
-│
-├── tests/
-│   ├── test_schemas.py             # Unit tests schemas
-│   └── test_integration.py        # Integration tests TC01-TC09
-│
-├── evaluation/
-│   ├── qa_eval_set.csv             # 30 câu hỏi kiểm thử
-│   └── eval_runner.py             # Script chạy evaluation
-│
-└── docs/
-    └── PRD_Data_Lake_RAG_AI.docx  # Product Requirements Document
-```
-
----
-
-## Kiểm thử
-
-```bash
-# Chạy unit tests
-pytest tests/test_schemas.py -v
-
-# Chạy integration tests (cần pipeline chạy trước)
-pytest tests/test_integration.py -v -m integration
-
-# Chạy tất cả
-pytest tests/ -v
-```
-
----
-
-## Đánh giá chất lượng
-
-```bash
-python evaluation/eval_runner.py
-# Kết quả lưu tại evaluation/eval_results.json
-```
-
-Chỉ số đánh giá:
-- **Hit@5**: Chunk đúng có trong top 5 kết quả truy xuất
-- **Answered correctly**: Câu trả lời đúng khi có đủ căn cứ
-- **Insufficient evidence**: Nhận dạng đúng câu hỏi ngoài corpus
-
----
-
-## Xử lý lỗi thường gặp
-
-### ❌ `JAVA_HOME not set` hoặc PySpark lỗi
-
-```bash
-# Windows - thêm vào .env
-JAVA_HOME=C:\Program Files\Java\jdk-11
-
-# Linux/macOS
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-```
-
-### ❌ Ollama không kết nối được
-
-```bash
-# Kiểm tra Ollama đang chạy
-ollama serve
-
-# Kiểm tra models đã pull
-ollama list
-```
-
-### ❌ Qdrant connection refused
-
-```bash
-# Khởi động lại Qdrant Docker
-docker start qdrant
-
-# Hoặc chạy lại
-docker run -d -p 6333:6333 qdrant/qdrant
-```
-
-### ❌ PDF scan không extract được text
-
-- File PDF là ảnh scan → parser sẽ đánh dấu `parse_status=scan_detected`
-- Cần OCR (không nằm trong scope hiện tại)
-- Bỏ qua các file này trong pipeline, log lại để xử lý thủ công
-
-### ❌ Memory error khi chạy PySpark
-
-```bash
-# Điều chỉnh trong config.yaml hoặc spark-submit
---driver-memory 4g --executor-memory 4g
-```
-
-### ❌ Qwen3 trả lời quá chậm
-
-- Dùng `qwen3:4b` thay vì model lớn hơn
-- Tăng `REQUEST_TIMEOUT` trong `.env`
-- Đảm bảo Ollama dùng GPU nếu có
-
----
-
-## Phân công công việc
-
-| Module | Thành viên | Chức năng |
-|---|---|---|
-| `src/ingestion/` | **Chi** | Thu thập + phân tích văn bản |
-| `src/processing/` + `src/rag/` | **Thanh** | ETL, Chunking, RAG pipeline |
-| `app.py` | **Trang** | Streamlit UI, tích hợp |
-
----
-
-## Liên hệ & Đóng góp
-
-Mọi thay đổi schema trong `src/schemas.py` **phải thông báo cho toàn nhóm** vì đây là contract chung giữa các module.
+- `.env` ưu tiên hơn `config.yaml`. Đổi model embedding hoặc chunking cần rebuild chỉ mục.
+- Bản `qwen3:4b` hiện chỉ hỗ trợ thinking trên image được kiểm tra; ứng dụng dùng chính xác bản Instruct nêu trên để có câu trả lời hoàn chỉnh trong giới hạn token.
+- Lượt nạp model đầu có thể mất vài phút. Model được giữ 10 phút trên GPU để giảm thời gian các câu sau.
+- `legal_status=unknown` là chưa xác minh hiệu lực. Luôn đối chiếu đoạn nguồn khi sử dụng câu trả lời.
+- Giọng Hoài My và nhận diện câu hỏi bằng giọng nói gửi nội dung tương ứng tới dịch vụ bên ngoài. Nếu bộ đọc dùng Piper dự phòng thì nội dung đọc được xử lý trên máy. Giao diện báo rõ nhà cung cấp thực tế. LLM và Qdrant chạy local.
+- Dữ liệu cũ đã được giữ trong `data/backups`. Nguồn lỗi có trong `verified_collection_report.json`.
+- Các cổng chỉ mở trên localhost. Dừng bằng `docker compose stop`; tránh `down -v` nếu muốn giữ model và dữ liệu.

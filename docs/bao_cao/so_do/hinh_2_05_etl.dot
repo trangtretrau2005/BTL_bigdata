@@ -1,0 +1,30 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.30", ranksep="0.45", splines=polyline, fontname="Liberation Serif", fontsize=20, label="Thiết kế ETL bằng Spark DataFrame", labelloc=t];
+node [shape=box, style="rounded,filled", fillcolor="#F2F6F8", color="#31576B", fontcolor="#142C3A", fontname="Liberation Serif", fontsize=13, margin="0.16,0.11"];
+edge [color="#56717F", arrowsize=0.7, fontname="Liberation Serif", fontsize=11, fontcolor="#4B5962"];
+s [label="Parsed JSON từ các kênh", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+schema [label="Đọc schema, hợp nhất trường tương đương\ntext / content / body; url; region"];
+clean [label="Chuẩn hóa khoảng trắng / xuống dòng\nGiữ nội dung + metadata nguồn"];
+length [label="text khác null và ≥ 30 ký tự?", shape="diamond", style="filled", fillcolor="#FFF5DA"];
+drop [label="Loại bản ghi không hợp lệ", fillcolor="#FBEDE9", color="#AB6453"];
+region [label="Chuẩn hóa region, jurisdiction\nGiữ ngôn ngữ và provenance"];
+hash [label="text_sha256 = SHA256(text)\ndocument_id = SHA256(ID nguồn | URL | hash)"];
+window [label="Window partitionBy(text_sha256)\norderBy(URL, title, source_path)"];
+dedup [label="row_number = 1\nMột đại diện cho nội dung giống hệt"];
+stats [label="Đếm đầu vào / hợp lệ / loại-trùng\nPhân bố vùng, loại và số ký tự"];
+write [label="Ghi Parquet Silver theo job_id\nCodec mặc định được kiểm tra thực tế", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+chunk [label="Chia đoạn bằng Python/PyArrow\nƯu tiên điều → đoạn → câu"];
+gold [label="JSONL + Parquet các chunk\nID ổn định + vị trí + nguồn", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+s -> schema;
+schema -> clean;
+clean -> length;
+length -> drop [label="không"];
+length -> region [label="có"];
+region -> hash;
+hash -> window;
+window -> dedup;
+dedup -> stats;
+stats -> write;
+write -> chunk;
+chunk -> gold;
+}

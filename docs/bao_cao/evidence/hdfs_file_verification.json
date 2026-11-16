@@ -1,0 +1,52 @@
+{
+  "captured_at": "2026-11-16T10:39:45.035369+00:00",
+  "directory": {
+    "accessTime": 0,
+    "blockSize": 0,
+    "childrenNum": 7,
+    "fileId": 16386,
+    "group": "supergroup",
+    "length": 0,
+    "modificationTime": 1794822746393,
+    "owner": "root",
+    "pathSuffix": "",
+    "permission": "755",
+    "replication": 0,
+    "storagePolicy": 0,
+    "type": "DIRECTORY"
+  },
+  "content_summary": {
+    "directoryCount": 61,
+    "ecPolicy": "",
+    "fileCount": 221,
+    "length": 157987547,
+    "quota": -1,
+    "snapshotDirectoryCount": 0,
+    "snapshotFileCount": 0,
+    "snapshotLength": 0,
+    "snapshotSpaceConsumed": 0,
+    "spaceConsumed": 157987547,
+    "spaceQuota": -1,
+    "typeQuota": {}
+  },
+  "sample_files": [
+    {
+      "path": "/ai_docs/processed/20261116_093406_aaf12a03/part-00000-9f6d870b-f52e-4c0e-a093-08558dae570f-c000.snappy.parquet",
+      "type": "FILE",
+      "length": 626810,
+      "replication": 1,
+      "blockSize": 134217728,
+      "downloaded_bytes": 626810,
+      "sha256_matches_source": true
+    },
+    {
+      "path": "/ai_docs/raw/luat_134_2025.pdf",
+      "type": "FILE",
+      "length": 502586,
+      "replication": 1,
+      "blockSize": 134217728,
+      "downloaded_bytes": 502586,
+      "sha256_matches_source": true
+    }
+  ]
+}

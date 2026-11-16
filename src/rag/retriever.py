@@ -1,16 +1,17 @@
-"""Semantic retrieval with optional region and document filters.
-
-Supports Qdrant + Ollama embeddings as primary engine, with automatic fallback
-to local BM25/bilingual lexical-semantic search over data/chunks/chunks.jsonl
-when Qdrant or Ollama service is offline.
-"""
+"""Vector retrieval, or explicitly selected local keyword search. Never silently switches engines."""
 from __future__ import annotations
 import json
 import math
 import re
+import time
 import unicodedata
 from pathlib import Path
 from .common import collection_name, embeddings, qdrant_client, setting
+from src.catalog import read_json
+
+
+class RetrievalError(RuntimeError):
+    """An unavailable retrieval dependency; callers should show the error to the user."""
 
 # Stopwords tiếng Việt & tiếng Anh phổ biến để tránh khớp nhiễu với câu hỏi ngoài phạm vi
 _STOPWORDS = {
@@ -62,14 +63,28 @@ def _tokenize(text: str) -> list[str]:
     return [t for t in tokens if len(t) > 1 and t not in _STOPWORDS]
 
 
+def is_question_in_scope(question: str) -> bool:
+    """Conservative domain gate, not a claim that retrieved text contains an answer."""
+    normalized = _strip_accents(question.lower())
+    anchors = (
+        "ai", "tri tue nhan tao", "artificial intelligence", "llm", "machine learning",
+        "hoc may", "nist", "oecd", "unesco", "asean", "du lieu", "data", "quyen rieng tu",
+        "privacy", "cong nghe so", "chuyen doi so", "an ninh mang", "luat", "nghi dinh",
+        "quyet dinh", "regulation", "governance", "dao duc", "ethics", "42001",
+        "1671", "127/qd", "ai act", "14110", "chinh sach", "policy", "sandbox",
+    )
+    return any(re.search(r"(?<![a-z0-9])" + re.escape(term) + r"(?![a-z0-9])", normalized) for term in anchors)
+
+
 def _local_retrieve(
     question: str,
     top_k: int = 5,
     norm_reg: str | None = None,
     doc_id: str | None = None,
 ) -> list[dict]:
-    """Truy xuất BM25 + mở rộng song ngữ trực tiếp trên data/chunks/chunks.jsonl khi Qdrant/Ollama tắt."""
-    chunks_path = Path(setting("CHUNKS_PATH", "data/chunks/chunks.jsonl"))
+    """Explicit local keyword search. Scores are not vector similarities."""
+    active = read_json('data/manifests/index_manifest.json')
+    chunks_path = Path(setting("CHUNKS_PATH", active.get('chunks_path', 'data/chunks/chunks.jsonl')))
     if not chunks_path.exists():
         return []
 
@@ -101,7 +116,7 @@ def _local_retrieve(
     # Mở rộng từ khóa song ngữ Việt -> Anh
     expanded_tokens = list(q_tokens)
     for vi_phrase, en_terms in _VI_TO_EN_EXPANSIONS.items():
-        if vi_phrase in q_norm:
+        if re.search(r"(?<![a-z0-9])" + re.escape(vi_phrase) + r"(?![a-z0-9])", q_norm):
             for term in en_terms:
                 expanded_tokens.extend(_tokenize(term))
 
@@ -149,13 +164,13 @@ def _local_retrieve(
                 matched_specific += 1
 
         # Nếu không khớp bất kỳ từ khóa đặc trưng nào (câu hỏi ngoài phạm vi như GDP, vàng, bóng đá, GPT-5...)
-        if matched_specific == 0 and raw_score < 2.2:
-            norm_score = 0.10
-        else:
-            norm_score = min(0.98, 0.36 + 0.62 * (raw_score / (max_possible * 0.65 + 2.0)))
+        if not raw_score:
+            continue
+        norm_score = min(0.98, raw_score / (max_possible + 2.0))
 
         item = dict(ch)
         item["score"] = round(float(norm_score), 4)
+        item["retrieval_mode"] = "local"
         scored.append(item)
 
     scored.sort(key=lambda x: x["score"], reverse=True)
@@ -171,6 +186,7 @@ def retrieve(
     query: str | None = None,
     jurisdiction_filter: str | None = None,
     document_id_filter: str | None = None,
+    mode: str | None = None,
     **kwargs,
 ):
     q = (question or query or "").strip()
@@ -185,6 +201,12 @@ def retrieve(
     norm_reg = None
     if reg and reg.upper() not in ("ALL", "TAT CA", "TẤT CẢ"):
         norm_reg = "INTERNATIONAL" if reg.upper() in ("INTERNATIONAL", "GLOBAL", "INT") else reg.upper()
+
+    selected_mode = mode or setting("RETRIEVAL_MODE", "vector")
+    if selected_mode == "local":
+        return _local_retrieve(q, top_k=top_k, norm_reg=norm_reg, doc_id=doc_id)
+    if selected_mode != "vector":
+        raise ValueError("RETRIEVAL_MODE phải là vector hoặc local")
 
     try:
         from qdrant_client import models
@@ -205,14 +227,19 @@ def retrieve(
         if not client.collection_exists(collection_name()):
             raise RuntimeError("Qdrant collection does not exist.")
         query_vector = embeddings([q])[0]
-        hits = client.query_points(
-            collection_name=collection_name(),
-            query=query_vector,
-            query_filter=search_filter,
-            limit=top_k,
-            with_payload=True,
-        ).points
-        return [{"score": float(hit.score), **(hit.payload or {})} for hit in hits]
-    except Exception:
-        # Fallback tự động sang tìm kiếm cục bộ trên data/chunks/chunks.jsonl khi Qdrant/Ollama chưa bật
-        return _local_retrieve(q, top_k=top_k, norm_reg=norm_reg, doc_id=doc_id)
+        for attempt in range(2):
+            try:
+                hits = client.query_points(
+                    collection_name=collection_name(), query=query_vector, query_filter=search_filter,
+                    limit=top_k, with_payload=True, timeout=60,
+                ).points
+                break
+            except Exception as exc:
+                if attempt or getattr(exc,'status_code',None) not in (408,429,503):
+                    raise
+                time.sleep(0.5)
+        results = [{**(hit.payload or {}), "score": float(hit.score), "retrieval_mode": "vector"} for hit in hits]
+        from .article_context import focus_article
+        return focus_article(q, results)
+    except Exception as exc:
+        raise RetrievalError(f"Chưa truy xuất được từ Qdrant/Ollama. Kiểm tra dịch vụ và chỉ mục: {exc}") from exc

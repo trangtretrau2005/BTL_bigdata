@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:"Times New Roman",Times,serif;color:#203d48;background:transparent}
+.studio{display:grid;grid-template-columns:240px 1fr;min-height:330px;background:#fffefb;border:1px solid #ddd8ca;border-radius:18px;overflow:hidden}
+.portrait{position:relative;background:radial-gradient(ellipse at 50% 30%,#e9eee7,#d3dfd6);overflow:hidden;min-height:330px}
+.portrait:after{content:"";position:absolute;inset:14px;border:1px solid #ffffff85;border-radius:120px 120px 8px 8px;pointer-events:none}
+.portrait svg{position:absolute;width:100%;height:100%;bottom:-6px;filter:drop-shadow(0 12px 15px #23433715)}
+.portrait-label{position:absolute;bottom:13px;left:20px;right:20px;color:#fff7df;font-size:13px;text-align:center;letter-spacing:.5px;background:#193e46ed;border-radius:20px;padding:7px 8px;z-index:2}
+.content{padding:24px 28px;display:flex;flex-direction:column;min-width:0}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.eyebrow{color:#947444;font-size:11px;letter-spacing:2px;text-transform:uppercase}h2{font-size:24px;font-weight:400;margin:7px 0 0}
+.badge{font-size:13px;white-space:nowrap;color:#55776b;background:#edf3eb;border:1px solid #dee8dc;border-radius:30px;padding:6px 10px}
+.subtitle{margin:20px 0 12px;font-size:19px;line-height:1.55;min-height:89px;max-height:110px;overflow:auto;scrollbar-width:thin}
+.wave{height:23px;display:flex;align-items:center;gap:3px;margin:0 0 12px}.wave i{display:block;width:3px;height:3px;border-radius:2px;background:#b58e55;transition:height .08s}
+.transport{display:flex;align-items:center;gap:8px;margin-top:auto;flex-wrap:wrap}button,select{font:16px "Times New Roman",serif;border:1px solid #d8d6c9;border-radius:8px;background:#fffefa;color:#203d48;padding:9px 13px;cursor:pointer}
+button:hover{background:#f0f1e8}button:focus-visible,select:focus-visible{outline:2px solid #b28b4d;outline-offset:2px}button.primary{background:#20434a;color:#fff9eb;border-color:#20434a;min-width:114px}button:disabled{opacity:.5;cursor:default}
+.count{font-size:13px;color:#6d7b7b;margin-left:auto}.hint{font-size:13px;color:#6c7977;margin:10px 0 0;line-height:1.4}
+audio{width:100%;height:32px;margin:8px 0 0;accent-color:#20434a}audio:not([src]){display:none}
+.male .female-only,.female .male-only{display:none}.compact{grid-template-columns:1fr}.compact .portrait{display:none}
+.breath{transform-origin:160px 290px;animation:breathe 5s ease-in-out infinite}.eyes{transform-origin:160px 130px;animation:blink 6.7s infinite}
+@keyframes breathe{50%{transform:translateY(-1.5px) rotate(.2deg)}}@keyframes blink{0%,43%,46%,100%{transform:scaleY(1)}44%,45%{transform:scaleY(.08)}}
+@media(prefers-reduced-motion:reduce){.breath,.eyes{animation:none}}
+@media(max-width:560px){.studio{grid-template-columns:110px 1fr;min-height:330px}.portrait{min-height:330px}.portrait svg{width:230px;left:50%;transform:translateX(-50%)}.portrait-label{left:4px;right:4px;font-size:11px}.content{padding:18px 14px}.top{display:block}.badge{display:inline-block;margin-top:8px}.subtitle{font-size:17px;margin-top:12px;min-height:100px}.transport{gap:5px}button,select{padding:8px;font-size:14px}.count{width:100%;margin:0}.compact{grid-template-columns:1fr}}
+</style>
+<div class="studio" id="studio"><div class="portrait" aria-label="Minh họa người thuyết trình">
+<svg viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trợ lý tra cứu trong trang phục công sở">
+<defs>
+<linearGradient id="suit" x2=".8" y2="1"><stop offset="0" stop-color="#355e65"/><stop offset="1" stop-color="#16343e"/></linearGradient>
+<linearGradient id="skin" x2="1" y2=".6"><stop offset="0" stop-color="#f9dbc4"/><stop offset=".5" stop-color="#f2cbb0"/><stop offset="1" stop-color="#dfac91"/></linearGradient>
+<linearGradient id="hair" x2="1" y2="1"><stop offset="0" stop-color="#293135"/><stop offset=".55" stop-color="#403b38"/><stop offset="1" stop-color="#1b282e"/></linearGradient>
+<radialGradient id="cheek"><stop offset="0" stop-color="#d98d7b" stop-opacity=".4"/><stop offset="1" stop-color="#d98d7b" stop-opacity="0"/></radialGradient>
+</defs>
+<circle cx="160" cy="154" r="125" fill="none" stroke="#f7f7e7"/><circle cx="160" cy="154" r="107" fill="none" stroke="#afc4b6" stroke-width=".6" stroke-dasharray="2 8"/>
+<path d="M30 350V161a130 130 0 0 1 260 0v189" fill="none" stroke="#fff8e0" stroke-opacity=".7"/>
+<g class="breath">
+<path class="female-only" d="M83 150C67 85 101 44 157 44c66 0 94 44 83 118l14 95-183 1z" fill="#30383a"/>
+<path d="M130 192v39l-26 15 57 58 57-58-29-15v-39" fill="#f0ccb2"/><path d="m133 195 53-1v18c-17 14-37 9-53-1z" fill="#b4826a" opacity=".25"/>
+<path d="M45 379 51 288q3-35 47-48l28-11 35 44 32-44 29 11q43 12 47 48l7 91z" fill="#284c54"/>
+<path d="m126 229 35 34 31-34 15 18-26 132h-43l-28-132z" fill="#fff7e5"/><path d="m126 230 35 33-26 28-20-47m77-14-31 33 24 28 19-47" fill="#fffdf7" stroke="#e4dece"/>
+<path d="m113 235-27 15 20 31-15 12 45 86h11l-26-132m84-12 28 15-20 31 15 12-47 86h-9l27-132" fill="#3a6066" stroke="#71908c" stroke-width=".7"/>
+<path d="m67 290 11 89m168-89-10 89" stroke="#112e36" opacity=".5" fill="none"/><circle cx="216" cy="268" r="4" fill="#d1b06a"/><circle cx="216" cy="268" r="2" fill="#f8e1a5"/>
+<ellipse cx="99" cy="143" rx="11" ry="21" fill="#e4b397"/><ellipse cx="221" cy="143" rx="11" ry="21" fill="#dba58b"/>
+<path d="M101 99q2-37 59-39 58 1 59 40l-4 62q-3 34-30 49-24 14-48-1-31-18-33-49z" fill="#f0ccb2"/>
+<ellipse cx="121" cy="163" rx="22" ry="16" fill="#dda295" opacity=".22"/><ellipse cx="200" cy="163" rx="22" ry="16" fill="#dda295" opacity=".22"/>
+<path class="female-only" d="M95 123q-7-75 60-74 69 0 71 75-29-14-49-47-34 37-82 46z" fill="#30383a"/>
+<path class="female-only" d="M110 84q36-30 66-17m-61 28q30-10 52-26" stroke="#80715e" opacity=".32" fill="none" stroke-width="2"/>
+<path class="male-only" d="M96 122q-6-37 6-55 15-27 47-20 34-15 63 12 22 16 10 63l-11-23-4-20q-48 23-92 5l-9 30z" fill="#30383a"/>
+<path class="male-only" d="m143 281 18-18 17 18-10 18 11 80h-35l10-80z" fill="#ae8d52"/>
+<path d="M115 119q13-7 26-1m38 0q12-6 26 1" fill="none" stroke="#5b463d" stroke-linecap="round" stroke-width="2.8"/>
+<g class="eyes"><path d="M114 132q14-9 28 0-14 8-28 0m64 0q14-9 28 0-14 8-28 0" fill="#fffaf0"/>
+<ellipse cx="129" cy="132" rx="4.8" ry="5.1" fill="#393d35"/><ellipse cx="191" cy="132" rx="4.8" ry="5.1" fill="#393d35"/>
+<circle cx="130" cy="130" r="1.5" fill="#fff"/><circle cx="192" cy="130" r="1.5" fill="#fff"/>
+<path d="M114 132q14-9 28 0m36 0q14-9 28 0" fill="none" stroke="#5c4940" stroke-width="1.6" stroke-linecap="round"/></g>
+<path d="m160 135-5 22q5 4 11 0" fill="none" stroke="#c48e75" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M143 177q17-6 34 0-17 13-34 0" fill="#b77972"/><ellipse id="mouth" cx="160" cy="178" rx="14" ry=".8" fill="#603b37"/>
+<path d="M148 185q12 4 24 0" fill="none" stroke="#fce3ce" stroke-width="1.5"/>
+<g class="female-only"><circle cx="99" cy="161" r="3.5" fill="#d2af66"/><circle cx="221" cy="161" r="3.5" fill="#d2af66"/></g>
+</g></svg><div class="portrait-label" id="presenterName">Minh Anh · Trợ lý tra cứu</div></div>
+<div class="content"><div class="top"><div><div class="eyebrow">Lắng nghe để hiểu rõ hơn</div><h2>Chính sách, qua lời kể.</h2></div><span class="badge" id="state" role="status">Sẵn sàng</span></div>
+<div class="subtitle" id="subtitle" aria-live="polite">Chọn một câu trả lời để bắt đầu nghe.</div><div class="wave" id="wave" aria-hidden="true"></div>
+<div class="transport"><button class="primary" id="play" aria-label="Phát hoặc tạm dừng giọng đọc">▶ Phát</button><button id="restart" aria-label="Đọc lại từ đầu">↺ Đọc lại</button>
+<select id="speed" aria-label="Tốc độ phát"><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select><span class="count" id="count"></span></div>
+<audio id="audio" controls preload="metadata" aria-label="Âm thanh và thanh tua trong đoạn hiện tại"></audio><p class="hint" id="hint"></p></div></div>
+<script>
+'use strict';
+const CONFIG=__PRESENTER_CONFIG__;
+const el=id=>document.getElementById(id),audio=el('audio'),mouth=el('mouth');
+el('studio').classList.add(CONFIG.gender);if(!CONFIG.showAvatar)el('studio').classList.add('compact');
+if(CONFIG.gender==='male')el('presenterName').textContent='Minh Khang · Trợ lý tra cứu';el('state').textContent=CONFIG.statusLabel;
+const segments=CONFIG.segments||[],phrases=segments.length?segments.map(s=>s.text):(CONFIG.sentences||[]);
+let index=0,playing=false,paused=false,ended=false,run=0,browserMode=!segments.length,context=null,analyser=null,samples=null,utter=null,speed=1,frame=0;
+const bars=Array.from({length:28},()=>{const i=document.createElement('i');el('wave').appendChild(i);return i});
+const setState=text=>el('state').textContent=text;
+function showPhrase(){el('subtitle').textContent=phrases[index]||CONFIG.spokenText||'Tạo giọng đọc hoặc chọn một câu trả lời để nghe.';el('count').textContent=phrases.length?'Đoạn '+(index+1)+' / '+phrases.length:'';}
+function setPlaying(active){playing=active;paused=false;el('play').textContent=active?'Ⅱ Tạm dừng':'▶ Phát';}
+function connectAudio(){try{if(!context){const C=window.AudioContext||window.webkitAudioContext;if(!C)return;context=new C();analyser=context.createAnalyser();analyser.fftSize=256;samples=new Uint8Array(analyser.fftSize);const src=context.createMediaElementSource(audio);src.connect(analyser);analyser.connect(context.destination);}if(context.state==='suspended')context.resume().catch(()=>{});}catch(e){analyser=null;}}
+function finish(){setPlaying(false);ended=true;mouth.setAttribute('ry','.8');setState('Đã đọc xong');}
+function stop(){run++;audio.pause();audio.currentTime=0;if(window.speechSynthesis)window.speechSynthesis.cancel();utter=null;setPlaying(false);ended=false;}
+function advance(){index++;if(index<phrases.length){showPhrase();playSegment();}else{index=Math.max(0,phrases.length-1);finish();}}
+async function browserVoice(){let voices=window.speechSynthesis.getVoices();if(!voices.length){await new Promise(resolve=>{const timer=setTimeout(resolve,1000);window.speechSynthesis.addEventListener('voiceschanged',()=>{clearTimeout(timer);resolve();},{once:true});});voices=window.speechSynthesis.getVoices();}return voices.find(v=>/^vi(?:-|_)/i.test(v.lang)&&(!CONFIG.deviceLocalOnly||v.localService));}
+async function playSegment(){const token=++run;showPhrase();setState('Đang chuẩn bị');
+if(!browserMode){if(!audio.src||audio.dataset.segment!==String(index)){audio.src='data:'+(segments[index].mime||'audio/mpeg')+';base64,'+segments[index].audio_b64;audio.dataset.segment=String(index);}audio.playbackRate=CONFIG.rate*speed;connectAudio();try{await audio.play();if(token!==run){audio.pause();return;}}catch(e){setPlaying(false);setState('Nhấn Phát để nghe');el('hint').textContent='Trình duyệt chưa phát được âm thanh. Thử nút phát trên thanh âm thanh hoặc tạo lại giọng đọc.';}}
+else{if(!window.speechSynthesis){setState('Chưa hỗ trợ giọng đọc');return;}const voice=await browserVoice();if(token!==run)return;if(!voice){setState('Thiết bị chưa có giọng Việt');el('hint').textContent='Chưa tìm thấy giọng tiếng Việt trên thiết bị. Hãy nhấn Tạo lại âm thanh để thử dịch vụ giọng đọc.';return;}
+utter=new SpeechSynthesisUtterance(phrases[index]);utter.voice=voice;utter.lang='vi-VN';utter.rate=CONFIG.rate*speed;utter.onstart=()=>{if(token===run){setPlaying(true);setState('Đang đọc');}};utter.onend=()=>{if(token===run)setTimeout(()=>{if(token===run)advance();},220);};utter.onerror=e=>{if(token===run&&e.error!=='interrupted'&&e.error!=='canceled'){setPlaying(false);setState('Chưa phát được giọng Việt');}};window.speechSynthesis.speak(utter);}}
+el('play').onclick=()=>{if(playing){if(browserMode)window.speechSynthesis.pause();else audio.pause();playing=false;paused=true;el('play').textContent='▶ Tiếp tục';setState('Tạm dừng');return;}if(paused){paused=false;if(browserMode){window.speechSynthesis.resume();setPlaying(true);setState('Đang đọc');}else audio.play().catch(()=>setState('Nhấn Phát để nghe'));return;}if(ended){index=0;audio.removeAttribute('src');ended=false;}playSegment();};
+el('restart').onclick=()=>{stop();index=0;audio.removeAttribute('src');showPhrase();playSegment();};
+el('speed').onchange=e=>{speed=Number(e.target.value);audio.playbackRate=CONFIG.rate*speed;if(browserMode&&(playing||paused)){stop();playSegment();}};
+audio.onplay=()=>{setPlaying(true);setState('Đang đọc');connectAudio();};audio.onpause=()=>{if(!audio.ended&&playing){playing=false;paused=true;el('play').textContent='▶ Tiếp tục';setState('Tạm dừng');}};audio.onended=advance;
+audio.onerror=()=>{setPlaying(false);setState('Lỗi âm thanh');el('hint').textContent='Âm thanh chưa tải được. Bạn hãy tạo lại giọng đọc.';};
+el('hint').textContent=(CONFIG.provider==='edge'?'Giọng nữ · Hoài My':CONFIG.provider==='piper'?'Giọng đọc dự phòng · Piper':CONFIG.provider==='google'?'Giọng đọc dự phòng · Google':'Giọng trên thiết bị · cần có giọng tiếng Việt')+'. Chuyển động miệng minh họa theo nhịp âm thanh.';
+if(!CONFIG.spokenText){el('play').disabled=true;el('restart').disabled=true;}
+function animate(t){let energy=0;if(playing){if(analyser&&samples&&!browserMode){analyser.getByteTimeDomainData(samples);let sum=0;for(const s of samples)sum+=((s-128)/128)**2;energy=Math.min(1,Math.sqrt(sum/samples.length)*5);}else if(browserMode){energy=.25+Math.abs(Math.sin(t*.012)*Math.cos(t*.004))*.45;}}mouth.setAttribute('ry',String(.8+energy*6));mouth.setAttribute('rx',String(14-energy*3));bars.forEach((bar,i)=>{bar.style.height=(3+energy*(7+15*Math.abs(Math.sin(i*.8+t*.005))))+'px';});frame=requestAnimationFrame(animate);}
+showPhrase();frame=requestAnimationFrame(animate);window.addEventListener('pagehide',()=>{stop();cancelAnimationFrame(frame);if(context)context.close().catch(()=>{});});if(CONFIG.autoPlay&&CONFIG.spokenText)playSegment();
+</script></html>

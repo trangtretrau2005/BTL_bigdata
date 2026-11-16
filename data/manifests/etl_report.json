@@ -1,24 +1,25 @@
 {
-  "total_input": 30,
-  "valid": 30,
+  "total_input": 63,
+  "valid": 63,
   "rejected_or_duplicate": 0,
   "region_dist": {
-    "INTERNATIONAL": 12,
-    "US": 1,
-    "EU": 2,
-    "VN": 15
+    "VN": 26,
+    "US": 7,
+    "INTERNATIONAL": 22,
+    "EU": 5,
+    "ASEAN": 3
   },
   "document_type_dist": {
-    "guideline": 5,
-    "regulation": 7,
-    "framework": 3,
-    "law": 6,
-    "strategy": 6,
-    "standard": 1,
-    "recommendation": 2
+    "regulation": 21,
+    "guideline": 19,
+    "policy": 6,
+    "framework": 7,
+    "recommendation": 2,
+    "strategy": 3,
+    "law": 5
   },
-  "total_characters": 220989,
-  "spark_master": "local[*]",
-  "output_path": "data/processed",
-  "updated_at": "2026-11-08T06:30:53.986160+00:00"
+  "total_characters": 5936893,
+  "spark_master": "local[2]",
+  "output_path": "data/updates/20261116_093406_aaf12a03/processed",
+  "updated_at": "2026-11-16T09:34:57.887907+00:00"
 }

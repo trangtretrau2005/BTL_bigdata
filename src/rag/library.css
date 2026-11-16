@@ -1,0 +1,38 @@
+/* Quiet editorial layout, with room for long Vietnamese legal text. */
+:root{--paper:#f8f7f2;--ink:#1d3941;--gold:#ab844d}
+.block-container{max-width:1320px;padding-top:2rem}
+[data-testid="stSidebar"]{background:#eeefe8;border-color:#dedfd5}
+[data-testid="stSidebar"] .block-container{padding-top:2rem}
+.brand{font-size:26px;line-height:1.3}.brand small{letter-spacing:3px;font-size:10px;color:#8a754d}
+.hero{position:relative;background:radial-gradient(ellipse at 95% 10%,#41686a40,transparent 50%),linear-gradient(120deg,#16373f,#254c50);padding:36px 44px 30px;border:1px solid #36585a;border-radius:18px;box-shadow:0 12px 32px #243b4210;margin-bottom:0}
+.hero:before{content:"";position:absolute;left:-80px;bottom:-140px;width:300px;height:300px;border:1px solid #c6b18313;border-radius:50%;pointer-events:none}
+.hero h1{font-size:48px!important;letter-spacing:-1.5px;line-height:1.12!important}.hero p{font-size:19px!important;color:#c8d8d5!important;max-width:520px}
+.eyebrow{color:#d5bb83;letter-spacing:2.8px;font-size:10px}.hero-foot{font-size:12px;gap:20px;color:#d5c7a5;margin-top:21px}.hero-art{width:240px}
+.overview{display:grid;grid-template-columns:1fr 1fr 1.5fr;margin:0 0 25px;padding:20px 6px 22px;border-bottom:1px solid #ddded3;gap:24px}
+.overview>div{padding-left:22px;border-left:1px solid #deddd1}.overview>div:first-child{border:0}.overview strong{display:block;font-size:27px;font-weight:400;color:#21434a;line-height:1.2}.overview span{display:block;font-size:14px;color:#6d7c79;margin-top:6px}.overview>div:last-child strong{font-size:23px}
+[data-testid="stTabs"] [data-baseweb="tab-list"]{gap:8px;border:0;background:#eeefe7;padding:5px;border-radius:12px;margin-bottom:24px}
+[data-testid="stTabs"] [data-baseweb="tab"]{padding:11px 21px;font-size:18px!important;height:auto;border-radius:8px;color:#657874}
+[data-testid="stTabs"] [data-baseweb="tab"][aria-selected="true"]{background:#fffef9;color:#23464d;box-shadow:0 2px 5px #1b353c09}
+[data-testid="stTabs"] [data-baseweb="tab-highlight"],[data-testid="stTabs"] [data-baseweb="tab-border"]{display:none}
+[data-testid="stButton"] button{border-radius:9px!important;border-color:#d6d9cd;padding:9px 17px;transition:background .15s,box-shadow .15s}
+[data-testid="stButton"] button[kind="primary"]{background:#23474e;border-color:#23474e;box-shadow:0 3px 7px #23474e14}
+[data-testid="stButton"] button[kind="primary"]:hover{background:#315b60;border-color:#315b60}
+[data-testid="stTextArea"] textarea{padding:16px 19px!important;background:#fffef9!important}
+[data-testid="stTextArea"]>div,[data-testid="stTextInput"]>div{border-radius:11px!important;border-color:#d7dbd0}
+[data-testid="stExpander"]{border-radius:12px;border-color:#dfe1d6;background:#fffefa}
+[data-testid="stVerticalBlockBorderWrapper"]>div{border-radius:14px!important;border-color:#dddfd4!important}
+.empty-state{border-radius:12px;background:linear-gradient(110deg,#f0f2e9,#f5f4ed);border:1px solid #dfe3d6;padding:21px 25px;margin:18px 0}
+.empty-state strong{font-size:23px;color:#2e5054}.empty-state span{font-size:17px;color:#77827c}
+.section-kicker{color:#9d824e;font-size:11px;letter-spacing:2.2px;margin-top:0}
+.document-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:16px 0 25px}
+.document-card{background:#fffef9;border:1px solid #dfe2d6;border-radius:14px;padding:20px;display:flex;flex-direction:column;box-shadow:0 3px 12px #253d4004}
+.document-card:hover{border-color:#b5c2b2;box-shadow:0 6px 16px #253d4009}
+.document-meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:#7c816d}.document-meta .indexed{color:#3e7560}.document-meta .pending{color:#a1844a}
+.document-card h4{font-size:20px!important;line-height:1.4!important;font-weight:400!important;margin:14px 0 9px;padding:0!important}
+.document-card p{font-size:14px!important;color:#7a8780!important;line-height:1.5!important;margin:0 0 22px!important}
+.document-bottom{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;color:#899289;padding-top:14px;border-top:1px solid #ebece2;margin-top:auto}
+.document-bottom a{color:#3c6764!important;text-decoration:none;font-size:14px}.document-bottom a:hover{text-decoration:underline}
+@media(max-width:1100px){.document-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.document-grid{grid-template-columns:1fr}}
+[data-testid="stMarkdownContainer"] h3{font-size:27px!important;margin-top:0}
+@media(max-width:850px){.hero{padding:26px 24px}.hero h1{font-size:36px!important}.overview{grid-template-columns:1fr 1fr;gap:15px;padding-bottom:18px}.overview>div:last-child{grid-column:1/-1;border:0}.overview>div{padding-left:12px}.overview>div:first-child{padding-left:12px}[data-testid="stTabs"] [data-baseweb="tab"]{padding:9px 11px;font-size:16px!important}}

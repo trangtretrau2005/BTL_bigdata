@@ -1,0 +1,28 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.30", ranksep="0.45", splines=polyline, fontname="Liberation Serif", fontsize=20, label="Công bố chỉ mục và xử lý lỗi", labelloc=t];
+node [shape=box, style="rounded,filled", fillcolor="#F2F6F8", color="#31576B", fontcolor="#142C3A", fontname="Liberation Serif", fontsize=13, margin="0.16,0.11"];
+edge [color="#56717F", arrowsize=0.7, fontname="Liberation Serif", fontsize=11, fontcolor="#4B5962"];
+old [label="Alias A đang trỏ snapshot S0", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+input [label="Chunks của phiên bản mới V1"];
+s1 [label="Tạo snapshot S1 riêng", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+batch [label="Nạp theo batch 8\nDùng lại vector khi ID/text/model khớp"];
+complete [label="count(S1) = số chunk đầu vào?", shape="diamond", style="filled", fillcolor="#FFF5DA"];
+fail [label="Giữ S0 / lưu tiến độ lỗi\nCho phép dựng lại staging", fillcolor="#FBEDE9", color="#AB6453"];
+alias [label="Một yêu cầu đổi alias:\nDelete A + Create A → S1"];
+manifest [label="Ghi manifest ready\nGắn Silver/Chunks/Signature V1"];
+hdfs [label="Đồng bộ HDFS theo job_id"];
+h_ok [label="Đồng bộ thành công?", shape="diamond", style="filled", fillcolor="#FFF5DA"];
+partial [label="Báo partial do HDFS\nTra cứu vẫn dùng S1 đã công bố"];
+ok [label="Báo completed / làm mới UI", shape="ellipse", fillcolor="#193E51", fontcolor="white"];
+old -> input;
+input -> s1;
+s1 -> batch;
+batch -> complete;
+complete -> fail [label="không / lỗi"];
+complete -> alias [label="có"];
+alias -> manifest;
+manifest -> hdfs;
+hdfs -> h_ok;
+h_ok -> partial [label="không"];
+h_ok -> ok [label="có"];
+}

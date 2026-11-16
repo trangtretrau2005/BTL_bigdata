@@ -1,0 +1,19 @@
+﻿{
+    "captured_at":  "2026-11-16T10:09:24.2978362Z",
+    "cpu":  {
+                "Name":  "13th Gen Intel(R) Core(TM) i5-13420H",
+                "NumberOfCores":  8,
+                "NumberOfLogicalProcessors":  12
+            },
+    "ram_bytes":  16890519552,
+    "windows":  {
+                    "Caption":  "Microsoft Windows 11 Home",
+                    "Version":  "10.0.26200",
+                    "BuildNumber":  "26200"
+                },
+    "drive_c":  {
+                    "Used":  544402862080,
+                    "Free":  49530503168
+                },
+    "gpu":  "NVIDIA GeForce RTX 3050 6GB Laptop GPU, 6144 MiB, 595.97"
+}

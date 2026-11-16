@@ -44,7 +44,7 @@ FIELDS = {
     "document_id": ("document_id", "doc_id", "id"),
     "published_date": ("published_date", "publication_date", "date", "issued_date"),
     "document_type": ("document_type", "doc_type", "type", "category"),
-    "source_path": ("source_path", "file_path", "source_file", "path"),
+    "source_path": ("source_path", "raw_path", "file_path", "source_file", "path"),
     "language": ("language", "lang"),
 }
 
@@ -53,6 +53,10 @@ def _first(df, names):
     existing = [F.col(f"`{name}`").cast("string") for name in names if name in df.columns]
     return F.coalesce(*existing) if existing else F.lit(None).cast("string")
 
+
+METADATA_FIELDS = ("language", "version_id", "effective_date", "issued_date", "legal_status",
+                   "parse_status", "collected_at", "content_hash", "provenance", "pipeline_version",
+                   "source_org", "api_provider", "api_url", "original_filename")
 
 def transform(df):
     text = _first(df, FIELDS["text"])
@@ -72,6 +76,7 @@ def transform(df):
         F.trim(date).alias("published_date"),
         F.trim(dtype).alias("document_type"),
         F.trim(path).alias("source_path"),
+        *[_first(df, (key, "status") if key == "legal_status" else (key,)).alias(key) for key in METADATA_FIELDS],
     )
     out = out.withColumn("text", F.regexp_replace("text", r"\n{3,}", "\n\n"))
     out = out.filter(F.col("text").isNotNull() & (F.length("text") >= 30))
@@ -85,6 +90,9 @@ def transform(df):
         .when(F.col("region").isNull() | (F.col("region") == ""), "UNKNOWN")
         .otherwise(F.col("region")),
     )
+    out = out.withColumn("jurisdiction", F.col("region"))
+    out = out.withColumn("raw_path", F.col("source_path"))
+    out = out.withColumn("version_id", F.coalesce(F.col("version_id"), F.lit("v1")))
     out = out.withColumn("text_sha256", F.sha2(F.col("text"), 256))
     out = out.withColumn(
         "document_id",
@@ -115,7 +123,7 @@ def transform(df):
         "region",
         "published_date",
         "document_type",
-        "source_path",
+        "source_path", "raw_path", "jurisdiction", *METADATA_FIELDS,
     )
 
 
@@ -129,6 +137,8 @@ def run(
         SparkSession.builder.appName("AI-Law-Corpus-ETL")
         .master(master)
         .config("spark.sql.session.timeZone", "UTC")
+        .config("spark.sql.shuffle.partitions", "4")
+        .config("spark.driver.memory", "512m")
         .config("spark.pyspark.python", sys.executable)
         .config("spark.pyspark.driver.python", sys.executable)
         .getOrCreate()
@@ -148,8 +158,12 @@ def run(
                 ]
                 if not json_files:
                     raise ValueError(f"No JSON files found in {input_path}")
-                is_multiline = any(f.endswith(".json") for f in json_files)
-                df = spark.read.option("multiLine", str(is_multiline).lower()).json(json_files)
+                frames = [spark.read.option("multiLine", "true").json([f for f in json_files if f.endswith(".json")])] if any(f.endswith(".json") for f in json_files) else []
+                if any(f.endswith(".jsonl") for f in json_files):
+                    frames.append(spark.read.json([f for f in json_files if f.endswith(".jsonl")]))
+                df = frames[0]
+                for frame in frames[1:]:
+                    df = df.unionByName(frame, allowMissingColumns=True)
             else:
                 multi_line = "true" if input_path.lower().endswith(".json") else "false"
                 df = spark.read.option("multiLine", multi_line).json(input_path)

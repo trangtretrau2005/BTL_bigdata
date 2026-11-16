@@ -1,0 +1,22 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.30", ranksep="0.45", splines=polyline, fontname="Liberation Serif", fontsize=20, label="Liên kết metadata và truy nguyên dữ liệu", labelloc=t];
+node [shape=box, style="rounded,filled", fillcolor="#F2F6F8", color="#31576B", fontcolor="#142C3A", fontname="Liberation Serif", fontsize=13, margin="0.16,0.11"];
+edge [color="#56717F", arrowsize=0.7, fontname="Liberation Serif", fontsize=11, fontcolor="#4B5962"];
+catalog [label="Catalog nguồn\ndocument_id, title, URL\nregion, provenance", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+raw [label="Raw snapshot\nchecksum, raw_path\nAPI remote_id / filename", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+parsed [label="Parsed JSON hiện tại\ndocument_id, version_id\ntext, content_hash", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+silver [label="Processed document\ndocument_id băm\nsource_document_id, text_sha256", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+chunk [label="Chunk\nchunk_id, document_id\nversion_id, index, vị trí", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+vector [label="Qdrant point\nUUID từ chunk_id\nvector + payload + model", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+manifest [label="Index manifest\nalias, snapshot, signature\nprocessed_path, chunks_path", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+job [label="Update job\njob_id, stage, progress\nproviders, upload_ids, errors", shape="cylinder", fillcolor="#E6EFE9", color="#3B7565"];
+catalog -> raw [label="1 nguồn → nhiều bản gốc"];
+raw -> parsed [label="trích xuất + giữ đường dẫn"];
+parsed -> silver [label="chuẩn hóa / khử trùng"];
+silver -> chunk [label="một tài liệu → nhiều đoạn"];
+chunk -> vector [label="ID ổn định trong snapshot"];
+job -> raw [label="điều phối nạp"];
+job -> manifest [label="công bố phiên bản"];
+manifest -> silver [label="đường dẫn phiên bản"];
+manifest -> vector [label="snapshot đang dùng"];
+}

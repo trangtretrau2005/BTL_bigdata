@@ -1,0 +1,415 @@
+{
+  "started_at": 1794816480.4241395,
+  "steps": {
+    "parse": {
+      "elapsed_seconds": 55.09,
+      "result": [
+        {
+          "document_id": "asean_ai_ethics",
+          "status": "parsed",
+          "text_length": 192124,
+          "output_path": "data/verified_parsed/asean_ai_ethics.json"
+        },
+        {
+          "document_id": "asean_genai_guide",
+          "status": "parsed",
+          "text_length": 100759,
+          "output_path": "data/verified_parsed/asean_genai_guide.json"
+        },
+        {
+          "document_id": "asean_responsible_ai_roadmap",
+          "status": "parsed",
+          "text_length": 420840,
+          "output_path": "data/verified_parsed/asean_responsible_ai_roadmap.json"
+        },
+        {
+          "document_id": "australia_ai_ethics",
+          "status": "parsed",
+          "text_length": 11885,
+          "output_path": "data/verified_parsed/australia_ai_ethics.json"
+        },
+        {
+          "document_id": "canada_automated_decisions",
+          "status": "parsed",
+          "text_length": 24218,
+          "output_path": "data/verified_parsed/canada_automated_decisions.json"
+        },
+        {
+          "document_id": "eu_ai_act_2024_1689",
+          "status": "parsed",
+          "text_length": 586490,
+          "output_path": "data/verified_parsed/eu_ai_act_2024_1689.json"
+        },
+        {
+          "document_id": "eu_ai_literacy",
+          "status": "parsed",
+          "text_length": 35300,
+          "output_path": "data/verified_parsed/eu_ai_literacy.json"
+        },
+        {
+          "document_id": "eu_gpai_code",
+          "status": "parsed",
+          "text_length": 4629,
+          "output_path": "data/verified_parsed/eu_gpai_code.json"
+        },
+        {
+          "document_id": "eu_gpai_obligations_faq",
+          "status": "parsed",
+          "text_length": 19531,
+          "output_path": "data/verified_parsed/eu_gpai_obligations_faq.json"
+        },
+        {
+          "document_id": "eu_gpai_provider_overview",
+          "status": "parsed",
+          "text_length": 4757,
+          "output_path": "data/verified_parsed/eu_gpai_provider_overview.json"
+        },
+        {
+          "document_id": "luat_134_2025",
+          "status": "parsed",
+          "text_length": 49857,
+          "output_path": "data/verified_parsed/luat_134_2025.json"
+        },
+        {
+          "document_id": "luat_60_2024",
+          "status": "parsed",
+          "text_length": 47687,
+          "output_path": "data/verified_parsed/luat_60_2024.json"
+        },
+        {
+          "document_id": "luat_71_2025",
+          "status": "parsed",
+          "text_length": 63643,
+          "output_path": "data/verified_parsed/luat_71_2025.json"
+        },
+        {
+          "document_id": "luat_86_2015",
+          "status": "parse_failed",
+          "error": "PDF là bản scan ảnh (chỉ trích xuất được chữ ký số 148 ký tự, không có nội dung văn bản luật)."
+        },
+        {
+          "document_id": "luat_91_2025",
+          "status": "parsed",
+          "text_length": 54112,
+          "output_path": "data/verified_parsed/luat_91_2025.json"
+        },
+        {
+          "document_id": "ncsc_secure_ai_development",
+          "status": "parsed",
+          "text_length": 38154,
+          "output_path": "data/verified_parsed/ncsc_secure_ai_development.json"
+        },
+        {
+          "document_id": "nd_142_2026",
+          "status": "parsed",
+          "text_length": 199504,
+          "output_path": "data/verified_parsed/nd_142_2026.json"
+        },
+        {
+          "document_id": "nd_356_2025",
+          "status": "parse_failed",
+          "error": "PDF là bản scan ảnh (chỉ trích xuất được chữ ký số 148 ký tự, không có nội dung văn bản luật)."
+        },
+        {
+          "document_id": "nd_47_2020",
+          "status": "parse_failed",
+          "error": "PDF là bản scan ảnh (chỉ trích xuất được chữ ký số 148 ký tự, không có nội dung văn bản luật)."
+        },
+        {
+          "document_id": "nist_adversarial_ai",
+          "status": "parsed",
+          "text_length": 347615,
+          "output_path": "data/verified_parsed/nist_adversarial_ai.json"
+        },
+        {
+          "document_id": "nist_ai_rmf_1_0",
+          "status": "parsed",
+          "text_length": 107040,
+          "output_path": "data/verified_parsed/nist_ai_rmf_1_0.json"
+        },
+        {
+          "document_id": "nist_ai_rmf_playbook",
+          "status": "parsed",
+          "text_length": 335098,
+          "output_path": "data/verified_parsed/nist_ai_rmf_playbook.json"
+        },
+        {
+          "document_id": "nist_ai_standards_plan",
+          "status": "parsed",
+          "text_length": 99652,
+          "output_path": "data/verified_parsed/nist_ai_standards_plan.json"
+        },
+        {
+          "document_id": "nist_gen_ai_profile",
+          "status": "parsed",
+          "text_length": 158605,
+          "output_path": "data/verified_parsed/nist_gen_ai_profile.json"
+        },
+        {
+          "document_id": "nist_sp800_218a",
+          "status": "parsed",
+          "text_length": 69373,
+          "output_path": "data/verified_parsed/nist_sp800_218a.json"
+        },
+        {
+          "document_id": "nist_synthetic_content",
+          "status": "parsed",
+          "text_length": 205376,
+          "output_path": "data/verified_parsed/nist_synthetic_content.json"
+        },
+        {
+          "document_id": "oecd_ai_principles",
+          "status": "parsed",
+          "text_length": 33172,
+          "output_path": "data/verified_parsed/oecd_ai_principles.json"
+        },
+        {
+          "document_id": "oecd_ai_principles_guide",
+          "status": "parsed",
+          "text_length": 2992,
+          "output_path": "data/verified_parsed/oecd_ai_principles_guide.json"
+        },
+        {
+          "document_id": "qd_06_2022",
+          "status": "parse_failed",
+          "error": "PDF là bản scan ảnh (chỉ trích xuất được chữ ký số 148 ký tự, không có nội dung văn bản luật)."
+        },
+        {
+          "document_id": "qd_127_2021",
+          "status": "parsed",
+          "text_length": 28431,
+          "output_path": "data/verified_parsed/qd_127_2021.json"
+        },
+        {
+          "document_id": "qd_1671_2026",
+          "status": "parsed",
+          "text_length": 108658,
+          "output_path": "data/verified_parsed/qd_1671_2026.json"
+        },
+        {
+          "document_id": "qd_411_2022",
+          "status": "parse_failed",
+          "error": "PDF là bản scan ảnh (chỉ trích xuất được chữ ký số 148 ký tự, không có nội dung văn bản luật)."
+        },
+        {
+          "document_id": "qd_749_2020",
+          "status": "parse_failed",
+          "error": "PDF là bản scan ảnh (chỉ trích xuất được chữ ký số 148 ký tự, không có nội dung văn bản luật)."
+        },
+        {
+          "document_id": "qd_942_2021",
+          "status": "parse_failed",
+          "error": "PDF là bản scan ảnh (chỉ trích xuất được chữ ký số 148 ký tự, không có nội dung văn bản luật)."
+        },
+        {
+          "document_id": "singapore_agentic_ai",
+          "status": "parsed",
+          "text_length": 125455,
+          "output_path": "data/verified_parsed/singapore_agentic_ai.json"
+        },
+        {
+          "document_id": "singapore_genai_framework",
+          "status": "parse_failed",
+          "error": "Nội dung quá ngắn (23 ký tự, yêu cầu >= 200 ký tự)."
+        },
+        {
+          "document_id": "singapore_model_ai_gov",
+          "status": "parsed",
+          "text_length": 111887,
+          "output_path": "data/verified_parsed/singapore_model_ai_gov.json"
+        },
+        {
+          "document_id": "singapore_pdpc_ai_personal_data",
+          "status": "parsed",
+          "text_length": 48202,
+          "output_path": "data/verified_parsed/singapore_pdpc_ai_personal_data.json"
+        },
+        {
+          "document_id": "uk_ai_assurance",
+          "status": "parsed",
+          "text_length": 52296,
+          "output_path": "data/verified_parsed/uk_ai_assurance.json"
+        },
+        {
+          "document_id": "uk_ai_playbook",
+          "status": "parsed",
+          "text_length": 225573,
+          "output_path": "data/verified_parsed/uk_ai_playbook.json"
+        },
+        {
+          "document_id": "uk_ai_procurement",
+          "status": "parsed",
+          "text_length": 37734,
+          "output_path": "data/verified_parsed/uk_ai_procurement.json"
+        },
+        {
+          "document_id": "uk_ai_regulation_response",
+          "status": "parsed",
+          "text_length": 289581,
+          "output_path": "data/verified_parsed/uk_ai_regulation_response.json"
+        },
+        {
+          "document_id": "uk_ai_safety_inst",
+          "status": "parsed",
+          "text_length": 25685,
+          "output_path": "data/verified_parsed/uk_ai_safety_inst.json"
+        },
+        {
+          "document_id": "uk_ai_white_paper",
+          "status": "parsed",
+          "text_length": 209986,
+          "output_path": "data/verified_parsed/uk_ai_white_paper.json"
+        },
+        {
+          "document_id": "uk_atrs_guidance",
+          "status": "parsed",
+          "text_length": 32199,
+          "output_path": "data/verified_parsed/uk_atrs_guidance.json"
+        },
+        {
+          "document_id": "uk_automated_decision_ethics",
+          "status": "parsed",
+          "text_length": 27614,
+          "output_path": "data/verified_parsed/uk_automated_decision_ethics.json"
+        },
+        {
+          "document_id": "uk_generative_ai_framework",
+          "status": "parsed",
+          "text_length": 155479,
+          "output_path": "data/verified_parsed/uk_generative_ai_framework.json"
+        },
+        {
+          "document_id": "un_governing_ai_humanity",
+          "status": "parsed",
+          "text_length": 291079,
+          "output_path": "data/verified_parsed/un_governing_ai_humanity.json"
+        },
+        {
+          "document_id": "unesco_ai_ethics_guidance",
+          "status": "parsed",
+          "text_length": 6272,
+          "output_path": "data/verified_parsed/unesco_ai_ethics_guidance.json"
+        },
+        {
+          "document_id": "us_eo_14110_ai",
+          "status": "parsed",
+          "text_length": 135811,
+          "output_path": "data/verified_parsed/us_eo_14110_ai.json"
+        },
+        {
+          "document_id": "us_omb_m25_21",
+          "status": "parsed",
+          "text_length": 66299,
+          "output_path": "data/verified_parsed/us_omb_m25_21.json"
+        },
+        {
+          "document_id": "us_omb_m25_22",
+          "status": "parsed",
+          "text_length": 35283,
+          "output_path": "data/verified_parsed/us_omb_m25_22.json"
+        },
+        {
+          "document_id": "vn_luat_20_2023",
+          "status": "parsed",
+          "text_length": 57904,
+          "output_path": "data/verified_parsed/vn_luat_20_2023.json"
+        },
+        {
+          "document_id": "vn_nd_13_2023",
+          "status": "parsed",
+          "text_length": 53198,
+          "output_path": "data/verified_parsed/vn_nd_13_2023.json"
+        },
+        {
+          "document_id": "vn_nd_165_2025",
+          "status": "parsed",
+          "text_length": 96446,
+          "output_path": "data/verified_parsed/vn_nd_165_2025.json"
+        }
+      ]
+    },
+    "etl": {
+      "elapsed_seconds": 35.17,
+      "result": 47
+    },
+    "chunk": {
+      "elapsed_seconds": 6.01,
+      "result": 2990
+    },
+    "index": {
+      "status": "completed",
+      "resumed_after_transient_windows_file_lock": true,
+      "result": {
+        "status": "ready",
+        "collection": "ai_documents_verified_v2",
+        "snapshot": "ai_documents_verified_v2__20261116_080939_96fe70",
+        "total_documents": 47,
+        "source_document_ids": [
+          "asean_ai_ethics",
+          "asean_genai_guide",
+          "asean_responsible_ai_roadmap",
+          "australia_ai_ethics",
+          "canada_automated_decisions",
+          "eu_ai_act_2024_1689",
+          "eu_ai_literacy",
+          "eu_gpai_code",
+          "eu_gpai_obligations_faq",
+          "eu_gpai_provider_overview",
+          "luat_134_2025",
+          "luat_60_2024",
+          "luat_71_2025",
+          "luat_91_2025",
+          "ncsc_secure_ai_development",
+          "nd_142_2026",
+          "nist_adversarial_ai",
+          "nist_ai_rmf_1_0",
+          "nist_ai_rmf_playbook",
+          "nist_ai_standards_plan",
+          "nist_gen_ai_profile",
+          "nist_sp800_218a",
+          "nist_synthetic_content",
+          "oecd_ai_principles",
+          "oecd_ai_principles_guide",
+          "qd_127_2021",
+          "qd_1671_2026",
+          "singapore_agentic_ai",
+          "singapore_model_ai_gov",
+          "singapore_pdpc_ai_personal_data",
+          "uk_ai_assurance",
+          "uk_ai_playbook",
+          "uk_ai_procurement",
+          "uk_ai_regulation_response",
+          "uk_ai_safety_inst",
+          "uk_ai_white_paper",
+          "uk_atrs_guidance",
+          "uk_automated_decision_ethics",
+          "uk_generative_ai_framework",
+          "un_governing_ai_humanity",
+          "unesco_ai_ethics_guidance",
+          "us_eo_14110_ai",
+          "us_omb_m25_21",
+          "us_omb_m25_22",
+          "vn_luat_20_2023",
+          "vn_nd_13_2023",
+          "vn_nd_165_2025"
+        ],
+        "total_chunks": 2990,
+        "input_chunks": 2990,
+        "embedding_model": "bge-m3",
+        "indexed_at": "2026-11-16T08:19:06.499038+00:00",
+        "rebuild": true
+      }
+    },
+    "lake": {
+      "status": "completed",
+      "result": {
+        "status": "synced",
+        "updated_at": "2026-11-16T08:23:19.885938+00:00",
+        "file_count": 122,
+        "total_bytes": 99879214
+      }
+    }
+  },
+  "status": "completed",
+  "completed_at": "2026-11-16T08:27:01.234539+00:00"
+}

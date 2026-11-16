@@ -1,0 +1,98 @@
+[
+  {
+    "file": "hinh_3_12_khu_vuc.png",
+    "title": "Phân bố 63 văn bản theo nhãn khu vực",
+    "caption": "Nguồn: snapshot đang hoạt động, 16/11/2026. INTERNATIONAL là nhãn gộp trong dữ liệu, không phải một quốc gia.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_13_ngon_ngu.png",
+    "title": "Hai ngôn ngữ trong corpus hiện tại",
+    "caption": "Đếm theo trường language của văn bản; chưa đánh giá riêng chất lượng hỏi đáp xuyên ngôn ngữ.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_14_loai_van_ban.png",
+    "title": "Cơ cấu loại tài liệu",
+    "caption": "Loại tài liệu là nhãn chuẩn hóa phục vụ lọc; không dùng để tự xác nhận giá trị hay hiệu lực pháp lý.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_15_nguon_thu_thap.png",
+    "title": "Nguồn thu thập và đóng góp vào chỉ mục",
+    "caption": "API đóng góp 17/63 văn bản và 325/3.285 đoạn. Đây là dữ liệu đã công bố, không phải toàn bộ kết quả API quét được.",
+    "source": "evidence/system_facts.json"
+  },
+  {
+    "file": "hinh_3_16_nam_ban_hanh.png",
+    "title": "Năm ban hành theo metadata hiện có",
+    "caption": "Có 27/63 tài liệu thiếu published_date; không suy diễn năm từ tên tệp hoặc tiêu đề.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_17_do_dai_van_ban.png",
+    "title": "Độ dài văn bản không đồng đều",
+    "caption": "Tổng 5.936.893 ký tự; trung vị 51.649 ký tự. Ký tự không đồng nghĩa với token.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_18_do_dai_chunk.png",
+    "title": "Phân bố độ dài 3.285 đoạn",
+    "caption": "Cấu hình tối đa 2.200 ký tự, chồng lấn 240; ưu tiên ranh giới điều/câu nên độ dài không cố định.",
+    "source": "evidence/chunk_statistics.csv"
+  },
+  {
+    "file": "hinh_3_19_top_tai_lieu.png",
+    "title": "Mười tài liệu đóng góp nhiều đoạn nhất",
+    "caption": "Đếm theo source_document_id. Tài liệu dài có thể chi phối kết quả truy xuất nếu thiếu lọc và xếp hạng bổ sung.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_20_chat_luong_metadata.png",
+    "title": "Kiểm tra độ đầy đủ và định danh",
+    "caption": "Đủ metadata chỉ xác nhận khả năng truy vết; không chứng minh nội dung pháp luật đúng hay còn hiệu lực.",
+    "source": "evidence/system_facts.json; document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_21_trang_thai_danh_muc.png",
+    "title": "Danh mục nguồn và tài liệu đang tra cứu",
+    "caption": "63 + 22 = 85 mục danh mục. Chưa lập chỉ mục gồm nguồn chưa tải/parse/kiểm tra thành công; không mặc định tất cả đều lỗi.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_22_etl_quy_mo.png",
+    "title": "ETL với dữ liệu lặp: 3 lần đo / mức",
+    "caption": "Spark local[2]; chấm = trung bình, thanh = min–max. Cả ba mức đều cho 63 nội dung duy nhất. Warmup được loại.",
+    "source": "evidence/etl_scaling_results.json"
+  },
+  {
+    "file": "hinh_3_23_xep_hang.png",
+    "title": "Kết quả truy xuất trên 15 câu hỏi chọn thủ công",
+    "caption": "Hit@1 = 73,3%; Hit@5 = 93,3%; MRR@5 = 0,833. R13 chưa tìm đúng OECD trong top 5. Không phải độ chính xác pháp lý.",
+    "source": "evidence/retrieval_results.json"
+  },
+  {
+    "file": "hinh_3_24_thoi_gian_hoi_dap.png",
+    "title": "Ba ca kiểm tra chức năng đầu cuối",
+    "caption": "Hai ca dùng Qwen3 Instruct; ca EU dùng bản biên tập có điều kiện checksum. Mỗi ca một lần, không kết luận hiệu năng tổng quát.",
+    "source": "evidence/llm_smoke.json"
+  },
+  {
+    "file": "hinh_3_25_cac_lop_data_lake.png",
+    "title": "Dung lượng các lớp trong lượt đồng bộ gần nhất",
+    "caption": "178 tệp, 106.031.673 byte; đây là manifest một lượt đồng bộ, không phải toàn bộ namespace HDFS có lịch sử.",
+    "source": "evidence/system_facts.json → latest_sync"
+  },
+  {
+    "file": "hinh_3_26_trang_thai_phap_ly.png",
+    "title": "Trạng thái pháp lý theo metadata đã lưu",
+    "caption": "Nhãn từ dữ liệu nguồn, chưa thẩm định lại toàn bộ tại ngày đo. unknown / Chưa xác định không đồng nghĩa còn hiệu lực.",
+    "source": "evidence/document_statistics.csv"
+  },
+  {
+    "file": "hinh_3_29_song_am.png",
+    "title": "Sóng âm thật của hai đoạn người thuyết trình",
+    "caption": "Provider thực tế: piper; trích PCM từ WAV đã phát trong trình duyệt. Hình dạng sóng không chứng minh độ tự nhiên của giọng.",
+    "source": "evidence/presenter_browser_check.json; am_thanh/*.wav"
+  }
+]
